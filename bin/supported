@@ -1,0 +1,35 @@
+#!/usr/bin/env node
+'use strict';
+const ora = require('ora');
+
+(async function main(cli) {
+  if (cli.input.length === 0) {
+    cli.showHelp(1);
+  } else {
+    const isInSupportWindow = require('../lib/project');
+    const [projectPath] = cli.input;
+
+    const spinner = ora('working').start();
+    let result;
+    try {
+      result = await isInSupportWindow(projectPath);
+      if (result.isInSupportWindow === false) {
+        process.exitCode = 1;
+      }
+    } finally {
+      spinner.stop();
+    }
+
+    if (cli.flags.json && result) {
+      const { projectName } = result;
+      delete result.projectName;
+      console.log(
+        JSON.stringify(
+          { ...result, project: { name: projectName, path: projectPath, type: 'node_module' } },
+          null,
+          2,
+        ),
+      );
+    }
+  }
+})(require('meow')(require('../lib/help'), {}));

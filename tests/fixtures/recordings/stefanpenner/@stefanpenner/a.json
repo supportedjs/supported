@@ -1,0 +1,57 @@
+{
+  "_id": "@stefanpenner/a@1.0.3",
+  "_rev": "4-900a5863c49b3df17b1e38f4366ba8ac",
+  "name": "@stefanpenner/a",
+  "dist-tags": {
+    "latest": "1.0.3"
+  },
+  "versions": [
+    "1.0.0",
+    "1.0.1",
+    "1.0.2",
+    "1.0.3"
+  ],
+  "maintainers": [
+    "stefanpenner <stefan.penner@gmail.com>"
+  ],
+  "time": {
+    "modified": "2016-09-21T16:12:48.054Z",
+    "created": "2015-08-17T22:40:20.281Z",
+    "1.0.0": "2015-08-17T22:40:20.281Z",
+    "1.0.1": "2015-08-18T15:28:48.461Z",
+    "1.0.2": "2015-08-18T15:29:39.933Z",
+    "1.0.3": "2016-09-21T16:12:48.054Z"
+  },
+  "license": "ISC",
+  "readmeFilename": "",
+  "_attachments": {},
+  "_cached": true,
+  "_contentLength": 0,
+  "version": "1.0.3",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "peerDependencies": {
+    "@stefanpenner/b": "^1.0.0"
+  },
+  "dependencies": {
+    "lodash": "^4.16.1"
+  },
+  "_shasum": "8aa6b161063526bbd954289bbfe36f6660a02ab9",
+  "_from": ".",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.6.0",
+  "_npmUser": "stefanpenner <stefan.penner@gmail.com>",
+  "dist": {
+    "shasum": "8aa6b161063526bbd954289bbfe36f6660a02ab9",
+    "tarball": "https://registry.npmjs.org/@stefanpenner/a/-/a-1.0.3.tgz"
+  },
+  "_npmOperationalInternal": {
+    "host": "packages-16-east.internal.npmjs.com",
+    "tmp": "tmp/a-1.0.3.tgz_1474474366275_0.895244502928108"
+  },
+  "directories": {}
+}

@@ -1,0 +1,74 @@
+{
+  "_id": "@eslint-ast/eslint-plugin-graphql@1.0.4",
+  "_rev": "4-5f83173182c8dbd4aa748d472d513a57",
+  "name": "@eslint-ast/eslint-plugin-graphql",
+  "dist-tags": {
+    "latest": "1.0.4"
+  },
+  "versions": [
+    "1.0.0",
+    "1.0.1",
+    "1.0.2",
+    "1.0.3",
+    "1.0.4"
+  ],
+  "time": {
+    "created": "2020-09-18T17:49:28.072Z",
+    "1.0.0": "2020-09-18T17:49:28.480Z",
+    "modified": "2020-10-02T01:10:36.326Z",
+    "1.0.1": "2020-09-18T22:05:59.671Z",
+    "1.0.2": "2020-09-24T20:21:39.476Z",
+    "1.0.3": "2020-09-25T23:08:25.625Z",
+    "1.0.4": "2020-10-02T01:10:33.984Z"
+  },
+  "maintainers": [
+    "hjdivad <npm@hjdivad.com>",
+    "stefanpenner <stefan.penner@gmail.com>"
+  ],
+  "description": "Provides native eslint support for graphql",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "_cached": false,
+  "_contentLength": 0,
+  "version": "1.0.4",
+  "main": "index.js",
+  "dependencies": {
+    "debug": "^4.2.0",
+    "graphql": "^15.3.0",
+    "mocha": "^8.1.0",
+    "resolve": "^1.17.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^7.5.0",
+    "fixturify-project": "^2.1.0"
+  },
+  "engines": {
+    "node": "10.* || >= 12"
+  },
+  "scripts": {
+    "example": "eslint .",
+    "example:lint": "eslint example",
+    "example:lint:debug": "node debug ./node_modules/.bin/eslint example",
+    "test": "mocha tests/*-test.js tests/**/*-test.js",
+    "test:debug": "mocha --inspect-brk tests/*-test.js tests/**/*-test.js",
+    "lint": "eslint ."
+  },
+  "_nodeVersion": "12.16.2",
+  "_npmVersion": "6.14.4",
+  "dist": {
+    "integrity": "sha512-UumIlNZDZWbQPCJzcRrdNQ+CJFfY+uFwmosiIFs2X+VgbIJjBxWrPRaV1ywu1Hl8npSV2lzEkQZUYgRVs818Zw==",
+    "shasum": "e0ed3238cddc14389fb7643c8d259152eb4b2b42",
+    "tarball": "https://registry.npmjs.org/@eslint-ast/eslint-plugin-graphql/-/eslint-plugin-graphql-1.0.4.tgz",
+    "fileCount": 11,
+    "unpackedSize": 24956,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfdn4KCRA9TVsSAnZWagAA1/sP/2MI2pcbyJ3mAjmJ92+E\nANWf6qav7ZmdCyPIAwBUiQQW4W6ORLeLgl8SD/rSsHf6lzsqBk3y8XsikTXt\nRLxzaOFJkE6Oh+CKzg4Hl2PfT4ex2eb6Iw9s7lGr4Jd2N0Hw/Puk4R7PGFd9\nBGH1hbfI++UjReZOrKGXfCNdMn9wO8jTpPVQC+nixIDUv8eGTQeHDEsMyQM8\nwX8pnhsGMhIn5v57/Q/jyEVb/H5qL6ThA6R8FUX0+R43Cq1emPC78gR6/diE\nuJhXZcPjF/VdK0YYK4VUM0qDuWnAcLRrQZLzBw/br7Vq6atyuWQIIiaXzYGz\n/DXw34qvtukLhXf2cLuWZA9OypC38ALxdwSVxtpT6IJujqqTJ5VKvUPuy9d5\n31Ugpib9ICYDwVrm2wLLYWluAU+vIpr+3q9Cjl7VeZuWPHZOpAcaW9VDoA2P\nd6HG8Kh/5/Il2vLC3dpm3uBwYMwUFJS7KZhgteRRKpO2R0SC7E3B9uD3O8dn\nh7BnPi4IE8fPcj1tjG9jteeVxrin7DRDUVlgxstgebo+z2XB6mY/QuQeQVVa\n7EOaUV9pC3HCHoUbVtUJnnuHlewMXFXgJs/i/YXZFRJhmdYJZNBmhYz2kRJS\nWC+ZV4LWdy4saK0qtSynRijeg1RD83hvmkYjR/n3FrnRFLbwAAdsfSihX4dJ\nOKmS\r\n=aHcW\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_npmUser": "hjdivad <npm@hjdivad.com>",
+  "directories": {},
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/eslint-plugin-graphql_1.0.4_1601601033716_0.23452237954673527"
+  },
+  "_hasShrinkwrap": false
+}

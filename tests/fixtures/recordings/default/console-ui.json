@@ -1,0 +1,115 @@
+{
+  "_id": "console-ui@3.1.2",
+  "_rev": "25-872f36401e21eb5a73c7f37933ba97b7",
+  "name": "console-ui",
+  "description": "common interface for abstracting a console ui",
+  "dist-tags": {
+    "latest": "3.1.2"
+  },
+  "versions": [
+    "1.0.0",
+    "1.0.1",
+    "1.0.2",
+    "1.0.3",
+    "2.0.0",
+    "2.0.1",
+    "2.1.0",
+    "2.2.0",
+    "2.2.1",
+    "2.2.2",
+    "2.2.3",
+    "3.0.0",
+    "3.0.1",
+    "3.0.2",
+    "3.0.3",
+    "3.0.4",
+    "3.1.0",
+    "3.1.1",
+    "3.1.2"
+  ],
+  "maintainers": [
+    "nathanhammond <npm@nathanhammond.com>",
+    "kellyselden <kellyselden@gmail.com>",
+    "rwjblue <me@rwjblue.com>",
+    "turbo87 <tobias.bieniek@gmail.com>",
+    "stefanpenner <stefan.penner@gmail.com>",
+    "trabus <trabus@gmail.com>",
+    "ember-cli <stefan.penner+ember-cli@gmail.com>"
+  ],
+  "time": {
+    "modified": "2020-11-03T17:15:39.720Z",
+    "created": "2016-11-28T06:04:08.861Z",
+    "1.0.0": "2016-11-28T06:04:08.861Z",
+    "1.0.1": "2016-11-28T06:12:49.986Z",
+    "1.0.2": "2016-11-28T06:15:53.462Z",
+    "1.0.3": "2017-01-06T02:08:08.159Z",
+    "2.0.0": "2017-08-08T16:08:40.794Z",
+    "2.0.1": "2017-10-30T18:05:52.483Z",
+    "2.1.0": "2017-12-22T05:10:38.544Z",
+    "2.2.0": "2018-02-21T20:55:24.390Z",
+    "2.2.1": "2018-02-21T22:30:43.077Z",
+    "2.2.2": "2018-02-22T07:42:57.238Z",
+    "2.2.3": "2019-01-04T14:46:15.274Z",
+    "3.0.0": "2019-01-08T16:30:15.184Z",
+    "3.0.1": "2019-03-29T16:59:54.664Z",
+    "3.0.2": "2019-04-03T17:53:03.104Z",
+    "3.0.3": "2019-05-02T16:51:08.518Z",
+    "3.0.4": "2019-05-02T18:19:52.060Z",
+    "3.1.0": "2019-06-10T17:55:34.709Z",
+    "3.1.1": "2019-06-27T13:27:05.080Z",
+    "3.1.2": "2020-11-03T17:15:37.401Z"
+  },
+  "homepage": "https://github.com/ember-cli/console-ui#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ember-cli/console-ui.git"
+  },
+  "author": "Stefan Penner <stefan.penner@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/ember-cli/console-ui/issues"
+  },
+  "license": "ISC",
+  "readmeFilename": "README.md",
+  "_cached": true,
+  "_contentLength": 0,
+  "version": "3.1.2",
+  "main": "index.js",
+  "scripts": {
+    "changelog": "lerna-changelog",
+    "test": "mocha tests/**/*-test.js",
+    "test:debug": "mocha debug tests/**/*-test.js"
+  },
+  "dependencies": {
+    "chalk": "^2.1.0",
+    "inquirer": "^6",
+    "json-stable-stringify": "^1.0.1",
+    "ora": "^3.4.0",
+    "through2": "^3.0.1"
+  },
+  "devDependencies": {
+    "chai": "^4.1.1",
+    "lerna-changelog": "^0.8.3",
+    "mocha": "^6.2.2"
+  },
+  "engines": {
+    "node": "6.* || 8.* || >= 10.*"
+  },
+  "gitHead": "b4b42219cc5619a90a4e9e7fb8d11851d3123881",
+  "_nodeVersion": "12.17.0",
+  "_npmVersion": "6.14.4",
+  "dist": {
+    "integrity": "sha512-+5j3R4wZJcEYZeXk30whc4ZU/+fWW9JMTNntVuMYpjZJ9n26Cxr0tUBXco1NRjVZRpRVvZ4DDKKKIHNYeUG9Dw==",
+    "shasum": "51aef616ff02013c85ccee6a6d77ef7a94202e7a",
+    "tarball": "https://registry.npmjs.org/console-ui/-/console-ui-3.1.2.tgz",
+    "fileCount": 15,
+    "unpackedSize": 44628,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfoZA5CRA9TVsSAnZWagAAWEwP/jWn/qiFbzRsQkwZ/omb\nD4H+TCTqNnr8xWVxmOTkoBFtrJ1uNU23THh16sxdXpM+8JnwGUZaKgv09UVr\nygI8IVlyWyJOyRLiKvMWmbdZhfUkSssnp1KvZlhicKA0x0lNW5GEo7uWduVE\nupUClnAcLnOG7FPkcJm630f3ei8pU5dw/TRQtVtV0+KvMbrpkcbfJC+UmkBc\n8Gad4XQmylJBnzetbt3Atupujsy0TD4qljZKBFiwUPV5Xk1Ao8HJsw6P1Gb9\n3bGgy8yapYoZKYeFlQaEOfbQRvdj7qxL7KXGxrkzW82Ja4KXd3uSxYSVQ4B/\nNwG3YeWYxo+ccti48EruvqoVrS/jAzYipYX4jgNqQR+aydi4vqXEmy90+mLB\n6xt2adW6rD14PpmntguVBcqH8GeJE7iOIH5lKzycju8yBS7FXmqSaLelJnIU\nahNCt8Vwbb0sjSobbGFd/AbNNTts2VImp5Nf+jhfRU/zj+k7A8GEy5RzLWBT\nnIqLbmJuP5vb6TdcefbQTQaE4lRlnu6jjxgzM/KS8Zwrs0fA5eQ1/UC+wLOT\nq41hYH8G7FRTrxSqkh3R+zbipij8ZiX/sgIHxBT0hjFWXQELoUSWexhpGFTC\nU388UkOwEHi7IzMdPr7oMVHGRLdnEAD7nphaWrAh2XKV3/ZVHnS8qY6kesUw\nQjRI\r\n=FBuq\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_npmUser": "rwjblue <me@rwjblue.com>",
+  "directories": {},
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/console-ui_3.1.2_1604423737259_0.010725373184366616"
+  },
+  "_hasShrinkwrap": false
+}

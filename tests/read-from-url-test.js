@@ -7,7 +7,7 @@ const fileServer = require('./raw-file-server');
 
 describe('read file from URL', function () {
   beforeEach(function () {
-    fileServer.startAll()
+    fileServer.startAll();
   });
 
   afterEach(function () {
@@ -15,13 +15,20 @@ describe('read file from URL', function () {
   });
 
   it('package.json and yarn.lock is created', async function () {
-    let projectPath = await setupProjectPath(`http://github.com:${fileServer.FILE_SERVER_PORT_1}/supported-project`, 'localhost');
+    let projectPath = await setupProjectPath(
+      `http://github.com:${fileServer.FILE_SERVER_PORT_1}/supported-project`,
+      'localhost',
+    );
     expect(fs.existsSync(projectPath + '/package.json')).to.be.true;
     expect(fs.existsSync(projectPath + '/yarn.lock')).to.be.true;
   });
-  it('package.json and yarn.lock is created', async function () {
+
+  it('throws file not found error', async function () {
     try {
-      let projectPath = await setupProjectPath(`http://github.com:${fileServer.FILE_SERVER_PORT_2}/supported-projects`, 'localhost');
+      await setupProjectPath(
+        `http://github.com:${fileServer.FILE_SERVER_PORT_2}/supported-projects`,
+        'localhost',
+      );
     } catch (e) {
       expect(e.code).to.eq('E404');
     }

@@ -39,7 +39,7 @@ function server(projectPath, port) {
   const FILE_SERVER_PORT_1 = 3002;
   const FILE_SERVER_PORT_2 = 3003;
 
-  function startAll() {
+  let startAll = function () {
     if (fileServer !== null) {
       throw new Error('already started');
     }
@@ -50,7 +50,7 @@ function server(projectPath, port) {
     fileServer.fileNotFound = server(`${root}/not-found-project`, FILE_SERVER_PORT_2);
   };
 
-  function  stopAll() {
+  let stopAll = function () {
     if (fileServer == null) {
       throw new Error('not yet started');
     }
@@ -66,6 +66,6 @@ function server(projectPath, port) {
     stopAll,
     FILE_SERVER_PORT_1,
     FILE_SERVER_PORT_2,
-    server
-  }
+    server,
+  };
 }

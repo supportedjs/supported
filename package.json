@@ -27,7 +27,7 @@
     "npm": "7.11.2"
   },
   "engines": {
-    "node": ">=12.9.* || 14.* || >= 15"
+    "node": "10.* || 12.* || 14.* || >= 15"
   },
   "devDependencies": {
     "chai": "^4.2.0",
@@ -63,7 +63,6 @@
     "parse-duration": "^1.0.0",
     "parse-package-name": "^0.1.0",
     "promise.allsettled": "^1.0.4",
-    "resolve-path": "^1.4.0",
     "semver": "^7.3.4",
     "strip-ansi": "^6.0.0",
     "terminal-link": "^2.1.1"

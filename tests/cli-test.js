@@ -2,8 +2,16 @@
 
 const { expect } = require('chai');
 const execa = require('execa');
+const fs = require('fs-extra');
 const { getBinPath } = require('get-bin-path');
 const registries = require('./registries');
+
+let FILE_LIST = [
+  '/supported/index.html',
+  '/supported/jput.min.js',
+  '/supported/jquery.js',
+  '/supported/result.json',
+]
 
 describe('CLI', function () {
   beforeEach(function () {
@@ -24,25 +32,46 @@ describe('CLI', function () {
     expect(child.stdout).to.match(/supported/);
   });
 
+  function checkFileExists(projectPath) {
+    FILE_LIST.forEach((file) => {
+      expect(fs.existsSync(`${projectPath}${file}`));
+    });
+  }
+
   describe('default output', function () {
+    let projectPath = '';
+    afterEach(() => {
+      if (projectPath) {
+        fs.removeSync(`${projectPath}/supported`);
+      }
+    });
+
     it('works against a fully supported project', async function () {
-      const child = await execa(await getBinPath(), [`${__dirname}/fixtures/supported-project`], {
+      projectPath = `${__dirname}/fixtures/supported-project`;
+      const child = await execa(await getBinPath(), [projectPath], {
         shell: true,
         reject: false,
       });
       expect(child.exitCode).to.eql(0);
       expect(child.stderr).to.eql('- working');
-      expect(child.stdout).to.eql('');
+      expect(child.stdout).to.eql(
+        `Visit ${projectPath}/supported/index.html (​${projectPath}/supported/index.html​) to see the result`
+      );
+      checkFileExists(projectPath);
     });
 
     it('works against a unsupported project', async function () {
-      const child = await execa(await getBinPath(), [`${__dirname}/fixtures/unsupported-project`], {
+      projectPath = `${__dirname}/fixtures/unsupported-project`;
+      const child = await execa(await getBinPath(), [projectPath], {
         shell: true,
         reject: false,
       });
       expect(child.exitCode).to.eql(1);
       expect(child.stderr).to.eql('- working');
-      expect(child.stdout).to.eql('');
+      expect(child.stdout).to.eql(
+        `Visit ${projectPath}/supported/index.html (​${projectPath}/supported/index.html​) to see the result`
+      );
+      checkFileExists(projectPath);
     });
   });
 

@@ -1,13 +1,14 @@
 #!/usr/bin/env node
 'use strict';
 const ora = require('ora');
+const  { setUpHTMLOutput } = require('../lib/html-report');
 
 (async function main(cli) {
   if (cli.input.length === 0) {
     cli.showHelp(1);
   } else {
     const isInSupportWindow = require('../lib/project');
-    const [projectPath] = cli.input;
+    let [projectPath] = cli.input;
 
     const spinner = ora('working').start();
     let result;
@@ -30,6 +31,8 @@ const ora = require('ora');
           2,
         ),
       );
+    } else {
+      setUpHTMLOutput(result, projectPath);
     }
   }
 })(require('meow')(require('../lib/help'), {}));

@@ -215,30 +215,30 @@ describe('ember LTS based policy', function () {
   });
 
   describe('isLtsOrLatest', function () {
-    it('resolved version is LTS', function() {
+    it('resolved version is LTS', function () {
       expect(isLtsOrLatest({}, '3.16.0')).to.eql({
         isSupported: true,
-        message: 'Using maintenance LTS. Update to latest LTS'
+        message: 'Using maintenance LTS. Update to latest LTS',
       });
     });
-    it('resolved version is older version', function() {
+    it('resolved version is older version', function () {
       expect(isLtsOrLatest({}, '3.14.0')).to.eql({
         isSupported: false,
-        message: 'Voilated: ember-cli needs to be on v3.20.* or above LTS versions.'
+        message: 'Voilated: ember-cli needs to be on v3.20.* or above LTS versions.',
       });
     });
-    it('Above maintenance LTS, update to next LTS', function() {
+    it('Above maintenance LTS, update to next LTS', function () {
       expect(isLtsOrLatest({}, '3.18.0')).to.eql({
         isSupported: false,
-        message: 'Voilated: ember-cli needs to be on v3.20.* or above LTS versions.'
+        message: 'Voilated: ember-cli needs to be on v3.20.* or above LTS versions.',
       });
     });
-    it('resolved version is LTS latest', function() {
+    it('resolved version is LTS latest', function () {
       expect(isLtsOrLatest({}, '3.20.0')).to.eql({
         isSupported: true,
       });
     });
-    it('resolved version is LTS', function() {
+    it('resolved version is Latest', function () {
       expect(isLtsOrLatest({}, '3.25.0')).to.eql({
         isSupported: true,
       });

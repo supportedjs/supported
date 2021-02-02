@@ -32,7 +32,7 @@ describe('project-1', function () {
         {
           isSupported: true,
           name: 'node',
-          resolvedVersoon: '15.3.0'
+          resolvedVersoon: '15.3.0',
         },
         {
           isSupported: true,
@@ -71,8 +71,8 @@ describe('project-1', function () {
         {
           isSupported: true,
           name: 'node',
-          message: "Using maintenance LTS. Update to latest LTS",
-          resolvedVersoon: '10.* || 12.* || 14.* || >= 15'
+          message: 'Using maintenance LTS. Update to latest LTS',
+          resolvedVersoon: '10.* || 12.* || 14.* || >= 15',
         },
         {
           isSupported: false,
@@ -112,7 +112,7 @@ describe('project-1', function () {
           isSupported: true,
           name: 'node',
           message: 'No node version mentioned in the package.json. Please add engines/volta',
-          resolvedVersoon: '0.0.0'
+          resolvedVersoon: '0.0.0',
         },
         {
           isSupported: true,

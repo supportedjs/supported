@@ -74,7 +74,7 @@ describe('CLI', function () {
           {
             isSupported: true,
             name: 'node',
-            resolvedVersoon: '15.3.0'
+            resolvedVersoon: '15.3.0',
           },
           {
             isSupported: true,
@@ -123,8 +123,8 @@ describe('CLI', function () {
           {
             isSupported: true,
             name: 'node',
-            message: "Using maintenance LTS. Update to latest LTS",
-            resolvedVersoon: '10.* || 12.* || 14.* || >= 15'
+            message: 'Using maintenance LTS. Update to latest LTS',
+            resolvedVersoon: '10.* || 12.* || 14.* || >= 15',
           },
           {
             isSupported: false,

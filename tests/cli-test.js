@@ -73,6 +73,11 @@ describe('CLI', function () {
           },
           {
             isSupported: true,
+            name: 'node',
+            resolvedVersoon: '15.3.0'
+          },
+          {
+            isSupported: true,
             name: 'es6-promise',
             resolvedVersion: '4.2.8',
           },
@@ -114,6 +119,12 @@ describe('CLI', function () {
             message: 'violated: major version must be within 1 year of latest',
             name: 'rsvp',
             resolvedVersion: '3.6.2',
+          },
+          {
+            isSupported: true,
+            name: 'node',
+            message: "Using maintenance LTS. Update to latest LTS",
+            resolvedVersoon: '10.* || 12.* || 14.* || >= 15'
           },
           {
             isSupported: false,

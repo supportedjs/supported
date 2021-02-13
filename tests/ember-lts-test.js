@@ -224,13 +224,13 @@ describe('ember LTS based policy', function () {
     it('resolved version is older version', function () {
       expect(isLtsOrLatest({}, '3.14.0')).to.eql({
         isSupported: false,
-        message: 'Voilated: ember-cli needs to be on v3.20.* or above LTS versions.',
+        message: 'ember-cli needs to be on v3.20.* or above LTS version',
       });
     });
     it('Above maintenance LTS, update to next LTS', function () {
       expect(isLtsOrLatest({}, '3.18.0')).to.eql({
         isSupported: false,
-        message: 'Voilated: ember-cli needs to be on v3.20.* or above LTS versions.',
+        message: 'ember-cli needs to be on v3.20.* or above LTS version',
       });
     });
     it('resolved version is LTS latest', function () {

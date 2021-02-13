@@ -57,13 +57,13 @@ describe('node LTS based policy', function () {
     it('node version with fixed value below LTS range', function () {
       expect(isLtsOrLatest({ type: 'node' }, '8.0.0')).to.eql({
         isSupported: false,
-        message: `Voilated: node needs to be on v14.* or above LTS versions.`,
+        message: `node needs to be on v14.* or above LTS version`,
       });
     });
     it('node version with range value below LTS', function () {
       expect(isLtsOrLatest({ type: 'node' }, '6.* || 8.*')).to.eql({
         isSupported: false,
-        message: `Voilated: node needs to be on v14.* or above LTS versions.`,
+        message: `node needs to be on v14.* or above LTS version`,
       });
     });
     it('node version invalid after end of LTS date', function () {
@@ -72,7 +72,7 @@ describe('node LTS based policy', function () {
       nextDay.setDate(nextDay.getDate() + 1);
       expect(isLtsOrLatest({ type: 'node' }, '10.2.0', nextDay)).to.eql({
         isSupported: false,
-        message: `Voilated: node needs to be on v14.* or above LTS versions.`,
+        message: `node needs to be on v14.* or above LTS version`,
       });
     });
     it('node version is valid till last day', function () {

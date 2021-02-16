@@ -35,4 +35,15 @@ const { displayResult } = require('../lib/output/cli-output');
       displayResult(result, cli.flags);
     }
   }
-})(require('meow')(require('../lib/help'), {}));
+})(require('meow')(require('../lib/help'), {
+  flags: {
+    verbose: {
+      type: 'boolean',
+      alias: 'v'
+    },
+    json: {
+      type: 'boolean',
+      alias: 'j'
+    },
+  },
+}));

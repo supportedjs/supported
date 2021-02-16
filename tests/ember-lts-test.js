@@ -253,5 +253,10 @@ describe('ember LTS based policy', function () {
         resolvedVersion: '3.25.0',
       });
     });
+    it('throws error when LTS file is not updated', function () {
+      expect(() => isLtsOrLatest({}, '3.25.0', new Date('September 7, 2021'))).to.throw(
+        'Please create PR to update lts ember-cli-lts.json file in lts/ folder or create an issue in supported project',
+      );
+    });
   });
 });

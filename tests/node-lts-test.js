@@ -36,34 +36,46 @@ describe('node LTS based policy', function () {
       expect(isLtsOrLatest({ type: 'node' }, '10.* || 12.* || 14.* || >= 15')).to.eql({
         isSupported: true,
         message: 'Using maintenance LTS. Update to latest LTS',
+        resolvedVersion: '10.* || 12.* || 14.* || >= 15',
+        latestVersion: '>=14.*',
       });
     });
     it('node version with above current LTS range', function () {
       expect(isLtsOrLatest({ type: 'node' }, '15.3.0')).to.eql({
         isSupported: true,
+        latestVersion: '>=14.*',
+        message: '',
+        resolvedVersion: '15.3.0',
       });
     });
     it('node version with fixed value in current LTS range', function () {
       expect(isLtsOrLatest({ type: 'node' }, '14.3.0')).to.eql({
         isSupported: true,
+        latestVersion: '>=14.*',
+        message: '',
+        resolvedVersion: '14.3.0',
       });
     });
     it('node version with below and in support range value', function () {
       expect(isLtsOrLatest({ type: 'node' }, '8.* || 10.*')).to.eql({
         isSupported: true,
         message: 'Using maintenance LTS. Update to latest LTS',
+        latestVersion: '>=14.*',
+        resolvedVersion: '8.* || 10.*',
       });
     });
     it('node version with fixed value below LTS range', function () {
       expect(isLtsOrLatest({ type: 'node' }, '8.0.0')).to.eql({
         isSupported: false,
         message: `node needs to be on v14.* or above LTS version`,
+        type: 'node',
       });
     });
     it('node version with range value below LTS', function () {
       expect(isLtsOrLatest({ type: 'node' }, '6.* || 8.*')).to.eql({
         isSupported: false,
         message: `node needs to be on v14.* or above LTS version`,
+        type: 'node',
       });
     });
     it('node version invalid after end of LTS date', function () {
@@ -73,6 +85,7 @@ describe('node LTS based policy', function () {
       expect(isLtsOrLatest({ type: 'node' }, '10.2.0', nextDay)).to.eql({
         isSupported: false,
         message: `node needs to be on v14.* or above LTS version`,
+        type: 'node',
       });
     });
     it('node version is valid till last day', function () {
@@ -80,12 +93,16 @@ describe('node LTS based policy', function () {
       expect(isLtsOrLatest({ type: 'node' }, '10.2.0', lastDay)).to.eql({
         isSupported: true,
         message: 'Using maintenance LTS. Update to latest LTS',
+        resolvedVersion: '10.2.0',
+        latestVersion: '>=14.*',
       });
     });
     it('node version not found', function () {
       expect(isLtsOrLatest({ type: 'node' }, '0.0.0')).to.eql({
         isSupported: true,
         message: `No node version mentioned in the package.json. Please add engines/volta`,
+        latestVersion: '>=14.*',
+        resolvedVersion: '0.0.0',
       });
     });
   });

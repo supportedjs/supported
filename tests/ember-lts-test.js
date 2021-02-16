@@ -219,28 +219,38 @@ describe('ember LTS based policy', function () {
       expect(isLtsOrLatest({}, '3.16.0')).to.eql({
         isSupported: true,
         message: 'Using maintenance LTS. Update to latest LTS',
+        latestVersion: '>=3.20.*',
+        resolvedVersion: '3.16.0',
       });
     });
     it('resolved version is older version', function () {
       expect(isLtsOrLatest({}, '3.14.0')).to.eql({
         isSupported: false,
         message: 'ember-cli needs to be on v3.20.* or above LTS version',
+        type: 'ember',
       });
     });
     it('Above maintenance LTS, update to next LTS', function () {
       expect(isLtsOrLatest({}, '3.18.0')).to.eql({
         isSupported: false,
         message: 'ember-cli needs to be on v3.20.* or above LTS version',
+        type: 'ember',
       });
     });
     it('resolved version is LTS latest', function () {
       expect(isLtsOrLatest({}, '3.20.0')).to.eql({
         isSupported: true,
+        latestVersion: '>=3.20.*',
+        message: '',
+        resolvedVersion: '3.20.0',
       });
     });
     it('resolved version is Latest', function () {
       expect(isLtsOrLatest({}, '3.25.0')).to.eql({
         isSupported: true,
+        latestVersion: '>=3.20.*',
+        message: '',
+        resolvedVersion: '3.25.0',
       });
     });
   });

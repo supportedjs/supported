@@ -49,11 +49,11 @@ describe('CLI', function () {
     });
   });
 
-  describe('--all', function () {
+  describe('--verbose', function () {
     it('works against a unsupported project', async function () {
       const child = await execa(
         await getBinPath(),
-        [`${__dirname}/fixtures/unsupported-project`, '--all'],
+        [`${__dirname}/fixtures/unsupported-project`, '--verbose'],
         {
           shell: true,
           reject: false,
@@ -73,7 +73,7 @@ describe('CLI', function () {
     it('works against a supported project', async function () {
       const child = await execa(
         await getBinPath(),
-        [`${__dirname}/fixtures/supported-project`, '--all'],
+        [`${__dirname}/fixtures/supported-project`, '-v'],
         {
           shell: true,
           reject: false,

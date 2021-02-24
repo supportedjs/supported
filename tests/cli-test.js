@@ -44,7 +44,7 @@ describe('CLI', function () {
       expect(child.stderr).to.eql('- working');
       expect(child.stdout).to.includes('Support Policy Problem Detected!');
       expect(child.stdout).to.includes(
-        '✗ SemVer (2 violations in 3 dependencies)\n      ✗ major version [2 dependencie(s) 7 qtr(s) behind]',
+        '✗ SemVer (2 violations in 3 dependencies)\n      ✗ major version [2 dependencies 7 qtrs behind]',
       );
     });
 
@@ -57,10 +57,10 @@ describe('CLI', function () {
       expect(child.stderr).to.eql('- working');
       expect(child.stdout).to.includes('⚠ Warning!');
       expect(child.stdout).to.includes(
-        '⚠ node LTS\n      ⚠ version/version-range 10.0.0 will be deprecated within 1qtr(s)',
+        '⚠ node LTS\n      ⚠ version/version-range 10.0.0 will be deprecated within 1 qtr',
       );
       expect(child.stdout).to.includes(
-        '⚠ SemVer (1 in 4 dependencies will expire soon) \n      ⚠ major [1 dependencie(s) will expire within 3 qtr(s)]',
+        '⚠ SemVer (1 in 4 dependencies will expire soon) \n      ⚠ major [1 dependency will expire within 3 qtrs]',
       );
     });
 
@@ -128,10 +128,10 @@ describe('CLI', function () {
       expect(child.stderr).to.eql('- working');
       expect(child.stdout).to.includes('⚠ Warning!');
       expect(child.stdout).to.includes(
-        `@stefanpenner/a                    1.0.3     2.0.0           3 qtr(s)`,
+        `@stefanpenner/a                    1.0.3     2.0.0                      3 qtrs`,
       );
       expect(child.stdout).to.includes(
-        `node                               10.0.0    >=14.*          1 qtr(s)`,
+        `node                               10.0.0    >=14.*                     1 qtr`,
       );
     });
   });

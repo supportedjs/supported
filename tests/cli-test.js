@@ -44,7 +44,36 @@ describe('CLI', function () {
       expect(child.stderr).to.eql('- working');
       expect(child.stdout).to.includes('Support Policy Problem Detected!');
       expect(child.stdout).to.includes(
-        '✓ node LTS\n    ✗ SemVer (2 of 4)\n      ✗ MAJOR version [2 dependencie(s) 7 qtr(s) behind]',
+        '✗ SemVer (2 violations in 3 dependencies)\n      ✗ major version [2 dependencie(s) 7 qtr(s) behind]',
+      );
+    });
+
+    it('works against a version expires soon project', async function () {
+      const child = await execa(await getBinPath(), [`${__dirname}/fixtures/version-expire-soon`], {
+        shell: true,
+        reject: false,
+      });
+      expect(child.exitCode).to.eql(0);
+      expect(child.stderr).to.eql('- working');
+      expect(child.stdout).to.includes('⚠ Warning!');
+      expect(child.stdout).to.includes(
+        '⚠ node LTS\n      ⚠ version/version-range 10.0.0 will be deprecated within 1qtr(s)',
+      );
+      expect(child.stdout).to.includes(
+        '⚠ SemVer (1 in 4 dependencies will expire soon) \n      ⚠ major [1 dependencie(s) will expire within 3 qtr(s)]',
+      );
+    });
+
+    it('works against a no node version project', async function () {
+      const child = await execa(await getBinPath(), [`${__dirname}/fixtures/no-node-version`], {
+        shell: true,
+        reject: false,
+      });
+      expect(child.exitCode).to.eql(0);
+      expect(child.stderr).to.eql('- working');
+      expect(child.stdout).to.includes('⚠ Warning!');
+      expect(child.stdout).to.includes(
+        '⚠ node LTS\n      ⚠ No node version mentioned in the package.json. Please add engines/volta',
       );
     });
   });
@@ -73,7 +102,7 @@ describe('CLI', function () {
     it('works against a supported project', async function () {
       const child = await execa(
         await getBinPath(),
-        [`${__dirname}/fixtures/supported-project`, '-v'],
+        [`${__dirname}/fixtures/supported-project`, '-d'],
         {
           shell: true,
           reject: false,
@@ -84,6 +113,26 @@ describe('CLI', function () {
       expect(child.stdout).to.includes('Congrats!');
       expect(child.stdout).to.includes('es6-promise');
       expect(child.stdout).to.includes('@eslint-ast/eslint-plugin-graphql');
+    });
+
+    it('works against a version expires soon project', async function () {
+      const child = await execa(
+        await getBinPath(),
+        [`${__dirname}/fixtures/version-expire-soon`, '--verbose'],
+        {
+          shell: true,
+          reject: false,
+        },
+      );
+      expect(child.exitCode).to.eql(0);
+      expect(child.stderr).to.eql('- working');
+      expect(child.stdout).to.includes('⚠ Warning!');
+      expect(child.stdout).to.includes(
+        `@stefanpenner/a                    1.0.3     2.0.0           3 qtr(s)`,
+      );
+      expect(child.stdout).to.includes(
+        `node                               10.0.0    >=14.*          1 qtr(s)`,
+      );
     });
   });
 
@@ -102,41 +151,40 @@ describe('CLI', function () {
       expect(JSON.parse(child.stdout)).to.eql({
         isInSupportWindow: true,
         project: {
-          name: 'example',
+          name: 'supported-project',
           type: 'node_module',
           path: `${__dirname}/fixtures/supported-project`,
         },
         supportChecks: [
           {
             isSupported: true,
-            name: 'rsvp',
-            latestVersion: '4.8.5',
-            resolvedVersion: '4.8.5',
-          },
-          {
-            isSupported: true,
-            latestVersion: '>=14.*',
-            message: '',
-            name: 'node',
-            resolvedVersion: '15.3.0',
-          },
-          {
-            isSupported: true,
-            name: 'es6-promise',
-            latestVersion: '4.2.8',
-            resolvedVersion: '4.2.8',
+            name: '@eslint-ast/eslint-plugin-graphql',
+            resolvedVersion: '1.0.4',
+            latestVersion: '1.0.4',
           },
           {
             isSupported: true,
             name: '@stefanpenner/a',
-            latestVersion: '1.0.3',
-            resolvedVersion: '1.0.3',
+            resolvedVersion: '2.0.0',
+            latestVersion: '2.0.0',
           },
           {
             isSupported: true,
-            name: '@eslint-ast/eslint-plugin-graphql',
-            latestVersion: '1.0.4',
-            resolvedVersion: '1.0.4',
+            name: 'es6-promise',
+            resolvedVersion: '4.2.8',
+            latestVersion: '4.2.8',
+          },
+          {
+            isSupported: true,
+            resolvedVersion: '15.3.0',
+            latestVersion: '>=14.*',
+            name: 'node',
+          },
+          {
+            isSupported: true,
+            name: 'rsvp',
+            resolvedVersion: '4.8.5',
+            latestVersion: '4.8.5',
           },
         ],
       });
@@ -153,10 +201,18 @@ describe('CLI', function () {
       );
       expect(child.exitCode).to.eql(1);
       expect(child.stderr).to.eql('- working');
-      expect(JSON.parse(child.stdout)).to.eql({
+      let jsonOut = JSON.parse(child.stdout);
+      // purge out the duration from node entry from out
+      // because we use `new Date` to calculate the duration
+      jsonOut.supportChecks.forEach(pkg => {
+        if (pkg.name == 'node') {
+          delete pkg['duration'];
+        }
+      });
+      expect(jsonOut).to.eql({
         isInSupportWindow: false,
         project: {
-          name: 'example',
+          name: 'unsupported-project',
           path: `${__dirname}/fixtures/unsupported-project`,
           type: 'node_module',
         },
@@ -181,16 +237,18 @@ describe('CLI', function () {
           },
           {
             isSupported: true,
-            message: 'Using maintenance LTS. Update to latest LTS',
-            resolvedVersion: '10.* || 12.* || 14.* || >= 15',
-            latestVersion: '>=14.*',
-            name: 'node',
+            duration: 21081600000,
+            type: 'major',
+            name: '@stefanpenner/a',
+            resolvedVersion: '1.0.3',
+            latestVersion: '2.0.0',
           },
           {
             isSupported: true,
-            name: '@stefanpenner/a',
-            resolvedVersion: '1.0.3',
-            latestVersion: '1.0.3',
+            resolvedVersion: '10.* || 12.* || 14.* || >= 15',
+            latestVersion: '>=14.*',
+            message: 'Using maintenance LTS. Update to latest LTS',
+            name: 'node',
           },
           {
             isSupported: true,

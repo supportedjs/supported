@@ -33,8 +33,10 @@ describe('node LTS based policy', function () {
 
   describe('validates node versions', function () {
     it('node version with range', function () {
-      expect(isLtsOrLatest({ type: 'node' }, '10.* || 12.* || 14.* || >= 15')).to.eql({
+      let currentDate = new Date(`Feb 24, 2021`);
+      expect(isLtsOrLatest({ type: 'node' }, '10.* || 12.* || 14.* || >= 15', currentDate)).to.eql({
         isSupported: true,
+        duration: 5616000000,
         message: 'Using maintenance LTS. Update to latest LTS',
         resolvedVersion: '10.* || 12.* || 14.* || >= 15',
         latestVersion: '>=14.*',
@@ -44,7 +46,6 @@ describe('node LTS based policy', function () {
       expect(isLtsOrLatest({ type: 'node' }, '15.3.0')).to.eql({
         isSupported: true,
         latestVersion: '>=14.*',
-        message: '',
         resolvedVersion: '15.3.0',
       });
     });
@@ -52,13 +53,14 @@ describe('node LTS based policy', function () {
       expect(isLtsOrLatest({ type: 'node' }, '14.3.0')).to.eql({
         isSupported: true,
         latestVersion: '>=14.*',
-        message: '',
         resolvedVersion: '14.3.0',
       });
     });
     it('node version with below and in support range value', function () {
-      expect(isLtsOrLatest({ type: 'node' }, '8.* || 10.*')).to.eql({
+      let currentDate = new Date(`Feb 24, 2021`);
+      expect(isLtsOrLatest({ type: 'node' }, '8.* || 10.*', currentDate)).to.eql({
         isSupported: true,
+        duration: 5616000000,
         message: 'Using maintenance LTS. Update to latest LTS',
         latestVersion: '>=14.*',
         resolvedVersion: '8.* || 10.*',

@@ -21,39 +21,38 @@ describe('project-1', function () {
     });
 
     expect(result).to.eql({
-      projectName: 'example',
+      projectName: 'supported-project',
       isInSupportWindow: true,
       supportChecks: [
         {
           isSupported: true,
-          latestVersion: '4.8.5',
-          name: 'rsvp',
-          resolvedVersion: '4.8.5',
-        },
-        {
-          isSupported: true,
-          name: 'node',
-          resolvedVersion: '15.3.0',
-          latestVersion: '>=14.*',
-          message: '',
-        },
-        {
-          isSupported: true,
-          latestVersion: '4.2.8',
-          name: 'es6-promise',
-          resolvedVersion: '4.2.8',
-        },
-        {
-          isSupported: true,
-          latestVersion: '1.0.3',
-          name: '@stefanpenner/a',
-          resolvedVersion: '1.0.3',
-        },
-        {
-          isSupported: true,
-          latestVersion: '1.0.4',
           name: '@eslint-ast/eslint-plugin-graphql',
           resolvedVersion: '1.0.4',
+          latestVersion: '1.0.4',
+        },
+        {
+          isSupported: true,
+          name: '@stefanpenner/a',
+          resolvedVersion: '2.0.0',
+          latestVersion: '2.0.0',
+        },
+        {
+          isSupported: true,
+          name: 'es6-promise',
+          resolvedVersion: '4.2.8',
+          latestVersion: '4.2.8',
+        },
+        {
+          isSupported: true,
+          resolvedVersion: '15.3.0',
+          latestVersion: '>=14.*',
+          name: 'node',
+        },
+        {
+          isSupported: true,
+          name: 'rsvp',
+          resolvedVersion: '4.8.5',
+          latestVersion: '4.8.5',
         },
       ],
     });
@@ -63,47 +62,56 @@ describe('project-1', function () {
     const result = await isInSupportWindow(`${root}/unsupported-project`, {
       policies: [],
     });
+    // purge out the duration from node entry from out
+    // because we use `new Date` to calculate the duration
+    result.supportChecks.forEach(pkg => {
+      if (pkg.name == 'node') {
+        delete pkg['duration'];
+      }
+    });
 
     expect(result).to.eql({
-      projectName: 'example',
+      projectName: 'unsupported-project',
       isInSupportWindow: false,
       supportChecks: [
         {
-          duration: 54431779121,
           isSupported: false,
-          latestVersion: '4.2.8',
           message: 'violated: major version must be within 1 year of latest',
+          duration: 54431779121,
+          type: 'major',
           name: 'es6-promise',
           resolvedVersion: '3.3.1',
-          type: 'major',
+          latestVersion: '4.2.8',
         },
         {
-          duration: 27959197042,
           isSupported: false,
-          latestVersion: '4.8.5',
           message: 'violated: major version must be within 1 year of latest',
+          duration: 27959197042,
+          type: 'major',
           name: 'rsvp',
           resolvedVersion: '3.6.2',
-          type: 'major',
+          latestVersion: '4.8.5',
         },
         {
           isSupported: true,
+          duration: 21081600000,
+          type: 'major',
+          name: '@stefanpenner/a',
+          resolvedVersion: '1.0.3',
+          latestVersion: '2.0.0',
+        },
+        {
+          isSupported: true,
+          resolvedVersion: '10.* || 12.* || 14.* || >= 15',
           latestVersion: '>=14.*',
           message: 'Using maintenance LTS. Update to latest LTS',
           name: 'node',
-          resolvedVersion: '10.* || 12.* || 14.* || >= 15',
         },
         {
           isSupported: true,
-          latestVersion: '1.0.3',
-          name: '@stefanpenner/a',
-          resolvedVersion: '1.0.3',
-        },
-        {
-          isSupported: true,
-          latestVersion: '1.0.4',
           name: '@eslint-ast/eslint-plugin-graphql',
           resolvedVersion: '1.0.4',
+          latestVersion: '1.0.4',
         },
       ],
     });
@@ -115,39 +123,91 @@ describe('project-1', function () {
     });
 
     expect(result).to.eql({
-      projectName: 'example',
+      projectName: 'no-node-version',
       isInSupportWindow: true,
       supportChecks: [
         {
           isSupported: true,
-          latestVersion: '4.8.5',
-          name: 'rsvp',
-          resolvedVersion: '4.8.5',
+          name: '@eslint-ast/eslint-plugin-graphql',
+          resolvedVersion: '1.0.4',
+          latestVersion: '1.0.4',
         },
         {
           isSupported: true,
+          name: '@stefanpenner/a',
+          resolvedVersion: '2.0.0',
+          latestVersion: '2.0.0',
+        },
+        {
+          isSupported: true,
+          name: 'es6-promise',
+          resolvedVersion: '4.2.8',
+          latestVersion: '4.2.8',
+        },
+        {
+          isSupported: true,
+          resolvedVersion: '0.0.0',
           latestVersion: '>=14.*',
           message: 'No node version mentioned in the package.json. Please add engines/volta',
           name: 'node',
-          resolvedVersion: '0.0.0',
         },
         {
           isSupported: true,
-          latestVersion: '4.2.8',
-          name: 'es6-promise',
-          resolvedVersion: '4.2.8',
+          name: 'rsvp',
+          resolvedVersion: '4.8.5',
+          latestVersion: '4.8.5',
         },
+      ],
+    });
+  });
+
+  it('reports node version and other dependencies expires soon in the project', async function () {
+    const result = await isInSupportWindow(`${root}/version-expire-soon`, {
+      policies: [],
+    });
+    // purge out the duration from node entry from out
+    // because we use `new Date` to calculate the duration
+    result.supportChecks.forEach(pkg => {
+      if (pkg.name == 'node') {
+        delete pkg['duration'];
+      }
+    });
+    expect(result).to.eql({
+      projectName: 'version-expiring-soon',
+      isInSupportWindow: true,
+      supportChecks: [
         {
           isSupported: true,
-          latestVersion: '1.0.3',
+          duration: 21081600000,
+          type: 'major',
           name: '@stefanpenner/a',
           resolvedVersion: '1.0.3',
+          latestVersion: '2.0.0',
         },
         {
           isSupported: true,
-          latestVersion: '1.0.4',
+          resolvedVersion: '10.0.0',
+          latestVersion: '>=14.*',
+          message: 'Using maintenance LTS. Update to latest LTS',
+          name: 'node',
+        },
+        {
+          isSupported: true,
           name: '@eslint-ast/eslint-plugin-graphql',
           resolvedVersion: '1.0.4',
+          latestVersion: '1.0.4',
+        },
+        {
+          isSupported: true,
+          name: 'es6-promise',
+          resolvedVersion: '4.2.8',
+          latestVersion: '4.2.8',
+        },
+        {
+          isSupported: true,
+          name: 'rsvp',
+          resolvedVersion: '4.8.5',
+          latestVersion: '4.8.5',
         },
       ],
     });

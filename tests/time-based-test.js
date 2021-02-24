@@ -143,8 +143,8 @@ describe('time based policy: 1 year for major, 6 months for minor, 3 months of p
     const policies = supportedRanges(info.time[info.version]);
 
     expect(supported(info, 'ember-cli@3.22.0', policies)).to.eql({ isSupported: true });
-    expect(supported(info, 'ember-cli@3.21.0', policies)).to.eql({ isSupported: true });
-    expect(supported(info, 'ember-cli@3.20.0', policies)).to.eql({ isSupported: true });
+    expect(supported(info, 'ember-cli@3.21.0', policies)).to.eql({ duration: 11840496435, isSupported: true, type: "minor" });
+    expect(supported(info, 'ember-cli@3.20.0', policies)).to.eql({ duration: 8756624607, isSupported: true, type: "minor" });
     expect(supported(info, 'ember-cli@3.12.1', policies)).to.eql({
       duration: 11061239038,
       isSupported: false,

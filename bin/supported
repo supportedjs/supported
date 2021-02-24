@@ -39,7 +39,7 @@ const { displayResult } = require('../lib/output/cli-output');
   flags: {
     verbose: {
       type: 'boolean',
-      alias: 'v'
+      alias: 'd'
     },
     json: {
       type: 'boolean',

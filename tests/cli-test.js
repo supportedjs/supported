@@ -136,6 +136,58 @@ describe('CLI', function () {
     });
   });
 
+  describe('Filter options like --unsupported/expiring/supported', function() {
+    it('works against a unsupported project with --unsupported option', async function () {
+      const child = await execa(
+        await getBinPath(),
+        [`${__dirname}/fixtures/unsupported-project`, '--unsupported'],
+        {
+          shell: true,
+          reject: false,
+        },
+      );
+      expect(child.exitCode).to.eql(1);
+      expect(child.stderr).to.eql('- working');
+      expect(child.stdout).to.includes('Support Policy Problem Detected!');
+      expect(child.stdout).to.includes(
+        'es6-promise  3.3.1     4.2.8   7 qtrs',
+      );
+    });
+
+    it('works against a unsupported project with --supported option', async function () {
+      const child = await execa(
+        await getBinPath(),
+        [`${__dirname}/fixtures/unsupported-project`, '--supported'],
+        {
+          shell: true,
+          reject: false,
+        },
+      );
+      expect(child.exitCode).to.eql(1);
+      expect(child.stderr).to.eql('- working');
+      expect(child.stdout).to.includes('Support Policy Problem Detected!');
+      expect(child.stdout).to.includes(
+        '@eslint-ast/eslint-plugin-graphql  1.0.4     1.0.4',
+      );
+    });
+
+    it('works against a unsupported project with --expiring option', async function () {
+      const child = await execa(
+        await getBinPath(),
+        [`${__dirname}/fixtures/unsupported-project`, '--expiring'],
+        {
+          shell: true,
+          reject: false,
+        },
+      );
+      expect(child.exitCode).to.eql(1);
+      expect(child.stderr).to.eql('- working');
+      expect(child.stdout).to.includes('Support Policy Problem Detected!');
+      expect(child.stdout).to.includes(
+        '@stefanpenner/a  1.0.3                          2.0.0   3 qtrs',
+      );
+    });
+  });
   describe('--json', function () {
     it('works against a fully supported project', async function () {
       const child = await execa(

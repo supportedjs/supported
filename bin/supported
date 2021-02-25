@@ -45,5 +45,17 @@ const { displayResult } = require('../lib/output/cli-output');
       type: 'boolean',
       alias: 'j'
     },
+    unsupported: {
+      type: 'boolean',
+      alias: 'u'
+    },
+    supported: {
+      type: 'boolean',
+      alias: 's'
+    },
+    expiring: {
+      type: 'boolean',
+      alias: 'e'
+    },
   },
 }));

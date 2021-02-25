@@ -92,10 +92,10 @@ describe('CLI', function () {
       expect(child.stderr).to.eql('- working');
       expect(child.stdout).to.includes('Support Policy Problem Detected!');
       expect(child.stdout).to.includes(
-        '@eslint-ast/eslint-plugin-graphql  1.0.4                          1.0.4',
+        ' @eslint-ast/eslint-plugin-graphql  1.0.4     1.0.4',
       );
       expect(child.stdout).to.includes(
-        'rsvp                               3.6.2                          4.8.5',
+        'es6-promise  3.3.1     4.2.8   7 qtrs',
       );
     });
 
@@ -128,10 +128,10 @@ describe('CLI', function () {
       expect(child.stderr).to.eql('- working');
       expect(child.stdout).to.includes('⚠ Warning!');
       expect(child.stdout).to.includes(
-        `@stefanpenner/a                    1.0.3     2.0.0                      3 qtrs`,
+        `@stefanpenner/a  1.0.3     2.0.0   3 qtrs`,
       );
       expect(child.stdout).to.includes(
-        `node                               10.0.0    >=14.*                     1 qtr`,
+        `node             10.0.0    >=14.*  1 qtr`,
       );
     });
   });

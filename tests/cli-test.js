@@ -15,7 +15,7 @@ describe('CLI', function () {
   });
 
   it('exits with status code 1 if no arguments are passed', async function () {
-    const child = await execa(await getBinPath(), {
+    const child = await execa('node', [await getBinPath()], {
       shell: true,
       reject: false,
     });
@@ -26,7 +26,7 @@ describe('CLI', function () {
 
   describe('default output', function () {
     it('works against a fully supported project', async function () {
-      const child = await execa(await getBinPath(), [`${__dirname}/fixtures/supported-project`], {
+      const child = await execa('node', [await getBinPath(), `${__dirname}/fixtures/supported-project`], {
         shell: true,
         reject: false,
       });
@@ -36,7 +36,7 @@ describe('CLI', function () {
     });
 
     it('works against a unsupported project', async function () {
-      const child = await execa(await getBinPath(), [`${__dirname}/fixtures/unsupported-project`], {
+      const child = await execa('node', [await getBinPath(), `${__dirname}/fixtures/unsupported-project`], {
         shell: true,
         reject: false,
       });
@@ -49,8 +49,8 @@ describe('CLI', function () {
   describe('--json', function () {
     it('works against a fully supported project', async function () {
       const child = await execa(
-        await getBinPath(),
-        [`${__dirname}/fixtures/supported-project`, '--json'],
+        'node',
+        [await getBinPath(), `${__dirname}/fixtures/supported-project`, '--json'],
         {
           shell: true,
           reject: false,
@@ -73,6 +73,11 @@ describe('CLI', function () {
           },
           {
             isSupported: true,
+            name: 'node',
+            resolvedVersoon: '15.3.0',
+          },
+          {
+            isSupported: true,
             name: 'es6-promise',
             resolvedVersion: '4.2.8',
           },
@@ -92,8 +97,8 @@ describe('CLI', function () {
 
     it('works against a unsupported project', async function () {
       const child = await execa(
-        await getBinPath(),
-        [`${__dirname}/fixtures/unsupported-project`, '--json'],
+        'node',
+        [await getBinPath(), `${__dirname}/fixtures/unsupported-project`, '--json'],
         {
           shell: true,
           reject: false,
@@ -114,6 +119,12 @@ describe('CLI', function () {
             message: 'violated: major version must be within 1 year of latest',
             name: 'rsvp',
             resolvedVersion: '3.6.2',
+          },
+          {
+            isSupported: true,
+            name: 'node',
+            message: 'Using maintenance LTS. Update to latest LTS',
+            resolvedVersoon: '10.* || 12.* || 14.* || >= 15',
           },
           {
             isSupported: false,

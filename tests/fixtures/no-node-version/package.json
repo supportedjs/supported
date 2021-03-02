@@ -3,12 +3,9 @@
   "dependencies": {
     "@eslint-ast/eslint-plugin-graphql": "^1.0.4",
     "@stefanpenner/a": "^1.0.3",
-    "rsvp": "^3.0.0"
+    "rsvp": "^4.8.0"
   },
   "devDependencies": {
-    "es6-promise": "^3.0.0"
-  },
-  "engines": {
-    "node": "10.* || 12.* || 14.* || >= 15"
+    "es6-promise": "^4.2.0"
   }
 }

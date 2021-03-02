@@ -51,7 +51,12 @@
     "ora": "^5.1.0",
     "p-queue": "^6.6.2",
     "parse-package-name": "^0.1.0",
+    "promise.allsettled": "^1.0.4",
     "semver": "^7.3.4",
     "terminal-link": "^2.1.1"
-  }
+  },
+  "files": [
+    "lib",
+    "bin"
+  ]
 }

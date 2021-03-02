@@ -233,18 +233,18 @@ describe('CLI', function () {
           },
           {
             isSupported: true,
+            resolvedVersion: '10.* || 12.* || 14.* || >= 15',
+            latestVersion: '>=14.*',
+            message: 'Using maintenance LTS. Update to latest LTS',
+            name: 'node',
+          },
+          {
+            isSupported: true,
             duration: 21081600000,
             type: 'major',
             name: '@stefanpenner/a',
             resolvedVersion: '1.0.3',
             latestVersion: '2.0.0',
-          },
-          {
-            isSupported: true,
-            resolvedVersion: '10.* || 12.* || 14.* || >= 15',
-            latestVersion: '>=14.*',
-            message: 'Using maintenance LTS. Update to latest LTS',
-            name: 'node',
           },
           {
             isSupported: true,

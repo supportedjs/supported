@@ -6,7 +6,7 @@ const fs = require('fs');
 
 const { isConsideredVersion, ltsVersions, isLtsOrLatest } = require('../lib/lts/index');
 
-describe('ember LTS based policy', function () {
+describe('ember LTS Policy based policy', function () {
   describe('ltsVersions', function () {
     describe('isConsideredVersion', function () {
       it('works', function () {
@@ -219,22 +219,26 @@ describe('ember LTS based policy', function () {
       let currentDate = new Date(`Feb 24, 2021`);
       expect(isLtsOrLatest({}, '3.16.0', currentDate)).to.eql({
         isSupported: true,
-        duration: 1814400000,
+        duration: 1810800000,
         message: 'Using maintenance LTS. Update to latest LTS',
         latestVersion: '>=3.20.*',
         resolvedVersion: '3.16.0',
       });
     });
     it('resolved version is older version', function () {
-      expect(isLtsOrLatest({}, '3.14.0')).to.eql({
+      let currentDate = new Date(`Feb 22, 2021`);
+      expect(isLtsOrLatest({}, '3.14.0', currentDate)).to.eql({
         isSupported: false,
+        duration: 15728400000,
         message: 'ember-cli needs to be on v3.20.* or above LTS version',
         type: 'ember',
       });
     });
     it('Above maintenance LTS, update to next LTS', function () {
-      expect(isLtsOrLatest({}, '3.18.0')).to.eql({
+      let currentDate = new Date(`Feb 22, 2021`);
+      expect(isLtsOrLatest({}, '3.18.0', currentDate)).to.eql({
         isSupported: false,
+        duration: 15728400000,
         message: 'ember-cli needs to be on v3.20.* or above LTS version',
         type: 'ember',
       });

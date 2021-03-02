@@ -2,8 +2,23 @@
 
 const { expect } = require('chai');
 const execa = require('execa');
+const fs = require('fs');
 const { getBinPath } = require('get-bin-path');
 const registries = require('./registries');
+
+async function runSupportedCmd(inputArgs) {
+  let args = [await getBinPath()];
+  if (inputArgs && inputArgs.length) {
+    args.push.apply(args, inputArgs);
+  }
+  return execa(
+    'node', args,
+    {
+      shell: true,
+      reject: false,
+    },
+  )
+}
 
 describe('CLI', function () {
   beforeEach(function () {
@@ -15,10 +30,7 @@ describe('CLI', function () {
   });
 
   it('exits with status code 1 if no arguments are passed', async function () {
-    const child = await execa('node', [await getBinPath()], {
-      shell: true,
-      reject: false,
-    });
+    const child = await runSupportedCmd();
     expect(child.exitCode).to.eql(1);
     expect(child.stderr).to.eql('');
     expect(child.stdout).to.match(/supported/);
@@ -26,68 +38,49 @@ describe('CLI', function () {
 
   describe('default output', function () {
     it('works against a fully supported project', async function () {
-      const child = await execa('node', [await getBinPath(), `${__dirname}/fixtures/supported-project`], {
-        shell: true,
-        reject: false,
-      });
+      const child = await runSupportedCmd([`${__dirname}/fixtures/supported-project`]);
       expect(child.exitCode).to.eql(0);
       expect(child.stderr).to.eql('- working');
       expect(child.stdout).to.includes('Congrats!');
     });
 
     it('works against a unsupported project', async function () {
-      const child = await execa('node', [await getBinPath(), `${__dirname}/fixtures/unsupported-project`], {
-        shell: true,
-        reject: false,
-      });
+      const child = await runSupportedCmd([`${__dirname}/fixtures/unsupported-project`]);
       expect(child.exitCode).to.eql(1);
       expect(child.stderr).to.eql('- working');
       expect(child.stdout).to.includes('Support Policy Problem Detected!');
       expect(child.stdout).to.includes(
-        '✗ SemVer (2 violations in 3 dependencies)\n      ✗ major version [2 dependencies 7 qtrs behind]',
+        '✗ SemVer Policy (2 violations in 3 dependencies)\n      ✗ major version [2 dependencies up-to 7 qtrs behind]',
       );
     });
 
     it('works against a version expires soon project', async function () {
-      const child = await execa(await getBinPath(), [`${__dirname}/fixtures/version-expire-soon`], {
-        shell: true,
-        reject: false,
-      });
+      const child = await runSupportedCmd([`${__dirname}/fixtures/version-expire-soon`]);
       expect(child.exitCode).to.eql(0);
       expect(child.stderr).to.eql('- working');
       expect(child.stdout).to.includes('⚠ Warning!');
       expect(child.stdout).to.includes(
-        '⚠ node LTS\n      ⚠ version/version-range 10.0.0 will be deprecated within 1 qtr',
+        '⚠ node LTS Policy\n      ⚠ version/version-range 10.0.0 will be deprecated within 1 qtr',
       );
       expect(child.stdout).to.includes(
-        '⚠ SemVer (1 in 4 dependencies will expire soon) \n      ⚠ major [1 dependency will expire within 3 qtrs]',
+        '⚠ SemVer Policy (1 in 4 dependencies will expire soon) \n      ⚠ major [1 dependency will expire within 3 qtrs]',
       );
     });
 
     it('works against a no node version project', async function () {
-      const child = await execa(await getBinPath(), [`${__dirname}/fixtures/no-node-version`], {
-        shell: true,
-        reject: false,
-      });
+      const child = await runSupportedCmd([`${__dirname}/fixtures/no-node-version`]);
       expect(child.exitCode).to.eql(0);
       expect(child.stderr).to.eql('- working');
       expect(child.stdout).to.includes('⚠ Warning!');
       expect(child.stdout).to.includes(
-        '⚠ node LTS\n      ⚠ No node version mentioned in the package.json. Please add engines/volta',
+        '⚠ node LTS Policy\n      ⚠ No node version mentioned in the package.json. Please add engines/volta',
       );
     });
   });
 
   describe('--verbose', function () {
     it('works against a unsupported project', async function () {
-      const child = await execa(
-        await getBinPath(),
-        [`${__dirname}/fixtures/unsupported-project`, '--verbose'],
-        {
-          shell: true,
-          reject: false,
-        },
-      );
+      const child = await runSupportedCmd([`${__dirname}/fixtures/unsupported-project`, '--verbose']);
       expect(child.exitCode).to.eql(1);
       expect(child.stderr).to.eql('- working');
       expect(child.stdout).to.includes('Support Policy Problem Detected!');
@@ -95,19 +88,12 @@ describe('CLI', function () {
         ' @eslint-ast/eslint-plugin-graphql  1.0.4     1.0.4',
       );
       expect(child.stdout).to.includes(
-        'es6-promise  3.3.1     4.2.8   7 qtrs',
+        'es6-promise  3.3.1     4.2.8   major           7 qtrs',
       );
     });
 
     it('works against a supported project', async function () {
-      const child = await execa(
-        await getBinPath(),
-        [`${__dirname}/fixtures/supported-project`, '-d'],
-        {
-          shell: true,
-          reject: false,
-        },
-      );
+      const child = await runSupportedCmd([`${__dirname}/fixtures/supported-project`, '-d']);
       expect(child.exitCode).to.eql(0);
       expect(child.stderr).to.eql('- working');
       expect(child.stdout).to.includes('Congrats!');
@@ -116,53 +102,32 @@ describe('CLI', function () {
     });
 
     it('works against a version expires soon project', async function () {
-      const child = await execa(
-        await getBinPath(),
-        [`${__dirname}/fixtures/version-expire-soon`, '--verbose'],
-        {
-          shell: true,
-          reject: false,
-        },
-      );
+      const child = await runSupportedCmd([`${__dirname}/fixtures/version-expire-soon`, '--verbose'])
       expect(child.exitCode).to.eql(0);
       expect(child.stderr).to.eql('- working');
       expect(child.stdout).to.includes('⚠ Warning!');
       expect(child.stdout).to.includes(
-        `@stefanpenner/a  1.0.3     2.0.0   3 qtrs`,
+        `@stefanpenner/a  1.0.3     2.0.0   major           3 qtrs`,
       );
       expect(child.stdout).to.includes(
-        `node             10.0.0    >=14.*  1 qtr`,
+        `node             10.0.0    >=14.*  LTS             1 qtr`,
       );
     });
   });
 
   describe('Filter options like --unsupported/expiring/supported', function() {
     it('works against a unsupported project with --unsupported option', async function () {
-      const child = await execa(
-        await getBinPath(),
-        [`${__dirname}/fixtures/unsupported-project`, '--unsupported'],
-        {
-          shell: true,
-          reject: false,
-        },
-      );
+      const child = await runSupportedCmd([`${__dirname}/fixtures/unsupported-project`, '--unsupported']);
       expect(child.exitCode).to.eql(1);
       expect(child.stderr).to.eql('- working');
       expect(child.stdout).to.includes('Support Policy Problem Detected!');
       expect(child.stdout).to.includes(
-        'es6-promise  3.3.1     4.2.8   7 qtrs',
+        'es6-promise  3.3.1     4.2.8   major           7 qtrs',
       );
     });
 
     it('works against a unsupported project with --supported option', async function () {
-      const child = await execa(
-        await getBinPath(),
-        [`${__dirname}/fixtures/unsupported-project`, '--supported'],
-        {
-          shell: true,
-          reject: false,
-        },
-      );
+      const child = await runSupportedCmd([`${__dirname}/fixtures/unsupported-project`, '--supported']);
       expect(child.exitCode).to.eql(1);
       expect(child.stderr).to.eql('- working');
       expect(child.stdout).to.includes('Support Policy Problem Detected!');
@@ -172,32 +137,18 @@ describe('CLI', function () {
     });
 
     it('works against a unsupported project with --expiring option', async function () {
-      const child = await execa(
-        await getBinPath(),
-        [`${__dirname}/fixtures/unsupported-project`, '--expiring'],
-        {
-          shell: true,
-          reject: false,
-        },
-      );
+      const child = await runSupportedCmd([`${__dirname}/fixtures/unsupported-project`, '--expiring']);
       expect(child.exitCode).to.eql(1);
       expect(child.stderr).to.eql('- working');
       expect(child.stdout).to.includes('Support Policy Problem Detected!');
       expect(child.stdout).to.includes(
-        '@stefanpenner/a  1.0.3                          2.0.0   3 qtrs',
+        '@stefanpenner/a  1.0.3                          2.0.0   major           3 qtrs',
       );
     });
   });
   describe('--json', function () {
     it('works against a fully supported project', async function () {
-      const child = await execa(
-        'node',
-        [await getBinPath(), `${__dirname}/fixtures/supported-project`, '--json'],
-        {
-          shell: true,
-          reject: false,
-        },
-      );
+      const child = await runSupportedCmd([`${__dirname}/fixtures/supported-project`, '--json']);
       expect(child.exitCode).to.eql(0);
       expect(child.stderr).to.eql('- working');
       expect(JSON.parse(child.stdout)).to.eql({
@@ -243,14 +194,7 @@ describe('CLI', function () {
     });
 
     it('works against a unsupported project', async function () {
-      const child = await execa(
-        'node',
-        [await getBinPath(), `${__dirname}/fixtures/unsupported-project`, '--json'],
-        {
-          shell: true,
-          reject: false,
-        },
-      );
+      const child = await runSupportedCmd([`${__dirname}/fixtures/unsupported-project`, '--json']);
       expect(child.exitCode).to.eql(1);
       expect(child.stderr).to.eql('- working');
       let jsonOut = JSON.parse(child.stdout);

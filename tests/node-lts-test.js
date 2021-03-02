@@ -3,7 +3,7 @@
 const { expect } = require('chai');
 const { isLtsOrLatest } = require('../lib/lts/index');
 const NODE_LTS = require('../lib/lts/node-lts.json');
-describe('node LTS based policy', function () {
+describe('node LTS Policy based policy', function () {
   /*
    *
    * Major Node.js versions enter Current release status for six months, which
@@ -36,7 +36,7 @@ describe('node LTS based policy', function () {
       let currentDate = new Date(`Feb 24, 2021`);
       expect(isLtsOrLatest({ type: 'node' }, '10.* || 12.* || 14.* || >= 15', currentDate)).to.eql({
         isSupported: true,
-        duration: 5616000000,
+        duration: 5612400000,
         message: 'Using maintenance LTS. Update to latest LTS',
         resolvedVersion: '10.* || 12.* || 14.* || >= 15',
         latestVersion: '>=14.*',
@@ -60,22 +60,26 @@ describe('node LTS based policy', function () {
       let currentDate = new Date(`Feb 24, 2021`);
       expect(isLtsOrLatest({ type: 'node' }, '8.* || 10.*', currentDate)).to.eql({
         isSupported: true,
-        duration: 5616000000,
+        duration: 5612400000,
         message: 'Using maintenance LTS. Update to latest LTS',
         latestVersion: '>=14.*',
         resolvedVersion: '8.* || 10.*',
       });
     });
     it('node version with fixed value below LTS range', function () {
-      expect(isLtsOrLatest({ type: 'node' }, '8.0.0')).to.eql({
+      const fakeToday = new Date(`Feb 22, 2021`);
+      expect(isLtsOrLatest({ type: 'node' }, '8.0.0', fakeToday)).to.eql({
         isSupported: false,
+        duration: 10198800000,
         message: `node needs to be on v14.* or above LTS version`,
         type: 'node',
       });
     });
     it('node version with range value below LTS', function () {
-      expect(isLtsOrLatest({ type: 'node' }, '6.* || 8.*')).to.eql({
+      const fakeToday = new Date(`Feb 22, 2021`);
+      expect(isLtsOrLatest({ type: 'node' }, '6.* || 8.*', fakeToday)).to.eql({
         isSupported: false,
+        duration: 10198800000,
         message: `node needs to be on v14.* or above LTS version`,
         type: 'node',
       });
@@ -86,6 +90,7 @@ describe('node LTS based policy', function () {
       nextDay.setDate(nextDay.getDate() + 1);
       expect(isLtsOrLatest({ type: 'node' }, '10.2.0', nextDay)).to.eql({
         isSupported: false,
+        duration: 16070400000,
         message: `node needs to be on v14.* or above LTS version`,
         type: 'node',
       });

@@ -123,7 +123,7 @@ describe('time based policy: 1 year for major, 6 months for minor, 3 months of p
 
     expect(supported(info, 'console-ui@3.1.2', policies)).to.eql({ isSupported: true });
     expect(supported(info, 'console-ui@3.1.0', policies)).to.eql({
-      duration: 36285602692,
+      duration: 36282002692,
       isSupported: false,
       message: 'violated: patch version must be within 3 months of latest',
       type: 'patch',

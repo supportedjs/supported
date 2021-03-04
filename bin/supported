@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 const ora = require('ora');
+const { displayResult } = require('../lib/output/cli-output');
 
 (async function main(cli) {
   if (cli.input.length === 0) {
@@ -30,6 +31,31 @@ const ora = require('ora');
           2,
         ),
       );
+    } else {
+      displayResult(result, cli.flags);
     }
   }
-})(require('meow')(require('../lib/help'), {}));
+})(require('meow')(require('../lib/help'), {
+  flags: {
+    verbose: {
+      type: 'boolean',
+      alias: 'd'
+    },
+    json: {
+      type: 'boolean',
+      alias: 'j'
+    },
+    unsupported: {
+      type: 'boolean',
+      alias: 'u'
+    },
+    supported: {
+      type: 'boolean',
+      alias: 's'
+    },
+    expiring: {
+      type: 'boolean',
+      alias: 'e'
+    },
+  },
+}));

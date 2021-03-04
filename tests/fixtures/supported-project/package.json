@@ -1,8 +1,8 @@
 {
-  "name": "example",
+  "name": "supported-project",
   "dependencies": {
     "@eslint-ast/eslint-plugin-graphql": "^1.0.4",
-    "@stefanpenner/a": "^1.0.3",
+    "@stefanpenner/a": "^2.0.0",
     "rsvp": "^4.8.0"
   },
   "devDependencies": {

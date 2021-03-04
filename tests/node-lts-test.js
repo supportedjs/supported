@@ -3,7 +3,7 @@
 const { expect } = require('chai');
 const { isLtsOrLatest } = require('../lib/lts/index');
 const NODE_LTS = require('../lib/lts/node-lts.json');
-describe('node LTS based policy', function () {
+describe('node LTS Policy based policy', function () {
   /*
    *
    * Major Node.js versions enter Current release status for six months, which
@@ -33,59 +33,83 @@ describe('node LTS based policy', function () {
 
   describe('validates node versions', function () {
     it('node version with range', function () {
-      expect(isLtsOrLatest({ type: 'tool' }, '10.* || 12.* || 14.* || >= 15')).to.eql({
+      let currentDate = new Date(`Feb 24, 2021`);
+      expect(isLtsOrLatest({ type: 'node' }, '10.* || 12.* || 14.* || >= 15', currentDate)).to.eql({
         isSupported: true,
+        duration: 5612400000,
         message: 'Using maintenance LTS. Update to latest LTS',
+        resolvedVersion: '10.* || 12.* || 14.* || >= 15',
+        latestVersion: '>=14.*',
       });
     });
     it('node version with above current LTS range', function () {
-      expect(isLtsOrLatest({ type: 'tool' }, '15.3.0')).to.eql({
+      expect(isLtsOrLatest({ type: 'node' }, '15.3.0')).to.eql({
         isSupported: true,
+        latestVersion: '>=14.*',
+        resolvedVersion: '15.3.0',
       });
     });
     it('node version with fixed value in current LTS range', function () {
-      expect(isLtsOrLatest({ type: 'tool' }, '14.3.0')).to.eql({
+      expect(isLtsOrLatest({ type: 'node' }, '14.3.0')).to.eql({
         isSupported: true,
+        latestVersion: '>=14.*',
+        resolvedVersion: '14.3.0',
       });
     });
     it('node version with below and in support range value', function () {
-      expect(isLtsOrLatest({ type: 'tool' }, '8.* || 10.*')).to.eql({
+      let currentDate = new Date(`Feb 24, 2021`);
+      expect(isLtsOrLatest({ type: 'node' }, '8.* || 10.*', currentDate)).to.eql({
         isSupported: true,
+        duration: 5612400000,
         message: 'Using maintenance LTS. Update to latest LTS',
+        latestVersion: '>=14.*',
+        resolvedVersion: '8.* || 10.*',
       });
     });
     it('node version with fixed value below LTS range', function () {
-      expect(isLtsOrLatest({ type: 'tool' }, '8.0.0')).to.eql({
+      const fakeToday = new Date(`Feb 22, 2021`);
+      expect(isLtsOrLatest({ type: 'node' }, '8.0.0', fakeToday)).to.eql({
         isSupported: false,
-        message: `Voilated: node needs to be on v14.* or above LTS versions.`,
+        duration: 10198800000,
+        message: `node needs to be on v14.* or above LTS version`,
+        type: 'node',
       });
     });
     it('node version with range value below LTS', function () {
-      expect(isLtsOrLatest({ type: 'tool' }, '6.* || 8.*')).to.eql({
+      const fakeToday = new Date(`Feb 22, 2021`);
+      expect(isLtsOrLatest({ type: 'node' }, '6.* || 8.*', fakeToday)).to.eql({
         isSupported: false,
-        message: `Voilated: node needs to be on v14.* or above LTS versions.`,
+        duration: 10198800000,
+        message: `node needs to be on v14.* or above LTS version`,
+        type: 'node',
       });
     });
     it('node version invalid after end of LTS date', function () {
       const lastDay = new Date(NODE_LTS['10.*'].end_date);
       const nextDay = new Date(lastDay);
       nextDay.setDate(nextDay.getDate() + 1);
-      expect(isLtsOrLatest({ type: 'tool' }, '10.2.0', nextDay)).to.eql({
+      expect(isLtsOrLatest({ type: 'node' }, '10.2.0', nextDay)).to.eql({
         isSupported: false,
-        message: `Voilated: node needs to be on v14.* or above LTS versions.`,
+        duration: 16070400000,
+        message: `node needs to be on v14.* or above LTS version`,
+        type: 'node',
       });
     });
     it('node version is valid till last day', function () {
       const lastDay = new Date(NODE_LTS['10.*'].end_date);
-      expect(isLtsOrLatest({ type: 'tool' }, '10.2.0', lastDay)).to.eql({
+      expect(isLtsOrLatest({ type: 'node' }, '10.2.0', lastDay)).to.eql({
         isSupported: true,
         message: 'Using maintenance LTS. Update to latest LTS',
+        resolvedVersion: '10.2.0',
+        latestVersion: '>=14.*',
       });
     });
     it('node version not found', function () {
-      expect(isLtsOrLatest({ type: 'tool' }, '0.0.0')).to.eql({
+      expect(isLtsOrLatest({ type: 'node' }, '0.0.0')).to.eql({
         isSupported: true,
         message: `No node version mentioned in the package.json. Please add engines/volta`,
+        latestVersion: '>=14.*',
+        resolvedVersion: '0.0.0',
       });
     });
   });

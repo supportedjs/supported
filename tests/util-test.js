@@ -3,9 +3,9 @@
 const { expect } = require('chai');
 const { sortLibraries } = require('../lib/util');
 
-describe('util test', function() {
-  describe('sort packages', function(){
-    it('sorts unsupported to top', function() {
+describe('util test', function () {
+  describe('sort packages', function () {
+    it('sorts unsupported to top', function () {
       let input = [
         {
           isSupported: true,
@@ -98,6 +98,7 @@ describe('util test', function() {
           name: 'test6',
         },
       ];
+
       expect(input.sort(sortLibraries)).to.be.eql(result);
     });
   });

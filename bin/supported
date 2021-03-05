@@ -35,27 +35,29 @@ const { displayResult } = require('../lib/output/cli-output');
       displayResult(result, cli.flags);
     }
   }
-})(require('meow')(require('../lib/help'), {
-  flags: {
-    verbose: {
-      type: 'boolean',
-      alias: 'd'
+})(
+  require('meow')(require('../lib/help'), {
+    flags: {
+      verbose: {
+        type: 'boolean',
+        alias: 'd',
+      },
+      json: {
+        type: 'boolean',
+        alias: 'j',
+      },
+      unsupported: {
+        type: 'boolean',
+        alias: 'u',
+      },
+      supported: {
+        type: 'boolean',
+        alias: 's',
+      },
+      expiring: {
+        type: 'boolean',
+        alias: 'e',
+      },
     },
-    json: {
-      type: 'boolean',
-      alias: 'j'
-    },
-    unsupported: {
-      type: 'boolean',
-      alias: 'u'
-    },
-    supported: {
-      type: 'boolean',
-      alias: 's'
-    },
-    expiring: {
-      type: 'boolean',
-      alias: 'e'
-    },
-  },
-}));
+  }),
+);

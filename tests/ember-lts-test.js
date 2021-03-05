@@ -225,6 +225,7 @@ describe('ember LTS Policy based policy', function () {
         resolvedVersion: '3.16.0',
       });
     });
+
     it('resolved version is older version', function () {
       let currentDate = new Date(`Feb 22, 2021`);
       expect(isLtsOrLatest({}, '3.14.0', currentDate)).to.eql({
@@ -234,6 +235,7 @@ describe('ember LTS Policy based policy', function () {
         type: 'ember',
       });
     });
+
     it('Above maintenance LTS, update to next LTS', function () {
       let currentDate = new Date(`Feb 22, 2021`);
       expect(isLtsOrLatest({}, '3.18.0', currentDate)).to.eql({
@@ -243,6 +245,7 @@ describe('ember LTS Policy based policy', function () {
         type: 'ember',
       });
     });
+
     it('resolved version is LTS latest', function () {
       expect(isLtsOrLatest({}, '3.20.0')).to.eql({
         isSupported: true,
@@ -250,6 +253,7 @@ describe('ember LTS Policy based policy', function () {
         resolvedVersion: '3.20.0',
       });
     });
+
     it('resolved version is Latest', function () {
       expect(isLtsOrLatest({}, '3.25.0')).to.eql({
         isSupported: true,
@@ -257,6 +261,7 @@ describe('ember LTS Policy based policy', function () {
         resolvedVersion: '3.25.0',
       });
     });
+
     it('throws error when LTS file is not updated', function () {
       expect(() => isLtsOrLatest({}, '3.25.0', new Date('September 7, 2021'))).to.throw(
         'Please create PR to update lts ember-cli-lts.json file in lts/ folder or create an issue in supported project',

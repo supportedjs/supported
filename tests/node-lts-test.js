@@ -3,6 +3,7 @@
 const { expect } = require('chai');
 const { isLtsOrLatest } = require('../lib/lts/index');
 const NODE_LTS = require('../lib/lts/node-lts.json');
+
 describe('node LTS Policy based policy', function () {
   /*
    *
@@ -42,6 +43,7 @@ describe('node LTS Policy based policy', function () {
         latestVersion: '>=14.*',
       });
     });
+
     it('node version with above current LTS range', function () {
       expect(isLtsOrLatest({ type: 'node' }, '15.3.0')).to.eql({
         isSupported: true,
@@ -49,6 +51,7 @@ describe('node LTS Policy based policy', function () {
         resolvedVersion: '15.3.0',
       });
     });
+
     it('node version with fixed value in current LTS range', function () {
       expect(isLtsOrLatest({ type: 'node' }, '14.3.0')).to.eql({
         isSupported: true,
@@ -56,6 +59,7 @@ describe('node LTS Policy based policy', function () {
         resolvedVersion: '14.3.0',
       });
     });
+
     it('node version with below and in support range value', function () {
       let currentDate = new Date(`Feb 24, 2021`);
       expect(isLtsOrLatest({ type: 'node' }, '8.* || 10.*', currentDate)).to.eql({
@@ -66,6 +70,7 @@ describe('node LTS Policy based policy', function () {
         resolvedVersion: '8.* || 10.*',
       });
     });
+
     it('node version with fixed value below LTS range', function () {
       const fakeToday = new Date(`Feb 22, 2021`);
       expect(isLtsOrLatest({ type: 'node' }, '8.0.0', fakeToday)).to.eql({
@@ -75,6 +80,7 @@ describe('node LTS Policy based policy', function () {
         type: 'node',
       });
     });
+
     it('node version with range value below LTS', function () {
       const fakeToday = new Date(`Feb 22, 2021`);
       expect(isLtsOrLatest({ type: 'node' }, '6.* || 8.*', fakeToday)).to.eql({
@@ -84,6 +90,7 @@ describe('node LTS Policy based policy', function () {
         type: 'node',
       });
     });
+
     it('node version invalid after end of LTS date', function () {
       const lastDay = new Date(NODE_LTS['10.*'].end_date);
       const nextDay = new Date(lastDay);
@@ -95,6 +102,7 @@ describe('node LTS Policy based policy', function () {
         type: 'node',
       });
     });
+
     it('node version is valid till last day', function () {
       const lastDay = new Date(NODE_LTS['10.*'].end_date);
       expect(isLtsOrLatest({ type: 'node' }, '10.2.0', lastDay)).to.eql({
@@ -104,6 +112,7 @@ describe('node LTS Policy based policy', function () {
         latestVersion: '>=14.*',
       });
     });
+
     it('node version not found', function () {
       expect(isLtsOrLatest({ type: 'node' }, '0.0.0')).to.eql({
         isSupported: true,

@@ -12,7 +12,8 @@
   "scripts": {
     "lint": "eslint .",
     "test": "mocha tests/**/*-test.js",
-    "test:inspect": "mocha inspect tests/**/*-test.js"
+    "test:inspect": "mocha inspect tests/**/*-test.js",
+    "start:registry": "node -e 'require(`./tests/registries.js`).startAll()'"
   },
   "volta": {
     "node": "15.3.0",

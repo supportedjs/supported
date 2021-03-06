@@ -215,7 +215,7 @@ describe('CLI', function () {
           {
             isSupported: false,
             message: 'violated: major version must be within 1 year of latest',
-            duration: 54431779121,
+            duration: 54432000000,
             type: 'major',
             name: 'es6-promise',
             resolvedVersion: '3.3.1',
@@ -224,7 +224,7 @@ describe('CLI', function () {
           {
             isSupported: false,
             message: 'violated: major version must be within 1 year of latest',
-            duration: 27959197042,
+            duration: 27993600000,
             type: 'major',
             name: 'rsvp',
             resolvedVersion: '3.6.2',

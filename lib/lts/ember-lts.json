@@ -1,14 +1,14 @@
 {
   "3.16.*": {
     "versionRange": "3.16.*",
-    "start_date": "March 4, 2020",
-    "maintenance_start_date": "November 11, 2020",
-    "end_date": "March 17, 2021"
+    "start_date": "2020-03-04T00:00:00.000Z",
+    "maintenance_start_date": "2020-11-11T00:00:00.000Z",
+    "end_date": "2021-03-17T00:00:00.000Z"
   },
   "3.20.*":	{
     "versionRange": ">=3.20.*",
-    "start_date": "August 24, 2020",
-    "maintenance_start_date": "May 3, 2021",
-    "end_date": "September 6, 2021"
+    "start_date": "2020-08-24T00:00:00.000Z",
+    "maintenance_start_date": "2021-05-03T00:00:00.000Z",
+    "end_date": "2021-09-06T00:00:00.000Z"
   }
 }

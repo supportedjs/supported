@@ -3,6 +3,7 @@
 const { expect } = require('chai');
 const execa = require('execa');
 const { getBinPath } = require('get-bin-path');
+const fs = require('fs');
 const registries = require('./registries');
 
 async function runSupportedCmd(inputArgs) {
@@ -142,6 +143,20 @@ describe('CLI', function () {
       expect(child.stdout).to.includes('Support Policy Problem Detected!');
       expect(child.stdout).to.includes(
         '@stefanpenner/a  1.0.3                          2.0.0   major           3 qtrs',
+      );
+    });
+  });
+  describe('--csv', function () {
+    afterEach(function () {
+      let filePath = `${__dirname}/fixtures/unsupported-project/unsupported-project-support-audit.csv`;
+      if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
+    });
+    it('works against a unsupported project', async function () {
+      const child = await runSupportedCmd([`${__dirname}/fixtures/unsupported-project`, '--csv']);
+      expect(child.exitCode).to.eql(1);
+      expect(child.stderr).to.eql('- working');
+      expect(child.stdout).to.includes(
+        `Report created at ${__dirname}/fixtures/unsupported-project`,
       );
     });
   });

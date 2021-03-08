@@ -59,8 +59,12 @@ describe('project-1', function () {
   });
 
   it('reports NOT supported if the project is NOT within the support window', async function () {
+    let spinner = {
+      text: '',
+    };
     const result = await isInSupportWindow(`${root}/unsupported-project`, {
       policies: [],
+      spinner,
     });
     // purge out the duration from node entry from out
     // because we use `new Date` to calculate the duration
@@ -72,7 +76,7 @@ describe('project-1', function () {
         delete pkg['deprecationDate'];
       }
     });
-
+    expect(spinner.text).to.includes('Total Dependecies');
     expect(result).to.eql({
       projectName: 'unsupported-project',
       isInSupportWindow: false,

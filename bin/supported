@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 'use strict';
+const chalk = require('chalk');
 const ora = require('ora');
 const { writeFileSync } = require('fs');
 const { displayResult } = require('../lib/output/cli-output');
 const { writeToCsv } = require('../lib/output/csv-output');
+const { LOG_LAST_STEP_PROGRESS } = require('../lib/output/messages');
 
 (async function main(cli) {
   if (cli.input.length === 0) {
@@ -12,7 +14,7 @@ const { writeToCsv } = require('../lib/output/csv-output');
     const isInSupportWindow = require('../lib/project');
     const [projectPath] = cli.input;
 
-    const spinner = ora('working').start();
+    const spinner = ora(chalk`{dim [1/4]} 🔍 Gathering dependencies`).start();
     let result;
     try {
       result = await isInSupportWindow(projectPath, { spinner });
@@ -20,7 +22,13 @@ const { writeToCsv } = require('../lib/output/csv-output');
         process.exitCode = 1;
       }
     } finally {
-      spinner.stop();
+      spinner.prefixText += LOG_LAST_STEP_PROGRESS(
+        result.isInSupportWindow,
+        result.expiringSoonCount,
+      );
+      // reset this to empty to avoid last step message is duplicated
+      spinner.text = '';
+      spinner.stopAndPersist();
     }
 
     if (cli.flags.json && result) {

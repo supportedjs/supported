@@ -160,7 +160,7 @@ describe('CLI', function () {
       expect(child.exitCode).to.eql(1);
       expect(child.stderr).to.includes('✗ SemVer Policy');
       expect(child.stdout).to.includes(
-        `Report created at ${__dirname}/fixtures/unsupported-project`,
+        `Report for unsupported-project created at ${__dirname}/fixtures/unsupported-project/unsupported-project-support-audit.csv`,
       );
     });
   });
@@ -170,12 +170,10 @@ describe('CLI', function () {
       expect(child.exitCode).to.eql(0);
       expect(child.stderr).to.includes('✓ SemVer Policy');
       expect(JSON.parse(child.stdout)).to.eql({
+        isExpiringSoon: false,
         isInSupportWindow: true,
-        project: {
-          name: 'supported-project',
-          type: 'node_module',
-          path: `${__dirname}/fixtures/supported-project`,
-        },
+        projectName: 'supported-project',
+        projectPath: `${__dirname}/fixtures/supported-project`,
         supportChecks: [
           {
             isSupported: true,
@@ -228,11 +226,8 @@ describe('CLI', function () {
       });
       expect(jsonOut).to.eql({
         isInSupportWindow: false,
-        project: {
-          name: 'unsupported-project',
-          path: `${__dirname}/fixtures/unsupported-project`,
-          type: 'node_module',
-        },
+        projectName: 'unsupported-project',
+        projectPath: `${__dirname}/fixtures/unsupported-project`,
         supportChecks: [
           {
             isSupported: false,

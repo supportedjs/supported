@@ -1,7 +1,7 @@
 'use strict';
 
 const { expect } = require('chai');
-const { writeToCsv } = require('../lib/output/csv-output');
+const { convertToCsv } = require('../lib/output/csv-output');
 
 describe('csv', function () {
   it('supported project', function () {
@@ -24,7 +24,7 @@ describe('csv', function () {
         },
       ],
     };
-    let result = writeToCsv(supportResult);
+    let result = convertToCsv(supportResult);
     expect(result).to.includes(`✓ Congrats!
     Your project is using only supported versions of libraries. No action is required.`);
   });
@@ -48,7 +48,7 @@ describe('csv', function () {
         },
       ],
     };
-    let result = writeToCsv(supportResult);
+    let result = convertToCsv(supportResult);
     expect(result).to.includes(`Support Policy Problem Detected!
     Please upgrade your dependencies!
     Your project is not within the support policy window because of outdated dependencies.`);

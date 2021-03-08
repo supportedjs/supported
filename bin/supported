@@ -1,21 +1,22 @@
 #!/usr/bin/env node
 'use strict';
 const ora = require('ora');
-const { writeFileSync } = require('fs');
-const { displayResult } = require('../lib/output/cli-output');
-const { writeToCsv } = require('../lib/output/csv-output');
+const { displayResults } = require('../lib/output/cli-output');
+const { isAllInSupportWindow } = require('../lib/project/mulitple-projects');
+const { DEFAULT_SUPPORT_MESSAGE } = require('../lib/output/messages');
+const { generateCsv } = require('../lib/output/csv-output');
+const setupProject = require('../lib/project/setup-project');
 
 (async function main(cli) {
   if (cli.input.length === 0) {
     cli.showHelp(1);
   } else {
-    const isInSupportWindow = require('../lib/project');
-    const [projectPath] = cli.input;
+    const projectPaths = cli.input;
 
     const spinner = ora('working').start();
     let result;
     try {
-      result = await isInSupportWindow(projectPath, { spinner });
+      result = await isAllInSupportWindow(projectPaths, setupProject);
       if (result.isInSupportWindow === false) {
         process.exitCode = 1;
       }
@@ -26,22 +27,17 @@ const { writeToCsv } = require('../lib/output/csv-output');
     }
 
     if (cli.flags.json && result) {
-      const { projectName } = result;
-      delete result.projectName;
       console.log(
         JSON.stringify(
-          { ...result, project: { name: projectName, path: projectPath, type: 'node_module' } },
+          projectPaths.length > 1 ? result : result.mps[0],
           null,
           2,
         ),
       );
     } else if(cli.flags.csv && result) {
-      let fileName = `${result.projectName}-support-audit.csv`;
-      let filePath = `${projectPath}/${fileName}`;
-      writeFileSync(filePath, writeToCsv(result), 'utf-8' );
-      console.log(`Report created at ${filePath}`);
+      generateCsv(projectPaths, result, DEFAULT_SUPPORT_MESSAGE())
     } else {
-      displayResult(result, cli.flags);
+      displayResults(result, cli.flags, DEFAULT_SUPPORT_MESSAGE());
     }
   }
 })(

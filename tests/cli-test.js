@@ -5,6 +5,7 @@ const execa = require('execa');
 const { getBinPath } = require('get-bin-path');
 const fs = require('fs');
 const registries = require('./registries');
+const { join } = require('path');
 
 async function runSupportedCmd(inputArgs) {
   let args = [await getBinPath()];
@@ -160,7 +161,10 @@ describe('CLI', function () {
       expect(child.exitCode).to.eql(1);
       expect(child.stderr).to.includes('✗ SemVer Policy');
       expect(child.stdout).to.includes(
-        `Report for unsupported-project created at ${__dirname}/fixtures/unsupported-project/unsupported-project-support-audit.csv`,
+        `Report for unsupported-project created at ${join(
+          __dirname,
+          `/fixtures/unsupported-project/`,
+        )}`,
       );
     });
   });

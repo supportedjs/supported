@@ -122,14 +122,18 @@ describe('time based policy: 1 year for major, 6 months for minor, 3 months of p
     const policies = supportedRanges(info.time[info.version]);
 
     expect(supported(info, 'console-ui@3.1.2', policies)).to.eql({ isSupported: true });
-    expect(supported(info, 'console-ui@3.1.0', policies)).to.eql({
-      duration: 36282002692,
+    let result = supported(info, 'console-ui@3.1.0', policies);
+    expect(typeof result.duration).to.eql('number');
+    delete result.duration;
+    expect(result).to.eql({
       isSupported: false,
       message: 'violated: patch version must be within 3 months of latest',
       type: 'patch',
     });
-    expect(supported(info, 'console-ui@2.0.0', policies)).to.eql({
-      duration: 70592816607,
+    result = supported(info, 'console-ui@2.0.0', policies);
+    expect(typeof result.duration).to.eql('number');
+    delete result.duration;
+    expect(result).to.eql({
       isSupported: false,
       message: 'violated: major version must be within 1 year of latest',
       type: 'major',

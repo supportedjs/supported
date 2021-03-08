@@ -216,10 +216,10 @@ describe('ember LTS Policy based policy', function () {
 
   describe('isLtsOrLatest', function () {
     it('resolved version is LTS', function () {
-      let currentDate = new Date(`Feb 24, 2021`);
+      let currentDate = new Date(`2021-02-24T22:56:00.185Z`);
       expect(isLtsOrLatest({}, '3.16.0', currentDate)).to.eql({
         isSupported: true,
-        duration: 1810800000,
+        duration: 1731839815,
         message: 'Using maintenance LTS. Update to latest LTS',
         latestVersion: '>=3.20.*',
         resolvedVersion: '3.16.0',
@@ -227,20 +227,20 @@ describe('ember LTS Policy based policy', function () {
     });
 
     it('resolved version is older version', function () {
-      let currentDate = new Date(`Feb 22, 2021`);
+      let currentDate = new Date(`2021-02-22T22:56:00.185Z`);
       expect(isLtsOrLatest({}, '3.14.0', currentDate)).to.eql({
         isSupported: false,
-        duration: 15728400000,
+        duration: 15807360185,
         message: 'ember-cli needs to be on v3.20.* or above LTS version',
         type: 'ember',
       });
     });
 
     it('Above maintenance LTS, update to next LTS', function () {
-      let currentDate = new Date(`Feb 22, 2021`);
+      let currentDate = new Date(`2021-02-24T22:56:00.185Z`);
       expect(isLtsOrLatest({}, '3.18.0', currentDate)).to.eql({
         isSupported: false,
-        duration: 15728400000,
+        duration: 15980160185,
         message: 'ember-cli needs to be on v3.20.* or above LTS version',
         type: 'ember',
       });

@@ -34,10 +34,10 @@ describe('node LTS Policy based policy', function () {
 
   describe('validates node versions', function () {
     it('node version with range', function () {
-      let currentDate = new Date(`Feb 24, 2021`);
+      let currentDate = new Date(`2021-02-24T00:00:00.000Z`);
       expect(isLtsOrLatest({ type: 'node' }, '10.* || 12.* || 14.* || >= 15', currentDate)).to.eql({
         isSupported: true,
-        duration: 5612400000,
+        duration: 5616000000,
         message: 'Using maintenance LTS. Update to latest LTS',
         resolvedVersion: '10.* || 12.* || 14.* || >= 15',
         latestVersion: '>=14.*',
@@ -61,10 +61,10 @@ describe('node LTS Policy based policy', function () {
     });
 
     it('node version with below and in support range value', function () {
-      let currentDate = new Date(`Feb 24, 2021`);
+      let currentDate = new Date(`2021-02-24T00:00:00.000Z`);
       expect(isLtsOrLatest({ type: 'node' }, '8.* || 10.*', currentDate)).to.eql({
         isSupported: true,
-        duration: 5612400000,
+        duration: 5616000000,
         message: 'Using maintenance LTS. Update to latest LTS',
         latestVersion: '>=14.*',
         resolvedVersion: '8.* || 10.*',
@@ -72,20 +72,20 @@ describe('node LTS Policy based policy', function () {
     });
 
     it('node version with fixed value below LTS range', function () {
-      const fakeToday = new Date(`Feb 22, 2021`);
+      const fakeToday = new Date(`2021-02-22T00:00:00.000Z`);
       expect(isLtsOrLatest({ type: 'node' }, '8.0.0', fakeToday)).to.eql({
         isSupported: false,
-        duration: 10198800000,
+        duration: 10195200000,
         message: `node needs to be on v14.* or above LTS version`,
         type: 'node',
       });
     });
 
     it('node version with range value below LTS', function () {
-      const fakeToday = new Date(`Feb 22, 2021`);
+      const fakeToday = new Date(`2021-02-22T00:00:00.000Z`);
       expect(isLtsOrLatest({ type: 'node' }, '6.* || 8.*', fakeToday)).to.eql({
         isSupported: false,
-        duration: 10198800000,
+        duration: 10195200000,
         message: `node needs to be on v14.* or above LTS version`,
         type: 'node',
       });

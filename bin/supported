@@ -20,7 +20,9 @@ const { writeToCsv } = require('../lib/output/csv-output');
         process.exitCode = 1;
       }
     } finally {
-      spinner.stop();
+      spinner.stopAndPersist({
+        symbol: '✨'
+      });
     }
 
     if (cli.flags.json && result) {

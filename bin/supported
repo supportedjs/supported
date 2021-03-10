@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 'use strict';
 const ora = require('ora');
+const { writeFileSync } = require('fs');
 const { displayResult } = require('../lib/output/cli-output');
+const { writeToCsv } = require('../lib/output/csv-output');
 
 (async function main(cli) {
   if (cli.input.length === 0) {
@@ -31,6 +33,11 @@ const { displayResult } = require('../lib/output/cli-output');
           2,
         ),
       );
+    } else if(cli.flags.csv && result) {
+      let fileName = `${result.projectName}-support-audit.csv`;
+      let filePath = `${projectPath}/${fileName}`;
+      writeFileSync(filePath, writeToCsv(result), 'utf-8' );
+      console.log(`Report created at ${filePath}`);
     } else {
       displayResult(result, cli.flags);
     }

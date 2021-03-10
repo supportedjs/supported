@@ -36,6 +36,7 @@ describe('node LTS Policy based policy', function () {
     it('node version with range', function () {
       let currentDate = new Date(`2021-02-24T00:00:00.000Z`);
       expect(isLtsOrLatest({ type: 'node' }, '10.* || 12.* || 14.* || >= 15', currentDate)).to.eql({
+        deprecationDate: '2021-04-30T00:00:00.000Z',
         isSupported: true,
         duration: 5616000000,
         message: 'Using maintenance LTS. Update to latest LTS',
@@ -63,6 +64,7 @@ describe('node LTS Policy based policy', function () {
     it('node version with below and in support range value', function () {
       let currentDate = new Date(`2021-02-24T00:00:00.000Z`);
       expect(isLtsOrLatest({ type: 'node' }, '8.* || 10.*', currentDate)).to.eql({
+        deprecationDate: '2021-04-30T00:00:00.000Z',
         isSupported: true,
         duration: 5616000000,
         message: 'Using maintenance LTS. Update to latest LTS',
@@ -74,6 +76,7 @@ describe('node LTS Policy based policy', function () {
     it('node version with fixed value below LTS range', function () {
       const fakeToday = new Date(`2021-02-22T00:00:00.000Z`);
       expect(isLtsOrLatest({ type: 'node' }, '8.0.0', fakeToday)).to.eql({
+        deprecationDate: '2020-10-27T00:00:00.000Z',
         isSupported: false,
         duration: 10195200000,
         message: `node needs to be on v14.* or above LTS version`,
@@ -84,6 +87,7 @@ describe('node LTS Policy based policy', function () {
     it('node version with range value below LTS', function () {
       const fakeToday = new Date(`2021-02-22T00:00:00.000Z`);
       expect(isLtsOrLatest({ type: 'node' }, '6.* || 8.*', fakeToday)).to.eql({
+        deprecationDate: '2020-10-27T00:00:00.000Z',
         isSupported: false,
         duration: 10195200000,
         message: `node needs to be on v14.* or above LTS version`,
@@ -96,6 +100,7 @@ describe('node LTS Policy based policy', function () {
       const nextDay = new Date(lastDay);
       nextDay.setDate(nextDay.getDate() + 1);
       expect(isLtsOrLatest({ type: 'node' }, '10.2.0', nextDay)).to.eql({
+        deprecationDate: '2020-10-27T00:00:00.000Z',
         isSupported: false,
         duration: 16070400000,
         message: `node needs to be on v14.* or above LTS version`,

@@ -74,6 +74,18 @@ describe('CLI', function () {
         '⚠ node LTS Policy\n      ⚠ No node version mentioned in the package.json. Please add engines/volta',
       );
     });
+
+    it('works against multiple project', async function () {
+      const child = await runSupportedCmd([
+        `${__dirname}/fixtures/supported-project`,
+        `${__dirname}/fixtures/unsupported-project`,
+      ]);
+      expect(child.exitCode).to.eql(1);
+      expect(child.stderr).to.eql('- working');
+      expect(child.stdout).to.includes('Support Policy Problem Detected!');
+      expect(child.stdout).to.includes('✗ unsupported-project');
+      expect(child.stdout).to.includes('✓ supported-project');
+    });
   });
 
   describe('--verbose', function () {

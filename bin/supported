@@ -29,7 +29,7 @@ const setupProject = require('../lib/project/setup-project');
     if (cli.flags.json && result) {
       console.log(
         JSON.stringify(
-          projectPaths.length > 1 ? result : result.mps[0],
+          projectPaths.length > 1 ? result : result.projects[0],
           null,
           2,
         ),

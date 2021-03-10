@@ -82,7 +82,7 @@ describe('CLI', function () {
         '--verbose',
       ]);
       expect(child.exitCode).to.eql(1);
-      expect(child.stderr).to.includes('- working');
+      expect(child.stderr).to.includes('✗ SemVer Policy');
       expect(child.stdout).to.includes('Support Policy Problem Detected!');
       expect(child.stdout).to.includes(
         '@eslint-ast/eslint-plugin-graphql  1.0.4                          1.0.4',
@@ -95,7 +95,7 @@ describe('CLI', function () {
     it('works against a supported project', async function () {
       const child = await runSupportedCmd([`${__dirname}/fixtures/supported-project`, '-d']);
       expect(child.exitCode).to.eql(0);
-      expect(child.stderr).to.includes('- working');
+      expect(child.stderr).to.includes('✓ SemVer Policy');
       expect(child.stdout).to.includes('Congrats!');
       expect(child.stdout).to.includes('es6-promise');
       expect(child.stdout).to.includes('@eslint-ast/eslint-plugin-graphql');
@@ -107,7 +107,7 @@ describe('CLI', function () {
         '--verbose',
       ]);
       expect(child.exitCode).to.eql(0);
-      expect(child.stderr).to.includes('- working');
+      expect(child.stderr).to.includes('⚠ SemVer Policy');
       expect(child.stdout).to.includes('⚠ Warning!');
       expect(child.stdout).to.includes(
         `@stefanpenner/b                    1.0.3     2.0.0   major`,
@@ -123,7 +123,7 @@ describe('CLI', function () {
         '--unsupported',
       ]);
       expect(child.exitCode).to.eql(1);
-      expect(child.stderr).to.includes('- working');
+      expect(child.stderr).to.includes('✗ SemVer Policy');
       expect(child.stdout).to.includes('Support Policy Problem Detected!');
       expect(child.stdout).to.includes('es6-promise      3.3.1     4.2.8   major');
     });
@@ -134,7 +134,7 @@ describe('CLI', function () {
         '--supported',
       ]);
       expect(child.exitCode).to.eql(1);
-      expect(child.stderr).to.includes('- working');
+      expect(child.stderr).to.includes('✗ SemVer Policy');
       expect(child.stdout).to.includes('Support Policy Problem Detected!');
       expect(child.stdout).to.includes('@eslint-ast/eslint-plugin-graphql  1.0.4     1.0.4');
     });
@@ -158,7 +158,7 @@ describe('CLI', function () {
     it('works against a unsupported project', async function () {
       const child = await runSupportedCmd([`${__dirname}/fixtures/unsupported-project`, '--csv']);
       expect(child.exitCode).to.eql(1);
-      expect(child.stderr).to.eql('- working');
+      expect(child.stderr).to.includes('✗ SemVer Policy');
       expect(child.stdout).to.includes(
         `Report created at ${__dirname}/fixtures/unsupported-project`,
       );
@@ -168,7 +168,7 @@ describe('CLI', function () {
     it('works against a fully supported project', async function () {
       const child = await runSupportedCmd([`${__dirname}/fixtures/supported-project`, '--json']);
       expect(child.exitCode).to.eql(0);
-      expect(child.stderr).to.includes('- working');
+      expect(child.stderr).to.includes('✓ SemVer Policy');
       expect(JSON.parse(child.stdout)).to.eql({
         isInSupportWindow: true,
         project: {
@@ -214,7 +214,7 @@ describe('CLI', function () {
     it('works against a unsupported project', async function () {
       const child = await runSupportedCmd([`${__dirname}/fixtures/unsupported-project`, '--json']);
       expect(child.exitCode).to.eql(1);
-      expect(child.stderr).to.includes('- working');
+      expect(child.stderr).to.includes('✗ SemVer Policy');
       let jsonOut = JSON.parse(child.stdout);
       // purge out the duration from node entry from out
       // because we use `new Date` to calculate the duration

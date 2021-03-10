@@ -195,15 +195,15 @@ describe('time based policy: 1 year for major, 6 months for minor, 3 months of p
   describe(`deprecationDates`, function () {
     it(`returns deprecation dates`, function () {
       let dates = deprecationDates('2019-01-08T16:30:15.184Z');
-      expect(dates.major.toISOString()).to.eql('2020-01-08T16:30:15.184Z');
-      expect(dates.minor.toISOString()).to.eql('2019-07-08T15:30:15.184Z');
-      expect(dates.patch.toISOString()).to.eql('2019-04-08T15:30:15.184Z');
+      expect(dates.major.toDateString()).to.eql('Wed Jan 08 2020');
+      expect(dates.minor.toDateString()).to.eql('Mon Jul 08 2019');
+      expect(dates.patch.toDateString()).to.eql('Mon Apr 08 2019');
     });
     it(`returns deprecation dates with padding`, function () {
       let dates = deprecationDates('2019-03-25T16:30:15.184Z');
-      expect(dates.major.toISOString()).to.eql('2020-06-25T16:30:15.184Z');
-      expect(dates.minor.toISOString()).to.eql('2019-12-25T17:30:15.184Z');
-      expect(dates.patch.toISOString()).to.eql('2019-09-25T16:30:15.184Z');
+      expect(dates.major.toDateString()).to.eql('Thu Jun 25 2020');
+      expect(dates.minor.toDateString()).to.eql('Wed Dec 25 2019');
+      expect(dates.patch.toDateString()).to.eql('Wed Sep 25 2019');
     });
   });
 });

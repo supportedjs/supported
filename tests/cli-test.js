@@ -188,41 +188,48 @@ describe('CLI', function () {
       const child = await runSupportedCmd([`${__dirname}/fixtures/supported-project`, '--json']);
       expect(child.exitCode).to.eql(0);
       expect(child.stderr).to.includes('✓ SemVer Policy');
-      expect(JSON.parse(child.stdout)).to.eql({
-        isExpiringSoon: false,
+      let result = JSON.parse(child.stdout);
+      expect(result).to.eql({
+        expiringSoonCount: 0,
         isInSupportWindow: true,
-        projectName: 'supported-project',
-        projectPath: `${__dirname}/fixtures/supported-project`,
-        supportChecks: [
+        projects: [
           {
-            isSupported: true,
-            name: '@eslint-ast/eslint-plugin-graphql',
-            resolvedVersion: '1.0.4',
-            latestVersion: '1.0.4',
-          },
-          {
-            isSupported: true,
-            name: '@stefanpenner/a',
-            resolvedVersion: '2.0.0',
-            latestVersion: '2.0.0',
-          },
-          {
-            isSupported: true,
-            name: 'es6-promise',
-            resolvedVersion: '4.2.8',
-            latestVersion: '4.2.8',
-          },
-          {
-            isSupported: true,
-            resolvedVersion: '15.3.0',
-            latestVersion: '>=14.*',
-            name: 'node',
-          },
-          {
-            isSupported: true,
-            name: 'rsvp',
-            resolvedVersion: '4.8.5',
-            latestVersion: '4.8.5',
+            isExpiringSoon: false,
+            isInSupportWindow: true,
+            projectName: 'supported-project',
+            projectPath: `${__dirname}/fixtures/supported-project`,
+            supportChecks: [
+              {
+                isSupported: true,
+                name: '@eslint-ast/eslint-plugin-graphql',
+                resolvedVersion: '1.0.4',
+                latestVersion: '1.0.4',
+              },
+              {
+                isSupported: true,
+                name: '@stefanpenner/a',
+                resolvedVersion: '2.0.0',
+                latestVersion: '2.0.0',
+              },
+              {
+                isSupported: true,
+                name: 'es6-promise',
+                resolvedVersion: '4.2.8',
+                latestVersion: '4.2.8',
+              },
+              {
+                isSupported: true,
+                resolvedVersion: '15.3.0',
+                latestVersion: '>=14.*',
+                name: 'node',
+              },
+              {
+                isSupported: true,
+                name: 'rsvp',
+                resolvedVersion: '4.8.5',
+                latestVersion: '4.8.5',
+              },
+            ],
           },
         ],
       });
@@ -235,7 +242,7 @@ describe('CLI', function () {
       let jsonOut = JSON.parse(child.stdout);
       // purge out the duration from node entry from out
       // because we use `new Date` to calculate the duration
-      jsonOut.supportChecks.forEach(pkg => {
+      jsonOut.projects[0].supportChecks.forEach(pkg => {
         if (pkg.duration) {
           expect(pkg.duration).to.be.a('number');
           expect(pkg.deprecationDate).to.be.a('string');
@@ -244,6 +251,7 @@ describe('CLI', function () {
         }
       });
       expect(jsonOut).to.eql({
+        expiringSoonCount: 0,
         isInSupportWindow: false,
         projectName: 'unsupported-project',
         projectPath: `${__dirname}/fixtures/unsupported-project`,

@@ -2,7 +2,7 @@
   "name": "version-expiring-soon",
   "dependencies": {
     "@eslint-ast/eslint-plugin-graphql": "^1.0.4",
-    "@stefanpenner/a": "^1.0.3",
+    "@stefanpenner/b": "^1.0.3",
     "rsvp": "^4.8.0"
   },
   "devDependencies": {

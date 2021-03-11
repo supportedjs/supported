@@ -3,11 +3,27 @@
 const chai = require('chai');
 const { expect } = chai;
 const fs = require('fs');
-const { supported, supportedRanges } = require('../lib/time/index');
+const {
+  supported,
+  supportedRanges,
+  findDeprecationDate,
+  deprecationDates,
+} = require('../lib/time/index');
 
 chai.use(require('chai-datetime'));
 
+function verifyTime(result) {
+  if (result.duration) {
+    expect(result.duration).to.be.a('number');
+    expect(result.deprecationDate).to.be.a('string');
+    delete result['duration'];
+    delete result['deprecationDate'];
+  }
+  return result;
+}
+
 describe('time based policy: 1 year for major, 6 months for minor, 3 months of patch.', function () {
+  let currentDate = new Date(`2021-02-24T22:56:00.185Z`);
   it('supported ranges', function () {
     const origin = new Date('1986-09-16');
     const result = supportedRanges(origin);
@@ -39,32 +55,6 @@ describe('time based policy: 1 year for major, 6 months for minor, 3 months of p
         [],
       ),
     ).to.eql({ isSupported: true });
-  });
-
-  it('throws if latest version has no published time', function () {
-    expect(() =>
-      supported(
-        {
-          version: '1.0.0',
-          time: {},
-        },
-        'example@1.0.0',
-        [],
-      ),
-    ).to.throw("example's version: [1.0.0] has no published time");
-  });
-
-  it('throws useful error version has no published time', function () {
-    expect(() =>
-      supported(
-        {
-          version: '1.0.0',
-          time: {},
-        },
-        'example@3.22.0',
-        [],
-      ),
-    ).to.throw("example's version: [3.22.0] has no published time");
   });
 
   it('returns true, when no policies are provide but versions have been published', function () {
@@ -106,9 +96,11 @@ describe('time based policy: 1 year for major, 6 months for minor, 3 months of p
             date: new Date('1985-09-16'),
           },
         ],
+        currentDate,
       ),
     ).to.eql({
-      duration: 86400000,
+      deprecationDate: `1987-09-16T00:00:00.000Z`,
+      duration: 1055458560185,
       isSupported: false,
       message: 'violated: 1 year window',
       type: 'major',
@@ -121,18 +113,18 @@ describe('time based policy: 1 year for major, 6 months for minor, 3 months of p
     );
     const policies = supportedRanges(info.time[info.version]);
 
-    expect(supported(info, 'console-ui@3.1.2', policies)).to.eql({ isSupported: true });
-    let result = supported(info, 'console-ui@3.1.0', policies);
-    expect(typeof result.duration).to.eql('number');
-    delete result.duration;
+    expect(supported(info, 'console-ui@3.1.2', policies, currentDate)).to.eql({
+      isSupported: true,
+    });
+    let result = supported(info, 'console-ui@3.1.0', policies, currentDate);
+    result = verifyTime(result);
     expect(result).to.eql({
       isSupported: false,
       message: 'violated: patch version must be within 3 months of latest',
       type: 'patch',
     });
-    result = supported(info, 'console-ui@2.0.0', policies);
-    expect(typeof result.duration).to.eql('number');
-    delete result.duration;
+    result = supported(info, 'console-ui@2.0.0', policies, currentDate);
+    result = verifyTime(result);
     expect(result).to.eql({
       isSupported: false,
       message: 'violated: major version must be within 1 year of latest',
@@ -146,53 +138,72 @@ describe('time based policy: 1 year for major, 6 months for minor, 3 months of p
     );
     const policies = supportedRanges(info.time[info.version]);
 
-    expect(supported(info, 'ember-cli@3.22.0', policies)).to.eql({ isSupported: true });
-    expect(supported(info, 'ember-cli@3.21.0', policies)).to.eql({
-      duration: 11840496435,
+    expect(supported(info, 'ember-cli@3.22.0', policies, currentDate)).to.eql({
+      isSupported: true,
+    });
+    let result = supported(info, 'ember-cli@3.21.0', policies, currentDate);
+    verifyTime(result);
+    expect(result).to.eql({
       isSupported: true,
       type: 'minor',
     });
-    expect(supported(info, 'ember-cli@3.20.0', policies)).to.eql({
-      duration: 8756624607,
+    result = supported(info, 'ember-cli@3.20.0', policies, currentDate);
+    verifyTime(result);
+    expect(result).to.eql({
       isSupported: true,
       type: 'minor',
     });
-    expect(supported(info, 'ember-cli@3.12.1', policies)).to.eql({
-      duration: 11061239038,
+    result = supported(info, 'ember-cli@3.12.1', policies, currentDate);
+    verifyTime(result);
+    expect(result).to.eql({
       isSupported: false,
       message: 'violated: minor version must be within 6 months of latest',
       type: 'minor',
     });
-    expect(supported(info, 'ember-cli@3.13.2', policies)).to.eql({
-      duration: 13308317989,
+    result = supported(info, 'ember-cli@3.13.2', policies, currentDate);
+    verifyTime(result);
+    expect(result).to.eql({
       isSupported: false,
       message: 'violated: minor version must be within 6 months of latest',
       type: 'minor',
     });
-    expect(supported(info, 'ember-cli@3.13.1', policies)).to.eql({
-      duration: 17517994037,
+    result = supported(info, 'ember-cli@3.13.1', policies, currentDate);
+    verifyTime(result);
+    expect(result).to.eql({
       isSupported: false,
       message: 'violated: minor version must be within 6 months of latest',
       type: 'minor',
     });
-    expect(supported(info, 'ember-cli@3.4.0', policies)).to.eql({
-      duration: 50945222713,
+    result = supported(info, 'ember-cli@3.4.0', policies, currentDate);
+    verifyTime(result);
+    expect(result).to.eql({
       isSupported: false,
       message: 'violated: minor version must be within 6 months of latest',
       type: 'minor',
     });
+  });
 
-    expect(() => supported(info, 'ember-cli@^3.0.0', policies)).to.throw(
-      'version: [^3.0.0] has no published time',
+  describe(`findDeprecationDate`, function () {
+    const info = JSON.parse(
+      fs.readFileSync(`${__dirname}/fixtures/recordings/default/console-ui.json`, 'UTF8'),
     );
-    expect(() => supported(info, 'ember-cli@3.0.x', policies)).to.throw(
-      'version: [3.0.x] has no published time',
-    );
-    expect(() => supported(info, 'ember-cli@^2.0.0', policies)).to.throw(
-      'version: [^2.0.0] has no published time',
-    );
-    expect(() => supported(info, 'ember-cli@1.0.0', policies)).to.throw(
-      'version: [1.0.0] has no published time',
-    );
+    it(`able to find deprecation dates`, function () {
+      let date = findDeprecationDate('2.2.3', info, 'major');
+      expect(date.toISOString()).to.eql('2019-01-08T16:30:15.184Z');
+    });
+  });
+  describe(`deprecationDates`, function () {
+    it(`returns deprecation dates`, function () {
+      let dates = deprecationDates('2019-01-08T16:30:15.184Z');
+      expect(dates.major.toDateString()).to.eql('Wed Jan 08 2020');
+      expect(dates.minor.toDateString()).to.eql('Mon Jul 08 2019');
+      expect(dates.patch.toDateString()).to.eql('Mon Apr 08 2019');
+    });
+    it(`returns deprecation dates with padding`, function () {
+      let dates = deprecationDates('2019-03-25T16:30:15.184Z');
+      expect(dates.major.toDateString()).to.eql('Thu Jun 25 2020');
+      expect(dates.minor.toDateString()).to.eql('Wed Dec 25 2019');
+      expect(dates.patch.toDateString()).to.eql('Wed Sep 25 2019');
+    });
   });
 });

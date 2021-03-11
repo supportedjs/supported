@@ -12,9 +12,9 @@
     mocha "^8.1.0"
     resolve "^1.17.0"
 
-"@stefanpenner/a@^1.0.3":
+"@stefanpenner/b@^1.0.3":
   version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@stefanpenner/a/-/a-1.0.3.tgz#8aa6b161063526bbd954289bbfe36f6660a02ab9"
+  resolved "https://registry.yarnpkg.com/@stefanpenner/b/-/b-1.0.3.tgz#8aa6b161063526bbd954289bbfe36f6660a02ab9"
   integrity sha1-iqaxYQY1JrvZVCibv+NvZmCgKrk=
   dependencies:
     lodash "^4.16.1"

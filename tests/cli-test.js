@@ -47,7 +47,7 @@ describe('CLI', function () {
       expect(child.stderr).to.eql('- working');
       expect(child.stdout).to.includes('Support Policy Problem Detected!');
       expect(child.stdout).to.includes(
-        '✗ SemVer Policy (2 violations in 3 dependencies)\n      ✗ major version [2 dependencies up-to 7 qtrs behind]',
+        '✗ SemVer Policy (3 violations in 4 dependencies)\n      ✗ major version [3 dependencies up-to',
       );
     });
 
@@ -60,7 +60,7 @@ describe('CLI', function () {
         '⚠ node LTS Policy\n      ⚠ version/version-range 10.0.0 will be deprecated within 1 qtr',
       );
       expect(child.stdout).to.includes(
-        '⚠ SemVer Policy (1 in 4 dependencies will expire soon) \n      ⚠ major [1 dependency will expire within 3 qtrs]',
+        '⚠ SemVer Policy (1 in 4 dependencies will expire soon) \n      ⚠ major [1 dependency will expire within',
       );
     });
 
@@ -84,8 +84,12 @@ describe('CLI', function () {
       expect(child.exitCode).to.eql(1);
       expect(child.stderr).to.eql('- working');
       expect(child.stdout).to.includes('Support Policy Problem Detected!');
-      expect(child.stdout).to.includes(' @eslint-ast/eslint-plugin-graphql  1.0.4     1.0.4');
-      expect(child.stdout).to.includes('es6-promise  3.3.1     4.2.8   major           7 qtrs');
+      expect(child.stdout).to.includes(
+        '@eslint-ast/eslint-plugin-graphql  1.0.4                          1.0.4',
+      );
+      expect(child.stdout).to.includes(
+        '@stefanpenner/a                    1.0.3                          2.0.0   major',
+      );
     });
 
     it('works against a supported project', async function () {
@@ -105,8 +109,10 @@ describe('CLI', function () {
       expect(child.exitCode).to.eql(0);
       expect(child.stderr).to.eql('- working');
       expect(child.stdout).to.includes('⚠ Warning!');
-      expect(child.stdout).to.includes(`@stefanpenner/a  1.0.3     2.0.0   major           3 qtrs`);
-      expect(child.stdout).to.includes(`node             10.0.0    >=14.*  LTS             1 qtr`);
+      expect(child.stdout).to.includes(
+        `@stefanpenner/b                    1.0.3     2.0.0   major`,
+      );
+      expect(child.stdout).to.includes(`node                               10.0.0    >=14.*  LTS`);
     });
   });
 
@@ -119,7 +125,7 @@ describe('CLI', function () {
       expect(child.exitCode).to.eql(1);
       expect(child.stderr).to.eql('- working');
       expect(child.stdout).to.includes('Support Policy Problem Detected!');
-      expect(child.stdout).to.includes('es6-promise  3.3.1     4.2.8   major           7 qtrs');
+      expect(child.stdout).to.includes('es6-promise      3.3.1     4.2.8   major');
     });
 
     it('works against a unsupported project with --supported option', async function () {
@@ -135,15 +141,13 @@ describe('CLI', function () {
 
     it('works against a unsupported project with --expiring option', async function () {
       const child = await runSupportedCmd([
-        `${__dirname}/fixtures/unsupported-project`,
+        `${__dirname}/fixtures/version-expire-soon`,
         '--expiring',
       ]);
-      expect(child.exitCode).to.eql(1);
+      expect(child.exitCode).to.eql(0);
       expect(child.stderr).to.eql('- working');
-      expect(child.stdout).to.includes('Support Policy Problem Detected!');
-      expect(child.stdout).to.includes(
-        '@stefanpenner/a  1.0.3                          2.0.0   major           3 qtrs',
-      );
+      expect(child.stdout).to.includes('⚠ Warning!');
+      expect(child.stdout).to.includes('@stefanpenner/b  1.0.3     2.0.0   major');
     });
   });
   describe('--csv', function () {
@@ -215,8 +219,11 @@ describe('CLI', function () {
       // purge out the duration from node entry from out
       // because we use `new Date` to calculate the duration
       jsonOut.supportChecks.forEach(pkg => {
-        if (pkg.name == 'node') {
+        if (pkg.duration) {
+          expect(pkg.duration).to.be.a('number');
+          expect(pkg.deprecationDate).to.be.a('string');
           delete pkg['duration'];
+          delete pkg['deprecationDate'];
         }
       });
       expect(jsonOut).to.eql({
@@ -230,7 +237,6 @@ describe('CLI', function () {
           {
             isSupported: false,
             message: 'violated: major version must be within 1 year of latest',
-            duration: 54431779121,
             type: 'major',
             name: 'es6-promise',
             resolvedVersion: '3.3.1',
@@ -239,7 +245,14 @@ describe('CLI', function () {
           {
             isSupported: false,
             message: 'violated: major version must be within 1 year of latest',
-            duration: 27959197042,
+            type: 'major',
+            name: '@stefanpenner/a',
+            resolvedVersion: '1.0.3',
+            latestVersion: '2.0.0',
+          },
+          {
+            isSupported: false,
+            message: 'violated: major version must be within 1 year of latest',
             type: 'major',
             name: 'rsvp',
             resolvedVersion: '3.6.2',
@@ -251,14 +264,6 @@ describe('CLI', function () {
             latestVersion: '>=14.*',
             message: 'Using maintenance LTS. Update to latest LTS',
             name: 'node',
-          },
-          {
-            isSupported: true,
-            duration: 21081600000,
-            type: 'major',
-            name: '@stefanpenner/a',
-            resolvedVersion: '1.0.3',
-            latestVersion: '2.0.0',
           },
           {
             isSupported: true,

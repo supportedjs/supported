@@ -65,8 +65,11 @@ describe('project-1', function () {
     // purge out the duration from node entry from out
     // because we use `new Date` to calculate the duration
     result.supportChecks.forEach(pkg => {
-      if (pkg.name == 'node') {
+      if (pkg.duration) {
+        expect(pkg.duration).to.be.a('number');
+        expect(pkg.deprecationDate).to.be.a('string');
         delete pkg['duration'];
+        delete pkg['deprecationDate'];
       }
     });
 
@@ -77,7 +80,6 @@ describe('project-1', function () {
         {
           isSupported: false,
           message: 'violated: major version must be within 1 year of latest',
-          duration: 54431779121,
           type: 'major',
           name: 'es6-promise',
           resolvedVersion: '3.3.1',
@@ -85,8 +87,15 @@ describe('project-1', function () {
         },
         {
           isSupported: false,
+          latestVersion: '2.0.0',
           message: 'violated: major version must be within 1 year of latest',
-          duration: 27959197042,
+          name: '@stefanpenner/a',
+          resolvedVersion: '1.0.3',
+          type: 'major',
+        },
+        {
+          isSupported: false,
+          message: 'violated: major version must be within 1 year of latest',
           type: 'major',
           name: 'rsvp',
           resolvedVersion: '3.6.2',
@@ -98,14 +107,6 @@ describe('project-1', function () {
           latestVersion: '>=14.*',
           message: 'Using maintenance LTS. Update to latest LTS',
           name: 'node',
-        },
-        {
-          isSupported: true,
-          duration: 21081600000,
-          type: 'major',
-          name: '@stefanpenner/a',
-          resolvedVersion: '1.0.3',
-          latestVersion: '2.0.0',
         },
         {
           isSupported: true,
@@ -168,8 +169,11 @@ describe('project-1', function () {
     // purge out the duration from node entry from out
     // because we use `new Date` to calculate the duration
     result.supportChecks.forEach(pkg => {
-      if (pkg.name == 'node') {
+      if (pkg.duration) {
+        expect(pkg.duration).to.be.a('number');
+        expect(pkg.deprecationDate).to.be.a('string');
         delete pkg['duration'];
+        delete pkg['deprecationDate'];
       }
     });
     expect(result).to.eql({
@@ -185,9 +189,8 @@ describe('project-1', function () {
         },
         {
           isSupported: true,
-          duration: 21081600000,
           type: 'major',
-          name: '@stefanpenner/a',
+          name: '@stefanpenner/b',
           resolvedVersion: '1.0.3',
           latestVersion: '2.0.0',
         },

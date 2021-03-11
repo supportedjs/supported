@@ -16,7 +16,7 @@ const setupProject = require('../lib/project/setup-project');
     const spinner = ora('working').start();
     let result;
     try {
-      result = await isAllInSupportWindow(projectPaths, setupProject);
+      result = await isAllInSupportWindow(projectPaths, setupProject, spinner);
       if (result.isInSupportWindow === false) {
         process.exitCode = 1;
       }

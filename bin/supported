@@ -15,12 +15,14 @@ const { writeToCsv } = require('../lib/output/csv-output');
     const spinner = ora('working').start();
     let result;
     try {
-      result = await isInSupportWindow(projectPath);
+      result = await isInSupportWindow(projectPath, { spinner });
       if (result.isInSupportWindow === false) {
         process.exitCode = 1;
       }
     } finally {
-      spinner.stop();
+      spinner.stopAndPersist({
+        symbol: '✨'
+      });
     }
 
     if (cli.flags.json && result) {

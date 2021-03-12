@@ -2,6 +2,8 @@
 
 const { expect } = require('chai');
 const isInSupportWindow = require('../lib/project');
+const setupProject = require('../lib/project/setup-project');
+const { ProgressLogger } = require('../lib/util');
 const registries = require('./registries');
 
 describe('project-1', function () {
@@ -16,8 +18,10 @@ describe('project-1', function () {
   });
 
   it('reports supported if the project is within the support window', async function () {
-    const result = await isInSupportWindow(`${root}/supported-project`, {
+    const { dependenciesToCheck, pkg } = await setupProject(`${root}/supported-project`);
+    const result = await isInSupportWindow(dependenciesToCheck, pkg.name, {
       policies: [],
+      progressLogger: new ProgressLogger(),
     });
 
     expect(result).to.eql({
@@ -62,9 +66,10 @@ describe('project-1', function () {
     let spinner = {
       text: '',
     };
-    const result = await isInSupportWindow(`${root}/unsupported-project`, {
+    const { dependenciesToCheck, pkg } = await setupProject(`${root}/unsupported-project`);
+    const result = await isInSupportWindow(dependenciesToCheck, pkg.name, {
       policies: [],
-      spinner,
+      progressLogger: new ProgressLogger(spinner),
     });
     // purge out the duration from node entry from out
     // because we use `new Date` to calculate the duration
@@ -123,8 +128,10 @@ describe('project-1', function () {
   });
 
   it('reports no node version mentioned in the project', async function () {
-    const result = await isInSupportWindow(`${root}/no-node-version`, {
+    const { dependenciesToCheck, pkg } = await setupProject(`${root}/no-node-version`);
+    const result = await isInSupportWindow(dependenciesToCheck, pkg.name, {
       policies: [],
+      progressLogger: new ProgressLogger(),
     });
 
     expect(result).to.eql({
@@ -167,8 +174,10 @@ describe('project-1', function () {
   });
 
   it('reports node version and other dependencies expires soon in the project', async function () {
-    const result = await isInSupportWindow(`${root}/version-expire-soon`, {
+    const { dependenciesToCheck, pkg } = await setupProject(`${root}/version-expire-soon`);
+    const result = await isInSupportWindow(dependenciesToCheck, pkg.name, {
       policies: [],
+      progressLogger: new ProgressLogger(),
     });
     // purge out the duration from node entry from out
     // because we use `new Date` to calculate the duration

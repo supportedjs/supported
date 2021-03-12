@@ -5,6 +5,7 @@ const execa = require('execa');
 const { getBinPath } = require('get-bin-path');
 const fs = require('fs');
 const registries = require('./registries');
+const { join } = require('path');
 
 async function runSupportedCmd(inputArgs) {
   let args = [await getBinPath()];
@@ -72,6 +73,22 @@ describe('CLI', function () {
       expect(child.stdout).to.includes(
         '⚠ node LTS Policy\n      ⚠ No node version mentioned in the package.json. Please add engines/volta',
       );
+    });
+
+    it('works against multiple project', async function () {
+      // Test in windows are failing
+      // Issue may be caused by npmconfig command we have in the code base. For now we are increasing the timeout.
+      this.timeout(4000);
+      const child = await runSupportedCmd([
+        `${__dirname}/fixtures/supported-project`,
+        `${__dirname}/fixtures/unsupported-project`,
+      ]);
+      expect(child.exitCode).to.eql(1);
+      expect(child.stderr).to.includes('✓ supported-project');
+      expect(child.stderr).to.includes('✗ unsupported-project');
+      expect(child.stdout).to.includes('Support Policy Problem Detected!');
+      expect(child.stdout).to.includes('✗ unsupported-project');
+      expect(child.stdout).to.includes('✓ supported-project');
     });
   });
 
@@ -160,7 +177,10 @@ describe('CLI', function () {
       expect(child.exitCode).to.eql(1);
       expect(child.stderr).to.includes('✗ SemVer Policy');
       expect(child.stdout).to.includes(
-        `Report created at ${__dirname}/fixtures/unsupported-project`,
+        `Report for unsupported-project created at ${join(
+          __dirname,
+          `/fixtures/unsupported-project/`,
+        )}`,
       );
     });
   });
@@ -169,43 +189,48 @@ describe('CLI', function () {
       const child = await runSupportedCmd([`${__dirname}/fixtures/supported-project`, '--json']);
       expect(child.exitCode).to.eql(0);
       expect(child.stderr).to.includes('✓ SemVer Policy');
-      expect(JSON.parse(child.stdout)).to.eql({
+      let result = JSON.parse(child.stdout);
+      expect(result).to.eql({
+        expiringSoonCount: 0,
         isInSupportWindow: true,
-        project: {
-          name: 'supported-project',
-          type: 'node_module',
-          path: `${__dirname}/fixtures/supported-project`,
-        },
-        supportChecks: [
+        projects: [
           {
-            isSupported: true,
-            name: '@eslint-ast/eslint-plugin-graphql',
-            resolvedVersion: '1.0.4',
-            latestVersion: '1.0.4',
-          },
-          {
-            isSupported: true,
-            name: '@stefanpenner/a',
-            resolvedVersion: '2.0.0',
-            latestVersion: '2.0.0',
-          },
-          {
-            isSupported: true,
-            name: 'es6-promise',
-            resolvedVersion: '4.2.8',
-            latestVersion: '4.2.8',
-          },
-          {
-            isSupported: true,
-            resolvedVersion: '15.3.0',
-            latestVersion: '>=14.*',
-            name: 'node',
-          },
-          {
-            isSupported: true,
-            name: 'rsvp',
-            resolvedVersion: '4.8.5',
-            latestVersion: '4.8.5',
+            isExpiringSoon: false,
+            isInSupportWindow: true,
+            projectName: 'supported-project',
+            projectPath: `${__dirname}/fixtures/supported-project`,
+            supportChecks: [
+              {
+                isSupported: true,
+                name: '@eslint-ast/eslint-plugin-graphql',
+                resolvedVersion: '1.0.4',
+                latestVersion: '1.0.4',
+              },
+              {
+                isSupported: true,
+                name: '@stefanpenner/a',
+                resolvedVersion: '2.0.0',
+                latestVersion: '2.0.0',
+              },
+              {
+                isSupported: true,
+                name: 'es6-promise',
+                resolvedVersion: '4.2.8',
+                latestVersion: '4.2.8',
+              },
+              {
+                isSupported: true,
+                resolvedVersion: '15.3.0',
+                latestVersion: '>=14.*',
+                name: 'node',
+              },
+              {
+                isSupported: true,
+                name: 'rsvp',
+                resolvedVersion: '4.8.5',
+                latestVersion: '4.8.5',
+              },
+            ],
           },
         ],
       });
@@ -218,7 +243,7 @@ describe('CLI', function () {
       let jsonOut = JSON.parse(child.stdout);
       // purge out the duration from node entry from out
       // because we use `new Date` to calculate the duration
-      jsonOut.supportChecks.forEach(pkg => {
+      jsonOut.projects[0].supportChecks.forEach(pkg => {
         if (pkg.duration) {
           expect(pkg.duration).to.be.a('number');
           expect(pkg.deprecationDate).to.be.a('string');
@@ -228,48 +253,51 @@ describe('CLI', function () {
       });
       expect(jsonOut).to.eql({
         isInSupportWindow: false,
-        project: {
-          name: 'unsupported-project',
-          path: `${__dirname}/fixtures/unsupported-project`,
-          type: 'node_module',
-        },
-        supportChecks: [
+        expiringSoonCount: 0,
+        projects: [
           {
-            isSupported: false,
-            message: 'violated: major version must be within 1 year of latest',
-            type: 'major',
-            name: 'es6-promise',
-            resolvedVersion: '3.3.1',
-            latestVersion: '4.2.8',
-          },
-          {
-            isSupported: false,
-            message: 'violated: major version must be within 1 year of latest',
-            type: 'major',
-            name: '@stefanpenner/a',
-            resolvedVersion: '1.0.3',
-            latestVersion: '2.0.0',
-          },
-          {
-            isSupported: false,
-            message: 'violated: major version must be within 1 year of latest',
-            type: 'major',
-            name: 'rsvp',
-            resolvedVersion: '3.6.2',
-            latestVersion: '4.8.5',
-          },
-          {
-            isSupported: true,
-            resolvedVersion: '10.* || 12.* || 14.* || >= 15',
-            latestVersion: '>=14.*',
-            message: 'Using maintenance LTS. Update to latest LTS',
-            name: 'node',
-          },
-          {
-            isSupported: true,
-            name: '@eslint-ast/eslint-plugin-graphql',
-            resolvedVersion: '1.0.4',
-            latestVersion: '1.0.4',
+            isInSupportWindow: false,
+            supportChecks: [
+              {
+                isSupported: false,
+                message: 'violated: major version must be within 1 year of latest',
+                type: 'major',
+                name: 'es6-promise',
+                resolvedVersion: '3.3.1',
+                latestVersion: '4.2.8',
+              },
+              {
+                isSupported: false,
+                message: 'violated: major version must be within 1 year of latest',
+                type: 'major',
+                name: '@stefanpenner/a',
+                resolvedVersion: '1.0.3',
+                latestVersion: '2.0.0',
+              },
+              {
+                isSupported: false,
+                message: 'violated: major version must be within 1 year of latest',
+                type: 'major',
+                name: 'rsvp',
+                resolvedVersion: '3.6.2',
+                latestVersion: '4.8.5',
+              },
+              {
+                isSupported: true,
+                resolvedVersion: '10.* || 12.* || 14.* || >= 15',
+                latestVersion: '>=14.*',
+                message: 'Using maintenance LTS. Update to latest LTS',
+                name: 'node',
+              },
+              {
+                isSupported: true,
+                name: '@eslint-ast/eslint-plugin-graphql',
+                resolvedVersion: '1.0.4',
+                latestVersion: '1.0.4',
+              },
+            ],
+            projectName: 'unsupported-project',
+            projectPath: `${__dirname}/fixtures/unsupported-project`,
           },
         ],
       });

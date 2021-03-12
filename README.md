@@ -17,10 +17,10 @@ npx supported <[array/of/node_modules]>
 
 ```js
 const { isAllInSupportWindow } = require('supported');
-const  projectPaths = ['test/fixtures/unsupported-project', 'test/fixtures/supported-project' ];
-const  jsonResult = await isAllInSupportWindow(projectPaths);
-const  projectPaths_2 = 'test/fixtures/unsupported-project';
-const  jsonResult_2 = await isAllInSupportWindow(projectPaths_2);
+const projectPaths = ['test/fixtures/unsupported-project', 'test/fixtures/supported-project' ];
+const jsonResult = await isAllInSupportWindow(projectPaths);
+const projectPaths_2 = 'test/fixtures/unsupported-project';
+const jsonResult_2 = await isAllInSupportWindow(projectPaths_2);
 ```
 
 
@@ -56,13 +56,13 @@ const { readFileSync } = require('fs');
 function setupProject(projectPath) {
 	let packageJson = JSON.parse(fs.readFileSync(`${projectPath}/package.json`, 'utf-8'));
 	let dependenciesToCheck = [];
-	for (const [name, version] of  Object.entries(pkg.dependencies) {
+	for (const [name, version] of Object.entries(pkg.dependencies) {
 		dependenciesToCheck.push({
 			name,
 			version,
 			resolvedVersion: getReslovedFromPackageLock(name),
 			url: 'http://custom-npm-registry.com',
-			type:  'dependency',
+			type: 'dependency',
 		});
 	};
 	return {
@@ -70,24 +70,24 @@ function setupProject(projectPath) {
 		pkg: packageJson,
 	}
 }
-const  jsonResult = await isAllInSupportWindow(projectPaths, setupProject);
+const jsonResult = await isAllInSupportWindow(projectPaths, setupProject);
 ```
 You can extend the CLI and keep the same option, want to change the name of the tool then do the following,
 ```js
 // bin/custom-support-cli
 #!/usr/bin/env node
 const { run } = require('supported');
-const  helpFn = require('supported/lib/help');
+const helpFn = require('supported/lib/help');
 function setupProjectCustom(projectPath) {
 	let packageJson = JSON.parse(fs.readFileSync(`${projectPath}/package.json`, 'utf-8'));
 	let dependenciesToCheck = [];
-	for (const [name, version] of  Object.entries(pkg.dependencies) {
+	for (const [name, version] of Object.entries(pkg.dependencies) {
 		dependenciesToCheck.push({
 			name,
 			version,
 			resolvedVersion: getReslovedFromPackageLock(name),
 			url: 'http://custom-npm-registry.com',
-			type:  'dependency',
+			type: 'dependency',
 		});
 	};
 	return {
@@ -95,7 +95,7 @@ function setupProjectCustom(projectPath) {
 		pkg: packageJson,
 	}
 }
-const  CUSTOM_POLICIY_DETAILS = ` For more information see: http://custom-message.link`
+const CUSTOM_POLICIY_DETAILS = ` For more information see: http://custom-message.link`
 run(POLICIY_DETAILS, setupProjectCustom, helpFn(`support-custom-cli`, `http://custom-message.link`));
 ```
 ## Contributing

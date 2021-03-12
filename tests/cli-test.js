@@ -19,6 +19,10 @@ async function runSupportedCmd(inputArgs) {
 }
 
 describe('CLI', function () {
+  // TODO: Check if we can remove this timeout increase and fix the npm config logic to be fast
+  // Test in windows are failing
+  // Issue may be caused by npmconfig command we have in the code base. For now we are increasing the timeout.
+  this.timeout(4000);
   beforeEach(function () {
     registries.startAll();
   });
@@ -76,9 +80,6 @@ describe('CLI', function () {
     });
 
     it('works against multiple project', async function () {
-      // Test in windows are failing
-      // Issue may be caused by npmconfig command we have in the code base. For now we are increasing the timeout.
-      this.timeout(4000);
       const child = await runSupportedCmd([
         `${__dirname}/fixtures/supported-project`,
         `${__dirname}/fixtures/unsupported-project`,

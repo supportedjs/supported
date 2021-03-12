@@ -5,6 +5,11 @@
   "repository": "git@github.com:stefanpenner/supported",
   "homepage": "https://github.com/stefanpenner/supported",
   "author": "Stefan Penner <stefan.penner@gmail.com>",
+  "contributors": [
+    {
+      "author": "Sparshith Nairbalige Rai <sparshithnrai@gmail.com> (https://github.com/SparshithNR)"
+    }
+  ],
   "license": "MIT",
   "bin": {
     "supported": "./bin/supported"

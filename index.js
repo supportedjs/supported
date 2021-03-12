@@ -7,4 +7,4 @@ module.exports = {
   run,
   setupProject,
   isAllInSupportWindow,
-}
+};

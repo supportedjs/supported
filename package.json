@@ -68,6 +68,7 @@
   "files": [
     "lib",
     "bin",
-    "tests/test-helpers"
+    "tests/test-helpers",
+    "tests/fixtures"
   ]
 }

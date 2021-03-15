@@ -4,7 +4,7 @@ const { expect } = require('chai');
 const isInSupportWindow = require('../lib/project');
 const setupProject = require('../lib/project/setup-project');
 const { ProgressLogger } = require('../lib/util');
-const registries = require('./registries');
+const registries = require('./test-helpers/registries');
 
 describe('project-1', function () {
   const root = `${__dirname}/fixtures`;

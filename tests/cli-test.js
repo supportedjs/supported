@@ -4,7 +4,7 @@ const { expect } = require('chai');
 const execa = require('execa');
 const { getBinPath } = require('get-bin-path');
 const fs = require('fs');
-const registries = require('./registries');
+const registries = require('./test-helpers/registries');
 const { join } = require('path');
 
 async function runSupportedCmd(inputArgs) {

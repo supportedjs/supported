@@ -1,6 +1,8 @@
 'use strict';
 
-const { expect } = require('chai');
+const chai = require('chai');
+chai.use(require('chai-as-promised'));
+const expect = chai.expect;
 const isInSupportWindow = require('../lib/project');
 const setupProject = require('../lib/project/setup-project');
 const { ProgressLogger } = require('../lib/util');
@@ -227,5 +229,23 @@ describe('project-1', function () {
         },
       ],
     });
+  });
+
+  it('throws nice error if provided folder does not include package.json', function () {
+    return expect(setupProject(`${root}/invalid-project-folder`)).to.be.rejectedWith(
+      /package.json does not exist/,
+    );
+  });
+
+  it('throws nice error if provided package.json file is invalid', function () {
+    return expect(setupProject(`${root}/package-is-not-json`)).to.be.rejectedWith(
+      /package.json is not a valid JSON file/,
+    );
+  });
+
+  it('throws nice error if provided package.json file is not a file', function () {
+    return expect(setupProject(`${root}/package-is-folder`)).to.be.rejectedWith(
+      /package.json is not a file/,
+    );
   });
 });

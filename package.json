@@ -16,6 +16,7 @@
   },
   "scripts": {
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "test": "mocha tests/**/*-test.js",
     "test:inspect": "mocha inspect tests/**/*-test.js",
     "start:registry": "node -e 'require(`./tests/test-helpers/registries.js`).startAll()'"
@@ -43,6 +44,7 @@
   "dependencies": {
     "@yarnpkg/lockfile": "^1.1.0",
     "camelcase-keys": "^6.2.2",
+    "chai-as-promised": "^7.1.1",
     "chalk": "^4.1.0",
     "cli-table": "^0.3.4",
     "debug": "^4.3.1",

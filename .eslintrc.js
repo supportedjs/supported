@@ -4,6 +4,7 @@ module.exports = {
     ecmaVersion: 2021,
     sourceType: 'module',
   },
+  ignorePatterns: ['**/package-is-folder/', '**/package-is-not-json/'],
   plugins: ['node', 'prettier'],
   extends: ['eslint:recommended', 'plugin:node/recommended', 'plugin:prettier/recommended'],
   env: {

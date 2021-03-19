@@ -1,0 +1,14 @@
+{
+  "name": "unsupported-project",
+  "dependencies": {
+    "@eslint-ast/eslint-plugin-graphql": "^1.0.4",
+    "@stefanpenner/a": "^1.0.3",
+    "rsvp": "^3.0.0"
+  },
+  "devDependencies": {
+    "es6-promise": "^3.0.0"
+  },
+  "engines": {
+    "node": "10.* || 12.* || 14.* || >= 15"
+  }
+}

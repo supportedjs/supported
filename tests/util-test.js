@@ -1,7 +1,7 @@
 'use strict';
 
 const { expect } = require('chai');
-const { sortLibraries } = require('../lib/util');
+const { sortLibraries, checkNodeCompatibility } = require('../lib/util');
 
 describe('util test', function () {
   describe('sort packages', function () {
@@ -100,6 +100,25 @@ describe('util test', function () {
       ];
 
       expect(input.sort(sortLibraries)).to.be.eql(result);
+    });
+  });
+  describe('checkNodeCompatibility', function () {
+    it(`throws error when node version is equal to 8.*`, function () {
+      expect(() => {
+        checkNodeCompatibility('8.10.1');
+      }).throws(
+        /Node v8.10.1 found, minimum node version required to run this tool is Node v10. Please updated the node version./,
+      );
+    });
+    it(`throws error when node version is below 8.*`, function () {
+      expect(() => {
+        checkNodeCompatibility('7.10.1');
+      }).throws(
+        /Node v7.10.1 found, minimum node version required to run this tool is Node v10. Please updated the node version./,
+      );
+    });
+    it(`do nothing when node is above 8.*`, function () {
+      checkNodeCompatibility('9.10.1');
     });
   });
 });

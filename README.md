@@ -6,6 +6,11 @@
 ```sh
 npx supported <path/to/node_module>
 npx supported <[array/of/node_modules]>
+// Generate token using https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
+npx supported https://github.com/stefanpenner/supported
+npx supported https://github.com/stefanpenner/supported/tree/some-branch
+npx supported https://test.githubprivate.com/stefanpenner/supported -t $TOKEN
+npx supported supported --hostUrl=https://raw.githubusercontent.com/stefanpenner/supported/main/
 ```
 
 #### Optional Flags

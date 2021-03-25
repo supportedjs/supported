@@ -36,8 +36,15 @@ describe('CLI', function () {
   // Test in windows are failing
   // Issue may be caused by npmconfig command we have in the code base. For now we are increasing the timeout.
   this.timeout(4000);
+  let FILE_SERVER_PORT_1 = 3005;
   beforeEach(function () {
-    registries.startAll();
+    registries.startAll([
+      {
+        name: 'supported-project',
+        recordingRoot: `./tests/fixtures/supported-project`,
+        port: FILE_SERVER_PORT_1,
+      },
+    ]);
   });
 
   afterEach(function () {
@@ -132,6 +139,28 @@ describe('CLI', function () {
       expect(child.stdout).to.includes('Support Policy Problem Detected!');
       expect(child.stdout).to.includes('✗ unsupported-project');
       expect(child.stdout).to.includes('✓ supported-project');
+    });
+
+    it('works against a fully supported project with hosturl', async function () {
+      const child = await runSupportedCmd([
+        `supported-project`,
+        '--hostUrl',
+        `http://localhost:${FILE_SERVER_PORT_1}/`,
+      ]);
+      expect(child.exitCode).to.eql(0);
+      expect(child.stderr).to.includes('✓ SemVer Policy');
+      expect(child.stdout).to.includes('Congrats!');
+    });
+
+    it('error out when token not passed for github private instance', async function () {
+      const child = await runSupportedCmd([
+        `https://test.githubprivate.com/stefanpenner/supported`,
+      ]);
+      expect(child.exitCode).to.eql(2);
+      expect(child.stderr).to.includes('Missing required flag\n\t--token, -t');
+      expect(child.stdout).to.includes(
+        `Private instances of github needs token. To generate token follow https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token`,
+      );
     });
   });
 

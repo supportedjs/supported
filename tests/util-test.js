@@ -104,21 +104,23 @@ describe('util test', function () {
   });
   describe('checkNodeCompatibility', function () {
     it(`throws error when node version is equal to 8.*`, function () {
+      let regex = new RegExp(
+        `Node v8.10.1 found, current node version must satisfiy the Node v10.* || 12.* || 14.* || >= 15. Please updated the node version.`,
+      );
       expect(() => {
         checkNodeCompatibility('8.10.1');
-      }).throws(
-        /Node v8.10.1 found, minimum node version required to run this tool is Node v10. Please updated the node version./,
-      );
+      }).throws(regex);
     });
     it(`throws error when node version is below 8.*`, function () {
+      let regex = new RegExp(
+        `Node v7.10.1 found, current node version must satisfiy the Node v10.* || 12.* || 14.* || >= 15. Please updated the node version.`,
+      );
       expect(() => {
         checkNodeCompatibility('7.10.1');
-      }).throws(
-        /Node v7.10.1 found, minimum node version required to run this tool is Node v10. Please updated the node version./,
-      );
+      }).throws(regex);
     });
     it(`do nothing when node is above 8.*`, function () {
-      checkNodeCompatibility('9.10.1');
+      checkNodeCompatibility('10.1.1');
     });
   });
 });

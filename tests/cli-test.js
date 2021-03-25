@@ -162,6 +162,16 @@ describe('CLI', function () {
         `Private instances of github needs token. To generate token follow https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token`,
       );
     });
+
+    it('error out with clear message when url is not reachable', async function () {
+      const child = await runSupportedCmd([
+        `https://test.githubprivate.com/stefanpenner/supported`,
+        '-t',
+        'abac',
+      ]);
+      expect(child.exitCode).to.eql(1);
+      expect(child.stderr).to.includes(`Couldn't reach server, please check the URL provided`);
+    });
   });
 
   describe('--verbose', function () {

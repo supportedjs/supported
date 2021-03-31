@@ -105,7 +105,7 @@ describe('util test', function () {
   describe('checkNodeCompatibility', function () {
     it(`throws error when node version is equal to 8.*`, function () {
       let regex = new RegExp(
-        `Node v8.10.1 found, current node version must satisfiy the Node v10.* || 12.* || 14.* || >= 15. Please updated the node version.`,
+        `Node v8.10.1 found, which does not satisfy the required version range: v10.* || 12.* || 14.* || >= 15. Please updated the node version.`,
       );
       expect(() => {
         checkNodeCompatibility('8.10.1');
@@ -113,7 +113,7 @@ describe('util test', function () {
     });
     it(`throws error when node version is below 8.*`, function () {
       let regex = new RegExp(
-        `Node v7.10.1 found, current node version must satisfiy the Node v10.* || 12.* || 14.* || >= 15. Please updated the node version.`,
+        `Node v7.10.1 found, which does not satisfy the required version range: v10.* || 12.* || 14.* || >= 15. Please updated the node version.`,
       );
       expect(() => {
         checkNodeCompatibility('7.10.1');

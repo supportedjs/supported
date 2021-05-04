@@ -2,7 +2,7 @@
 
 const chai = require('chai');
 const { expect } = chai;
-const { sortLibraries, checkNodeCompatibility } = require('../lib/util');
+const { sortLibraries, checkNodeCompatibility, handleInput } = require('../lib/util');
 
 chai.use(require('chai-datetime'));
 
@@ -151,6 +151,25 @@ describe('util test', function () {
       expect(processDate('1 day')).to.equalDate(tomorrow);
       expect(processDate('-1 day')).to.equalDate(yesterday);
       expect(processDate('Sept 16, 1986')).to.equalDate(new Date('Sept 16, 1986'));
+    });
+  });
+
+  describe('handleInput', function () {
+    it('return the correct set of paths for various cli inputs', function () {
+      expect(handleInput([], `${__dirname}/../`)).to.eql(['.']);
+      expect(handleInput([], `${__dirname}/`)).to.eql([]);
+      expect(handleInput([`${__dirname}/fixtures/supported-project/`], `${__dirname}/../`)).to.eql([
+        `${__dirname}/fixtures/supported-project/`,
+      ]);
+      expect(
+        handleInput(
+          [`${__dirname}/fixtures/supported-project/`, `${__dirname}/fixtures/unsupported-project`],
+          `${__dirname}/../`,
+        ),
+      ).to.eql([
+        `${__dirname}/fixtures/supported-project/`,
+        `${__dirname}/fixtures/unsupported-project`,
+      ]);
     });
   });
 });

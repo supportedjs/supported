@@ -16,7 +16,7 @@ Assertion.addMethod('exitGracefully', function () {
   );
 });
 
-async function runSupportedCmd(inputArgs) {
+async function runSupportedCmd(inputArgs, options = {}) {
   let args = [await getBinPath()];
 
   if (Array.isArray(inputArgs)) {
@@ -26,6 +26,8 @@ async function runSupportedCmd(inputArgs) {
   return execa('node', args, {
     shell: true,
     reject: false,
+    cwd: `${__dirname}/../`,
+    ...options,
   });
 }
 
@@ -42,12 +44,32 @@ describe('CLI', function () {
     registries.stopAll();
   });
 
-  it('exits with status code 1 if no arguments are passed', async function () {
-    const child = await runSupportedCmd();
+  it('exits with status code 0 if no arguments are passed, but cwd is in a valid project', async function () {
+    const child = await runSupportedCmd([], {
+      cwd: `${__dirname}/fixtures/supported-project`,
+    });
+
+    expect(child).to.exitGracefully();
+    expect(child.stderr).to.includes('✓ SemVer Policy');
+    expect(child.stdout).to.includes('Congrats!');
+  });
+
+  it('exits with status code 1 if no arguments are passed, but cwd is NOT in a valid project (invalid project-folder)', async function () {
+    const child = await runSupportedCmd([], {
+      cwd: `${__dirname}/fixtures/invalid-project-folder`,
+    });
 
     expect(child).to.not.exitGracefully();
-    expect(child.stderr).to.eql('');
-    expect(child.stdout).to.match(/supported/);
+    expect(child.stderr).to.not.includes('✓ SemVer Policy');
+    expect(child.stdout).to.includes('supported');
+  });
+
+  it('exits with status code 1 if no arguments are passed, but cwd is NOT in a valid project (package.json is a folder)', async function () {
+    const child = await runSupportedCmd([], {
+      cwd: `${__dirname}/fixtures/package-is-folder`,
+    });
+
+    expect(child).to.not.exitGracefully();
   });
 
   describe('default output', function () {

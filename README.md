@@ -14,9 +14,17 @@ The `--date` flag enables a form of limited time travel, and attempts to run
 the tools internal date calculations based on a specified date, rather then the
 current date.
 
+Some examples:
+
 * `--date="March 31, 2011"` runs the tool as if it was March 31, 2021
 * `--date="-3 weeks"` runs the tool as if it was 3 weeks ago
 * `--date="3 weeks"` runs the tool as if it was 3 weeks from now
+
+The date micro-syntax is described as:
+
+Anything that `new Date(input)` parses, or if that fails it will assume to be a
+relative duration starting today parsed by
+[parse-duration@^1.0.0's own micro-syntax](https://github.com/jkroso/parse-duration#available-unit-types-are).
 
 ### As a node module
 

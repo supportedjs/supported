@@ -1,9 +1,6 @@
 
 # supported [![CI](https://github.com/stefanpenner/supported/workflows/CI/badge.svg)](https://github.com/stefanpenner/supported/actions/workflows/ci.yml)
 
-
-
-
 ## Usage
 
 
@@ -11,6 +8,16 @@
 npx supported <path/to/node_module>
 npx supported <[array/of/node_modules]>
 ```
+
+#### Optional Flags
+
+The `--date` flag enables a form of limited time travel, and attempts to run
+the tools internal date calculations based on a specified date, rather then the
+current date.
+
+* `--date="March 31, 2011"` runs the tool as if it was March 31, 2021
+* `--date="-3 weeks"` runs the tool as if it was 3 weeks agoi
+* `--date="3 weeks"` runs the tool as if it was 3 weeks from now
 
 ### As a node module
 

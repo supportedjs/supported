@@ -23,7 +23,8 @@
   },
   "volta": {
     "node": "15.3.0",
-    "yarn": "1.22.10"
+    "yarn": "1.22.10",
+    "npm": "7.11.2"
   },
   "engines": {
     "node": "10.* || 12.* || 14.* || >= 15"
@@ -59,6 +60,7 @@
     "npm-registry-fetch": "^9.0.0",
     "ora": "^5.1.0",
     "p-queue": "^6.6.2",
+    "parse-duration": "^1.0.0",
     "parse-package-name": "^0.1.0",
     "promise.allsettled": "^1.0.4",
     "resolve-path": "^1.4.0",

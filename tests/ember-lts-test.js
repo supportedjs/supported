@@ -250,7 +250,8 @@ describe('ember LTS Policy based policy', function () {
     });
 
     it('resolved version is LTS latest', function () {
-      expect(isLtsOrLatest({}, '3.20.0')).to.eql({
+      let currentDate = new Date('March 31, 2021');
+      expect(isLtsOrLatest({}, '3.20.0', currentDate)).to.eql({
         isSupported: true,
         latestVersion: '>=3.20.*',
         resolvedVersion: '3.20.0',
@@ -258,11 +259,15 @@ describe('ember LTS Policy based policy', function () {
     });
 
     it('resolved version is Latest', function () {
-      expect(isLtsOrLatest({}, '3.25.0')).to.eql({
-        isSupported: true,
-        latestVersion: '>=3.20.*',
-        resolvedVersion: '3.25.0',
-      });
+      let currentDate = new Date('March 31, 2021');
+      expect(isLtsOrLatest({}, '3.25.0', currentDate)).to.eql(
+        {
+          isSupported: true,
+          latestVersion: '>=3.20.*',
+          resolvedVersion: '3.25.0',
+        },
+        currentDate,
+      );
     });
 
     it('throws error when LTS file is not updated', function () {

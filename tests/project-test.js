@@ -83,7 +83,7 @@ describe('project-1', function () {
         delete pkg['deprecationDate'];
       }
     });
-    expect(spinner.text).to.includes('Total Dependecies');
+    expect(spinner.text).to.includes('Total Dependencies');
     expect(result).to.eql({
       projectName: 'unsupported-project',
       isInSupportWindow: false,

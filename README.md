@@ -3,7 +3,6 @@
 
 ## Usage
 
-
 ```sh
 npx supported <path/to/node_module>
 npx supported <[array/of/node_modules]>
@@ -16,7 +15,7 @@ the tools internal date calculations based on a specified date, rather then the
 current date.
 
 * `--date="March 31, 2011"` runs the tool as if it was March 31, 2021
-* `--date="-3 weeks"` runs the tool as if it was 3 weeks agoi
+* `--date="-3 weeks"` runs the tool as if it was 3 weeks ago
 * `--date="3 weeks"` runs the tool as if it was 3 weeks from now
 
 ### As a node module

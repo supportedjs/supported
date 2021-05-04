@@ -73,7 +73,7 @@ describe('CLI', function () {
     it('works against a version expires soon project', async function () {
       const child = await runSupportedCmd([
         `${__dirname}/fixtures/version-expire-soon`,
-        '--date="March 31, 2021"',
+        '--current-date="March 31, 2021"',
       ]);
 
       expect(child).to.exitGracefully();
@@ -145,7 +145,7 @@ describe('CLI', function () {
       const child = await runSupportedCmd([
         `${__dirname}/fixtures/version-expire-soon`,
         '--verbose',
-        '--date="March 31, 2021"',
+        '--current-date="March 31, 2021"',
       ]);
 
       expect(child).to.exitGracefully();
@@ -187,7 +187,7 @@ describe('CLI', function () {
       const child = await runSupportedCmd([
         `${__dirname}/fixtures/version-expire-soon`,
         '--expiring',
-        '--date="March 31, 2021"',
+        '--current-date="March 31, 2021"',
       ]);
 
       expect(child).to.exitGracefully();
@@ -207,7 +207,7 @@ describe('CLI', function () {
       const child = await runSupportedCmd([
         `${__dirname}/fixtures/unsupported-project`,
         '--csv',
-        '--date="March 31, 2021"',
+        '--current-date="March 31, 2021"',
       ]);
 
       expect(child).to.not.exitGracefully();

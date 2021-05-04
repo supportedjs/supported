@@ -1,17 +1,28 @@
 'use strict';
 
-const { expect } = require('chai');
+const { expect, Assertion } = require('chai');
 const execa = require('execa');
 const { getBinPath } = require('get-bin-path');
 const fs = require('fs');
 const registries = require('./test-helpers/registries');
 const { join } = require('path');
 
+Assertion.addMethod('exitGracefully', function () {
+  const { exitCode } = this._obj;
+  this.assert(
+    exitCode === 0,
+    `expected command to exit gracefully, but got: '${exitCode}'\noutput: \n\n #{act}`,
+    `expected command to not exit gracefully, but got: '${exitCode}'\noutput: \n\n #{act}`,
+  );
+});
+
 async function runSupportedCmd(inputArgs) {
   let args = [await getBinPath()];
-  if (inputArgs && inputArgs.length) {
-    args.push.apply(args, inputArgs);
+
+  if (Array.isArray(inputArgs)) {
+    args = [...args, ...inputArgs];
   }
+
   return execa('node', args, {
     shell: true,
     reject: false,
@@ -33,7 +44,8 @@ describe('CLI', function () {
 
   it('exits with status code 1 if no arguments are passed', async function () {
     const child = await runSupportedCmd();
-    expect(child.exitCode).to.eql(1);
+
+    expect(child).to.not.exitGracefully();
     expect(child.stderr).to.eql('');
     expect(child.stdout).to.match(/supported/);
   });
@@ -41,14 +53,16 @@ describe('CLI', function () {
   describe('default output', function () {
     it('works against a fully supported project', async function () {
       const child = await runSupportedCmd([`${__dirname}/fixtures/supported-project`]);
-      expect(child.exitCode).to.eql(0);
+
+      expect(child).to.exitGracefully();
       expect(child.stderr).to.includes('✓ SemVer Policy');
       expect(child.stdout).to.includes('Congrats!');
     });
 
     it('works against a unsupported project', async function () {
       const child = await runSupportedCmd([`${__dirname}/fixtures/unsupported-project`]);
-      expect(child.exitCode).to.eql(1);
+
+      expect(child).to.not.exitGracefully();
       expect(child.stderr).to.includes('✗ SemVer Policy');
       expect(child.stdout).to.includes('Support Policy Problem Detected!');
       expect(child.stdout).to.includes(
@@ -57,8 +71,12 @@ describe('CLI', function () {
     });
 
     it('works against a version expires soon project', async function () {
-      const child = await runSupportedCmd([`${__dirname}/fixtures/version-expire-soon`]);
-      expect(child.exitCode).to.eql(0);
+      const child = await runSupportedCmd([
+        `${__dirname}/fixtures/version-expire-soon`,
+        '--current-date="March 31, 2021"',
+      ]);
+
+      expect(child).to.exitGracefully();
       expect(child.stderr).to.includes('⚠ SemVer Policy');
       expect(child.stdout).to.includes('⚠ Warning!');
       expect(child.stdout).to.includes(
@@ -71,7 +89,8 @@ describe('CLI', function () {
 
     it('works against a no node version project', async function () {
       const child = await runSupportedCmd([`${__dirname}/fixtures/no-node-version`]);
-      expect(child.exitCode).to.eql(0);
+
+      expect(child).to.exitGracefully();
       expect(child.stderr).to.includes('⚠ node LTS Policy');
       expect(child.stdout).to.includes('⚠ Warning!');
       expect(child.stdout).to.includes(
@@ -84,7 +103,8 @@ describe('CLI', function () {
         `${__dirname}/fixtures/supported-project`,
         `${__dirname}/fixtures/unsupported-project`,
       ]);
-      expect(child.exitCode).to.eql(1);
+
+      expect(child).to.not.exitGracefully();
       expect(child.stderr).to.includes('✓ supported-project');
       expect(child.stderr).to.includes('✗ unsupported-project');
       expect(child.stdout).to.includes('Support Policy Problem Detected!');
@@ -99,7 +119,8 @@ describe('CLI', function () {
         `${__dirname}/fixtures/unsupported-project`,
         '--verbose',
       ]);
-      expect(child.exitCode).to.eql(1);
+
+      expect(child).to.not.exitGracefully();
       expect(child.stderr).to.includes('✗ SemVer Policy');
       expect(child.stdout).to.includes('Support Policy Problem Detected!');
       expect(child.stdout).to.includes(
@@ -112,7 +133,8 @@ describe('CLI', function () {
 
     it('works against a supported project', async function () {
       const child = await runSupportedCmd([`${__dirname}/fixtures/supported-project`, '-d']);
-      expect(child.exitCode).to.eql(0);
+
+      expect(child).to.exitGracefully();
       expect(child.stderr).to.includes('✓ SemVer Policy');
       expect(child.stdout).to.includes('Congrats!');
       expect(child.stdout).to.includes('es6-promise');
@@ -123,8 +145,10 @@ describe('CLI', function () {
       const child = await runSupportedCmd([
         `${__dirname}/fixtures/version-expire-soon`,
         '--verbose',
+        '--current-date="March 31, 2021"',
       ]);
-      expect(child.exitCode).to.eql(0);
+
+      expect(child).to.exitGracefully();
       expect(child.stderr).to.includes('⚠ SemVer Policy');
       expect(child.stdout).to.includes('⚠ Warning!');
       expect(child.stdout).to.includes(
@@ -140,7 +164,8 @@ describe('CLI', function () {
         `${__dirname}/fixtures/unsupported-project`,
         '--unsupported',
       ]);
-      expect(child.exitCode).to.eql(1);
+
+      expect(child).to.not.exitGracefully();
       expect(child.stderr).to.includes('✗ SemVer Policy');
       expect(child.stdout).to.includes('Support Policy Problem Detected!');
       expect(child.stdout).to.includes('es6-promise      3.3.1     4.2.8   major');
@@ -151,7 +176,8 @@ describe('CLI', function () {
         `${__dirname}/fixtures/unsupported-project`,
         '--supported',
       ]);
-      expect(child.exitCode).to.eql(1);
+
+      expect(child).to.not.exitGracefully();
       expect(child.stderr).to.includes('✗ SemVer Policy');
       expect(child.stdout).to.includes('Support Policy Problem Detected!');
       expect(child.stdout).to.includes('@eslint-ast/eslint-plugin-graphql  1.0.4     1.0.4');
@@ -161,21 +187,30 @@ describe('CLI', function () {
       const child = await runSupportedCmd([
         `${__dirname}/fixtures/version-expire-soon`,
         '--expiring',
+        '--current-date="March 31, 2021"',
       ]);
-      expect(child.exitCode).to.eql(0);
+
+      expect(child).to.exitGracefully();
       expect(child.stderr).to.includes('- working');
       expect(child.stdout).to.includes('⚠ Warning!');
       expect(child.stdout).to.includes('@stefanpenner/b  1.0.3     2.0.0   major');
     });
   });
+
   describe('--csv', function () {
     afterEach(function () {
       let filePath = `${__dirname}/fixtures/unsupported-project/unsupported-project-support-audit.csv`;
       if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
     });
+
     it('works against a unsupported project', async function () {
-      const child = await runSupportedCmd([`${__dirname}/fixtures/unsupported-project`, '--csv']);
-      expect(child.exitCode).to.eql(1);
+      const child = await runSupportedCmd([
+        `${__dirname}/fixtures/unsupported-project`,
+        '--csv',
+        '--current-date="March 31, 2021"',
+      ]);
+
+      expect(child).to.not.exitGracefully();
       expect(child.stderr).to.includes('✗ SemVer Policy');
       expect(child.stdout).to.includes(
         `Report for unsupported-project created at ${join(
@@ -185,10 +220,12 @@ describe('CLI', function () {
       );
     });
   });
+
   describe('--json', function () {
     it('works against a fully supported project', async function () {
       const child = await runSupportedCmd([`${__dirname}/fixtures/supported-project`, '--json']);
-      expect(child.exitCode).to.eql(0);
+
+      expect(child).to.exitGracefully();
       expect(child.stderr).to.includes('✓ SemVer Policy');
       let result = JSON.parse(child.stdout);
       expect(result).to.eql({
@@ -239,7 +276,8 @@ describe('CLI', function () {
 
     it('works against a unsupported project', async function () {
       const child = await runSupportedCmd([`${__dirname}/fixtures/unsupported-project`, '--json']);
-      expect(child.exitCode).to.eql(1);
+
+      expect(child).to.not.exitGracefully();
       expect(child.stderr).to.includes('✗ SemVer Policy');
       let jsonOut = JSON.parse(child.stdout);
       // purge out the duration from node entry from out

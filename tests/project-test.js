@@ -83,7 +83,7 @@ describe('project-1', function () {
         delete pkg['deprecationDate'];
       }
     });
-    expect(spinner.text).to.includes('Total Dependecies');
+    expect(spinner.text).to.includes('Total Dependencies');
     expect(result).to.eql({
       projectName: 'unsupported-project',
       isInSupportWindow: false,
@@ -177,10 +177,15 @@ describe('project-1', function () {
 
   it('reports node version and other dependencies expires soon in the project', async function () {
     const { dependenciesToCheck, pkg } = await setupProject(`${root}/version-expire-soon`);
-    const result = await isInSupportWindow(dependenciesToCheck, pkg.name, {
-      policies: [],
-      progressLogger: new ProgressLogger(),
-    });
+    const result = await isInSupportWindow(
+      dependenciesToCheck,
+      pkg.name,
+      {
+        policies: [],
+        progressLogger: new ProgressLogger(),
+      },
+      new Date('March 31, 2021'),
+    );
     // purge out the duration from node entry from out
     // because we use `new Date` to calculate the duration
     result.supportChecks.forEach(pkg => {

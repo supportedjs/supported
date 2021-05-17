@@ -2,7 +2,13 @@
 
 const chai = require('chai');
 const { expect } = chai;
-const { sortLibraries, checkNodeCompatibility, handleInput, getFetchUrl, inputHasGithubPrivate } = require('../lib/util');
+const {
+  sortLibraries,
+  checkNodeCompatibility,
+  handleInput,
+  getFetchUrl,
+  inputHasGithubPrivate,
+} = require('../lib/util');
 
 chai.use(require('chai-datetime'));
 

@@ -9,7 +9,8 @@ We will not require a configuration file, and will default to 4, 2, and 1 quarte
   "primary": {
     "upgradeBudget": {
       "major": 4,
-      "minor": 4
+      "minor": 4,
+      "patch": 2
     }
   }
 }

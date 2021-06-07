@@ -38,7 +38,7 @@ interface Policy {
   // if all versions of dependencies were released on this date if the actual
   // release date is before the date. Users will be warned of the effective
   // deprecation date whenever the support policy tool is run.
-  globalEffectiveReleaseDate?: DateString;
+  effectiveReleaseDate?: DateString;
 }
 
 interface PrimaryPolicy extends Policy {
@@ -64,8 +64,8 @@ We should evaluate the config file up front and throw if there are conflicts. We
 * The same package cannot be in multiple `CustomPolicy` configs
 * A `CustomPolicy` cannot list a package ignored by the primary policy
 
-### `globalEffectiveReleaseDate`
-This configuration is designed to be used when rolling out a support policy. If you were to simply turn on a support policy, for example on `July 1st 2021`, and package `foo` had released version `2.0.0` on `August 1st 2020`, than consumers of `foo` still on `foo@1.x` would only have 1 quarter to upgrade `foo` from `1.x` to `2.x`. In this scenario, you would want to set `globalEffectiveReleaseDate` to `7/1/2021`, which will cause the support policy tool to act as if all dependency versions were released on that that date, meaning that consumers would not need to upgrade to `2.x` until `10/1/2022`, giving them 4 full quarters to upgrade to a major version, which is the intent of the policy.
+### `effectiveReleaseDate`
+This configuration is designed to be used when rolling out a support policy. If you were to simply turn on a support policy, for example on `July 1st 2021`, and package `foo` had released version `2.0.0` on `August 1st 2020`, than consumers of `foo` still on `foo@1.x` would only have 1 quarter to upgrade `foo` from `1.x` to `2.x`. In this scenario, you would want to set `effectiveReleaseDate` to `7/1/2021`, which will cause the support policy tool to act as if all dependency versions were released on that that date, meaning that consumers would not need to upgrade to `2.x` until `10/1/2022`, giving them 4 full quarters to upgrade to a major version, which is the intent of the policy.
 
 ## Examples
 

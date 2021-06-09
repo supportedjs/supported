@@ -180,7 +180,7 @@ describe('CLI', function () {
     });
   });
 
-  describe(`--ignore-dependencies`, function() {
+  describe(`--ignore-dependencies`, function () {
     it('check console log', async function () {
       const child = await runSupportedCmd([
         `${__dirname}/fixtures/supported-project`,

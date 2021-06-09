@@ -180,6 +180,38 @@ describe('CLI', function () {
     });
   });
 
+  describe(`--ignore-dependencies`, function() {
+    it('check console log', async function () {
+      const child = await runSupportedCmd([
+        `${__dirname}/fixtures/supported-project`,
+        `--ignored-dependencies @stefanpenner/a`,
+        `-i rsvp`,
+      ]);
+
+      expect(child).to.exitGracefully();
+      expect(child.stderr).to.includes(`Ignored: 2`);
+      expect(child.stderr).to.includes('✓ SemVer Policy');
+      expect(child.stdout).to.includes('Congrats!');
+    });
+
+    it('check if verbose do not incude the entry', async function () {
+      const child = await runSupportedCmd([
+        `${__dirname}/fixtures/supported-project`,
+        `--ignored-dependencies @stefanpenner/a`,
+        `-i rsvp`,
+        '--verbose',
+      ]);
+
+      expect(child).to.exitGracefully();
+      expect(child.stderr).to.includes(`Ignored: 2`);
+      expect(child.stderr).to.includes('✓ SemVer Policy');
+      expect(child.stdout).to.includes('Congrats!');
+      expect(child.stdout).not.include(
+        '@stefanpenner/a                    1.0.3                          2.0.0   major',
+      );
+    });
+  });
+
   describe('Filter options like --unsupported/expiring/supported', function () {
     it('works against a unsupported project with --unsupported option', async function () {
       const child = await runSupportedCmd([

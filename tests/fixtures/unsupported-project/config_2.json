@@ -1,0 +1,12 @@
+{
+  "custom": [
+    {
+      "dependencies": ["es6-promise", "@stefanpenner/a", "rsvp"],
+      "upgradeBudget": {
+        "major": 24,
+        "minor": 4,
+        "patch": 4
+      }
+    }
+  ]
+}

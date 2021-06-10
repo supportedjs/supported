@@ -22,7 +22,7 @@ describe('project-1', function () {
   it('reports supported if the project is within the support window', async function () {
     const { dependenciesToCheck, pkg } = await setupProject(`${root}/supported-project`);
     const result = await isInSupportWindow(dependenciesToCheck, pkg.name, {
-      policies: [],
+      policies: {},
       progressLogger: new ProgressLogger(),
     });
 
@@ -70,7 +70,7 @@ describe('project-1', function () {
     };
     const { dependenciesToCheck, pkg } = await setupProject(`${root}/unsupported-project`);
     const result = await isInSupportWindow(dependenciesToCheck, pkg.name, {
-      policies: [],
+      policies: {},
       progressLogger: new ProgressLogger(spinner),
     });
     // purge out the duration from node entry from out
@@ -90,7 +90,7 @@ describe('project-1', function () {
       supportChecks: [
         {
           isSupported: false,
-          message: 'violated: major version must be within 1 year of latest',
+          message: 'violated: major version must be within 12 months of latest',
           type: 'major',
           name: 'es6-promise',
           resolvedVersion: '3.3.1',
@@ -99,14 +99,14 @@ describe('project-1', function () {
         {
           isSupported: false,
           latestVersion: '2.0.0',
-          message: 'violated: major version must be within 1 year of latest',
+          message: 'violated: major version must be within 12 months of latest',
           name: '@stefanpenner/a',
           resolvedVersion: '1.0.3',
           type: 'major',
         },
         {
           isSupported: false,
-          message: 'violated: major version must be within 1 year of latest',
+          message: 'violated: major version must be within 12 months of latest',
           type: 'major',
           name: 'rsvp',
           resolvedVersion: '3.6.2',
@@ -132,7 +132,7 @@ describe('project-1', function () {
   it('reports no node version mentioned in the project', async function () {
     const { dependenciesToCheck, pkg } = await setupProject(`${root}/no-node-version`);
     const result = await isInSupportWindow(dependenciesToCheck, pkg.name, {
-      policies: [],
+      policies: {},
       progressLogger: new ProgressLogger(),
     });
 
@@ -181,7 +181,7 @@ describe('project-1', function () {
       dependenciesToCheck,
       pkg.name,
       {
-        policies: [],
+        policies: {},
         progressLogger: new ProgressLogger(),
       },
       new Date('March 31, 2021'),

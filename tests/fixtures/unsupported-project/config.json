@@ -1,0 +1,8 @@
+{
+  "custom": [
+    {
+      "dependencies": ["es6-promise", "@stefanpenner/a", "rsvp"],
+      "effectiveReleaseDate": "Dec 10 2022"
+    }
+  ]
+}

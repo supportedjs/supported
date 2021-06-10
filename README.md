@@ -27,7 +27,23 @@ relative duration starting today parsed by
 [parse-duration@^1.0.0's own micro-syntax](https://github.com/jkroso/parse-duration#available-unit-types-are).
 
 ##### --config-file
-The `--config-file`(`-f`) enables to provide a path to the config file with the configurations mentioned [here](https://github.com/stefanpenner/supported/pull/36).
+The `--config-file`(`-f`) enables to provide a path to the config file with the configurations mentioned [here](./CONFIGURATION.md).
+```
+// config.json
+{
+  "custom": [
+    {
+      "dependencies": ["es6-promise", "rsvp"],
+      "effectiveReleaseDate": "Dec 10 2022",
+      "upgradeBudget": {
+        "major": 4,
+        "minor": 4,
+        "patch": 4
+      }
+    }
+  ]
+}
+```
 ### As a node module
 
 

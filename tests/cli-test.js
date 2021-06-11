@@ -365,7 +365,7 @@ describe('CLI', function () {
     });
   });
   describe('--config-file', function () {
-    it('make unsopported to supported project using effectiveReleaseDate', async function () {
+    it('make unsupported to supported project using effectiveReleaseDate', async function () {
       const child = await runSupportedCmd([
         `${__dirname}/fixtures/unsupported-project`,
         `-f ${__dirname}/fixtures/unsupported-project/config.json`,
@@ -374,7 +374,7 @@ describe('CLI', function () {
       expect(child).to.exitGracefully();
       expect(child.stderr).to.includes('✓ SemVer Policy');
     });
-    it('make unsopported to supported project using upgradeBudget', async function () {
+    it('make unsupported to supported project using upgradeBudget', async function () {
       const child = await runSupportedCmd([
         `${__dirname}/fixtures/unsupported-project`,
         `--config-file ${__dirname}/fixtures/unsupported-project/config_2.json`,

@@ -5,7 +5,7 @@ chai.use(require('chai-as-promised'));
 const expect = chai.expect;
 const isInSupportWindow = require('../lib/project');
 const setupProject = require('../lib/project/setup-project');
-const { ProgressLogger } = require('../lib/util');
+const { ProgressLogger, DEFAULT_PRIMARY_POLICY } = require('../lib/util');
 const registries = require('./test-helpers/registries');
 
 describe('project-1', function () {
@@ -22,7 +22,9 @@ describe('project-1', function () {
   it('reports supported if the project is within the support window', async function () {
     const { dependenciesToCheck, pkg } = await setupProject(`${root}/supported-project`);
     const result = await isInSupportWindow(dependenciesToCheck, pkg.name, {
-      policies: {},
+      policies: {
+        primary: DEFAULT_PRIMARY_POLICY,
+      },
       progressLogger: new ProgressLogger(),
     });
 
@@ -70,7 +72,9 @@ describe('project-1', function () {
     };
     const { dependenciesToCheck, pkg } = await setupProject(`${root}/unsupported-project`);
     const result = await isInSupportWindow(dependenciesToCheck, pkg.name, {
-      policies: {},
+      policies: {
+        primary: DEFAULT_PRIMARY_POLICY,
+      },
       progressLogger: new ProgressLogger(spinner),
     });
     // purge out the duration from node entry from out
@@ -132,7 +136,9 @@ describe('project-1', function () {
   it('reports no node version mentioned in the project', async function () {
     const { dependenciesToCheck, pkg } = await setupProject(`${root}/no-node-version`);
     const result = await isInSupportWindow(dependenciesToCheck, pkg.name, {
-      policies: {},
+      policies: {
+        primary: DEFAULT_PRIMARY_POLICY,
+      },
       progressLogger: new ProgressLogger(),
     });
 
@@ -181,7 +187,9 @@ describe('project-1', function () {
       dependenciesToCheck,
       pkg.name,
       {
-        policies: {},
+        policies: {
+          primary: DEFAULT_PRIMARY_POLICY,
+        },
         progressLogger: new ProgressLogger(),
       },
       new Date('March 31, 2021'),

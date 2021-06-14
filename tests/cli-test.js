@@ -384,15 +384,16 @@ describe('CLI', function () {
       expect(child.stderr).to.includes('✓ SemVer Policy');
     });
 
-    it('make unsupported to supported project using effectiveReleaseDate', async function () {
-      let child;
+    it('alert user when there is conflicting custom config', async function () {
       try {
-        child = await runSupportedCmd([
+        await runSupportedCmd([
           `${__dirname}/fixtures/unsupported-project`,
           `-f ${__dirname}/fixtures/unsupported-project/config-conflict.json`,
         ]);
-      } catch(e) {
-        expect(e).includes(`The dependency es6-promise was found multiple times in the config file. Please refer Rules section in configuration.md`);
+      } catch (e) {
+        expect(e).includes(
+          `The dependency es6-promise was found multiple times in the config file. Please refer Rules section in configuration.md`,
+        );
       }
     });
   });

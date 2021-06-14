@@ -1,0 +1,16 @@
+{
+  "custom": [
+    {
+      "dependencies": ["es6-promise", "@stefanpenner/a", "rsvp"],
+      "upgradeBudget": {
+        "major": 24,
+        "minor": 4,
+        "patch": 4
+      }
+    },
+    {
+      "dependencies": ["es6-promise"],
+      "effectiveReleaseDate": "Dec 10 2022"
+    }
+  ]
+}

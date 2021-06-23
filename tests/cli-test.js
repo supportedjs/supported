@@ -210,6 +210,16 @@ describe('CLI', function () {
         '@stefanpenner/a                    1.0.3                          2.0.0   major',
       );
     });
+
+    it('make unsupported to supported project using ignoreDependency config', async function () {
+      const child = await runSupportedCmd([
+        `${__dirname}/fixtures/unsupported-project`,
+        `-f ${__dirname}/fixtures/unsupported-project/config-ignore-dep.json`,
+      ]);
+
+      expect(child).to.exitGracefully();
+      expect(child.stderr).to.includes('✓ SemVer Policy');
+    });
   });
 
   describe('Filter options like --unsupported/expiring/supported', function () {
@@ -396,6 +406,7 @@ describe('CLI', function () {
       });
     });
   });
+
   describe('--config-file', function () {
     it('make unsupported to supported project using effectiveReleaseDate', async function () {
       const child = await runSupportedCmd([
@@ -406,6 +417,7 @@ describe('CLI', function () {
       expect(child).to.exitGracefully();
       expect(child.stderr).to.includes('✓ SemVer Policy');
     });
+
     it('make unsupported to supported project using upgradeBudget', async function () {
       const child = await runSupportedCmd([
         `${__dirname}/fixtures/unsupported-project`,
@@ -417,16 +429,24 @@ describe('CLI', function () {
     });
 
     it('alert user when there is conflicting custom config', async function () {
-      try {
-        await runSupportedCmd([
-          `${__dirname}/fixtures/unsupported-project`,
-          `-f ${__dirname}/fixtures/unsupported-project/config-conflict.json`,
-        ]);
-      } catch (e) {
-        expect(e).includes(
-          `The dependency es6-promise was found multiple times in the config file. Please refer Rules section in configuration.md`,
-        );
-      }
+      const child = await runSupportedCmd([
+        `${__dirname}/fixtures/unsupported-project`,
+        `-f ${__dirname}/fixtures/unsupported-project/config-conflict.json`,
+      ]);
+      expect(child.stderr).includes(
+        `The dependency es6-promise was found multiple times in the config file. Please refer Rules section in configuration.md`,
+      );
+    });
+
+    it('alert user when there is conflict in custom config and ignoredDependency', async function () {
+      const child = await runSupportedCmd([
+        `${__dirname}/fixtures/unsupported-project`,
+        `-f ${__dirname}/fixtures/unsupported-project/config.json`,
+        `-i es6-promise`,
+      ]);
+      expect(child.stderr).includes(
+        `The dependency es6-promise was found in ignoredDependencies and custom configuration. Please refer Rules section in configuration.md`,
+      );
     });
   });
 });

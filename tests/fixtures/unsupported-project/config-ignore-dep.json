@@ -1,0 +1,5 @@
+{
+  "primary": {
+    "ignoredDependencies": ["es6-promise", "@stefanpenner/a", "rsvp"]
+  }
+}

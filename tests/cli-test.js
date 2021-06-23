@@ -429,6 +429,7 @@ describe('CLI', function () {
         `${__dirname}/fixtures/unsupported-project`,
         `-f ${__dirname}/fixtures/unsupported-project/config-conflict.json`,
       ]);
+      expect(child).not.to.exitGracefully();
       expect(child.stderr).includes(
         `The dependency es6-promise was found multiple times in the config file. Please refer Rules section in configuration.md`,
       );
@@ -439,6 +440,7 @@ describe('CLI', function () {
         `${__dirname}/fixtures/unsupported-project`,
         `-f ${__dirname}/fixtures/unsupported-project/config-ignore-dep-conflict.json`,
       ]);
+      expect(child).not.to.exitGracefully();
       expect(child.stderr).includes(
         `The dependency es6-promise was found in ignoredDependencies and custom configuration. Please refer Rules section in configuration.md`,
       );

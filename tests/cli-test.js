@@ -181,6 +181,32 @@ describe('CLI', function () {
   });
 
   describe(`ignore-dependencies`, function () {
+    it('check console log', async function () {
+      const child = await runSupportedCmd([
+        `${__dirname}/fixtures/supported-project`,
+        `-f ${__dirname}/fixtures/supported-project/config.json`,
+      ]);
+
+      expect(child).to.exitGracefully();
+      expect(child.stderr).to.includes(`Ignored: 2`);
+      expect(child.stderr).to.includes('✓ SemVer Policy');
+      expect(child.stdout).to.includes('Congrats!');
+    });
+
+    it('check if verbose do not incude the entry', async function () {
+      const child = await runSupportedCmd([
+        `${__dirname}/fixtures/supported-project`,
+        `-f ${__dirname}/fixtures/supported-project/config.json`,
+        '--verbose',
+      ]);
+
+      expect(child).to.exitGracefully();
+      expect(child.stderr).to.includes(`Ignored: 2`);
+      expect(child.stderr).to.includes('✓ SemVer Policy');
+      expect(child.stdout).to.includes('Congrats!');
+      expect(child.stdout).not.include('@stefanpenner/a');
+    });
+
     it('make unsupported to supported project using ignoreDependency config', async function () {
       const child = await runSupportedCmd([
         `${__dirname}/fixtures/unsupported-project`,

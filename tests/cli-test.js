@@ -180,37 +180,7 @@ describe('CLI', function () {
     });
   });
 
-  describe(`--ignore-dependencies`, function () {
-    it('check console log', async function () {
-      const child = await runSupportedCmd([
-        `${__dirname}/fixtures/supported-project`,
-        `--ignored-dependencies @stefanpenner/a`,
-        `-i rsvp`,
-      ]);
-
-      expect(child).to.exitGracefully();
-      expect(child.stderr).to.includes(`Ignored: 2`);
-      expect(child.stderr).to.includes('✓ SemVer Policy');
-      expect(child.stdout).to.includes('Congrats!');
-    });
-
-    it('check if verbose do not incude the entry', async function () {
-      const child = await runSupportedCmd([
-        `${__dirname}/fixtures/supported-project`,
-        `--ignored-dependencies @stefanpenner/a`,
-        `-i rsvp`,
-        '--verbose',
-      ]);
-
-      expect(child).to.exitGracefully();
-      expect(child.stderr).to.includes(`Ignored: 2`);
-      expect(child.stderr).to.includes('✓ SemVer Policy');
-      expect(child.stdout).to.includes('Congrats!');
-      expect(child.stdout).not.include(
-        '@stefanpenner/a                    1.0.3                          2.0.0   major',
-      );
-    });
-
+  describe(`ignore-dependencies`, function () {
     it('make unsupported to supported project using ignoreDependency config', async function () {
       const child = await runSupportedCmd([
         `${__dirname}/fixtures/unsupported-project`,
@@ -219,18 +189,6 @@ describe('CLI', function () {
 
       expect(child).to.exitGracefully();
       expect(child.stderr).to.includes('✓ SemVer Policy');
-    });
-
-    it('ignoredDependencies merged from cli and config', async function () {
-      const child = await runSupportedCmd([
-        `${__dirname}/fixtures/unsupported-project`,
-        `-f ${__dirname}/fixtures/unsupported-project/config-ignore-dep.json`,
-        `-i @eslint-ast/eslint-plugin-graphql`,
-        `-i es6-promise`,
-      ]);
-
-      expect(child).to.exitGracefully();
-      expect(child.stderr).to.includes('Ignored: 4');
     });
   });
 
@@ -433,7 +391,7 @@ describe('CLI', function () {
     it('make unsupported to supported project using upgradeBudget', async function () {
       const child = await runSupportedCmd([
         `${__dirname}/fixtures/unsupported-project`,
-        `--config-file ${__dirname}/fixtures/unsupported-project/config_2.json`,
+        `--config-file ${__dirname}/fixtures/unsupported-project/config-custom-budget.json`,
       ]);
 
       expect(child).to.exitGracefully();
@@ -453,8 +411,7 @@ describe('CLI', function () {
     it('alert user when there is conflict in custom config and ignoredDependency', async function () {
       const child = await runSupportedCmd([
         `${__dirname}/fixtures/unsupported-project`,
-        `-f ${__dirname}/fixtures/unsupported-project/config.json`,
-        `-i es6-promise`,
+        `-f ${__dirname}/fixtures/unsupported-project/config-ignore-dep-conflict.json`,
       ]);
       expect(child.stderr).includes(
         `The dependency es6-promise was found in ignoredDependencies and custom configuration. Please refer Rules section in configuration.md`,

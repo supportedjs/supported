@@ -1,0 +1,11 @@
+{
+  "primary": {
+    "ignoredDependencies": ["es6-promise", "@stefanpenner/a", "rsvp"]
+  },
+  "custom": [
+    {
+      "dependencies": ["es6-promise"],
+      "effectiveReleaseDate": "Dec 10 2022"
+    }
+  ]
+}

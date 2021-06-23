@@ -220,6 +220,18 @@ describe('CLI', function () {
       expect(child).to.exitGracefully();
       expect(child.stderr).to.includes('✓ SemVer Policy');
     });
+
+    it('ignoredDependencies merged from cli and config', async function () {
+      const child = await runSupportedCmd([
+        `${__dirname}/fixtures/unsupported-project`,
+        `-f ${__dirname}/fixtures/unsupported-project/config-ignore-dep.json`,
+        `-i @eslint-ast/eslint-plugin-graphql`,
+        `-i es6-promise`,
+      ]);
+
+      expect(child).to.exitGracefully();
+      expect(child.stderr).to.includes('Ignored: 4');
+    });
   });
 
   describe('Filter options like --unsupported/expiring/supported', function () {

@@ -321,7 +321,7 @@ describe('CLI', function () {
             supportChecks: [
               {
                 isSupported: false,
-                message: 'violated: major version must be within 1 year of latest',
+                message: 'violated: major version must be within 12 months of latest',
                 type: 'major',
                 name: 'es6-promise',
                 resolvedVersion: '3.3.1',
@@ -329,7 +329,7 @@ describe('CLI', function () {
               },
               {
                 isSupported: false,
-                message: 'violated: major version must be within 1 year of latest',
+                message: 'violated: major version must be within 12 months of latest',
                 type: 'major',
                 name: '@stefanpenner/a',
                 resolvedVersion: '1.0.3',
@@ -337,7 +337,7 @@ describe('CLI', function () {
               },
               {
                 isSupported: false,
-                message: 'violated: major version must be within 1 year of latest',
+                message: 'violated: major version must be within 12 months of latest',
                 type: 'major',
                 name: 'rsvp',
                 resolvedVersion: '3.6.2',
@@ -362,6 +362,39 @@ describe('CLI', function () {
           },
         ],
       });
+    });
+  });
+  describe('--config-file', function () {
+    it('make unsupported to supported project using effectiveReleaseDate', async function () {
+      const child = await runSupportedCmd([
+        `${__dirname}/fixtures/unsupported-project`,
+        `-f ${__dirname}/fixtures/unsupported-project/config.json`,
+      ]);
+
+      expect(child).to.exitGracefully();
+      expect(child.stderr).to.includes('✓ SemVer Policy');
+    });
+    it('make unsupported to supported project using upgradeBudget', async function () {
+      const child = await runSupportedCmd([
+        `${__dirname}/fixtures/unsupported-project`,
+        `--config-file ${__dirname}/fixtures/unsupported-project/config_2.json`,
+      ]);
+
+      expect(child).to.exitGracefully();
+      expect(child.stderr).to.includes('✓ SemVer Policy');
+    });
+
+    it('alert user when there is conflicting custom config', async function () {
+      try {
+        await runSupportedCmd([
+          `${__dirname}/fixtures/unsupported-project`,
+          `-f ${__dirname}/fixtures/unsupported-project/config-conflict.json`,
+        ]);
+      } catch (e) {
+        expect(e).includes(
+          `The dependency es6-promise was found multiple times in the config file. Please refer Rules section in configuration.md`,
+        );
+      }
     });
   });
 });

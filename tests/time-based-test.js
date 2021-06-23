@@ -6,8 +6,8 @@ const fs = require('fs');
 const {
   supported,
   supportedRanges,
-  findDeprecationDate,
   deprecationDates,
+  findNextVersionReleaseDate,
 } = require('../lib/time/index');
 
 chai.use(require('chai-datetime'));
@@ -29,7 +29,7 @@ describe('time based policy: 1 year for major, 6 months for minor, 3 months of p
     const result = supportedRanges(origin);
 
     expect(result.map(x => x.name)).to.eql([
-      'major version must be within 1 year of latest',
+      'major version must be within 12 months of latest',
       'minor version must be within 6 months of latest',
       'patch version must be within 3 months of latest',
     ]);
@@ -127,7 +127,7 @@ describe('time based policy: 1 year for major, 6 months for minor, 3 months of p
     result = verifyTime(result);
     expect(result).to.eql({
       isSupported: false,
-      message: 'violated: major version must be within 1 year of latest',
+      message: 'violated: major version must be within 12 months of latest',
       type: 'major',
     });
   });
@@ -183,12 +183,12 @@ describe('time based policy: 1 year for major, 6 months for minor, 3 months of p
     });
   });
 
-  describe(`findDeprecationDate`, function () {
+  describe(`findNextVersionReleaseDate`, function () {
     const info = JSON.parse(
       fs.readFileSync(`${__dirname}/fixtures/recordings/default/console-ui.json`, 'UTF8'),
     );
     it(`able to find deprecation dates`, function () {
-      let date = findDeprecationDate('2.2.3', info, 'major');
+      let date = findNextVersionReleaseDate('2.2.3', info, 'major');
       expect(date.toISOString()).to.eql('2019-01-08T16:30:15.184Z');
     });
   });

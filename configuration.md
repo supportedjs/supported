@@ -1,8 +1,11 @@
-# Proposal for configuring supported
+# Policy Configuration
 
-Teams may want to customize the parameters of a support policy. For instance, a team may want to ignore certain dependencies, i.e. not enforce upgrades for certain dependencies. They may also want different upgrade cadences for specific dependencies. Lastly, in many cases, simply turning on a support policy and expecting consumers to immediately adhere to the policy is untenable (for instance, a major upgrade with a migration may be eminently required shortly after turning on a support policy). There needs to be a way to provide a grace period for onboarding to the support policy, while still providing a warning for when dependencies must be updated.
+Teams may want to customize the parameters of a support policy. Here are some use cases:
+* Ignoring certain dependencies, i.e. not enforce upgrades for certain dependencies
+* Different upgrade cadences for specific dependencies
+* Simply turning on a support policy and expecting consumers to immediately adhere to the policy is untenable (for instance, a major upgrade with a migration may be eminently required shortly after turning on a support policy). There needs to be a way to provide a grace period for onboarding to the support policy, while still providing a warning for when dependencies must be updated.
 
-We will not require a configuration file, and will default to 4, 2, and 1 quarter upgrade periods for major, minor, and patch versions respectively.
+To this end, an optional configuration file can be set to customize behavior. Without a configuration file, we default to 4, 2, and 1 quarter upgrade periods for major, minor, and patch versions respectively.
 
 ```JSON
 {
@@ -25,14 +28,10 @@ interface UpgradeBudget {
   major: Quarters;
   minor: Quarters;
   patch: Quarters;
-
-  // Any releases that happen within this number of weeks of the end of a quarter
-  // are considered to have been released the next quarter
-  tailGracePeriod?: Weeks;
 }
 
 interface Policy {
-  // Fallback to default 4, 2, 1 budget with no tailGracePeriod.
+  // Fallback to default 4, 2, 1 budget  
   upgradeBudget?: UpgradeBudget;
   
   // Used for easing users into a new policy: the support policy will act as

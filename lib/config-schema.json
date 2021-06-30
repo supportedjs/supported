@@ -1,0 +1,32 @@
+{
+  "optionalProperties": {
+    "primary": {
+      "optionalProperties": {
+        "ignoredDependencies": { "elements": { "type": "string" }},
+        "upgradeBudget": {
+          "properties": {
+            "major": { "type": "int8" },
+            "minor": { "type": "int8" },
+            "patch": { "type": "int8" }
+          }
+        },
+        "effectiveReleaseDate": { "type": "string" }
+      }
+    },
+    "custom": { "elements": {
+      "properties": {
+        "dependencies": { "elements": { "type": "string" }}
+      },
+      "optionalProperties": {
+        "upgradeBudget": {
+          "properties": {
+            "major": { "type": "int8" },
+            "minor": { "type": "int8" },
+            "patch": { "type": "int8" }
+          }
+        },
+        "effectiveReleaseDate": { "type": "string" }
+      }
+    }}
+  }
+}

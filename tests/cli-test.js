@@ -424,6 +424,18 @@ describe('CLI', function () {
       expect(child.stderr).to.includes('✓ SemVer Policy');
     });
 
+    it('throws if passed invalid config file', async function () {
+      const child = await runSupportedCmd([
+        `${__dirname}/fixtures/unsupported-project`,
+        `--config-file ${__dirname}/fixtures/invalid-config/invalid-config.json`,
+      ]);
+
+      expect(child).to.not.exitGracefully();
+      expect(child.stderr).to.includes('notAValidField');
+      expect(child.stderr).to.includes('must NOT have additional properties');
+      expect(child.stderr).to.includes('Invalid configuration file');
+    });
+
     it('alert user when there is conflicting custom config', async function () {
       const child = await runSupportedCmd([
         `${__dirname}/fixtures/unsupported-project`,

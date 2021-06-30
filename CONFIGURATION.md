@@ -21,7 +21,6 @@ To this end, an optional configuration file can be set to customize behavior. Wi
 
 ```TypeScript
 type Quarter = number;
-type Weeks = number;
 type DateString = string // month/day/year for instance "12/25/2021"
 
 interface UpgradeBudget {
@@ -120,7 +119,3 @@ When implementing a support policy for the first time, you may want to gradually
 ```
 
 Note that this policy only looks at `foo`, `fum`, `baz`, and `bar`. All other packages are ignored with respect to the support policy.
-
-## Alternatives
-
-We could support policies that are relative to time intervals other than quarters, like months, years, or weeks.

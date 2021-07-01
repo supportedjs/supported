@@ -404,10 +404,22 @@ describe('CLI', function () {
   });
 
   describe('--config-file', function () {
-    it('make unsupported to supported project using effectiveReleaseDate', async function () {
+    it('make unsupported to supported project using effectiveReleaseDate in custom policy', async function () {
       const child = await runSupportedCmd([
         `${__dirname}/fixtures/unsupported-project`,
         `-f ${__dirname}/fixtures/unsupported-project/config.json`,
+        `--current-date="March 31, 2021"`,
+      ]);
+
+      expect(child).to.exitGracefully();
+      expect(child.stderr).to.includes('✓ SemVer Policy');
+    });
+
+    it('make unsupported to supported project using effectiveReleaseDate in primary policy', async function () {
+      const child = await runSupportedCmd([
+        `${__dirname}/fixtures/unsupported-project`,
+        `-f ${__dirname}/fixtures/unsupported-project/config-primary-release.json`,
+        `--current-date="March 31, 2021"`,
       ]);
 
       expect(child).to.exitGracefully();

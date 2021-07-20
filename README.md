@@ -1,5 +1,5 @@
 
-# supported [![CI](https://github.com/stefanpenner/supported/workflows/CI/badge.svg)](https://github.com/stefanpenner/supported/actions/workflows/ci.yml)
+# supported [![CI](https://github.com/supportedjs/supported/workflows/CI/badge.svg)](https://github.com/stefanpenner/supported/actions/workflows/ci.yml)
 
 ## Usage
 

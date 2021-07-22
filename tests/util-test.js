@@ -125,8 +125,17 @@ describe('util test', function () {
       }).throws(regex);
     });
 
-    it(`do nothing when node is above 8.*`, function () {
-      checkNodeCompatibility('10.1.1');
+    it(`throws error when version 10.* found`, function () {
+      let regex = new RegExp(
+        `Node v10.1.1 found, which does not satisfy the required version range: 12.* || 14.* || >= 15. Please updated the node version.`,
+      );
+      expect(() => {
+        checkNodeCompatibility('10.1.1');
+      }).throws(regex);
+    });
+
+    it(`do nothing when node is above 10.*`, function () {
+      checkNodeCompatibility('12.1.1');
     });
   });
 

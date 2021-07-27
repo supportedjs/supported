@@ -126,8 +126,8 @@ describe('time based policy: 1 year for major, 6 months for minor, 3 months of p
         currentDate,
       ),
     ).to.eql({
-      deprecationDate: `1987-09-16T00:00:00.000Z`,
-      duration: 1055458560185,
+      deprecationDate: '1987-09-30T23:59:59.999Z',
+      duration: 1054162560186,
       isSupported: false,
       message: 'violated: 1 year window',
       type: 'major',
@@ -220,17 +220,18 @@ describe('time based policy: 1 year for major, 6 months for minor, 3 months of p
     });
   });
   describe(`deprecationDates`, function () {
-    it(`returns deprecation dates`, function () {
+    it(`returns deprecation dates rounded to end of quarter`, function () {
       let dates = deprecationDates('2019-01-08T16:30:15.184Z');
-      expect(dates.major.toDateString()).to.eql('Wed Jan 08 2020');
-      expect(dates.minor.toDateString()).to.eql('Mon Jul 08 2019');
-      expect(dates.patch.toDateString()).to.eql('Mon Apr 08 2019');
+      expect(dates.major.toDateString(), 'major date is correct').to.eql('Tue Mar 31 2020');
+      expect(dates.minor.toDateString(), 'minor date is correct').to.eql('Mon Sep 30 2019');
+      expect(dates.patch.toDateString(), 'patch date is correct').to.eql('Sun Jun 30 2019');
     });
     it(`returns deprecation dates with padding`, function () {
-      let dates = deprecationDates('2019-03-25T16:30:15.184Z');
-      expect(dates.major.toDateString()).to.eql('Thu Jun 25 2020');
-      expect(dates.minor.toDateString()).to.eql('Wed Dec 25 2019');
-      expect(dates.patch.toDateString()).to.eql('Wed Sep 25 2019');
+      const padding = 2;
+      let dates = deprecationDates('2019-03-25T16:30:15.184Z', undefined, padding);
+      expect(dates.major.toDateString()).to.eql('Tue Jun 30 2020');
+      expect(dates.minor.toDateString()).to.eql('Tue Dec 31 2019');
+      expect(dates.patch.toDateString()).to.eql('Mon Sep 30 2019');
     });
   });
 });

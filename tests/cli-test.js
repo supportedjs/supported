@@ -95,17 +95,28 @@ describe('CLI', function () {
     it('works against a version expires soon project', async function () {
       const child = await runSupportedCmd([
         `${__dirname}/fixtures/version-expire-soon`,
-        '--current-date="March 31, 2021"',
+        '--current-date="April 10, 2021"',
       ]);
 
       expect(child).to.exitGracefully();
       expect(child.stderr).to.includes('⚠ SemVer Policy');
       expect(child.stdout).to.includes('⚠ Warning!');
       expect(child.stdout).to.includes(
-        '⚠ node LTS Policy\n      ⚠ version/version-range 10.0.0 will be deprecated within 1 qtr',
-      );
-      expect(child.stdout).to.includes(
         '⚠ SemVer Policy (1 in 4 dependencies will expire soon) \n      ⚠ major [1 dependency will expire within',
+      );
+    });
+
+    it('works against a project with node version expiring soon', async function () {
+      const child = await runSupportedCmd([
+        `${__dirname}/fixtures/node-expire-soon`,
+        '--current-date="April 1, 2021"',
+      ]);
+
+      expect(child).to.exitGracefully();
+      expect(child.stderr).to.includes('⚠ node LTS Policy');
+      expect(child.stdout).to.includes('⚠ Warning!');
+      expect(child.stdout).to.includes(
+        '⚠ node LTS Policy\n      ⚠ version/version-range 10.0.0 will be deprecated within 1 qtr',
       );
     });
 
@@ -167,7 +178,7 @@ describe('CLI', function () {
       const child = await runSupportedCmd([
         `${__dirname}/fixtures/version-expire-soon`,
         '--verbose',
-        '--current-date="March 31, 2021"',
+        '--current-date="April 10, 2021"',
       ]);
 
       expect(child).to.exitGracefully();
@@ -176,6 +187,18 @@ describe('CLI', function () {
       expect(child.stdout).to.includes(
         `@stefanpenner/b                    1.0.3     2.0.0   major`,
       );
+    });
+
+    it('works against a project with node expiring soon', async function () {
+      const child = await runSupportedCmd([
+        `${__dirname}/fixtures/node-expire-soon`,
+        '--verbose',
+        '--current-date="March 31, 2021"',
+      ]);
+
+      expect(child).to.exitGracefully();
+      expect(child.stderr).to.includes('⚠ node LTS Policy');
+      expect(child.stdout).to.includes('⚠ Warning!');
       expect(child.stdout).to.includes(`node                               10.0.0    >=14.*  LTS`);
     });
   });
@@ -247,7 +270,21 @@ describe('CLI', function () {
       const child = await runSupportedCmd([
         `${__dirname}/fixtures/version-expire-soon`,
         '--expiring',
-        '--current-date="March 31, 2021"',
+        '--current-date="April 2, 2021"',
+      ]);
+
+      expect(child).to.exitGracefully();
+      expect(child.stderr).to.includes('- working');
+      expect(child.stdout).to.includes('⚠ Warning!');
+      expect(child.stdout).to.includes('@stefanpenner/b  1.0.3     2.0.0   major');
+    });
+
+    // TODO https://github.com/supportedjs/supported/issues/53
+    xit('first day of quarter - works against a unsupported project with --expiring option', async function () {
+      const child = await runSupportedCmd([
+        `${__dirname}/fixtures/version-expire-soon`,
+        '--expiring',
+        '--current-date="April 1, 2021"',
       ]);
 
       expect(child).to.exitGracefully();

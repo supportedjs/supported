@@ -181,8 +181,70 @@ describe('project-1', function () {
     });
   });
 
-  it('reports node version and other dependencies expires soon in the project', async function () {
+  it('reports dependencies that are expiring soon in the project', async function () {
     const { dependenciesToCheck, pkg } = await setupProject(`${root}/version-expire-soon`);
+    const result = await isInSupportWindow(
+      dependenciesToCheck,
+      pkg.name,
+      {
+        policies: {
+          primary: DEFAULT_PRIMARY_POLICY,
+        },
+        progressLogger: new ProgressLogger(),
+      },
+      new Date('April 10, 2021'),
+    );
+    // purge out the duration from node entry from out
+    // because we use `new Date` to calculate the duration
+    result.supportChecks.forEach(pkg => {
+      if (pkg.duration) {
+        expect(pkg.duration).to.be.a('number');
+        expect(pkg.deprecationDate).to.be.a('string');
+        delete pkg['duration'];
+        delete pkg['deprecationDate'];
+      }
+    });
+    expect(result).to.eql({
+      projectName: 'version-expiring-soon',
+      isInSupportWindow: true,
+      supportChecks: [
+        {
+          isSupported: true,
+          type: 'major',
+          name: '@stefanpenner/b',
+          resolvedVersion: '1.0.3',
+          latestVersion: '2.0.0',
+        },
+        {
+          isSupported: true,
+          name: '@eslint-ast/eslint-plugin-graphql',
+          resolvedVersion: '1.0.4',
+          latestVersion: '1.0.4',
+        },
+        {
+          isSupported: true,
+          name: 'es6-promise',
+          resolvedVersion: '4.2.8',
+          latestVersion: '4.2.8',
+        },
+        {
+          isSupported: true,
+          latestVersion: '>=14.*',
+          name: 'node',
+          resolvedVersion: '14.0.0',
+        },
+        {
+          isSupported: true,
+          name: 'rsvp',
+          resolvedVersion: '4.8.5',
+          latestVersion: '4.8.5',
+        },
+      ],
+    });
+  });
+
+  it('reports when node is expiring soon in the project', async function () {
+    const { dependenciesToCheck, pkg } = await setupProject(`${root}/node-expire-soon`);
     const result = await isInSupportWindow(
       dependenciesToCheck,
       pkg.name,
@@ -217,16 +279,15 @@ describe('project-1', function () {
         },
         {
           isSupported: true,
-          type: 'major',
-          name: '@stefanpenner/b',
-          resolvedVersion: '1.0.3',
-          latestVersion: '2.0.0',
-        },
-        {
-          isSupported: true,
           name: '@eslint-ast/eslint-plugin-graphql',
           resolvedVersion: '1.0.4',
           latestVersion: '1.0.4',
+        },
+        {
+          isSupported: true,
+          name: '@stefanpenner/b',
+          resolvedVersion: '1.0.3',
+          latestVersion: '2.0.0',
         },
         {
           isSupported: true,

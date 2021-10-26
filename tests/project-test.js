@@ -22,12 +22,17 @@ describe('project-1', function () {
   it('reports supported if the project is within the support window', async function () {
     const { dependenciesToCheck, pkg } = await setupProject(`${root}/supported-project`);
     const currentDate = new Date(`2021-02-24T00:00:00.000Z`);
-    const result = await isInSupportWindow(dependenciesToCheck, pkg.name, {
-      policies: {
-        primary: DEFAULT_PRIMARY_POLICY,
+    const result = await isInSupportWindow(
+      dependenciesToCheck,
+      pkg.name,
+      {
+        policies: {
+          primary: DEFAULT_PRIMARY_POLICY,
+        },
+        progressLogger: new ProgressLogger(),
       },
-      progressLogger: new ProgressLogger(),
-    }, currentDate);
+      currentDate,
+    );
 
     expect(result).to.eql({
       projectName: 'supported-project',
@@ -73,12 +78,17 @@ describe('project-1', function () {
     };
     const { dependenciesToCheck, pkg } = await setupProject(`${root}/unsupported-project`);
     const currentDate = new Date(`2021-02-24T00:00:00.000Z`);
-    const result = await isInSupportWindow(dependenciesToCheck, pkg.name, {
-      policies: {
-        primary: DEFAULT_PRIMARY_POLICY,
+    const result = await isInSupportWindow(
+      dependenciesToCheck,
+      pkg.name,
+      {
+        policies: {
+          primary: DEFAULT_PRIMARY_POLICY,
+        },
+        progressLogger: new ProgressLogger(spinner),
       },
-      progressLogger: new ProgressLogger(spinner),
-    }, currentDate);
+      currentDate,
+    );
     // purge out the duration from node entry from out
     // because we use `new Date` to calculate the duration
     result.supportChecks.forEach(pkg => {
@@ -138,12 +148,17 @@ describe('project-1', function () {
   it('reports no node version mentioned in the project', async function () {
     const { dependenciesToCheck, pkg } = await setupProject(`${root}/no-node-version`);
     const currentDate = new Date(`2021-02-24T00:00:00.000Z`);
-    const result = await isInSupportWindow(dependenciesToCheck, pkg.name, {
-      policies: {
-        primary: DEFAULT_PRIMARY_POLICY,
+    const result = await isInSupportWindow(
+      dependenciesToCheck,
+      pkg.name,
+      {
+        policies: {
+          primary: DEFAULT_PRIMARY_POLICY,
+        },
+        progressLogger: new ProgressLogger(),
       },
-      progressLogger: new ProgressLogger(),
-    }, currentDate);
+      currentDate,
+    );
 
     expect(result).to.eql({
       projectName: 'no-node-version',

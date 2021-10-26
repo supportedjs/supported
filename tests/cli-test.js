@@ -25,7 +25,7 @@ async function runSupportedCmd(inputArgs, options = {}) {
 
   // Add date if no date is provided
   // Otherwise, tests are not reproducible
-  const dateArg = args.find((arg) => arg.startsWith('--current-date='));
+  const dateArg = args.find(arg => arg.startsWith('--current-date='));
   if (!dateArg) {
     args.push('--current-date="February 24, 2021"');
   }

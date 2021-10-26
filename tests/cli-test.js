@@ -23,6 +23,13 @@ async function runSupportedCmd(inputArgs, options = {}) {
     args = [...args, ...inputArgs];
   }
 
+  // Add date if no date is provided
+  // Otherwise, tests are not reproducible
+  const dateArg = args.find((arg) => arg.startsWith('--current-date='));
+  if (!dateArg) {
+    args.push('--current-date="February 24, 2021"');
+  }
+
   return execa('node', args, {
     shell: true,
     reject: false,

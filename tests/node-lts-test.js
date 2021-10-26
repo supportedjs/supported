@@ -46,7 +46,8 @@ describe('node LTS Policy based policy', function () {
     });
 
     it('node version with above current LTS range', function () {
-      expect(isLtsOrLatest({ type: 'node' }, '15.3.0')).to.eql({
+      const currentDate = new Date(`2021-02-24T00:00:00.000Z`);
+      expect(isLtsOrLatest({ type: 'node' }, '15.3.0', currentDate)).to.eql({
         isSupported: true,
         latestVersion: '>=14.*',
         resolvedVersion: '15.3.0',
@@ -54,7 +55,8 @@ describe('node LTS Policy based policy', function () {
     });
 
     it('node version with fixed value in current LTS range', function () {
-      expect(isLtsOrLatest({ type: 'node' }, '14.3.0')).to.eql({
+      const currentDate = new Date(`2021-02-24T00:00:00.000Z`);
+      expect(isLtsOrLatest({ type: 'node' }, '14.3.0', currentDate)).to.eql({
         isSupported: true,
         latestVersion: '>=14.*',
         resolvedVersion: '14.3.0',
@@ -119,7 +121,8 @@ describe('node LTS Policy based policy', function () {
     });
 
     it('node version not found', function () {
-      expect(isLtsOrLatest({ type: 'node' }, '0.0.0')).to.eql({
+      const currentDate = new Date(`2021-02-24T00:00:00.000Z`);
+      expect(isLtsOrLatest({ type: 'node' }, '0.0.0', currentDate)).to.eql({
         isSupported: true,
         message: `No node version mentioned in the package.json. Please add engines/volta`,
         latestVersion: '>=14.*',

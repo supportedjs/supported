@@ -84,6 +84,32 @@ describe('time based policy: 1 year for major, 6 months for minor, 3 months of p
     ).to.eql({ isSupported: true });
   });
 
+  it('accepts pre-releases if all versions are pre-releases, even if configured to ignore pre-releases', function () {
+    const currentDate = new Date('2021-02-25T00:00:00.000Z');
+    expect(
+      supported(
+        {
+          version: '0.1.0-beta.16',
+          time: {
+            '1.0.0': '2021-02-24T00:00:00.000Z',
+          },
+          'dist-tags': {
+            latest: '0.1.0-beta.16',
+          },
+          versions: {
+            '0.1.0-beta.16': {},
+          },
+        },
+        'example@1.0.0',
+        [],
+        currentDate,
+        undefined,
+        undefined,
+        true,
+      ),
+    ).to.eql({ isSupported: true });
+  });
+
   it('returns true, when no policies are provide but versions have been published', function () {
     expect(
       supported(

@@ -85,7 +85,7 @@ describe('time based policy: 1 year for major, 6 months for minor, 3 months of p
   });
 
   it('accepts pre-releases if all versions are pre-releases, even if configured to ignore pre-releases', function () {
-    const currentDate = new Date('2021-02-25T00:00:00.000Z');
+    const originDate = new Date('2021-02-25T00:00:00.000Z');
     expect(
       supported(
         {
@@ -102,7 +102,7 @@ describe('time based policy: 1 year for major, 6 months for minor, 3 months of p
         },
         'example@1.0.0',
         [],
-        currentDate,
+        originDate,
         undefined,
         undefined,
         true,
@@ -151,9 +151,7 @@ describe('time based policy: 1 year for major, 6 months for minor, 3 months of p
         ],
         currentDate,
       ),
-    ).to.eql({
-      deprecationDate: '1987-09-30T23:59:59.999Z',
-      duration: 1054162560186,
+    ).to.include({
       isSupported: false,
       message: 'violated: 1 year window',
       type: 'major',

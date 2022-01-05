@@ -22,7 +22,7 @@
     "start:registry": "node -e 'require(`./tests/test-helpers/registries.js`).startAll()'"
   },
   "volta": {
-    "node": "15.3.0",
+    "node": "16.13.1",
     "yarn": "1.22.10",
     "npm": "7.11.2"
   },
@@ -45,7 +45,7 @@
   "dependencies": {
     "@yarnpkg/lockfile": "^1.1.0",
     "ajv": "^8.6.0",
-    "camelcase-keys": "^6.2.2",
+    "camelcase-keys": "^7.0.1",
     "chai-as-promised": "^7.1.1",
     "chalk": "^4.1.0",
     "cli-table": "^0.3.4",

@@ -6,19 +6,19 @@
     "end_date": "2021-03-17T00:00:00.000Z"
   },
   "3.20.*":	{
-    "versionRange": ">=3.20.*",
+    "versionRange": "3.20.*",
     "start_date": "2020-08-24T00:00:00.000Z",
     "maintenance_start_date": "2021-05-03T00:00:00.000Z",
     "end_date": "2021-09-06T00:00:00.000Z"
   },
   "3.24.*": {
-    "versionRange": ">=3.24.*",
+    "versionRange": "3.24.*",
     "start_date": "2021-02-25T00:00:00.000Z",
     "maintenance_start_date": "2021-11-04T00:00:00.000Z",
     "end_date": "2022-03-10T00:00:00.000Z"
   },
   "3.28.*": {
-    "versionRange": ">=3.28.*",
+    "versionRange": "3.28.*",
     "start_date": "2021-12-20T00:00:00.000Z",
     "maintenance_start_date": "2022-08-29T00:00:00.000Z",
     "end_date": "2023-01-02T00:00:00.000Z"

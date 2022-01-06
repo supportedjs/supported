@@ -127,6 +127,29 @@ describe('CLI', function () {
       );
     });
 
+    it.only('works against a project that uses soon expiring ember-cli LTS', async function () {
+      const child = await runSupportedCmd([
+        `${__dirname}/fixtures/ember-expire-soon`,
+        '--current-date="January 1, 2022"',
+      ]);
+
+      expect(child).to.exitGracefully();
+      expect(child.stderr).to.includes('⚠ ember LTS Policy');
+      expect(child.stdout).to.includes(
+        '⚠ ember-cli LTS Policy\n      ⚠ version/version-range 3.24.0 will be deprecated within 1 qtr',
+      );
+    });
+
+    it.only('works against a project that uses valid ember-cli LTS', async function () {
+      const child = await runSupportedCmd([
+        `${__dirname}/fixtures/ember-valid`,
+        '--current-date="January 1, 2022"',
+      ]);
+
+      expect(child).to.exitGracefully();
+      expect(child.stdout).to.includes('✓ ember-cli LTS Policy');
+    });
+
     it('works against a no node version project', async function () {
       const child = await runSupportedCmd([`${__dirname}/fixtures/no-node-version`]);
 

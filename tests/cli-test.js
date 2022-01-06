@@ -127,7 +127,7 @@ describe('CLI', function () {
       );
     });
 
-    it.only('works against a project that uses soon expiring ember-cli LTS', async function () {
+    it('works against a project that uses soon expiring ember-cli LTS', async function () {
       const child = await runSupportedCmd([
         `${__dirname}/fixtures/ember-expire-soon`,
         '--current-date="January 1, 2022"',
@@ -140,7 +140,7 @@ describe('CLI', function () {
       );
     });
 
-    it.only('works against a project that uses valid ember-cli LTS', async function () {
+    it('works against a project that uses valid ember-cli LTS', async function () {
       const child = await runSupportedCmd([
         `${__dirname}/fixtures/ember-valid`,
         '--current-date="January 1, 2022"',

@@ -224,7 +224,7 @@ describe('ember LTS Policy based policy', function () {
         isSupported: true,
         duration: 1731839815,
         message: 'Using maintenance LTS. Update to latest LTS',
-        latestVersion: '>=3.20.*',
+        latestVersion: '3.20.*',
         resolvedVersion: '3.16.0',
       });
     });
@@ -255,7 +255,7 @@ describe('ember LTS Policy based policy', function () {
       let currentDate = new Date('March 31, 2021');
       expect(isLtsOrLatest({}, '3.20.0', currentDate)).to.eql({
         isSupported: true,
-        latestVersion: '>=3.24.*',
+        latestVersion: '3.24.*',
         resolvedVersion: '3.20.0',
       });
     });
@@ -265,7 +265,7 @@ describe('ember LTS Policy based policy', function () {
       expect(isLtsOrLatest({}, '3.25.0', currentDate)).to.eql(
         {
           isSupported: true,
-          latestVersion: '>=3.24.*',
+          latestVersion: '3.24.*',
           resolvedVersion: '3.25.0',
         },
         currentDate,

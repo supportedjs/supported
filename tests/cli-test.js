@@ -127,6 +127,17 @@ describe('CLI', function () {
       );
     });
 
+    it('fails on expired ember-cli LTS', async function () {
+      const child = await runSupportedCmd([
+        `${__dirname}/fixtures/ember-expired`,
+        '--current-date="January 1, 2022"',
+      ]);
+      expect(child).to.not.exitGracefully();
+
+      expect(child.stderr).to.includes('✗ ember LTS Policy');
+      expect(child.stdout).to.includes('✗ ember-cli needs to be on v3.24.* or above LTS version');
+    });
+
     it('works against a project that uses soon expiring ember-cli LTS', async function () {
       const child = await runSupportedCmd([
         `${__dirname}/fixtures/ember-expire-soon`,

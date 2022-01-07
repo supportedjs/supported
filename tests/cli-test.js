@@ -42,7 +42,7 @@ describe('CLI', function () {
   // TODO: Check if we can remove this timeout increase and fix the npm config logic to be fast
   // Test in windows are failing
   // Issue may be caused by npmconfig command we have in the code base. For now we are increasing the timeout.
-  this.timeout(7000);
+  this.timeout(10000);
   beforeEach(function () {
     registries.startAll();
   });
@@ -125,6 +125,17 @@ describe('CLI', function () {
       expect(child.stdout).to.includes(
         '⚠ node LTS Policy\n      ⚠ version/version-range 10.0.0 will be deprecated within 1 qtr',
       );
+    });
+
+    it('fails on expired ember-cli LTS', async function () {
+      const child = await runSupportedCmd([
+        `${__dirname}/fixtures/ember-expired`,
+        '--current-date="January 1, 2022"',
+      ]);
+      expect(child).to.not.exitGracefully();
+
+      expect(child.stderr).to.includes('✗ ember LTS Policy');
+      expect(child.stdout).to.includes('✗ ember-cli needs to be on v3.24.* or above LTS version');
     });
 
     it('works against a project that uses soon expiring ember-cli LTS', async function () {

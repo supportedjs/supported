@@ -1,0 +1,10 @@
+{
+  "name": "ember-source-valid",
+  "dependencies": {
+    "ember-source": "~3.28.5"
+  },
+  "volta": {
+    "node": "12.22.8",
+    "yarn": "1.22.10"
+  }
+}

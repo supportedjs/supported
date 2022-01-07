@@ -216,64 +216,120 @@ describe('ember LTS Policy based policy', function () {
 
   // TODO: Need to refactor these tests so they don't need to be updated every time
   // the ember LTS state is updated (in ember-lts.json)
-  describe('isLtsOrLatest', function () {
-    it('resolved version is LTS', function () {
-      let currentDate = new Date(`2021-02-24T22:56:00.185Z`);
-      expect(isLtsOrLatest({}, '3.16.0', currentDate)).to.eql({
-        deprecationDate: '2021-03-17T00:00:00.000Z',
-        isSupported: true,
-        duration: 1731839815,
-        message: 'Using maintenance LTS. Update to latest LTS',
-        latestVersion: '3.20.*',
-        resolvedVersion: '3.16.0',
+  ['ember-source', 'ember-cli'].forEach(packageName => {
+    describe(`isLtsOrLatest + ${packageName}`, function () {
+      it('resolved version is LTS', function () {
+        let currentDate = new Date(`2021-02-24T22:56:00.185Z`);
+        expect(
+          isLtsOrLatest(
+            {
+              name: packageName,
+              type: 'ember',
+            },
+            '3.16.0',
+            currentDate,
+          ),
+        ).to.eql({
+          deprecationDate: '2021-03-17T00:00:00.000Z',
+          isSupported: true,
+          duration: 1731839815,
+          message: 'Using maintenance LTS. Update to latest LTS',
+          latestVersion: '3.20.*',
+          resolvedVersion: '3.16.0',
+        });
       });
-    });
 
-    it('resolved version is older version', function () {
-      let currentDate = new Date(`2021-02-22T22:56:00.185Z`);
-      expect(isLtsOrLatest({}, '3.14.0', currentDate)).to.includes({
-        isSupported: false,
-        message: 'ember-cli needs to be on v3.16.* or above LTS version',
-        type: 'ember',
+      it('resolved version is older version', function () {
+        let currentDate = new Date(`2021-02-22T22:56:00.185Z`);
+        expect(
+          isLtsOrLatest(
+            {
+              name: packageName,
+              type: 'ember',
+            },
+            '3.14.0',
+            currentDate,
+          ),
+        ).to.includes({
+          isSupported: false,
+          message: `${packageName} needs to be on v3.16.* or above LTS version`,
+          type: 'ember',
+        });
       });
-    });
 
-    it('Above maintenance LTS, update to next LTS', function () {
-      let currentDate = new Date(`2021-02-24T22:56:00.185Z`);
-      expect(isLtsOrLatest({}, '3.18.0', currentDate)).to.eql({
-        deprecationDate: '2021-03-17T00:00:00.000Z',
-        isSupported: false,
-        duration: 1731839815,
-        message: 'ember-cli needs to be on v3.16.* or above LTS version',
-        type: 'ember',
+      it('Above maintenance LTS, update to next LTS', function () {
+        let currentDate = new Date(`2021-02-24T22:56:00.185Z`);
+        expect(
+          isLtsOrLatest(
+            {
+              name: packageName,
+              type: 'ember',
+            },
+            '3.18.0',
+            currentDate,
+          ),
+        ).to.eql({
+          deprecationDate: '2021-03-17T00:00:00.000Z',
+          isSupported: false,
+          duration: 1731839815,
+          message: `${packageName} needs to be on v3.16.* or above LTS version`,
+          type: 'ember',
+        });
       });
-    });
 
-    it('resolved version is LTS latest with March 21, 2021 date', function () {
-      let currentDate = new Date('March 31, 2021');
-      expect(isLtsOrLatest({}, '3.20.0', currentDate)).to.eql({
-        isSupported: true,
-        latestVersion: '3.24.*',
-        resolvedVersion: '3.20.0',
-      });
-    });
-
-    it('resolved version is Latest', function () {
-      let currentDate = new Date('March 31, 2021');
-      expect(isLtsOrLatest({}, '3.25.0', currentDate)).to.eql(
-        {
+      it('resolved version is LTS latest with March 21, 2021 date', function () {
+        let currentDate = new Date('March 31, 2021');
+        expect(
+          isLtsOrLatest(
+            {
+              name: packageName,
+              type: 'ember',
+            },
+            '3.20.0',
+            currentDate,
+          ),
+        ).to.eql({
           isSupported: true,
           latestVersion: '3.24.*',
-          resolvedVersion: '3.25.0',
-        },
-        currentDate,
-      );
-    });
+          resolvedVersion: '3.20.0',
+        });
+      });
 
-    it('throws error when LTS file is not updated', function () {
-      expect(() => isLtsOrLatest({}, '3.25.0', new Date('September 7, 2050'))).to.throw(
-        'Please create PR to update lts ember-cli-lts.json file in lts/ folder or create an issue in supported project',
-      );
+      it('resolved version is Latest', function () {
+        let currentDate = new Date('March 31, 2021');
+        expect(
+          isLtsOrLatest(
+            {
+              name: packageName,
+              type: 'ember',
+            },
+            '3.25.0',
+            currentDate,
+          ),
+        ).to.eql(
+          {
+            isSupported: true,
+            latestVersion: '3.24.*',
+            resolvedVersion: '3.25.0',
+          },
+          currentDate,
+        );
+      });
+
+      it('throws error when LTS file is not updated', function () {
+        expect(() =>
+          isLtsOrLatest(
+            {
+              name: packageName,
+              type: 'ember',
+            },
+            '3.25.0',
+            new Date('September 7, 2050'),
+          ),
+        ).to.throw(
+          'Please create PR to update lts ember-lts.json file in lts/ folder or create an issue in supported project',
+        );
+      });
     });
   });
 });

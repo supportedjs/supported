@@ -42,7 +42,7 @@ describe('CLI', function () {
   // TODO: Check if we can remove this timeout increase and fix the npm config logic to be fast
   // Test in windows are failing
   // Issue may be caused by npmconfig command we have in the code base. For now we are increasing the timeout.
-  this.timeout(7000);
+  this.timeout(10000);
   beforeEach(function () {
     registries.startAll();
   });

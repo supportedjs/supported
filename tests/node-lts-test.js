@@ -77,22 +77,18 @@ describe('node LTS Policy based policy', function () {
 
     it('node version with fixed value below LTS range', function () {
       const fakeToday = new Date(`2021-02-22T00:00:00.000Z`);
-      expect(isLtsOrLatest({ type: 'node' }, '8.0.0', fakeToday)).to.eql({
-        deprecationDate: '2020-10-27T00:00:00.000Z',
+      expect(isLtsOrLatest({ type: 'node' }, '8.0.0', fakeToday)).to.include({
         isSupported: false,
-        duration: 10195200000,
-        message: `node needs to be on v14.* or above LTS version`,
+        message: `node needs to be on v10.* or above LTS version`,
         type: 'node',
       });
     });
 
     it('node version with range value below LTS', function () {
       const fakeToday = new Date(`2021-02-22T00:00:00.000Z`);
-      expect(isLtsOrLatest({ type: 'node' }, '6.* || 8.*', fakeToday)).to.eql({
-        deprecationDate: '2020-10-27T00:00:00.000Z',
+      expect(isLtsOrLatest({ type: 'node' }, '6.* || 8.*', fakeToday)).to.include({
         isSupported: false,
-        duration: 10195200000,
-        message: `node needs to be on v14.* or above LTS version`,
+        message: `node needs to be on v10.* or above LTS version`,
         type: 'node',
       });
     });
@@ -101,11 +97,9 @@ describe('node LTS Policy based policy', function () {
       const lastDay = new Date(NODE_LTS['10.*'].end_date);
       const nextDay = new Date(lastDay);
       nextDay.setDate(nextDay.getDate() + 1);
-      expect(isLtsOrLatest({ type: 'node' }, '10.2.0', nextDay)).to.eql({
-        deprecationDate: '2020-10-27T00:00:00.000Z',
+      expect(isLtsOrLatest({ type: 'node' }, '10.2.0', nextDay)).to.include({
         isSupported: false,
-        duration: 16070400000,
-        message: `node needs to be on v14.* or above LTS version`,
+        message: `node needs to be on v12.* or above LTS version`,
         type: 'node',
       });
     });

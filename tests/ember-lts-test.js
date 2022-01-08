@@ -252,7 +252,7 @@ describe('ember LTS Policy based policy', function () {
           ),
         ).to.includes({
           isSupported: false,
-          message: `${packageName} needs to be on v3.16.* or above LTS version`,
+          message: `${packageName} needs to be on v3.16.* or a more recent LTS version. See https://emberjs.com/releases/lts/`,
           type: 'ember',
         });
       });
@@ -272,7 +272,7 @@ describe('ember LTS Policy based policy', function () {
           deprecationDate: '2021-03-17T00:00:00.000Z',
           isSupported: false,
           duration: 1731839815,
-          message: `${packageName} needs to be on v3.16.* or above LTS version`,
+          message: `${packageName} needs to be on v3.16.* or a more recent LTS version. See https://emberjs.com/releases/lts/`,
           type: 'ember',
         });
       });

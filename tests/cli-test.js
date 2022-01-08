@@ -127,6 +127,18 @@ describe('CLI', function () {
       );
     });
 
+    it('fails a project with node version expired', async function () {
+      const child = await runSupportedCmd([
+        `${__dirname}/fixtures/node-expired`,
+        '--current-date="April 1, 2021"',
+      ]);
+
+      expect(child).to.not.exitGracefully();
+      expect(child.stdout).to.includes(
+        '✗ node needs to be on v10.* or a more recent LTS version. See https',
+      );
+    });
+
     it('fails on expired ember-cli LTS', async function () {
       const child = await runSupportedCmd([
         `${__dirname}/fixtures/ember-expired`,
@@ -135,7 +147,9 @@ describe('CLI', function () {
       expect(child).to.not.exitGracefully();
 
       expect(child.stderr).to.includes('✗ ember LTS Policy');
-      expect(child.stdout).to.includes('✗ ember-cli needs to be on v3.24.* or above LTS version');
+      expect(child.stdout).to.includes(
+        '✗ ember-cli needs to be on v3.24.* or a more recent LTS version. See https',
+      );
     });
 
     it('works against a project that uses soon expiring ember-cli LTS', async function () {
@@ -170,7 +184,7 @@ describe('CLI', function () {
       expect(child).to.not.exitGracefully();
       expect(child.stdout).to.includes('✗ ember-source LTS Policy');
       expect(child.stdout).to.includes(
-        '✗ ember-source needs to be on v3.24.* or above LTS version',
+        '✗ ember-source needs to be on v3.24.* or a more recent LTS version. See https',
       );
     });
 

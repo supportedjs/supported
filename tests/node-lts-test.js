@@ -79,7 +79,7 @@ describe('node LTS Policy based policy', function () {
       const fakeToday = new Date(`2021-02-22T00:00:00.000Z`);
       expect(isLtsOrLatest({ type: 'node' }, '8.0.0', fakeToday)).to.include({
         isSupported: false,
-        message: `node needs to be on v10.* or above LTS version`,
+        message: `node needs to be on v10.* or a more recent LTS version. See https://nodejs.org/en/about/releases/`,
         type: 'node',
       });
     });
@@ -88,7 +88,7 @@ describe('node LTS Policy based policy', function () {
       const fakeToday = new Date(`2021-02-22T00:00:00.000Z`);
       expect(isLtsOrLatest({ type: 'node' }, '6.* || 8.*', fakeToday)).to.include({
         isSupported: false,
-        message: `node needs to be on v10.* or above LTS version`,
+        message: `node needs to be on v10.* or a more recent LTS version. See https://nodejs.org/en/about/releases/`,
         type: 'node',
       });
     });
@@ -99,7 +99,7 @@ describe('node LTS Policy based policy', function () {
       nextDay.setDate(nextDay.getDate() + 1);
       expect(isLtsOrLatest({ type: 'node' }, '10.2.0', nextDay)).to.include({
         isSupported: false,
-        message: `node needs to be on v12.* or above LTS version`,
+        message: `node needs to be on v12.* or a more recent LTS version. See https://nodejs.org/en/about/releases/`,
         type: 'node',
       });
     });

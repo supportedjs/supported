@@ -1,0 +1,15 @@
+{
+  "name": "version-expiring-soon",
+  "dependencies": {
+    "@eslint-ast/eslint-plugin-graphql": "^1.0.4",
+    "@stefanpenner/b": "^1.0.3",
+    "rsvp": "^4.8.0"
+  },
+  "devDependencies": {
+    "es6-promise": "^4.2.0"
+  },
+  "volta": {
+    "node": "8.0.0",
+    "yarn": "1.22.10"
+  }
+}

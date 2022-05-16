@@ -18,7 +18,7 @@ describe('csv', function () {
         {
           isSupported: true,
           name: 'node',
-          resolvedVersion: '15.3.0',
+          resolvedVersion: '16.14.0',
           latestVersion: '>=14.*',
           message: '',
         },

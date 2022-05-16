@@ -58,7 +58,7 @@ describe('project-1', function () {
         },
         {
           isSupported: true,
-          resolvedVersion: '15.3.0',
+          resolvedVersion: '16.14.0',
           latestVersion: '>=14.*',
           name: 'node',
         },

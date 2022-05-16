@@ -1,6 +1,6 @@
 {
   "name": "supported",
-  "version": "0.6.5",
+  "version": "0.6.6",
   "main": "index.js",
   "repository": "git@github.com:supportedjs/supported",
   "homepage": "https://github.com/supportedjs/supported",
@@ -22,7 +22,7 @@
     "start:registry": "node -e 'require(`./tests/test-helpers/registries.js`).startAll()'"
   },
   "volta": {
-    "node": "15.3.0",
+    "node": "16.14.0",
     "yarn": "1.22.10",
     "npm": "7.11.2"
   },

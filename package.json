@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "@yarnpkg/lockfile": "^1.1.0",
+    "@yarnpkg/parsers": "^2.5.1",
     "ajv": "^8.6.0",
     "camelcase-keys": "^6.2.2",
     "chai-as-promised": "^7.1.1",

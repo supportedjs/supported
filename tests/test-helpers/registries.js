@@ -13,7 +13,7 @@ function server(recordingRoot, port) {
 
   app.use(async (ctx, next) => {
     if (ctx.method === 'GET') {
-      const moduleName = ctx.url.slice(1);
+      const moduleName = ctx.url.slice(1).replace('%2f', '/');
       // use resolve-path to prevent directory traversal
       const file = resolve(recordingRoot, `${moduleName}.json`);
       if (fs.existsSync(file)) {

@@ -1,3 +1,14 @@
 node_modules
 tests/fixtures/*/node_modules/
 .DS_Store
+
+# yarn@3 ignored files
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+# wrapper file to inject environment variables into yarn
+!.yarn/setup-env.cjs

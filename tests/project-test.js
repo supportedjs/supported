@@ -19,6 +19,23 @@ describe('project-1', function () {
     registries.stopAll();
   });
 
+  it('handles yarn3 lockfile format', async function () {
+    const { dependenciesToCheck, pkg } = await setupProject(`${root}/supported-project-yarn3`);
+    const currentDate = new Date(`2021-02-24T00:00:00.000Z`);
+    const result = await isInSupportWindow(
+      dependenciesToCheck,
+      pkg.name,
+      {
+        policies: {
+          primary: DEFAULT_PRIMARY_POLICY,
+        },
+        progressLogger: new ProgressLogger(),
+      },
+      currentDate,
+    );
+    expect(result.isInSupportWindow).to.be.ok;
+  });
+
   it('reports supported if the project is within the support window', async function () {
     const { dependenciesToCheck, pkg } = await setupProject(`${root}/supported-project`);
     const currentDate = new Date(`2021-02-24T00:00:00.000Z`);

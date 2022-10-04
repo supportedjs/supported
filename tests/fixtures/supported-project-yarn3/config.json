@@ -1,0 +1,5 @@
+{
+  "primary": {
+    "ignoredDependencies": ["@stefanpenner/a", "rsvp"]
+  }
+}

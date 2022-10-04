@@ -1,0 +1,10 @@
+{
+  "name": "supported-project-yarn3",
+  "dependencies": {
+    "graceful-fs": "^4.2.0"
+  },
+  "volta": {
+    "node": "16.14.0",
+    "yarn": "3.0.0"
+  }
+}

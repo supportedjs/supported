@@ -1,26 +1,36 @@
 'use strict';
 
-const { default: PQueue } = require('p-queue');
-const allSettled = require('promise.allsettled');
-const os = require('os');
+    import { default as PQueue } from 'p-queue';
+    import allSettled from 'promise.allsettled';
+    import os from 'os';
 
-const isInSupportWindow = require('./index');
-const { isProjectExpiringSoon } = require('../output/cli-output');
-const { ProgressLogger } = require('../util');
-const { getPolicyRules } = require('./../policy-rules');
-const DEFAULT_SETUP_FILE = './setup-project';
+/* @ts-expect-error @rehearsal TODO TS1192: Module '"/Users/akusuma/workspace/opensource/supported/lib/project/index"' has no default export. */
+    import isInSupportWindow from './index';
+    import { isProjectExpiringSoon } from '../output/cli-output';
+/* @ts-expect-error @rehearsal TODO TS2305: Module '"../util"' has no exported member 'ProgressLogger'. */
+    import { ProgressLogger } from '../util';
+    import { getPolicyRules } from './../policy-rules';
+import type { Ora } from 'ora';
+import { setupProject as defaultSetupProject } from './setup-project';
+
+export interface PolicyResults {
+  isInSupportWindow: boolean;
+  expiringSoonCount: number;
+  projects: {}[];
+}
 
 module.exports.processPolicies = processPolicies;
-async function processPolicies(projectPaths, setupProjectFn, spinner, today, config) {
+export async function processPolicies(projectPaths: string[], setupProjectFn: typeof defaultSetupProject | undefined, spinner: Ora, today: Date | undefined, config): Promise<PolicyResults> {
   const policyRules = getPolicyRules(config);
-  const setupProject = setupProjectFn ? setupProjectFn : require(DEFAULT_SETUP_FILE);
+  const setupProject = setupProjectFn ? setupProjectFn : defaultSetupProject;
   let result = {
     isInSupportWindow: true,
     expiringSoonCount: 0,
     projects: [],
   };
   if (!Array.isArray(projectPaths)) {
-    projectPaths = [projectPaths];
+/* @ts-expect-error @rehearsal TODO TS7022: 'projectPaths' implicitly has type 'any' because it does not have a type annotation and is referenced directly or indirectly in its own initializer. */
+    const projectPaths = [projectPaths];
   }
   const work = [];
   const queue = new PQueue({
@@ -35,7 +45,7 @@ async function processPolicies(projectPaths, setupProjectFn, spinner, today, con
       queue.add(async () => {
         let { dependenciesToCheck, pkg } = await setupProject(projectPath);
         let dependenciesToCheckAfterIgnore = dependenciesToCheck.filter(
-          dep => !ignoredDependencies.includes(dep.name),
+            (          dep) => !ignoredDependencies.includes(dep.name),
         );
         progressLogger.updateTotalDepCount(dependenciesToCheck.length);
         progressLogger.updateIgnoredDepCount(
@@ -65,6 +75,7 @@ async function processPolicies(projectPaths, setupProjectFn, spinner, today, con
           auditResult.isExpiringSoon,
         );
         auditResult.projectPath = projectPath;
+/* @ts-expect-error @rehearsal TODO TS2345: Argument of type 'any' is not assignable to parameter of type 'never'. Consider verifying both types, using type assertion: '(auditResult as string)', or using type guard: 'if (auditResult instanceof string) { ... }'. */
         result.projects.push(auditResult);
       }),
     );

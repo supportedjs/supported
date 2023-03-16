@@ -1,18 +1,10 @@
 'use strict';
 
-const chalk = require('chalk');
-const Table = require('cli-table');
-const { isExpiringSoon } = require('../util');
-const {
-  LOG_TITLE,
-  LOG_SEMVER_VIOLATION,
-  LOG_LTS_VIOLATION,
-  LOG_SEMVER_TITLE,
-  LOG_POLICY_TITLE,
-  DEFAULT_SUPPORT_MESSAGE,
-  LOG_TITLE_MULTIPLE,
-  LOG_PROJECT_TITLE,
-} = require('./messages');
+    import chalk from 'chalk';
+    import Table from 'cli-table';
+    import { isExpiringSoon } from '../util';
+/* @ts-expect-error @rehearsal TODO TS2305: Module '"./messages"' has no exported member 'LOG_TITLE'. */
+    import { LOG_TITLE, LOG_SEMVER_VIOLATION, LOG_LTS_VIOLATION, LOG_SEMVER_TITLE, LOG_POLICY_TITLE, DEFAULT_SUPPORT_MESSAGE, LOG_TITLE_MULTIPLE, LOG_PROJECT_TITLE } from './messages';
 
 // CONSTANTS
 const SEMVER_LIST = ['major', 'minor', 'patch'];
@@ -22,7 +14,7 @@ const SEMVER_LIST = ['major', 'minor', 'patch'];
  * @param {string} type : type of semver from SEMVER_LIST / `node` / `ember-cli`
  * @returns {boolean} true/false
  */
-function isSemVersion(type) {
+function isSemVersion(type: string): boolean {
   return SEMVER_LIST.includes(type);
 }
 
@@ -33,7 +25,8 @@ function isSemVersion(type) {
  * @returns {string} formatted output table in string
  */
 module.exports.getBodyContent = getBodyContent;
-function getBodyContent(results, flags) {
+/* @ts-expect-error @rehearsal TODO TS7006: Parameter 'results' implicitly has an 'any' type. */
+function getBodyContent(results, flags): "" | Table<TableRow>  {
   const chars = {
     top: '',
     'top-mid': '',
@@ -58,10 +51,12 @@ function getBodyContent(results, flags) {
     chalk`{underline {bold {white Violation Type}}}`,
     chalk`{underline {bold {white End of Support}}}`,
   ];
-  const unSupportedTable = [];
+  const unSupportedTable: string[][] = [];
+/* @ts-expect-error @rehearsal TODO TS7034: Variable 'expiringSoonTable' implicitly has type 'any[]' in some locations where its type cannot be determined. */
   const expiringSoonTable = [];
-  const supportedTable = [];
+  const supportedTable: string[][] = [];
   results.forEach(
+/* @ts-expect-error @rehearsal TODO TS7031: Binding element 'name' implicitly has an 'any' type. */
     ({ name, resolvedVersion, latestVersion, duration, type, isSupported, deprecationDate }) => {
       if (!isSupported) {
         unSupportedTable.push([
@@ -102,6 +97,7 @@ function getBodyContent(results, flags) {
     table.push(...unSupportedTable);
   }
   if (expiringSoonTable.length && showExpiring) {
+/* @ts-expect-error @rehearsal TODO TS7005: Variable 'expiringSoonTable' implicitly has an 'any[]' type. */
     table.push(...expiringSoonTable);
   }
   if (supportedTable.length && showSupported) {
@@ -116,7 +112,8 @@ function getBodyContent(results, flags) {
  * @param {object} packageInfo: support check result for LTS pakcages (node & ember-cli)
  * @returns {string} if there is LTS violation, retruns formatted violation message.
  */
-function getLtsViolation(packageInfo) {
+/* @ts-expect-error @rehearsal TODO TS7006: Parameter 'packageInfo' implicitly has an 'any' type. */
+function getLtsViolation(packageInfo): string {
   if (packageInfo) {
     return LOG_LTS_VIOLATION(
       packageInfo.name,
@@ -138,11 +135,14 @@ function getLtsViolation(packageInfo) {
  * @returns {string} formatted package semver violation title string
  */
 function getPackageViolationTitle(
-  violatingPackages,
-  totalSemVerViolation,
-  totalPackages,
-  isWarning,
-) {
+/* @ts-expect-error @rehearsal TODO TS2304: Cannot find name 'list'. */
+  violatingPackages: list,
+/* @ts-expect-error @rehearsal TODO TS2304: Cannot find name 'int'. */
+  totalSemVerViolation: int,
+/* @ts-expect-error @rehearsal TODO TS2304: Cannot find name 'int'. */
+  totalPackages: int,
+  isWarning: boolean | undefined,
+): string {
   if (violatingPackages.length) {
     return LOG_SEMVER_TITLE(totalSemVerViolation, totalPackages, isWarning);
   }
@@ -156,11 +156,15 @@ function getPackageViolationTitle(
  * @param {boolean | undefined} isWarning: is it only warning not violation
  * @returns {string} formatted package semver violation title + body string
  */
-function getPackageViolation(violatingPackages, totalPackagesCount, isWarning) {
+/* @ts-expect-error @rehearsal TODO TS2304: Cannot find name 'list'. */
+function getPackageViolation(violatingPackages: list, totalPackagesCount: number, isWarning: boolean | undefined): string {
   let message = '';
   if (violatingPackages.length) {
+/* @ts-expect-error @rehearsal TODO TS2339: Property 'violationInfo' does not exist on type '{ violations: { major: numb; }; }'. */
     let { violations, violationInfo } = getViolationsDetail(violatingPackages);
+/* @ts-expect-error @rehearsal TODO TS7053: Element implicitly has an 'any' type because expression of type '"total"' can't be used to index type '{ major: numb; }'..  Property 'total' does not exist on type '{ major: numb; }'. */
     let totalSemVerViolation = violations['total'];
+/* @ts-expect-error @rehearsal TODO TS7053: Element implicitly has an 'any' type because expression of type '"total"' can't be used to index type '{ major: numb; }'..  Property 'total' does not exist on type '{ major: numb; }'. */
     delete violations['total'];
     message += getPackageViolationTitle(
       violatingPackages,
@@ -171,6 +175,7 @@ function getPackageViolation(violatingPackages, totalPackagesCount, isWarning) {
     Object.keys(violations).forEach(type => {
       let dataObject = isWarning ? violationInfo : violations;
       if (dataObject[type]) {
+/* @ts-expect-error @rehearsal TODO TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ major: numb; }'..  No index signature with a parameter of type 'string' was found on type '{ major: numb; }'. */
         message += LOG_SEMVER_VIOLATION(type, violations[type], violationInfo[type], isWarning);
       }
     });
@@ -184,8 +189,10 @@ function getPackageViolation(violatingPackages, totalPackagesCount, isWarning) {
  * @param {list} ltsPackages list of all LTS pakcages (node and ember-cli)
  * @returns {int} total number of expiring and violating packages
  */
-function violatedOrSoonExpiringPackagesCount(violatingPackageCount, ltsPackages) {
-  let count = ltsPackages.reduce((count, pkg) => {
+/* @ts-expect-error @rehearsal TODO TS2304: Cannot find name 'int'. */
+function violatedOrSoonExpiringPackagesCount(violatingPackageCount: int, ltsPackages: list): int {
+/* @ts-expect-error @rehearsal TODO TS7006: Parameter 'pkg' implicitly has an 'any' type. */
+  let count = ltsPackages.reduce((count: number, pkg) => {
     if (pkg) {
       let { isSupported, duration, message } = pkg;
       if (!isSupported || (isSupported && (duration || message))) {
@@ -201,7 +208,8 @@ function violatedOrSoonExpiringPackagesCount(violatingPackageCount, ltsPackages)
  * @param {*} isInSupportWindow
  */
 module.exports.isProjectExpiringSoon = isProjectExpiringSoon;
-function isProjectExpiringSoon(result) {
+/* @ts-expect-error @rehearsal TODO TS7006: Parameter 'result' implicitly has an 'any' type. */
+export function isProjectExpiringSoon(result): boolean  {
   const { expiresSoon, emberCliPackage, emberSourcePackage, nodePackage } = getCategorisedList(
     result.supportChecks,
   );
@@ -225,13 +233,16 @@ function isProjectExpiringSoon(result) {
  */
 module.exports.getTitle = getTitle;
 function getTitle(
+/* @ts-expect-error @rehearsal TODO TS7006: Parameter 'isInSupportWindow' implicitly has an 'any' type. */
   isInSupportWindow,
+/* @ts-expect-error @rehearsal TODO TS7006: Parameter 'expiresSoon' implicitly has an 'any' type. */
   expiresSoon,
+/* @ts-expect-error @rehearsal TODO TS7006: Parameter 'flags' implicitly has an 'any' type. */
   flags,
-  nodePackage,
-  emberCliPackage,
-  emberSourcePackage,
-) {
+  nodePackage: undefined,
+  emberCliPackage: undefined,
+  emberSourcePackage: undefined,
+): string  {
   let violatedOrSoonExpiringCount = violatedOrSoonExpiringPackagesCount(expiresSoon.length, [
     emberSourcePackage,
     emberCliPackage,
@@ -255,15 +266,22 @@ function getTitle(
  */
 module.exports.getHead = getHead;
 function getHead(
+/* @ts-expect-error @rehearsal TODO TS7006: Parameter 'isInSupportWindow' implicitly has an 'any' type. */
   isInSupportWindow,
+/* @ts-expect-error @rehearsal TODO TS7006: Parameter 'unsupportedPackages' implicitly has an 'any' type. */
   unsupportedPackages,
+/* @ts-expect-error @rehearsal TODO TS7006: Parameter 'supportedPackages' implicitly has an 'any' type. */
   supportedPackages,
+/* @ts-expect-error @rehearsal TODO TS7006: Parameter 'expiresSoon' implicitly has an 'any' type. */
   expiresSoon,
+/* @ts-expect-error @rehearsal TODO TS7006: Parameter 'nodePackage' implicitly has an 'any' type. */
   nodePackage,
+/* @ts-expect-error @rehearsal TODO TS7006: Parameter 'emberCliPackage' implicitly has an 'any' type. */
   emberCliPackage,
+/* @ts-expect-error @rehearsal TODO TS7006: Parameter 'emberSourcePackage' implicitly has an 'any' type. */
   emberSourcePackage,
-  currentPolicy,
-) {
+  currentPolicy: unknown,
+): string  {
   let head = '';
   let violatedOrSoonExpiringCount = violatedOrSoonExpiringPackagesCount(expiresSoon.length, [
     emberCliPackage,
@@ -287,6 +305,7 @@ function getHead(
     let nodeViolation = getLtsViolation(nodePackage);
     let emberSourceViolation = getLtsViolation(emberSourcePackage);
     let emberCliViolation = getLtsViolation(emberCliPackage);
+/* @ts-expect-error @rehearsal TODO TS2554: Expected 3 arguments, but got 2. */
     let packageViolation = getPackageViolation(unsupportedPackages, totalPackagesCount);
     if (!packageViolation) {
       packageViolation = getPackageViolation(expiresSoon, totalPackagesCount, true);
@@ -307,7 +326,8 @@ function getHead(
  *
  */
 module.exports.makeConsoleReport = makeConsoleReport;
-function makeConsoleReport(supportResult, flags, supportMessage) {
+/* @ts-expect-error @rehearsal TODO TS7006: Parameter 'supportResult' implicitly has an 'any' type. */
+export function makeConsoleReport(supportResult, flags: {}, supportMessage: string): { title: string; head: stri...  {
   const isInSupportWindow = supportResult.isInSupportWindow;
   const currentPolicy = supportMessage ? supportMessage : DEFAULT_SUPPORT_MESSAGE();
   let {
@@ -344,6 +364,7 @@ function makeConsoleReport(supportResult, flags, supportMessage) {
   return {
     title,
     head,
+/* @ts-expect-error @rehearsal TODO TS2322: Type 'title: string; head: string; body: "" | Table<TableRow' is being returned or assigned, but type 'title: string; head: stri' is expected. Please convert type 'title: string; head: string; body: "" | Table<TableRow' to type 'title: string; head: stri', or return or assign a variable of type 'title: string; head: stri' */
     body,
   };
 }
@@ -354,7 +375,8 @@ function makeConsoleReport(supportResult, flags, supportMessage) {
  * @returns {object} violations: counts the number of violation for each semVers
  * violationInfo: max number of duration for each semVer violation or message for the violation
  */
-function getViolationsDetail(supportChecks) {
+/* @ts-expect-error @rehearsal TODO TS2304: Cannot find name 'list'. */
+function getViolationsDetail(supportChecks: list): { violations: { major: numb...  {
   let violations = {
     major: 0,
     minor: 0,
@@ -367,27 +389,33 @@ function getViolationsDetail(supportChecks) {
     patch: 0,
   };
 
+/* @ts-expect-error @rehearsal TODO TS7031: Binding element 'type' implicitly has an 'any' type. */
   supportChecks.forEach(({ type, isSupported, duration, message }) => {
     let isSemVer = isSemVersion(type);
     let isDeprecatingSoon = isSupported && (duration || message);
     if (!isSupported || isDeprecatingSoon) {
       if (isSemVer) {
+/* @ts-expect-error @rehearsal TODO TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{ major: number; minor: number; patch: number; total: number; }'. */
         violations[type] += 1;
       }
       violations['total'] += 1;
     }
     if (!isSupported || isDeprecatingSoon) {
       // store the largest voliation for a type
+/* @ts-expect-error @rehearsal TODO TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{ major: number; minor: number; patch: number; }'. */
       if (violationInfo[type] < duration || (isDeprecatingSoon && isSemVer)) {
+/* @ts-expect-error @rehearsal TODO TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{ major: number; minor: number; patch: number; }'. */
         violationInfo[type] = duration || message;
       } else if (!isSemVer) {
         // for node and ember display the message about LTS
+/* @ts-expect-error @rehearsal TODO TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{ major: number; minor: number; patch: number; }'. */
         violationInfo[type] = message;
       }
     }
   });
   return {
     violations,
+/* @ts-expect-error @rehearsal TODO TS2322: Type 'violations: { major: number; minor: number; patch: number; total: number; }; violationInfo: { major: number; minor: number; patch: number' is being returned or assigned, but type 'violations: { major: numb' is expected. Please convert type 'violations: { major: number; minor: number; patch: number; total: number; }; violationInfo: { major: number; minor: number; patch: number' to type 'violations: { major: numb', or return or assign a variable of type 'violations: { major: numb' */
     violationInfo,
   };
 }
@@ -402,14 +430,19 @@ function getViolationsDetail(supportChecks) {
     supportedPackages
  */
 module.exports.getCategorisedList = getCategorisedList;
+/* @ts-expect-error @rehearsal TODO TS7006: Parameter 'pkgList' implicitly has an 'any' type. */
 function getCategorisedList(pkgList) {
+/* @ts-expect-error @rehearsal TODO TS7034: Variable 'expiresSoon' implicitly has type 'any[]' in some locations where its type cannot be determined. */
   let expiresSoon = [];
+/* @ts-expect-error @rehearsal TODO TS7034: Variable 'unsupportedPackages' implicitly has type 'any[]' in some locations where its type cannot be determined. */
   let unsupportedPackages = [];
   let nodePackage = undefined;
   let emberCliPackage;
   let emberSourcePackage;
+/* @ts-expect-error @rehearsal TODO TS7034: Variable 'supportedPackages' implicitly has type 'any[]' in some locations where its type cannot be determined. */
   let supportedPackages = [];
-  pkgList.forEach(pkg => {
+/* @ts-expect-error @rehearsal TODO TS7006: Parameter 'pkg' implicitly has an 'any' type. */
+  pkgList.forEach((pkg) => {
     let { isSupported, duration, name } = pkg;
     if (name === 'node') {
       nodePackage = pkg;
@@ -426,11 +459,14 @@ function getCategorisedList(pkgList) {
     }
   });
   return {
+/* @ts-expect-error @rehearsal TODO TS7005: Variable 'expiresSoon' implicitly has an 'any[]' type. */
     expiresSoon,
+/* @ts-expect-error @rehearsal TODO TS7005: Variable 'unsupportedPackages' implicitly has an 'any[]' type. */
     unsupportedPackages,
     nodePackage,
     emberCliPackage,
     emberSourcePackage,
+/* @ts-expect-error @rehearsal TODO TS7005: Variable 'supportedPackages' implicitly has an 'any[]' type. */
     supportedPackages,
   };
 }
@@ -443,7 +479,9 @@ function getCategorisedList(pkgList) {
  *
  */
 module.exports.displayResult = displayResult;
-function displayResult(supportResult, flags, supportMessage) {
+/* @ts-expect-error @rehearsal TODO TS7006: Parameter 'supportResult' implicitly has an 'any' type. */
+function displayResult(supportResult, flags: {}, supportMessage: string): void  {
+/* @ts-expect-error @rehearsal TODO TS2339: Property 'body' does not exist on type '{ title: string; head: stri; }'. */
   const { title, head, body } = makeConsoleReport(supportResult, flags, supportMessage);
   let readjustedBody = body;
   if (body) {
@@ -453,7 +491,8 @@ function displayResult(supportResult, flags, supportMessage) {
 }
 
 module.exports.displayResults = displayResults;
-function displayResults(results, flags, policyDetails) {
+/* @ts-expect-error @rehearsal TODO TS7006: Parameter 'results' implicitly has an 'any' type. */
+export function displayResults(results, flags, policyDetails: string): void  {
   if (results.projects.length == 1) {
     return displayResult(results.projects[0], flags, policyDetails);
   }
@@ -462,28 +501,40 @@ function displayResults(results, flags, policyDetails) {
     results.expiringSoonCount,
   )}\n\n`;
   if (results.projects.length > 1 && (flags.unsupported || flags.supported || flags.expiring)) {
+/* @ts-expect-error @rehearsal TODO TS7034: Variable 'tempList' implicitly has type 'any[]' in some locations where its type cannot be determined. */
     let tempList = [];
     if (flags.unsupported) {
+/* @ts-expect-error @rehearsal TODO TS7005: Variable 'tempList' implicitly has an 'any[]' type. */
       tempList.push.apply(
+/* @ts-expect-error @rehearsal TODO TS7005: Variable 'tempList' implicitly has an 'any[]' type. */
         tempList,
-        results.projects.filter(result => !result.isInSupportWindow),
+/* @ts-expect-error @rehearsal TODO TS7006: Parameter 'result' implicitly has an 'any' type. */
+        results.projects.filter((result) => !result.isInSupportWindow),
       );
     }
     if (flags.supported) {
+/* @ts-expect-error @rehearsal TODO TS7005: Variable 'tempList' implicitly has an 'any[]' type. */
       tempList.push.apply(
+/* @ts-expect-error @rehearsal TODO TS7005: Variable 'tempList' implicitly has an 'any[]' type. */
         tempList,
-        results.projects.filter(result => result.isInSupportWindow),
+/* @ts-expect-error @rehearsal TODO TS7006: Parameter 'result' implicitly has an 'any' type. */
+        results.projects.filter((result) => result.isInSupportWindow),
       );
     }
     if (flags.expiring) {
+/* @ts-expect-error @rehearsal TODO TS7005: Variable 'tempList' implicitly has an 'any[]' type. */
       tempList.push.apply(
+/* @ts-expect-error @rehearsal TODO TS7005: Variable 'tempList' implicitly has an 'any[]' type. */
         tempList,
-        results.projects.filter(result => result.isExpiringSoon),
+/* @ts-expect-error @rehearsal TODO TS7006: Parameter 'result' implicitly has an 'any' type. */
+        results.projects.filter((result) => result.isExpiringSoon),
       );
     }
+/* @ts-expect-error @rehearsal TODO TS7005: Variable 'tempList' implicitly has an 'any[]' type. */
     results.projects = tempList;
   }
-  results.projects.forEach(result => {
+/* @ts-expect-error @rehearsal TODO TS7006: Parameter 'result' implicitly has an 'any' type. */
+  results.projects.forEach((result) => {
     const { head } = makeConsoleReport(result, {}, '  ');
     finalOutput += LOG_PROJECT_TITLE(
       result.isInSupportWindow,

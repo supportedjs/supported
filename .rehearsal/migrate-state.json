@@ -1,0 +1,100 @@
+{
+  "name": "supported",
+  "packageMap": {
+    ".": [
+      "./lib/util.js",
+      "./lib/time/index.js",
+      "./lib/output/messages.js",
+      "./lib/output/cli-output.js",
+      "./lib/output/csv-output.js",
+      "./lib/policy-rules.js",
+      "./lib/lts/index.js",
+      "./lib/project/index.js",
+      "./lib/project/multiple-projects.js",
+      "./lib/help.js",
+      "./lib/cli.js",
+      "./lib/npm/config.js",
+      "./lib/project/setup-project.js"
+    ]
+  },
+  "files": {
+    "./lib/util.js": {
+      "origin": "./lib/util.js",
+      "current": "./lib/util.ts",
+      "package": ".",
+      "errorCount": 13
+    },
+    "./lib/time/index.js": {
+      "origin": "./lib/time/index.js",
+      "current": "./lib/time/index.ts",
+      "package": ".",
+      "errorCount": 24
+    },
+    "./lib/output/messages.js": {
+      "origin": "./lib/output/messages.js",
+      "current": "./lib/output/messages.ts",
+      "package": ".",
+      "errorCount": 7
+    },
+    "./lib/output/cli-output.js": {
+      "origin": "./lib/output/cli-output.js",
+      "current": "./lib/output/cli-output.ts",
+      "package": ".",
+      "errorCount": 60
+    },
+    "./lib/output/csv-output.js": {
+      "origin": "./lib/output/csv-output.js",
+      "current": "./lib/output/csv-output.ts",
+      "package": ".",
+      "errorCount": 11
+    },
+    "./lib/policy-rules.js": {
+      "origin": "./lib/policy-rules.js",
+      "current": "./lib/policy-rules.ts",
+      "package": ".",
+      "errorCount": 11
+    },
+    "./lib/lts/index.js": {
+      "origin": "./lib/lts/index.js",
+      "current": "./lib/lts/index.ts",
+      "package": ".",
+      "errorCount": 25
+    },
+    "./lib/project/index.js": {
+      "origin": "./lib/project/index.js",
+      "current": "./lib/project/index.ts",
+      "package": ".",
+      "errorCount": 20
+    },
+    "./lib/project/multiple-projects.js": {
+      "origin": "./lib/project/multiple-projects.js",
+      "current": "./lib/project/multiple-projects.ts",
+      "package": ".",
+      "errorCount": 12
+    },
+    "./lib/help.js": {
+      "origin": "./lib/help.js",
+      "current": "./lib/help.ts",
+      "package": ".",
+      "errorCount": 1
+    },
+    "./lib/cli.js": {
+      "origin": "./lib/cli.js",
+      "current": "./lib/cli.ts",
+      "package": ".",
+      "errorCount": 9
+    },
+    "./lib/npm/config.js": {
+      "origin": "./lib/npm/config.js",
+      "current": "./lib/npm/config.ts",
+      "package": ".",
+      "errorCount": 2
+    },
+    "./lib/project/setup-project.js": {
+      "origin": "./lib/project/setup-project.js",
+      "current": "./lib/project/setup-project.ts",
+      "package": ".",
+      "errorCount": 19
+    }
+  }
+}

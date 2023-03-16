@@ -1,0 +1,4240 @@
+{
+  "summary": [
+    {
+      "projectName": "supported",
+      "tsVersion": "4.9.5",
+      "timestamp": "3/10/2023, 12:34:41",
+      "basePath": "/Users/akusuma/workspace/opensource/supported",
+      "entrypoint": "./lib/",
+      "commandName": "@rehearsal/migrate"
+    },
+    {
+      "projectName": "supported",
+      "tsVersion": "4.9.5",
+      "timestamp": "3/10/2023, 12:35:04",
+      "basePath": "/Users/akusuma/workspace/opensource/supported",
+      "entrypoint": "./lib/",
+      "commandName": "@rehearsal/migrate"
+    },
+    {
+      "projectName": "supported",
+      "tsVersion": "4.9.5",
+      "timestamp": "3/10/2023, 12:35:15",
+      "basePath": "/Users/akusuma/workspace/opensource/supported",
+      "entrypoint": "./lib/",
+      "commandName": "@rehearsal/migrate"
+    },
+    {
+      "projectName": "supported",
+      "tsVersion": "4.9.5",
+      "timestamp": "3/10/2023, 12:35:47",
+      "basePath": "/Users/akusuma/workspace/opensource/supported",
+      "entrypoint": "./lib/",
+      "commandName": "@rehearsal/migrate"
+    },
+    {
+      "projectName": "supported",
+      "tsVersion": "4.9.5",
+      "timestamp": "3/10/2023, 12:36:05",
+      "basePath": "/Users/akusuma/workspace/opensource/supported",
+      "entrypoint": "./lib/",
+      "commandName": "@rehearsal/migrate"
+    },
+    {
+      "projectName": "supported",
+      "tsVersion": "4.9.5",
+      "timestamp": "3/10/2023, 12:37:14",
+      "basePath": "/Users/akusuma/workspace/opensource/supported",
+      "entrypoint": "./lib/",
+      "commandName": "@rehearsal/migrate"
+    },
+    {
+      "projectName": "supported",
+      "tsVersion": "4.9.5",
+      "timestamp": "3/10/2023, 12:37:29",
+      "basePath": "/Users/akusuma/workspace/opensource/supported",
+      "entrypoint": "./lib/",
+      "commandName": "@rehearsal/migrate"
+    },
+    {
+      "projectName": "supported",
+      "tsVersion": "4.9.5",
+      "timestamp": "3/10/2023, 12:37:45",
+      "basePath": "/Users/akusuma/workspace/opensource/supported",
+      "entrypoint": "./lib/",
+      "commandName": "@rehearsal/migrate"
+    },
+    {
+      "projectName": "supported",
+      "tsVersion": "4.9.5",
+      "timestamp": "3/10/2023, 12:38:18",
+      "basePath": "/Users/akusuma/workspace/opensource/supported",
+      "entrypoint": "./lib/",
+      "commandName": "@rehearsal/migrate"
+    },
+    {
+      "projectName": "supported",
+      "tsVersion": "4.9.5",
+      "timestamp": "3/10/2023, 12:38:35",
+      "basePath": "/Users/akusuma/workspace/opensource/supported",
+      "entrypoint": "./lib/",
+      "commandName": "@rehearsal/migrate"
+    },
+    {
+      "projectName": "supported",
+      "tsVersion": "4.9.5",
+      "timestamp": "3/10/2023, 12:38:52",
+      "basePath": "/Users/akusuma/workspace/opensource/supported",
+      "entrypoint": "./lib/",
+      "commandName": "@rehearsal/migrate"
+    },
+    {
+      "projectName": "supported",
+      "tsVersion": "4.9.5",
+      "timestamp": "3/10/2023, 13:37:27",
+      "basePath": "/Users/akusuma/workspace/opensource/supported",
+      "entrypoint": "./lib/",
+      "commandName": "@rehearsal/migrate"
+    },
+    {
+      "projectName": "supported",
+      "tsVersion": "4.9.5",
+      "timestamp": "3/10/2023, 13:41:05",
+      "basePath": "/Users/akusuma/workspace/opensource/supported",
+      "entrypoint": "./lib/",
+      "commandName": "@rehearsal/migrate"
+    }
+  ],
+  "fixedItemCount": 267,
+  "items": [
+    {
+      "analysisTarget": "lib/cli.ts",
+      "type": 0,
+      "ruleId": "TS2305",
+      "category": "Error",
+      "message": "Module '\"../lib/util\"' has no exported member 'handleInput'.",
+      "hint": "Module '\"../lib/util\"' has no exported member 'handleInput'.",
+      "hintAdded": true,
+      "nodeKind": "ImportSpecifier",
+      "nodeText": "handleInput",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2305}",
+      "nodeLocation": {
+        "startLine": 4,
+        "startColumn": 51,
+        "endLine": 4,
+        "endColumn": 62
+      }
+    },
+    {
+      "analysisTarget": "lib/cli.ts",
+      "type": 0,
+      "ruleId": "TS2554",
+      "category": "Error",
+      "message": "Expected 1 arguments, but got 0.",
+      "hint": "Expected 1 arguments, but got 0.",
+      "hintAdded": true,
+      "nodeKind": "CallExpression",
+      "nodeText": "checkNodeCompatibility()",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2554}",
+      "nodeLocation": {
+        "startLine": 6,
+        "startColumn": 1,
+        "endLine": 6,
+        "endColumn": 25
+      }
+    },
+    {
+      "analysisTarget": "lib/cli.ts",
+      "type": 0,
+      "ruleId": "TS2305",
+      "category": "Error",
+      "message": "Module '\"./output/messages\"' has no exported member 'DEFAULT_SUPPORT_MESSAGE'.",
+      "hint": "Module '\"./output/messages\"' has no exported member 'DEFAULT_SUPPORT_MESSAGE'.",
+      "hintAdded": true,
+      "nodeKind": "ImportSpecifier",
+      "nodeText": "DEFAULT_SUPPORT_MESSAGE",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2305}",
+      "nodeLocation": {
+        "startLine": 14,
+        "startColumn": 14,
+        "endLine": 14,
+        "endColumn": 37
+      }
+    },
+    {
+      "analysisTarget": "lib/cli.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'cli' implicitly has an 'any' type.",
+      "hint": "Parameter 'cli' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "cli",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 18,
+        "startColumn": 21,
+        "endLine": 18,
+        "endColumn": 24
+      }
+    },
+    {
+      "analysisTarget": "lib/cli.ts",
+      "type": 0,
+      "ruleId": "TS2339",
+      "category": "Error",
+      "message": "Property 'isInSupportWindow' does not exist on type '{}'.",
+      "hint": "Property 'isInSupportWindow' does not exist on type '{}'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "isInSupportWindow",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2339}",
+      "nodeLocation": {
+        "startLine": 42,
+        "startColumn": 18,
+        "endLine": 42,
+        "endColumn": 35
+      }
+    },
+    {
+      "analysisTarget": "lib/cli.ts",
+      "type": 0,
+      "ruleId": "TS2554",
+      "category": "Error",
+      "message": "Expected 0 arguments, but got 1.",
+      "hint": "Expected 0 arguments, but got 1.",
+      "hintAdded": true,
+      "nodeKind": "ObjectLiteralExpression",
+      "nodeText": "{\n          symbol: '✨',\n        }",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2554}",
+      "nodeLocation": {
+        "startLine": 53,
+        "startColumn": 22,
+        "endLine": 55,
+        "endColumn": 10
+      }
+    },
+    {
+      "analysisTarget": "lib/cli.ts",
+      "type": 0,
+      "ruleId": "TS2345",
+      "category": "Error",
+      "message": "Argument of type '{}' is not assignable to parameter of type '{ projects: { projectName: unknown; projectPath: PathLike; }[]; }'..   Property 'projects' is missing in type '{}' but required in type '{ projects: { projectName: unknown; projectPath: PathLike; }[]; }'.",
+      "hint": "Argument of type '{0}' is not assignable to parameter of type 'projects: { projectName: unknown; projectPath: PathLike'. Consider verifying both types, using type assertion: '( result as string)', or using type guard: 'if ( result instanceof string) { ... }'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "result",
+      "helpUrl": "https://stackoverflow.com/questions/42421501/error-ts2345-argument-of-type-t-is-not-assignable-to-parameter-of-type-objec",
+      "nodeLocation": {
+        "startLine": 63,
+        "startColumn": 33,
+        "endLine": 63,
+        "endColumn": 39
+      }
+    },
+    {
+      "analysisTarget": "lib/cli.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'setupProjectFn' implicitly has an 'any' type.",
+      "hint": "Parameter 'setupProjectFn' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "setupProjectFn",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 79,
+        "startColumn": 3,
+        "endLine": 79,
+        "endColumn": 17
+      }
+    },
+    {
+      "analysisTarget": "lib/cli.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'config' implicitly has an 'any' type.",
+      "hint": "Parameter 'config' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "config",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 82,
+        "startColumn": 3,
+        "endLine": 82,
+        "endColumn": 9
+      }
+    },
+    {
+      "analysisTarget": "lib/cli.ts",
+      "type": 1,
+      "ruleId": "error-generated-by-Eslint-core",
+      "category": "Error",
+      "message": "Parsing error: Unexpected token :",
+      "hint": "Parsing error: Unexpected token :",
+      "hintAdded": false,
+      "nodeText": "",
+      "helpUrl": "",
+      "nodeLocation": {
+        "startLine": 18,
+        "startColumn": 68,
+        "endLine": 18,
+        "endColumn": 2
+      }
+    },
+    {
+      "analysisTarget": "lib/help.ts",
+      "type": 0,
+      "ruleId": "TS2732",
+      "category": "Error",
+      "message": "Cannot find module '../package.json'. Consider using '--resolveJsonModule' to import module with '.json' extension.",
+      "hint": "Cannot find module '../package.json'. Consider using '--resolveJsonModule' to import module with '.json' extension.",
+      "hintAdded": true,
+      "nodeKind": "StringLiteral",
+      "nodeText": "'../package.json'",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2732}",
+      "nodeLocation": {
+        "startLine": 6,
+        "startColumn": 17,
+        "endLine": 6,
+        "endColumn": 34
+      }
+    },
+    {
+      "analysisTarget": "lib/help.ts",
+      "type": 1,
+      "ruleId": "node/no-unsupported-features/es-syntax",
+      "category": "Error",
+      "message": "Import and export declarations are not supported yet.",
+      "hint": "Import and export declarations are not supported yet.",
+      "hintAdded": false,
+      "nodeKind": "ImportDeclaration",
+      "nodeText": "",
+      "helpUrl": "",
+      "nodeLocation": {
+        "startLine": 3,
+        "startColumn": 1,
+        "endLine": 3,
+        "endColumn": 27
+      }
+    },
+    {
+      "analysisTarget": "lib/help.ts",
+      "type": 1,
+      "ruleId": "node/no-unsupported-features/es-syntax",
+      "category": "Error",
+      "message": "Import and export declarations are not supported yet.",
+      "hint": "Import and export declarations are not supported yet.",
+      "hintAdded": false,
+      "nodeKind": "ImportDeclaration",
+      "nodeText": "",
+      "helpUrl": "",
+      "nodeLocation": {
+        "startLine": 4,
+        "startColumn": 1,
+        "endLine": 4,
+        "endColumn": 42
+      }
+    },
+    {
+      "analysisTarget": "lib/help.ts",
+      "type": 1,
+      "ruleId": "node/no-unsupported-features/es-syntax",
+      "category": "Error",
+      "message": "Import and export declarations are not supported yet.",
+      "hint": "Import and export declarations are not supported yet.",
+      "hintAdded": false,
+      "nodeKind": "ImportDeclaration",
+      "nodeText": "",
+      "helpUrl": "",
+      "nodeLocation": {
+        "startLine": 6,
+        "startColumn": 1,
+        "endLine": 6,
+        "endColumn": 35
+      }
+    },
+    {
+      "analysisTarget": "lib/policy-rules.ts",
+      "type": 0,
+      "ruleId": "TS2305",
+      "category": "Error",
+      "message": "Module '\"./util\"' has no exported member 'DEFAULT_PRIMARY_POLICY'.",
+      "hint": "Module '\"./util\"' has no exported member 'DEFAULT_PRIMARY_POLICY'.",
+      "hintAdded": true,
+      "nodeKind": "ImportSpecifier",
+      "nodeText": "DEFAULT_PRIMARY_POLICY",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2305}",
+      "nodeLocation": {
+        "startLine": 2,
+        "startColumn": 14,
+        "endLine": 2,
+        "endColumn": 36
+      }
+    },
+    {
+      "analysisTarget": "lib/policy-rules.ts",
+      "type": 0,
+      "ruleId": "TS18049",
+      "category": "Error",
+      "message": "'validateConfigSchema.errors' is possibly 'null' or 'undefined'.",
+      "hint": "'validateConfigSchema.errors' is possibly 'null' or 'undefined'.",
+      "hintAdded": true,
+      "nodeKind": "PropertyAccessExpression",
+      "nodeText": "validateConfigSchema.errors",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts18049}",
+      "nodeLocation": {
+        "startLine": 11,
+        "startColumn": 5,
+        "endLine": 11,
+        "endColumn": 32
+      }
+    },
+    {
+      "analysisTarget": "lib/policy-rules.ts",
+      "type": 0,
+      "ruleId": "TS2339",
+      "category": "Error",
+      "message": "Property 'ignorePrereleases' does not exist on type '{ primary: any; }'.",
+      "hint": "Property 'ignorePrereleases' does not exist on type '{ primary: any; }'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "ignorePrereleases",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2339}",
+      "nodeLocation": {
+        "startLine": 25,
+        "startColumn": 17,
+        "endLine": 25,
+        "endColumn": 34
+      }
+    },
+    {
+      "analysisTarget": "lib/policy-rules.ts",
+      "type": 0,
+      "ruleId": "TS2339",
+      "category": "Error",
+      "message": "Property 'primary' does not exist on type 'ProcessConfig'.",
+      "hint": "Property 'primary' does not exist on type 'ProcessConfig'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "primary",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2339}",
+      "nodeLocation": {
+        "startLine": 27,
+        "startColumn": 23,
+        "endLine": 27,
+        "endColumn": 30
+      }
+    },
+    {
+      "analysisTarget": "lib/policy-rules.ts",
+      "type": 0,
+      "ruleId": "TS2339",
+      "category": "Error",
+      "message": "Property 'primary' does not exist on type 'ProcessConfig'.",
+      "hint": "Property 'primary' does not exist on type 'ProcessConfig'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "primary",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2339}",
+      "nodeLocation": {
+        "startLine": 29,
+        "startColumn": 43,
+        "endLine": 29,
+        "endColumn": 50
+      }
+    },
+    {
+      "analysisTarget": "lib/policy-rules.ts",
+      "type": 0,
+      "ruleId": "TS2339",
+      "category": "Error",
+      "message": "Property 'custom' does not exist on type 'ProcessConfig'.",
+      "hint": "Property 'custom' does not exist on type 'ProcessConfig'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "custom",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2339}",
+      "nodeLocation": {
+        "startLine": 33,
+        "startColumn": 23,
+        "endLine": 33,
+        "endColumn": 29
+      }
+    },
+    {
+      "analysisTarget": "lib/policy-rules.ts",
+      "type": 0,
+      "ruleId": "TS2339",
+      "category": "Error",
+      "message": "Property 'custom' does not exist on type '{ primary: any; }'.",
+      "hint": "Property 'custom' does not exist on type '{ primary: any; }'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "custom",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2339}",
+      "nodeLocation": {
+        "startLine": 35,
+        "startColumn": 19,
+        "endLine": 35,
+        "endColumn": 25
+      }
+    },
+    {
+      "analysisTarget": "lib/policy-rules.ts",
+      "type": 0,
+      "ruleId": "TS2339",
+      "category": "Error",
+      "message": "Property 'custom' does not exist on type 'ProcessConfig'.",
+      "hint": "Property 'custom' does not exist on type 'ProcessConfig'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "custom",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2339}",
+      "nodeLocation": {
+        "startLine": 37,
+        "startColumn": 21,
+        "endLine": 37,
+        "endColumn": 27
+      }
+    },
+    {
+      "analysisTarget": "lib/policy-rules.ts",
+      "type": 0,
+      "ruleId": "TS2355",
+      "category": "Error",
+      "message": "A function whose declared type is neither 'void' nor 'any' must return a value.",
+      "hint": "A function whose declared type is neither 'void' nor 'any' must return a value.",
+      "hintAdded": true,
+      "nodeKind": "UnionType",
+      "nodeText": "string | number",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2355}",
+      "nodeLocation": {
+        "startLine": 39,
+        "startColumn": 61,
+        "endLine": 39,
+        "endColumn": 76
+      }
+    },
+    {
+      "analysisTarget": "lib/policy-rules.ts",
+      "type": 0,
+      "ruleId": "TS2339",
+      "category": "Error",
+      "message": "Property 'custom' does not exist on type '{ primary: any; }'.",
+      "hint": "Property 'custom' does not exist on type '{ primary: any; }'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "custom",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2339}",
+      "nodeLocation": {
+        "startLine": 41,
+        "startColumn": 27,
+        "endLine": 41,
+        "endColumn": 33
+      }
+    },
+    {
+      "analysisTarget": "lib/policy-rules.ts",
+      "type": 0,
+      "ruleId": "TS2339",
+      "category": "Error",
+      "message": "Property 'custom' does not exist on type '{ primary: any; }'.",
+      "hint": "Property 'custom' does not exist on type '{ primary: any; }'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "custom",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2339}",
+      "nodeLocation": {
+        "startLine": 52,
+        "startColumn": 23,
+        "endLine": 52,
+        "endColumn": 29
+      }
+    },
+    {
+      "analysisTarget": "lib/policy-rules.ts",
+      "type": 1,
+      "ruleId": "error-generated-by-Eslint-core",
+      "category": "Error",
+      "message": "Parsing error: Unexpected token :",
+      "hint": "Parsing error: Unexpected token :",
+      "hintAdded": false,
+      "nodeText": "",
+      "helpUrl": "",
+      "nodeLocation": {
+        "startLine": 7,
+        "startColumn": 31,
+        "endLine": 7,
+        "endColumn": 2
+      }
+    },
+    {
+      "analysisTarget": "lib/util.ts",
+      "type": 0,
+      "ruleId": "TS4060",
+      "category": "Error",
+      "message": "Return type of exported function has or is using private name ''.",
+      "hint": "Return type of exported function has or is using private name ''.",
+      "hintAdded": true,
+      "nodeKind": "TypeReference",
+      "nodeText": "",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts4060}",
+      "nodeLocation": {
+        "startLine": 73,
+        "startColumn": 85,
+        "endLine": 73,
+        "endColumn": 85
+      }
+    },
+    {
+      "analysisTarget": "lib/util.ts",
+      "type": 0,
+      "ruleId": "TS2322",
+      "category": "Error",
+      "message": "Type '{ packages: string[]; doc: string; } | { packages: string[]; doc: string; } | undefined' is not assignable to type '{ packages: string[]; doc: any; }'..   Type 'undefined' is not assignable to type '{ packages: string[]; doc: any; }'.",
+      "hint": "The function expects to return 'packages: string[]; doc: any', but 'packages: string[]; doc: string; } | { packages: string[]; doc: string; } | undefined' is returned. Please convert 'packages: string[]; doc: string; } | { packages: string[]; doc: string; } | undefined' value to 'packages: string[]; doc: any' or update the function's return type.",
+      "hintAdded": true,
+      "nodeKind": "ReturnStatement",
+      "nodeText": "return groupName && LTS_MAP[groupName];",
+      "helpUrl": "https://stackoverflow.com/questions/72139358/ts2322-type-typeof-statusenum-is-not-assignable-to-type-statusenum",
+      "nodeLocation": {
+        "startLine": 76,
+        "startColumn": 3,
+        "endLine": 76,
+        "endColumn": 42
+      }
+    },
+    {
+      "analysisTarget": "lib/util.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'info' implicitly has an 'any' type.",
+      "hint": "Parameter 'info' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "info",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 87,
+        "startColumn": 27,
+        "endLine": 87,
+        "endColumn": 31
+      }
+    },
+    {
+      "analysisTarget": "lib/util.ts",
+      "type": 0,
+      "ruleId": "TS2531",
+      "category": "Error",
+      "message": "Object is possibly 'null'.",
+      "hint": "Object is possibly 'null'.",
+      "hintAdded": true,
+      "nodeKind": "CallExpression",
+      "nodeText": "semver.parse(taggedLatest)",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2531}",
+      "nodeLocation": {
+        "startLine": 90,
+        "startColumn": 29,
+        "endLine": 90,
+        "endColumn": 55
+      }
+    },
+    {
+      "analysisTarget": "lib/util.ts",
+      "type": 0,
+      "ruleId": "TS2531",
+      "category": "Error",
+      "message": "Object is possibly 'null'.",
+      "hint": "Object is possibly 'null'.",
+      "hintAdded": true,
+      "nodeKind": "CallExpression",
+      "nodeText": "semver.parse(version)",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2531}",
+      "nodeLocation": {
+        "startLine": 96,
+        "startColumn": 16,
+        "endLine": 96,
+        "endColumn": 37
+      }
+    },
+    {
+      "analysisTarget": "lib/util.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'isSupported' implicitly has an 'any' type.",
+      "hint": "Parameter 'isSupported' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "isSupported",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 164,
+        "startColumn": 38,
+        "endLine": 164,
+        "endColumn": 49
+      }
+    },
+    {
+      "analysisTarget": "lib/util.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'isSupported' implicitly has an 'any' type.",
+      "hint": "Parameter 'isSupported' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "isSupported",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 175,
+        "startColumn": 38,
+        "endLine": 175,
+        "endColumn": 49
+      }
+    },
+    {
+      "analysisTarget": "lib/util.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'isSupported' implicitly has an 'any' type.",
+      "hint": "Parameter 'isSupported' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "isSupported",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 194,
+        "startColumn": 32,
+        "endLine": 194,
+        "endColumn": 43
+      }
+    },
+    {
+      "analysisTarget": "lib/util.ts",
+      "type": 0,
+      "ruleId": "TS2345",
+      "category": "Error",
+      "message": "Argument of type '{}' is not assignable to parameter of type 'string'.",
+      "hint": "Argument of type '{0}' is not assignable to parameter of type 'string'. Consider verifying both types, using type assertion: '(name as string)', or using type guard: 'if (name instanceof string) { ... }'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "name",
+      "helpUrl": "https://stackoverflow.com/questions/42421501/error-ts2345-argument-of-type-t-is-not-assignable-to-parameter-of-type-objec",
+      "nodeLocation": {
+        "startLine": 204,
+        "startColumn": 54,
+        "endLine": 204,
+        "endColumn": 58
+      }
+    },
+    {
+      "analysisTarget": "lib/util.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'isSupported' implicitly has an 'any' type.",
+      "hint": "Parameter 'isSupported' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "isSupported",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 223,
+        "startColumn": 53,
+        "endLine": 223,
+        "endColumn": 64
+      }
+    },
+    {
+      "analysisTarget": "lib/util.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'input' implicitly has an 'any' type.",
+      "hint": "Parameter 'input' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "input",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 296,
+        "startColumn": 40,
+        "endLine": 296,
+        "endColumn": 45
+      }
+    },
+    {
+      "analysisTarget": "lib/util.ts",
+      "type": 0,
+      "ruleId": "TS2769",
+      "category": "Error",
+      "message": "No overload matches this call..   Overload 1 of 3, '(path: PathOrFileDescriptor, options?: { encoding?: null | undefined; flag?: string | undefined; } | null | undefined): Buffer', gave the following error..     Type '\"UTF-8\"' has no properties in common with type '{ encoding?: null | undefined; flag?: string | undefined; }'..   Overload 2 of 3, '(path: PathOrFileDescriptor, options: { encoding: BufferEncoding; flag?: string | undefined; } | BufferEncoding): string', gave the following error..     Argument of type '\"UTF-8\"' is not assignable to parameter of type '{ encoding: BufferEncoding; flag?: string | undefined; } | BufferEncoding'..   Overload 3 of 3, '(path: PathOrFileDescriptor, options?: BufferEncoding | (ObjectEncodingOptions & { flag?: string | undefined; }) | null | undefined): string | Buffer', gave the following error..     Argument of type '\"UTF-8\"' is not assignable to parameter of type 'BufferEncoding | (ObjectEncodingOptions & { flag?: string | undefined; }) | null | undefined'.",
+      "hint": "No overload matches this call..  Overload 1 of 3, '(path: PathOrFileDescriptor, options?: { encoding?: null | undefined; flag?: string | undefined; } | null | undefined): Buffer', gave the following error..    Type '\"UTF-8\"' has no properties in common with type '{ encoding?: null | undefined; flag?: string | undefined; }'..  Overload 2 of 3, '(path: PathOrFileDescriptor, options: { encoding: BufferEncoding; flag?: string | undefined; } | BufferEncoding): string', gave the following error..    Argument of type '\"UTF-8\"' is not assignable to parameter of type '{ encoding: BufferEncoding; flag?: string | undefined; } | BufferEncoding'..  Overload 3 of 3, '(path: PathOrFileDescriptor, options?: BufferEncoding | (ObjectEncodingOptions & { flag?: string | undefined; }) | null | undefined): string | Buffer', gave the following error..    Argument of type '\"UTF-8\"' is not assignable to parameter of type 'BufferEncoding | (ObjectEncodingOptions & { flag?: string | undefined; }) | null | undefined'.",
+      "hintAdded": true,
+      "nodeKind": "StringLiteral",
+      "nodeText": "'UTF-8'",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2769}",
+      "nodeLocation": {
+        "startLine": 300,
+        "startColumn": 57,
+        "endLine": 300,
+        "endColumn": 64
+      }
+    },
+    {
+      "analysisTarget": "lib/util.ts",
+      "type": 0,
+      "ruleId": "TS2339",
+      "category": "Error",
+      "message": "Property 'code' does not exist on type 'object'.",
+      "hint": "Property 'code' does not exist on type 'object'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "code",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2339}",
+      "nodeLocation": {
+        "startLine": 309,
+        "startColumn": 12,
+        "endLine": 309,
+        "endColumn": 16
+      }
+    },
+    {
+      "analysisTarget": "lib/util.ts",
+      "type": 1,
+      "ruleId": "error-generated-by-Eslint-core",
+      "category": "Error",
+      "message": "Parsing error: Unexpected token :",
+      "hint": "Parsing error: Unexpected token :",
+      "hintAdded": false,
+      "nodeText": "",
+      "helpUrl": "",
+      "nodeLocation": {
+        "startLine": 33,
+        "startColumn": 40,
+        "endLine": 33,
+        "endColumn": 2
+      }
+    },
+    {
+      "analysisTarget": "lib/lts/index.ts",
+      "type": 0,
+      "ruleId": "TS2732",
+      "category": "Error",
+      "message": "Cannot find module './node-lts.json'. Consider using '--resolveJsonModule' to import module with '.json' extension.",
+      "hint": "Cannot find module './node-lts.json'. Consider using '--resolveJsonModule' to import module with '.json' extension.",
+      "hintAdded": true,
+      "nodeKind": "StringLiteral",
+      "nodeText": "'./node-lts.json'",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2732}",
+      "nodeLocation": {
+        "startLine": 4,
+        "startColumn": 26,
+        "endLine": 4,
+        "endColumn": 43
+      }
+    },
+    {
+      "analysisTarget": "lib/lts/index.ts",
+      "type": 0,
+      "ruleId": "TS2732",
+      "category": "Error",
+      "message": "Cannot find module './ember-lts.json'. Consider using '--resolveJsonModule' to import module with '.json' extension.",
+      "hint": "Cannot find module './ember-lts.json'. Consider using '--resolveJsonModule' to import module with '.json' extension.",
+      "hintAdded": true,
+      "nodeKind": "StringLiteral",
+      "nodeText": "'./ember-lts.json'",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2732}",
+      "nodeLocation": {
+        "startLine": 6,
+        "startColumn": 27,
+        "endLine": 6,
+        "endColumn": 45
+      }
+    },
+    {
+      "analysisTarget": "lib/lts/index.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter '_time' implicitly has an 'any' type.",
+      "hint": "Parameter '_time' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "_time",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 32,
+        "startColumn": 22,
+        "endLine": 32,
+        "endColumn": 27
+      }
+    },
+    {
+      "analysisTarget": "lib/lts/index.ts",
+      "type": 0,
+      "ruleId": "TS2339",
+      "category": "Error",
+      "message": "Property 'major' does not exist on type 'SemVer | null'.",
+      "hint": "Property 'major' does not exist on type 'SemVer | null'.",
+      "hintAdded": true,
+      "nodeKind": "BindingElement",
+      "nodeText": "major",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2339}",
+      "nodeLocation": {
+        "startLine": 47,
+        "startColumn": 13,
+        "endLine": 47,
+        "endColumn": 18
+      }
+    },
+    {
+      "analysisTarget": "lib/lts/index.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'entry' implicitly has an 'any' type.",
+      "hint": "Parameter 'entry' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "entry",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 59,
+        "startColumn": 33,
+        "endLine": 59,
+        "endColumn": 38
+      }
+    },
+    {
+      "analysisTarget": "lib/lts/index.ts",
+      "type": 0,
+      "ruleId": "TS2365",
+      "category": "Error",
+      "message": "Operator '<=' cannot be applied to types 'number' and 'Date'.",
+      "hint": "Operator '<=' cannot be applied to types 'number' and 'Date'.",
+      "hintAdded": true,
+      "nodeKind": "BinaryExpression",
+      "nodeText": "currentDate <= endOfSupport",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2365}",
+      "nodeLocation": {
+        "startLine": 109,
+        "startColumn": 44,
+        "endLine": 109,
+        "endColumn": 71
+      }
+    },
+    {
+      "analysisTarget": "lib/lts/index.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'ltsList' implicitly has an 'any' type.",
+      "hint": "Parameter 'ltsList' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "ltsList",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 122,
+        "startColumn": 24,
+        "endLine": 122,
+        "endColumn": 31
+      }
+    },
+    {
+      "analysisTarget": "lib/lts/index.ts",
+      "type": 0,
+      "ruleId": "TS2371",
+      "category": "Error",
+      "message": "A parameter initializer is only allowed in a function or constructor implementation.",
+      "hint": "A parameter initializer is only allowed in a function or constructor implementation.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "_currentDate: Date = new Date()",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2371}",
+      "nodeLocation": {
+        "startLine": 153,
+        "startColumn": 97,
+        "endLine": 153,
+        "endColumn": 128
+      }
+    },
+    {
+      "analysisTarget": "lib/lts/index.ts",
+      "type": 0,
+      "ruleId": "TS2304",
+      "category": "Error",
+      "message": "Cannot find name 'currentDate'.",
+      "hint": "Cannot find name 'currentDate'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "currentDate",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2304}",
+      "nodeLocation": {
+        "startLine": 161,
+        "startColumn": 17,
+        "endLine": 161,
+        "endColumn": 28
+      }
+    },
+    {
+      "analysisTarget": "lib/lts/index.ts",
+      "type": 0,
+      "ruleId": "TS2339",
+      "category": "Error",
+      "message": "Property 'type' does not exist on type '(message?: any, ...optionalParams: any[]) => void'.",
+      "hint": "Property 'type' does not exist on type '(message?: any, ...optionalParams: any[]) => void'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "type",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2339}",
+      "nodeLocation": {
+        "startLine": 163,
+        "startColumn": 12,
+        "endLine": 163,
+        "endColumn": 16
+      }
+    },
+    {
+      "analysisTarget": "lib/lts/index.ts",
+      "type": 0,
+      "ruleId": "TS2304",
+      "category": "Error",
+      "message": "Cannot find name 'resolvedVersion'.",
+      "hint": "Cannot find name 'resolvedVersion'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "resolvedVersion",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2304}",
+      "nodeLocation": {
+        "startLine": 167,
+        "startColumn": 9,
+        "endLine": 167,
+        "endColumn": 24
+      }
+    },
+    {
+      "analysisTarget": "lib/lts/index.ts",
+      "type": 0,
+      "ruleId": "TS2304",
+      "category": "Error",
+      "message": "Cannot find name 'resolvedVersion'.",
+      "hint": "Cannot find name 'resolvedVersion'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "resolvedVersion",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2304}",
+      "nodeLocation": {
+        "startLine": 175,
+        "startColumn": 45,
+        "endLine": 175,
+        "endColumn": 60
+      }
+    },
+    {
+      "analysisTarget": "lib/lts/index.ts",
+      "type": 0,
+      "ruleId": "TS2304",
+      "category": "Error",
+      "message": "Cannot find name 'resolvedVersion'.",
+      "hint": "Cannot find name 'resolvedVersion'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "resolvedVersion",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2304}",
+      "nodeLocation": {
+        "startLine": 200,
+        "startColumn": 27,
+        "endLine": 200,
+        "endColumn": 42
+      }
+    },
+    {
+      "analysisTarget": "lib/lts/index.ts",
+      "type": 0,
+      "ruleId": "TS2304",
+      "category": "Error",
+      "message": "Cannot find name 'resolvedVersion'.",
+      "hint": "Cannot find name 'resolvedVersion'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "resolvedVersion",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2304}",
+      "nodeLocation": {
+        "startLine": 202,
+        "startColumn": 44,
+        "endLine": 202,
+        "endColumn": 59
+      }
+    },
+    {
+      "analysisTarget": "lib/lts/index.ts",
+      "type": 0,
+      "ruleId": "TS18004",
+      "category": "Error",
+      "message": "No value exists in scope for the shorthand property 'resolvedVersion'. Either declare one or provide an initializer.",
+      "hint": "No value exists in scope for the shorthand property 'resolvedVersion'. Either declare one or provide an initializer.",
+      "hintAdded": true,
+      "nodeKind": "ShorthandPropertyAssignment",
+      "nodeText": "resolvedVersion",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts18004}",
+      "nodeLocation": {
+        "startLine": 218,
+        "startColumn": 7,
+        "endLine": 218,
+        "endColumn": 22
+      }
+    },
+    {
+      "analysisTarget": "lib/lts/index.ts",
+      "type": 0,
+      "ruleId": "TS2339",
+      "category": "Error",
+      "message": "Property 'type' does not exist on type '(message?: any, ...optionalParams: any[]) => void'.",
+      "hint": "Property 'type' does not exist on type '(message?: any, ...optionalParams: any[]) => void'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "type",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2339}",
+      "nodeLocation": {
+        "startLine": 220,
+        "startColumn": 50,
+        "endLine": 220,
+        "endColumn": 54
+      }
+    },
+    {
+      "analysisTarget": "lib/lts/index.ts",
+      "type": 0,
+      "ruleId": "TS7053",
+      "category": "Error",
+      "message": "Element implicitly has an 'any' type because expression of type '\"duration\"' can't be used to index type '{ isSupported: boolean; resolvedVersion: any; latestVersion: string; }'..   Property 'duration' does not exist on type '{ isSupported: boolean; resolvedVersion: any; latestVersion: string; }'.",
+      "hint": "Element implicitly has an 'any' type because expression of type '\"duration\"' can't be used to index type '{ isSupported: boolean; resolvedVersion: any; latestVersion: string; }'..  Property 'duration' does not exist on type '{ isSupported: boolean; resolvedVersion: any; latestVersion: string; }'.",
+      "hintAdded": true,
+      "nodeKind": "ElementAccessExpression",
+      "nodeText": "returnVal['duration']",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7053}",
+      "nodeLocation": {
+        "startLine": 225,
+        "startColumn": 7,
+        "endLine": 225,
+        "endColumn": 28
+      }
+    },
+    {
+      "analysisTarget": "lib/lts/index.ts",
+      "type": 0,
+      "ruleId": "TS7053",
+      "category": "Error",
+      "message": "Element implicitly has an 'any' type because expression of type '\"deprecationDate\"' can't be used to index type '{ isSupported: boolean; resolvedVersion: any; latestVersion: string; }'..   Property 'deprecationDate' does not exist on type '{ isSupported: boolean; resolvedVersion: any; latestVersion: string; }'.",
+      "hint": "Element implicitly has an 'any' type because expression of type '\"deprecationDate\"' can't be used to index type '{ isSupported: boolean; resolvedVersion: any; latestVersion: string; }'..  Property 'deprecationDate' does not exist on type '{ isSupported: boolean; resolvedVersion: any; latestVersion: string; }'.",
+      "hintAdded": true,
+      "nodeKind": "ElementAccessExpression",
+      "nodeText": "returnVal['deprecationDate']",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7053}",
+      "nodeLocation": {
+        "startLine": 227,
+        "startColumn": 7,
+        "endLine": 227,
+        "endColumn": 35
+      }
+    },
+    {
+      "analysisTarget": "lib/lts/index.ts",
+      "type": 0,
+      "ruleId": "TS7053",
+      "category": "Error",
+      "message": "Element implicitly has an 'any' type because expression of type '\"message\"' can't be used to index type '{ isSupported: boolean; resolvedVersion: any; latestVersion: string; }'..   Property 'message' does not exist on type '{ isSupported: boolean; resolvedVersion: any; latestVersion: string; }'.",
+      "hint": "Element implicitly has an 'any' type because expression of type '\"message\"' can't be used to index type '{ isSupported: boolean; resolvedVersion: any; latestVersion: string; }'..  Property 'message' does not exist on type '{ isSupported: boolean; resolvedVersion: any; latestVersion: string; }'.",
+      "hintAdded": true,
+      "nodeKind": "ElementAccessExpression",
+      "nodeText": "returnVal['message']",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7053}",
+      "nodeLocation": {
+        "startLine": 229,
+        "startColumn": 7,
+        "endLine": 229,
+        "endColumn": 27
+      }
+    },
+    {
+      "analysisTarget": "lib/lts/index.ts",
+      "type": 0,
+      "ruleId": "TS7053",
+      "category": "Error",
+      "message": "Element implicitly has an 'any' type because expression of type '\"message\"' can't be used to index type '{ isSupported: boolean; resolvedVersion: any; latestVersion: string; }'..   Property 'message' does not exist on type '{ isSupported: boolean; resolvedVersion: any; latestVersion: string; }'.",
+      "hint": "Element implicitly has an 'any' type because expression of type '\"message\"' can't be used to index type '{ isSupported: boolean; resolvedVersion: any; latestVersion: string; }'..  Property 'message' does not exist on type '{ isSupported: boolean; resolvedVersion: any; latestVersion: string; }'.",
+      "hintAdded": true,
+      "nodeKind": "ElementAccessExpression",
+      "nodeText": "returnVal['message']",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7053}",
+      "nodeLocation": {
+        "startLine": 234,
+        "startColumn": 7,
+        "endLine": 234,
+        "endColumn": 27
+      }
+    },
+    {
+      "analysisTarget": "lib/lts/index.ts",
+      "type": 0,
+      "ruleId": "TS2339",
+      "category": "Error",
+      "message": "Property 'type' does not exist on type '(message?: any, ...optionalParams: any[]) => void'.",
+      "hint": "Property 'type' does not exist on type '(message?: any, ...optionalParams: any[]) => void'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "type",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2339}",
+      "nodeLocation": {
+        "startLine": 241,
+        "startColumn": 33,
+        "endLine": 241,
+        "endColumn": 37
+      }
+    },
+    {
+      "analysisTarget": "lib/lts/index.ts",
+      "type": 0,
+      "ruleId": "TS2304",
+      "category": "Error",
+      "message": "Cannot find name 'resolvedVersion'.",
+      "hint": "Cannot find name 'resolvedVersion'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "resolvedVersion",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2304}",
+      "nodeLocation": {
+        "startLine": 251,
+        "startColumn": 36,
+        "endLine": 251,
+        "endColumn": 51
+      }
+    },
+    {
+      "analysisTarget": "lib/lts/index.ts",
+      "type": 0,
+      "ruleId": "TS2531",
+      "category": "Error",
+      "message": "Object is possibly 'null'.",
+      "hint": "Object is possibly 'null'.",
+      "hintAdded": true,
+      "nodeKind": "CallExpression",
+      "nodeText": "semverMinVersion(version)",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2531}",
+      "nodeLocation": {
+        "startLine": 257,
+        "startColumn": 23,
+        "endLine": 257,
+        "endColumn": 48
+      }
+    },
+    {
+      "analysisTarget": "lib/lts/index.ts",
+      "type": 0,
+      "ruleId": "TS2339",
+      "category": "Error",
+      "message": "Property 'duration' does not exist on type '{}'.",
+      "hint": "Property 'duration' does not exist on type '{}'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "duration",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2339}",
+      "nodeLocation": {
+        "startLine": 267,
+        "startColumn": 29,
+        "endLine": 267,
+        "endColumn": 37
+      }
+    },
+    {
+      "analysisTarget": "lib/lts/index.ts",
+      "type": 0,
+      "ruleId": "TS2339",
+      "category": "Error",
+      "message": "Property 'deprecationDate' does not exist on type '{}'.",
+      "hint": "Property 'deprecationDate' does not exist on type '{}'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "deprecationDate",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2339}",
+      "nodeLocation": {
+        "startLine": 269,
+        "startColumn": 29,
+        "endLine": 269,
+        "endColumn": 44
+      }
+    },
+    {
+      "analysisTarget": "lib/lts/index.ts",
+      "type": 1,
+      "ruleId": "error-generated-by-Eslint-core",
+      "category": "Error",
+      "message": "Parsing error: Unexpected token :",
+      "hint": "Parsing error: Unexpected token :",
+      "hintAdded": false,
+      "nodeText": "",
+      "helpUrl": "",
+      "nodeLocation": {
+        "startLine": 9,
+        "startColumn": 23,
+        "endLine": 9,
+        "endColumn": 2
+      }
+    },
+    {
+      "analysisTarget": "lib/npm/config.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'cwd' implicitly has an 'any' type.",
+      "hint": "Parameter 'cwd' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "cwd",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 7,
+        "startColumn": 34,
+        "endLine": 7,
+        "endColumn": 37
+      }
+    },
+    {
+      "analysisTarget": "lib/npm/config.ts",
+      "type": 0,
+      "ruleId": "TS2769",
+      "category": "Error",
+      "message": "No overload matches this call..   Overload 1 of 2, '(input: readonly { [key: string]: any; }[], options?: Options | undefined): readonly { [key: string]: any; }[]', gave the following error..     Argument of type 'string' is not assignable to parameter of type 'readonly { [key: string]: any; }[]'..   Overload 2 of 2, '(input: { [key: string]: any; }, options?: Options | undefined): { [key: string]: any; }', gave the following error..     Argument of type 'string' is not assignable to parameter of type '{ [key: string]: any; }'.",
+      "hint": "No overload matches this call..  Overload 1 of 2, '(input: readonly { [key: string]: any; }[], options?: Options | undefined): readonly { [key: string]: any; }[]', gave the following error..    Argument of type 'string' is not assignable to parameter of type 'readonly { [key: string]: any; }[]'..  Overload 2 of 2, '(input: { [key: string]: any; }, options?: Options | undefined): { [key: string]: any; }', gave the following error..    Argument of type 'string' is not assignable to parameter of type '{ [key: string]: any; }'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "jsonConfigOutput",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2769}",
+      "nodeLocation": {
+        "startLine": 23,
+        "startColumn": 24,
+        "endLine": 23,
+        "endColumn": 40
+      }
+    },
+    {
+      "analysisTarget": "lib/npm/config.ts",
+      "type": 1,
+      "ruleId": "node/no-unsupported-features/es-syntax",
+      "category": "Error",
+      "message": "Import and export declarations are not supported yet.",
+      "hint": "Import and export declarations are not supported yet.",
+      "hintAdded": false,
+      "nodeKind": "ImportDeclaration",
+      "nodeText": "",
+      "helpUrl": "",
+      "nodeLocation": {
+        "startLine": 3,
+        "startColumn": 1,
+        "endLine": 3,
+        "endColumn": 27
+      }
+    },
+    {
+      "analysisTarget": "lib/npm/config.ts",
+      "type": 1,
+      "ruleId": "node/no-unsupported-features/es-syntax",
+      "category": "Error",
+      "message": "Import and export declarations are not supported yet.",
+      "hint": "Import and export declarations are not supported yet.",
+      "hintAdded": false,
+      "nodeKind": "ImportDeclaration",
+      "nodeText": "",
+      "helpUrl": "",
+      "nodeLocation": {
+        "startLine": 4,
+        "startColumn": 1,
+        "endLine": 4,
+        "endColumn": 44
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS2305",
+      "category": "Error",
+      "message": "Module '\"./messages\"' has no exported member 'LOG_TITLE'.",
+      "hint": "Module '\"./messages\"' has no exported member 'LOG_TITLE'.",
+      "hintAdded": true,
+      "nodeKind": "ImportSpecifier",
+      "nodeText": "LOG_TITLE",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2305}",
+      "nodeLocation": {
+        "startLine": 7,
+        "startColumn": 14,
+        "endLine": 7,
+        "endColumn": 23
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'results' implicitly has an 'any' type.",
+      "hint": "Parameter 'results' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "results",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 29,
+        "startColumn": 25,
+        "endLine": 29,
+        "endColumn": 32
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7034",
+      "category": "Error",
+      "message": "Variable 'expiringSoonTable' implicitly has type 'any[]' in some locations where its type cannot be determined.",
+      "hint": "Variable 'expiringSoonTable' implicitly has type 'any[]' in some locations where its type cannot be determined.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "expiringSoonTable",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7034}",
+      "nodeLocation": {
+        "startLine": 56,
+        "startColumn": 9,
+        "endLine": 56,
+        "endColumn": 26
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7031",
+      "category": "Error",
+      "message": "Binding element 'name' implicitly has an 'any' type.",
+      "hint": "Binding element 'name' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "BindingElement",
+      "nodeText": "name",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7031}",
+      "nodeLocation": {
+        "startLine": 60,
+        "startColumn": 8,
+        "endLine": 60,
+        "endColumn": 12
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7005",
+      "category": "Error",
+      "message": "Variable 'expiringSoonTable' implicitly has an 'any[]' type.",
+      "hint": "Variable 'expiringSoonTable' implicitly has an 'any[]' type.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "expiringSoonTable",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7005}",
+      "nodeLocation": {
+        "startLine": 101,
+        "startColumn": 19,
+        "endLine": 101,
+        "endColumn": 36
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'packageInfo' implicitly has an 'any' type.",
+      "hint": "Parameter 'packageInfo' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "packageInfo",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 116,
+        "startColumn": 26,
+        "endLine": 116,
+        "endColumn": 37
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS2304",
+      "category": "Error",
+      "message": "Cannot find name 'list'.",
+      "hint": "Cannot find name 'list'.",
+      "hintAdded": true,
+      "nodeKind": "TypeReference",
+      "nodeText": "list",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2304}",
+      "nodeLocation": {
+        "startLine": 139,
+        "startColumn": 22,
+        "endLine": 139,
+        "endColumn": 26
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS2304",
+      "category": "Error",
+      "message": "Cannot find name 'int'.",
+      "hint": "Cannot find name 'int'.",
+      "hintAdded": true,
+      "nodeKind": "TypeReference",
+      "nodeText": "int",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2304}",
+      "nodeLocation": {
+        "startLine": 141,
+        "startColumn": 25,
+        "endLine": 141,
+        "endColumn": 28
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS2304",
+      "category": "Error",
+      "message": "Cannot find name 'int'.",
+      "hint": "Cannot find name 'int'.",
+      "hintAdded": true,
+      "nodeKind": "TypeReference",
+      "nodeText": "int",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2304}",
+      "nodeLocation": {
+        "startLine": 143,
+        "startColumn": 18,
+        "endLine": 143,
+        "endColumn": 21
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS2304",
+      "category": "Error",
+      "message": "Cannot find name 'list'.",
+      "hint": "Cannot find name 'list'.",
+      "hintAdded": true,
+      "nodeKind": "TypeReference",
+      "nodeText": "list",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2304}",
+      "nodeLocation": {
+        "startLine": 160,
+        "startColumn": 49,
+        "endLine": 160,
+        "endColumn": 53
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS2339",
+      "category": "Error",
+      "message": "Property 'violationInfo' does not exist on type '{ violations: { major: numb; }; }'.",
+      "hint": "Property 'violationInfo' does not exist on type '{ violations: { major: numb; }; }'.",
+      "hintAdded": true,
+      "nodeKind": "BindingElement",
+      "nodeText": "violationInfo",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2339}",
+      "nodeLocation": {
+        "startLine": 164,
+        "startColumn": 23,
+        "endLine": 164,
+        "endColumn": 36
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7053",
+      "category": "Error",
+      "message": "Element implicitly has an 'any' type because expression of type '\"total\"' can't be used to index type '{ major: numb; }'..   Property 'total' does not exist on type '{ major: numb; }'.",
+      "hint": "Element implicitly has an 'any' type because expression of type '\"total\"' can't be used to index type '{ major: numb; }'..  Property 'total' does not exist on type '{ major: numb; }'.",
+      "hintAdded": true,
+      "nodeKind": "ElementAccessExpression",
+      "nodeText": "violations['total']",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7053}",
+      "nodeLocation": {
+        "startLine": 166,
+        "startColumn": 32,
+        "endLine": 166,
+        "endColumn": 51
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7053",
+      "category": "Error",
+      "message": "Element implicitly has an 'any' type because expression of type '\"total\"' can't be used to index type '{ major: numb; }'..   Property 'total' does not exist on type '{ major: numb; }'.",
+      "hint": "Element implicitly has an 'any' type because expression of type '\"total\"' can't be used to index type '{ major: numb; }'..  Property 'total' does not exist on type '{ major: numb; }'.",
+      "hintAdded": true,
+      "nodeKind": "ElementAccessExpression",
+      "nodeText": "violations['total']",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7053}",
+      "nodeLocation": {
+        "startLine": 168,
+        "startColumn": 12,
+        "endLine": 168,
+        "endColumn": 31
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7053",
+      "category": "Error",
+      "message": "Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ major: numb; }'..   No index signature with a parameter of type 'string' was found on type '{ major: numb; }'.",
+      "hint": "Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ major: numb; }'..  No index signature with a parameter of type 'string' was found on type '{ major: numb; }'.",
+      "hintAdded": true,
+      "nodeKind": "ElementAccessExpression",
+      "nodeText": "violations[type]",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7053}",
+      "nodeLocation": {
+        "startLine": 179,
+        "startColumn": 47,
+        "endLine": 179,
+        "endColumn": 63
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS2304",
+      "category": "Error",
+      "message": "Cannot find name 'int'.",
+      "hint": "Cannot find name 'int'.",
+      "hintAdded": true,
+      "nodeKind": "TypeReference",
+      "nodeText": "int",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2304}",
+      "nodeLocation": {
+        "startLine": 193,
+        "startColumn": 69,
+        "endLine": 193,
+        "endColumn": 72
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'pkg' implicitly has an 'any' type.",
+      "hint": "Parameter 'pkg' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "pkg",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 195,
+        "startColumn": 50,
+        "endLine": 195,
+        "endColumn": 53
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'result' implicitly has an 'any' type.",
+      "hint": "Parameter 'result' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "result",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 212,
+        "startColumn": 39,
+        "endLine": 212,
+        "endColumn": 45
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'isInSupportWindow' implicitly has an 'any' type.",
+      "hint": "Parameter 'isInSupportWindow' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "isInSupportWindow",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 237,
+        "startColumn": 3,
+        "endLine": 237,
+        "endColumn": 20
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'expiresSoon' implicitly has an 'any' type.",
+      "hint": "Parameter 'expiresSoon' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "expiresSoon",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 239,
+        "startColumn": 3,
+        "endLine": 239,
+        "endColumn": 14
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'flags' implicitly has an 'any' type.",
+      "hint": "Parameter 'flags' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "flags",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 241,
+        "startColumn": 3,
+        "endLine": 241,
+        "endColumn": 8
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'isInSupportWindow' implicitly has an 'any' type.",
+      "hint": "Parameter 'isInSupportWindow' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "isInSupportWindow",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 270,
+        "startColumn": 3,
+        "endLine": 270,
+        "endColumn": 20
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'unsupportedPackages' implicitly has an 'any' type.",
+      "hint": "Parameter 'unsupportedPackages' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "unsupportedPackages",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 272,
+        "startColumn": 3,
+        "endLine": 272,
+        "endColumn": 22
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'supportedPackages' implicitly has an 'any' type.",
+      "hint": "Parameter 'supportedPackages' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "supportedPackages",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 274,
+        "startColumn": 3,
+        "endLine": 274,
+        "endColumn": 20
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'expiresSoon' implicitly has an 'any' type.",
+      "hint": "Parameter 'expiresSoon' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "expiresSoon",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 276,
+        "startColumn": 3,
+        "endLine": 276,
+        "endColumn": 14
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'nodePackage' implicitly has an 'any' type.",
+      "hint": "Parameter 'nodePackage' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "nodePackage",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 278,
+        "startColumn": 3,
+        "endLine": 278,
+        "endColumn": 14
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'emberCliPackage' implicitly has an 'any' type.",
+      "hint": "Parameter 'emberCliPackage' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "emberCliPackage",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 280,
+        "startColumn": 3,
+        "endLine": 280,
+        "endColumn": 18
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'emberSourcePackage' implicitly has an 'any' type.",
+      "hint": "Parameter 'emberSourcePackage' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "emberSourcePackage",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 282,
+        "startColumn": 3,
+        "endLine": 282,
+        "endColumn": 21
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS2554",
+      "category": "Error",
+      "message": "Expected 3 arguments, but got 2.",
+      "hint": "Expected 3 arguments, but got 2.",
+      "hintAdded": true,
+      "nodeKind": "CallExpression",
+      "nodeText": "getPackageViolation(unsupportedPackages, totalPackagesCount)",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2554}",
+      "nodeLocation": {
+        "startLine": 309,
+        "startColumn": 28,
+        "endLine": 309,
+        "endColumn": 88
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'supportResult' implicitly has an 'any' type.",
+      "hint": "Parameter 'supportResult' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "supportResult",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 330,
+        "startColumn": 35,
+        "endLine": 330,
+        "endColumn": 48
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS2322",
+      "category": "Error",
+      "message": "Type '{ title: string; head: string; body: \"\" | Table<TableRow>; }' is not assignable to type '{ title: string; head: stri; }'..   Object literal may only specify known properties, and 'body' does not exist in type '{ title: string; head: stri; }'.",
+      "hint": "Type 'title: string; head: string; body: \"\" | Table<TableRow' is being returned or assigned, but type 'title: string; head: stri' is expected. Please convert type 'title: string; head: string; body: \"\" | Table<TableRow' to type 'title: string; head: stri', or return or assign a variable of type 'title: string; head: stri'",
+      "hintAdded": true,
+      "nodeKind": "ShorthandPropertyAssignment",
+      "nodeText": "body",
+      "helpUrl": "https://stackoverflow.com/questions/72139358/ts2322-type-typeof-statusenum-is-not-assignable-to-type-statusenum",
+      "nodeLocation": {
+        "startLine": 368,
+        "startColumn": 5,
+        "endLine": 368,
+        "endColumn": 9
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS2304",
+      "category": "Error",
+      "message": "Cannot find name 'list'.",
+      "hint": "Cannot find name 'list'.",
+      "hintAdded": true,
+      "nodeKind": "TypeReference",
+      "nodeText": "list",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2304}",
+      "nodeLocation": {
+        "startLine": 379,
+        "startColumn": 45,
+        "endLine": 379,
+        "endColumn": 49
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7031",
+      "category": "Error",
+      "message": "Binding element 'type' implicitly has an 'any' type.",
+      "hint": "Binding element 'type' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "BindingElement",
+      "nodeText": "type",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7031}",
+      "nodeLocation": {
+        "startLine": 393,
+        "startColumn": 28,
+        "endLine": 393,
+        "endColumn": 32
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7053",
+      "category": "Error",
+      "message": "Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{ major: number; minor: number; patch: number; total: number; }'.",
+      "hint": "Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{ major: number; minor: number; patch: number; total: number; }'.",
+      "hintAdded": true,
+      "nodeKind": "ElementAccessExpression",
+      "nodeText": "violations[type]",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7053}",
+      "nodeLocation": {
+        "startLine": 399,
+        "startColumn": 9,
+        "endLine": 399,
+        "endColumn": 25
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7053",
+      "category": "Error",
+      "message": "Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{ major: number; minor: number; patch: number; }'.",
+      "hint": "Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{ major: number; minor: number; patch: number; }'.",
+      "hintAdded": true,
+      "nodeKind": "ElementAccessExpression",
+      "nodeText": "violationInfo[type]",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7053}",
+      "nodeLocation": {
+        "startLine": 406,
+        "startColumn": 11,
+        "endLine": 406,
+        "endColumn": 30
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7053",
+      "category": "Error",
+      "message": "Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{ major: number; minor: number; patch: number; }'.",
+      "hint": "Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{ major: number; minor: number; patch: number; }'.",
+      "hintAdded": true,
+      "nodeKind": "ElementAccessExpression",
+      "nodeText": "violationInfo[type]",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7053}",
+      "nodeLocation": {
+        "startLine": 408,
+        "startColumn": 9,
+        "endLine": 408,
+        "endColumn": 28
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7053",
+      "category": "Error",
+      "message": "Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{ major: number; minor: number; patch: number; }'.",
+      "hint": "Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{ major: number; minor: number; patch: number; }'.",
+      "hintAdded": true,
+      "nodeKind": "ElementAccessExpression",
+      "nodeText": "violationInfo[type]",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7053}",
+      "nodeLocation": {
+        "startLine": 412,
+        "startColumn": 9,
+        "endLine": 412,
+        "endColumn": 28
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS2322",
+      "category": "Error",
+      "message": "Type '{ violations: { major: number; minor: number; patch: number; total: number; }; violationInfo: { major: number; minor: number; patch: number; }; }' is not assignable to type '{ violations: { major: numb; }; }'..   Object literal may only specify known properties, but 'violationInfo' does not exist in type '{ violations: { major: numb; }; }'. Did you mean to write 'violations'?",
+      "hint": "Type 'violations: { major: number; minor: number; patch: number; total: number; }; violationInfo: { major: number; minor: number; patch: number' is being returned or assigned, but type 'violations: { major: numb' is expected. Please convert type 'violations: { major: number; minor: number; patch: number; total: number; }; violationInfo: { major: number; minor: number; patch: number' to type 'violations: { major: numb', or return or assign a variable of type 'violations: { major: numb'",
+      "hintAdded": true,
+      "nodeKind": "ShorthandPropertyAssignment",
+      "nodeText": "violationInfo",
+      "helpUrl": "https://stackoverflow.com/questions/72139358/ts2322-type-typeof-statusenum-is-not-assignable-to-type-statusenum",
+      "nodeLocation": {
+        "startLine": 419,
+        "startColumn": 5,
+        "endLine": 419,
+        "endColumn": 18
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'pkgList' implicitly has an 'any' type.",
+      "hint": "Parameter 'pkgList' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "pkgList",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 434,
+        "startColumn": 29,
+        "endLine": 434,
+        "endColumn": 36
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7034",
+      "category": "Error",
+      "message": "Variable 'expiresSoon' implicitly has type 'any[]' in some locations where its type cannot be determined.",
+      "hint": "Variable 'expiresSoon' implicitly has type 'any[]' in some locations where its type cannot be determined.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "expiresSoon",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7034}",
+      "nodeLocation": {
+        "startLine": 436,
+        "startColumn": 7,
+        "endLine": 436,
+        "endColumn": 18
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7034",
+      "category": "Error",
+      "message": "Variable 'unsupportedPackages' implicitly has type 'any[]' in some locations where its type cannot be determined.",
+      "hint": "Variable 'unsupportedPackages' implicitly has type 'any[]' in some locations where its type cannot be determined.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "unsupportedPackages",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7034}",
+      "nodeLocation": {
+        "startLine": 438,
+        "startColumn": 7,
+        "endLine": 438,
+        "endColumn": 26
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7034",
+      "category": "Error",
+      "message": "Variable 'supportedPackages' implicitly has type 'any[]' in some locations where its type cannot be determined.",
+      "hint": "Variable 'supportedPackages' implicitly has type 'any[]' in some locations where its type cannot be determined.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "supportedPackages",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7034}",
+      "nodeLocation": {
+        "startLine": 443,
+        "startColumn": 7,
+        "endLine": 443,
+        "endColumn": 24
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'pkg' implicitly has an 'any' type.",
+      "hint": "Parameter 'pkg' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "pkg",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 445,
+        "startColumn": 20,
+        "endLine": 445,
+        "endColumn": 23
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7005",
+      "category": "Error",
+      "message": "Variable 'expiresSoon' implicitly has an 'any[]' type.",
+      "hint": "Variable 'expiresSoon' implicitly has an 'any[]' type.",
+      "hintAdded": true,
+      "nodeKind": "ShorthandPropertyAssignment",
+      "nodeText": "expiresSoon",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7005}",
+      "nodeLocation": {
+        "startLine": 463,
+        "startColumn": 5,
+        "endLine": 463,
+        "endColumn": 16
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7005",
+      "category": "Error",
+      "message": "Variable 'unsupportedPackages' implicitly has an 'any[]' type.",
+      "hint": "Variable 'unsupportedPackages' implicitly has an 'any[]' type.",
+      "hintAdded": true,
+      "nodeKind": "ShorthandPropertyAssignment",
+      "nodeText": "unsupportedPackages",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7005}",
+      "nodeLocation": {
+        "startLine": 465,
+        "startColumn": 5,
+        "endLine": 465,
+        "endColumn": 24
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7005",
+      "category": "Error",
+      "message": "Variable 'supportedPackages' implicitly has an 'any[]' type.",
+      "hint": "Variable 'supportedPackages' implicitly has an 'any[]' type.",
+      "hintAdded": true,
+      "nodeKind": "ShorthandPropertyAssignment",
+      "nodeText": "supportedPackages",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7005}",
+      "nodeLocation": {
+        "startLine": 470,
+        "startColumn": 5,
+        "endLine": 470,
+        "endColumn": 22
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'supportResult' implicitly has an 'any' type.",
+      "hint": "Parameter 'supportResult' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "supportResult",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 483,
+        "startColumn": 24,
+        "endLine": 483,
+        "endColumn": 37
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS2339",
+      "category": "Error",
+      "message": "Property 'body' does not exist on type '{ title: string; head: stri; }'.",
+      "hint": "Property 'body' does not exist on type '{ title: string; head: stri; }'.",
+      "hintAdded": true,
+      "nodeKind": "BindingElement",
+      "nodeText": "body",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2339}",
+      "nodeLocation": {
+        "startLine": 485,
+        "startColumn": 24,
+        "endLine": 485,
+        "endColumn": 28
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'results' implicitly has an 'any' type.",
+      "hint": "Parameter 'results' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "results",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 495,
+        "startColumn": 32,
+        "endLine": 495,
+        "endColumn": 39
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7034",
+      "category": "Error",
+      "message": "Variable 'tempList' implicitly has type 'any[]' in some locations where its type cannot be determined.",
+      "hint": "Variable 'tempList' implicitly has type 'any[]' in some locations where its type cannot be determined.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "tempList",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7034}",
+      "nodeLocation": {
+        "startLine": 505,
+        "startColumn": 9,
+        "endLine": 505,
+        "endColumn": 17
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7005",
+      "category": "Error",
+      "message": "Variable 'tempList' implicitly has an 'any[]' type.",
+      "hint": "Variable 'tempList' implicitly has an 'any[]' type.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "tempList",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7005}",
+      "nodeLocation": {
+        "startLine": 508,
+        "startColumn": 7,
+        "endLine": 508,
+        "endColumn": 15
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7005",
+      "category": "Error",
+      "message": "Variable 'tempList' implicitly has an 'any[]' type.",
+      "hint": "Variable 'tempList' implicitly has an 'any[]' type.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "tempList",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7005}",
+      "nodeLocation": {
+        "startLine": 510,
+        "startColumn": 9,
+        "endLine": 510,
+        "endColumn": 17
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'result' implicitly has an 'any' type.",
+      "hint": "Parameter 'result' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "result",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 512,
+        "startColumn": 34,
+        "endLine": 512,
+        "endColumn": 40
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7005",
+      "category": "Error",
+      "message": "Variable 'tempList' implicitly has an 'any[]' type.",
+      "hint": "Variable 'tempList' implicitly has an 'any[]' type.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "tempList",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7005}",
+      "nodeLocation": {
+        "startLine": 517,
+        "startColumn": 7,
+        "endLine": 517,
+        "endColumn": 15
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7005",
+      "category": "Error",
+      "message": "Variable 'tempList' implicitly has an 'any[]' type.",
+      "hint": "Variable 'tempList' implicitly has an 'any[]' type.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "tempList",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7005}",
+      "nodeLocation": {
+        "startLine": 519,
+        "startColumn": 9,
+        "endLine": 519,
+        "endColumn": 17
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'result' implicitly has an 'any' type.",
+      "hint": "Parameter 'result' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "result",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 521,
+        "startColumn": 34,
+        "endLine": 521,
+        "endColumn": 40
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7005",
+      "category": "Error",
+      "message": "Variable 'tempList' implicitly has an 'any[]' type.",
+      "hint": "Variable 'tempList' implicitly has an 'any[]' type.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "tempList",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7005}",
+      "nodeLocation": {
+        "startLine": 526,
+        "startColumn": 7,
+        "endLine": 526,
+        "endColumn": 15
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7005",
+      "category": "Error",
+      "message": "Variable 'tempList' implicitly has an 'any[]' type.",
+      "hint": "Variable 'tempList' implicitly has an 'any[]' type.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "tempList",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7005}",
+      "nodeLocation": {
+        "startLine": 528,
+        "startColumn": 9,
+        "endLine": 528,
+        "endColumn": 17
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'result' implicitly has an 'any' type.",
+      "hint": "Parameter 'result' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "result",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 530,
+        "startColumn": 34,
+        "endLine": 530,
+        "endColumn": 40
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7005",
+      "category": "Error",
+      "message": "Variable 'tempList' implicitly has an 'any[]' type.",
+      "hint": "Variable 'tempList' implicitly has an 'any[]' type.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "tempList",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7005}",
+      "nodeLocation": {
+        "startLine": 534,
+        "startColumn": 24,
+        "endLine": 534,
+        "endColumn": 32
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'result' implicitly has an 'any' type.",
+      "hint": "Parameter 'result' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "result",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 537,
+        "startColumn": 29,
+        "endLine": 537,
+        "endColumn": 35
+      }
+    },
+    {
+      "analysisTarget": "lib/output/cli-output.ts",
+      "type": 1,
+      "ruleId": "error-generated-by-Eslint-core",
+      "category": "Error",
+      "message": "Parsing error: Unexpected token :",
+      "hint": "Parsing error: Unexpected token :",
+      "hintAdded": false,
+      "nodeText": "",
+      "helpUrl": "",
+      "nodeLocation": {
+        "startLine": 17,
+        "startColumn": 27,
+        "endLine": 17,
+        "endColumn": 2
+      }
+    },
+    {
+      "analysisTarget": "lib/output/csv-output.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'result' implicitly has an 'any' type.",
+      "hint": "Parameter 'result' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "result",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 17,
+        "startColumn": 23,
+        "endLine": 17,
+        "endColumn": 29
+      }
+    },
+    {
+      "analysisTarget": "lib/output/csv-output.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'row' implicitly has an 'any' type.",
+      "hint": "Parameter 'row' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "row",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 30,
+        "startColumn": 15,
+        "endLine": 30,
+        "endColumn": 18
+      }
+    },
+    {
+      "analysisTarget": "lib/output/csv-output.ts",
+      "type": 0,
+      "ruleId": "TS2322",
+      "category": "Error",
+      "message": "Type 'string' is not assignable to type '{ deprecationDate: string | number | Date; }'.",
+      "hint": "The function expects to return 'deprecationDate: string | number | Date', but 'string' is returned. Please convert 'string' value to 'deprecationDate: string | number | Date' or update the function's return type.",
+      "hintAdded": true,
+      "nodeKind": "ReturnStatement",
+      "nodeText": "return new Date(row.deprecationDate).toDateString();",
+      "helpUrl": "https://stackoverflow.com/questions/72139358/ts2322-type-typeof-statusenum-is-not-assignable-to-type-statusenum",
+      "nodeLocation": {
+        "startLine": 53,
+        "startColumn": 11,
+        "endLine": 53,
+        "endColumn": 63
+      }
+    },
+    {
+      "analysisTarget": "lib/output/csv-output.ts",
+      "type": 0,
+      "ruleId": "TS2322",
+      "category": "Error",
+      "message": "Type 'string' is not assignable to type '{ deprecationDate: string | number | Date; }'.",
+      "hint": "The function expects to return 'deprecationDate: string | number | Date', but 'string' is returned. Please convert 'string' value to 'deprecationDate: string | number | Date' or update the function's return type.",
+      "hintAdded": true,
+      "nodeKind": "ReturnStatement",
+      "nodeText": "return `-`;",
+      "helpUrl": "https://stackoverflow.com/questions/72139358/ts2322-type-typeof-statusenum-is-not-assignable-to-type-statusenum",
+      "nodeLocation": {
+        "startLine": 56,
+        "startColumn": 11,
+        "endLine": 56,
+        "endColumn": 22
+      }
+    },
+    {
+      "analysisTarget": "lib/output/csv-output.ts",
+      "type": 0,
+      "ruleId": "TS2322",
+      "category": "Error",
+      "message": "Type 'string' is not assignable to type '{ duration: number; }'.",
+      "hint": "The function expects to return 'duration: number', but 'string' is returned. Please convert 'string' value to 'duration: number' or update the function's return type.",
+      "hintAdded": true,
+      "nodeKind": "ReturnStatement",
+      "nodeText": "return `${qtrs} ${getQtrLocale(qtrs)}`;",
+      "helpUrl": "https://stackoverflow.com/questions/72139358/ts2322-type-typeof-statusenum-is-not-assignable-to-type-statusenum",
+      "nodeLocation": {
+        "startLine": 66,
+        "startColumn": 11,
+        "endLine": 66,
+        "endColumn": 50
+      }
+    },
+    {
+      "analysisTarget": "lib/output/csv-output.ts",
+      "type": 0,
+      "ruleId": "TS2322",
+      "category": "Error",
+      "message": "Type 'string' is not assignable to type '{ duration: number; }'.",
+      "hint": "The function expects to return 'duration: number', but 'string' is returned. Please convert 'string' value to 'duration: number' or update the function's return type.",
+      "hintAdded": true,
+      "nodeKind": "ReturnStatement",
+      "nodeText": "return `-`;",
+      "helpUrl": "https://stackoverflow.com/questions/72139358/ts2322-type-typeof-statusenum-is-not-assignable-to-type-statusenum",
+      "nodeLocation": {
+        "startLine": 69,
+        "startColumn": 11,
+        "endLine": 69,
+        "endColumn": 22
+      }
+    },
+    {
+      "analysisTarget": "lib/output/csv-output.ts",
+      "type": 0,
+      "ruleId": "TS2322",
+      "category": "Error",
+      "message": "Type '({ label: string; value: string; } | { label: string; value: (row: any) => string; } | { label: string; value: (row: { deprecationDate: string | number | Date; }) => { deprecationDate: string | number | Date; }; } | { ...; })[]' is not assignable to type '(string | FieldInfo<{ deprecationDate: string | number | Date; }>)[]'..   Type '{ label: string; value: string; } | { label: string; value: (row: any) => string; } | { label: string; value: (row: { deprecationDate: string | number | Date; }) => { deprecationDate: string | number | Date; }; } | { ...; }' is not assignable to type 'string | FieldInfo<{ deprecationDate: string | number | Date; }>'..     Type '{ label: string; value: (row: {    duration: number;}) => {    duration: number;}; }' is not assignable to type 'string | FieldInfo<{ deprecationDate: string | number | Date; }>'..       Type '{ label: string; value: (row: {    duration: number;}) => {    duration: number;}; }' is not assignable to type 'FieldInfo<{ deprecationDate: string | number | Date; }>'..         Types of property 'value' are incompatible..           Type '(row: {    duration: number;}) => {    duration: number;}' is not assignable to type 'string | FieldValueCallback<{ deprecationDate: string | number | Date; }>'..             Type '(row: {    duration: number;}) => {    duration: number;}' is not assignable to type 'FieldValueCallbackWithoutField<{ deprecationDate: string | number | Date; }>'..               Types of parameters 'row' and 'row' are incompatible..                 Property 'duration' is missing in type '{ deprecationDate: string | number | Date; }' but required in type '{ duration: number; }'.",
+      "hint": "Type 'label: string; value: string; } | { label: string; value: (row: any) => string; } | { label: string; value: (row: { deprecationDate: string | number | Date; }) => { deprecationDate: string | number | Date' is being returned or assigned, but type 'string | FieldInfo<{ deprecationDate: string | number | Date' is expected. Please convert type 'label: string; value: string; } | { label: string; value: (row: any) => string; } | { label: string; value: (row: { deprecationDate: string | number | Date; }) => { deprecationDate: string | number | Date' to type 'string | FieldInfo<{ deprecationDate: string | number | Date', or return or assign a variable of type 'string | FieldInfo<{ deprecationDate: string | number | Date'",
+      "hintAdded": true,
+      "nodeKind": "ShorthandPropertyAssignment",
+      "nodeText": "fields",
+      "helpUrl": "https://stackoverflow.com/questions/72139358/ts2322-type-typeof-statusenum-is-not-assignable-to-type-statusenum",
+      "nodeLocation": {
+        "startLine": 76,
+        "startColumn": 39,
+        "endLine": 76,
+        "endColumn": 45
+      }
+    },
+    {
+      "analysisTarget": "lib/output/csv-output.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'projectPaths' implicitly has an 'any' type.",
+      "hint": "Parameter 'projectPaths' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "projectPaths",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 88,
+        "startColumn": 29,
+        "endLine": 88,
+        "endColumn": 41
+      }
+    },
+    {
+      "analysisTarget": "lib/output/csv-output.ts",
+      "type": 0,
+      "ruleId": "TS2355",
+      "category": "Error",
+      "message": "A function whose declared type is neither 'void' nor 'any' must return a value.",
+      "hint": "A function whose declared type is neither 'void' nor 'any' must return a value.",
+      "hintAdded": true,
+      "nodeKind": "TypeLiteral",
+      "nodeText": "{ projectName: unknown; projectPath: PathLike; }",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2355}",
+      "nodeLocation": {
+        "startLine": 95,
+        "startColumn": 88,
+        "endLine": 95,
+        "endColumn": 136
+      }
+    },
+    {
+      "analysisTarget": "lib/output/csv-output.ts",
+      "type": 0,
+      "ruleId": "TS2345",
+      "category": "Error",
+      "message": "Argument of type 'PathLike' is not assignable to parameter of type 'string'..   Type 'Buffer' is not assignable to type 'string'.",
+      "hint": "Argument of type 'PathLike' is not assignable to parameter of type 'string'. Consider verifying both types, using type assertion: '(result.projectPath as string)', or using type guard: 'if (result.projectPath instanceof string) { ... }'.",
+      "hintAdded": true,
+      "nodeKind": "PropertyAccessExpression",
+      "nodeText": "result.projectPath",
+      "helpUrl": "https://stackoverflow.com/questions/42421501/error-ts2345-argument-of-type-t-is-not-assignable-to-parameter-of-type-objec",
+      "nodeLocation": {
+        "startLine": 101,
+        "startColumn": 23,
+        "endLine": 101,
+        "endColumn": 41
+      }
+    },
+    {
+      "analysisTarget": "lib/output/csv-output.ts",
+      "type": 0,
+      "ruleId": "TS18046",
+      "category": "Error",
+      "message": "'filename' is of type 'unknown'.",
+      "hint": "'filename' is of type 'unknown'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "filename",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts18046}",
+      "nodeLocation": {
+        "startLine": 110,
+        "startColumn": 20,
+        "endLine": 110,
+        "endColumn": 28
+      }
+    },
+    {
+      "analysisTarget": "lib/output/csv-output.ts",
+      "type": 1,
+      "ruleId": "error-generated-by-Eslint-core",
+      "category": "Error",
+      "message": "Parsing error: Unexpected token :",
+      "hint": "Parsing error: Unexpected token :",
+      "hintAdded": false,
+      "nodeText": "",
+      "helpUrl": "",
+      "nodeLocation": {
+        "startLine": 17,
+        "startColumn": 44,
+        "endLine": 17,
+        "endColumn": 2
+      }
+    },
+    {
+      "analysisTarget": "lib/output/messages.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'isSupported' implicitly has an 'any' type.",
+      "hint": "Parameter 'isSupported' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "isSupported",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 9,
+        "startColumn": 29,
+        "endLine": 9,
+        "endColumn": 40
+      }
+    },
+    {
+      "analysisTarget": "lib/output/messages.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'isWarning' implicitly has an 'any' type.",
+      "hint": "Parameter 'isWarning' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "isWarning",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 27,
+        "startColumn": 89,
+        "endLine": 27,
+        "endColumn": 98
+      }
+    },
+    {
+      "analysisTarget": "lib/output/messages.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'type' implicitly has an 'any' type.",
+      "hint": "Parameter 'type' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "type",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 52,
+        "startColumn": 37,
+        "endLine": 52,
+        "endColumn": 41
+      }
+    },
+    {
+      "analysisTarget": "lib/output/messages.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'isWarning' implicitly has an 'any' type.",
+      "hint": "Parameter 'isWarning' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "isWarning",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 71,
+        "startColumn": 91,
+        "endLine": 71,
+        "endColumn": 100
+      }
+    },
+    {
+      "analysisTarget": "lib/output/messages.ts",
+      "type": 0,
+      "ruleId": "TS2339",
+      "category": "Error",
+      "message": "Property 'map' does not exist on type '{ type: string; name: strin; }'.",
+      "hint": "Property 'map' does not exist on type '{ type: string; name: strin; }'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "map",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2339}",
+      "nodeLocation": {
+        "startLine": 89,
+        "startColumn": 4,
+        "endLine": 89,
+        "endColumn": 7
+      }
+    },
+    {
+      "analysisTarget": "lib/output/messages.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'isSupported' implicitly has an 'any' type.",
+      "hint": "Parameter 'isSupported' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "isSupported",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 96,
+        "startColumn": 37,
+        "endLine": 96,
+        "endColumn": 48
+      }
+    },
+    {
+      "analysisTarget": "lib/output/messages.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'isSupported' implicitly has an 'any' type.",
+      "hint": "Parameter 'isSupported' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "isSupported",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 106,
+        "startColumn": 38,
+        "endLine": 106,
+        "endColumn": 49
+      }
+    },
+    {
+      "analysisTarget": "lib/output/messages.ts",
+      "type": 1,
+      "ruleId": "error-generated-by-Eslint-core",
+      "category": "Error",
+      "message": "Parsing error: Unexpected token :",
+      "hint": "Parsing error: Unexpected token :",
+      "hintAdded": false,
+      "nodeText": "",
+      "helpUrl": "",
+      "nodeLocation": {
+        "startLine": 27,
+        "startColumn": 44,
+        "endLine": 27,
+        "endColumn": 2
+      }
+    },
+    {
+      "analysisTarget": "lib/project/index.ts",
+      "type": 0,
+      "ruleId": "TS7016",
+      "category": "Error",
+      "message": "Could not find a declaration file for module 'minipass-fetch'. '/Users/akusuma/workspace/opensource/supported/node_modules/minipass-fetch/lib/index.js' implicitly has an 'any' type..   Try `npm i --save-dev @types/minipass-fetch` if it exists or add a new declaration (.d.ts) file containing `declare module 'minipass-fetch';`",
+      "hint": "Could not find a declaration file for module 'minipass-fetch'. '/Users/akusuma/workspace/opensource/supported/node_modules/minipass-fetch/lib/index.js' implicitly has an 'any' type..  Try `npm i --save-dev @types/minipass-fetch` if it exists or add a new declaration (.d.ts) file containing `declare module 'minipass-fetch';`",
+      "hintAdded": true,
+      "nodeKind": "StringLiteral",
+      "nodeText": "'minipass-fetch'",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7016}",
+      "nodeLocation": {
+        "startLine": 5,
+        "startColumn": 23,
+        "endLine": 5,
+        "endColumn": 39
+      }
+    },
+    {
+      "analysisTarget": "lib/project/index.ts",
+      "type": 0,
+      "ruleId": "TS2305",
+      "category": "Error",
+      "message": "Module '\"../util\"' has no exported member 'isLtsPackage'.",
+      "hint": "Module '\"../util\"' has no exported member 'isLtsPackage'.",
+      "hintAdded": true,
+      "nodeKind": "ImportSpecifier",
+      "nodeText": "isLtsPackage",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2305}",
+      "nodeLocation": {
+        "startLine": 13,
+        "startColumn": 40,
+        "endLine": 13,
+        "endColumn": 52
+      }
+    },
+    {
+      "analysisTarget": "lib/project/index.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'dependenciesToCheck' implicitly has an 'any' type.",
+      "hint": "Parameter 'dependenciesToCheck' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "dependenciesToCheck",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 18,
+        "startColumn": 3,
+        "endLine": 18,
+        "endColumn": 22
+      }
+    },
+    {
+      "analysisTarget": "lib/project/index.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'projectName' implicitly has an 'any' type.",
+      "hint": "Parameter 'projectName' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "projectName",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 20,
+        "startColumn": 3,
+        "endLine": 20,
+        "endColumn": 14
+      }
+    },
+    {
+      "analysisTarget": "lib/project/index.ts",
+      "type": 0,
+      "ruleId": "TS7031",
+      "category": "Error",
+      "message": "Binding element 'progressLogger' implicitly has an 'any' type.",
+      "hint": "Binding element 'progressLogger' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "BindingElement",
+      "nodeText": "progressLogger",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7031}",
+      "nodeLocation": {
+        "startLine": 22,
+        "startColumn": 5,
+        "endLine": 22,
+        "endColumn": 19
+      }
+    },
+    {
+      "analysisTarget": "lib/project/index.ts",
+      "type": 0,
+      "ruleId": "TS7034",
+      "category": "Error",
+      "message": "Variable 'supportChecks' implicitly has type 'any[]' in some locations where its type cannot be determined.",
+      "hint": "Variable 'supportChecks' implicitly has type 'any[]' in some locations where its type cannot be determined.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "supportChecks",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7034}",
+      "nodeLocation": {
+        "startLine": 30,
+        "startColumn": 9,
+        "endLine": 30,
+        "endColumn": 22
+      }
+    },
+    {
+      "analysisTarget": "lib/project/index.ts",
+      "type": 0,
+      "ruleId": "TS2339",
+      "category": "Error",
+      "message": "Property 'duration' does not exist on type '{ isSupported: boolean; }'.",
+      "hint": "Property 'duration' does not exist on type '{ isSupported: boolean; }'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "duration",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2339}",
+      "nodeLocation": {
+        "startLine": 52,
+        "startColumn": 43,
+        "endLine": 52,
+        "endColumn": 51
+      }
+    },
+    {
+      "analysisTarget": "lib/project/index.ts",
+      "type": 0,
+      "ruleId": "TS7053",
+      "category": "Error",
+      "message": "Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.",
+      "hint": "Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.",
+      "hintAdded": true,
+      "nodeKind": "ElementAccessExpression",
+      "nodeText": "CACHE[url.toString()]",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7053}",
+      "nodeLocation": {
+        "startLine": 61,
+        "startColumn": 22,
+        "endLine": 61,
+        "endColumn": 43
+      }
+    },
+    {
+      "analysisTarget": "lib/project/index.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'request' implicitly has an 'any' type.",
+      "hint": "Parameter 'request' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "request",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 66,
+        "startColumn": 60,
+        "endLine": 66,
+        "endColumn": 67
+      }
+    },
+    {
+      "analysisTarget": "lib/project/index.ts",
+      "type": 0,
+      "ruleId": "TS2339",
+      "category": "Error",
+      "message": "Property 'code' does not exist on type 'Error'.",
+      "hint": "Property 'code' does not exist on type 'Error'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "code",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2339}",
+      "nodeLocation": {
+        "startLine": 76,
+        "startColumn": 19,
+        "endLine": 76,
+        "endColumn": 23
+      }
+    },
+    {
+      "analysisTarget": "lib/project/index.ts",
+      "type": 0,
+      "ruleId": "TS7053",
+      "category": "Error",
+      "message": "Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.",
+      "hint": "Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.",
+      "hintAdded": true,
+      "nodeKind": "ElementAccessExpression",
+      "nodeText": "CACHE[url.toString()]",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7053}",
+      "nodeLocation": {
+        "startLine": 84,
+        "startColumn": 13,
+        "endLine": 84,
+        "endColumn": 34
+      }
+    },
+    {
+      "analysisTarget": "lib/project/index.ts",
+      "type": 0,
+      "ruleId": "TS2322",
+      "category": "Error",
+      "message": "Type '{ isSupported: boolean; }' is not assignable to type 'string'.",
+      "hint": "The variable 'result' has type 'string', but 'isSupported: boolean' is assigned. Please convert 'isSupported: boolean' to 'string' or change variable's type.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "result",
+      "helpUrl": "https://stackoverflow.com/questions/72139358/ts2322-type-typeof-statusenum-is-not-assignable-to-type-statusenum",
+      "nodeLocation": {
+        "startLine": 92,
+        "startColumn": 13,
+        "endLine": 92,
+        "endColumn": 19
+      }
+    },
+    {
+      "analysisTarget": "lib/project/index.ts",
+      "type": 0,
+      "ruleId": "TS2339",
+      "category": "Error",
+      "message": "Property 'isSupported' does not exist on type 'string'.",
+      "hint": "Property 'isSupported' does not exist on type 'string'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "isSupported",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2339}",
+      "nodeLocation": {
+        "startLine": 118,
+        "startColumn": 46,
+        "endLine": 118,
+        "endColumn": 57
+      }
+    },
+    {
+      "analysisTarget": "lib/project/index.ts",
+      "type": 0,
+      "ruleId": "TS2339",
+      "category": "Error",
+      "message": "Property 'isSupported' does not exist on type 'string'.",
+      "hint": "Property 'isSupported' does not exist on type 'string'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "isSupported",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2339}",
+      "nodeLocation": {
+        "startLine": 122,
+        "startColumn": 45,
+        "endLine": 122,
+        "endColumn": 56
+      }
+    },
+    {
+      "analysisTarget": "lib/project/index.ts",
+      "type": 0,
+      "ruleId": "TS2698",
+      "category": "Error",
+      "message": "Spread types may only be created from object types.",
+      "hint": "Spread types may only be created from object types.",
+      "hintAdded": true,
+      "nodeKind": "SpreadAssignment",
+      "nodeText": "...result",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2698}",
+      "nodeLocation": {
+        "startLine": 128,
+        "startColumn": 13,
+        "endLine": 128,
+        "endColumn": 22
+      }
+    },
+    {
+      "analysisTarget": "lib/project/index.ts",
+      "type": 0,
+      "ruleId": "TS2339",
+      "category": "Error",
+      "message": "Property 'isSupported' does not exist on type 'string'.",
+      "hint": "Property 'isSupported' does not exist on type 'string'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "isSupported",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2339}",
+      "nodeLocation": {
+        "startLine": 136,
+        "startColumn": 20,
+        "endLine": 136,
+        "endColumn": 31
+      }
+    },
+    {
+      "analysisTarget": "lib/project/index.ts",
+      "type": 0,
+      "ruleId": "TS2339",
+      "category": "Error",
+      "message": "Property 'isSupported' does not exist on type 'string'.",
+      "hint": "Property 'isSupported' does not exist on type 'string'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "isSupported",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2339}",
+      "nodeLocation": {
+        "startLine": 138,
+        "startColumn": 20,
+        "endLine": 138,
+        "endColumn": 31
+      }
+    },
+    {
+      "analysisTarget": "lib/project/index.ts",
+      "type": 0,
+      "ruleId": "TS7005",
+      "category": "Error",
+      "message": "Variable 'supportChecks' implicitly has an 'any[]' type.",
+      "hint": "Variable 'supportChecks' implicitly has an 'any[]' type.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "supportChecks",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7005}",
+      "nodeLocation": {
+        "startLine": 160,
+        "startColumn": 3,
+        "endLine": 160,
+        "endColumn": 16
+      }
+    },
+    {
+      "analysisTarget": "lib/project/index.ts",
+      "type": 0,
+      "ruleId": "TS7005",
+      "category": "Error",
+      "message": "Variable 'supportChecks' implicitly has an 'any[]' type.",
+      "hint": "Variable 'supportChecks' implicitly has an 'any[]' type.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "supportChecks",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7005}",
+      "nodeLocation": {
+        "startLine": 164,
+        "startColumn": 25,
+        "endLine": 164,
+        "endColumn": 38
+      }
+    },
+    {
+      "analysisTarget": "lib/project/index.ts",
+      "type": 0,
+      "ruleId": "TS7005",
+      "category": "Error",
+      "message": "Variable 'supportChecks' implicitly has an 'any[]' type.",
+      "hint": "Variable 'supportChecks' implicitly has an 'any[]' type.",
+      "hintAdded": true,
+      "nodeKind": "ShorthandPropertyAssignment",
+      "nodeText": "supportChecks",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7005}",
+      "nodeLocation": {
+        "startLine": 166,
+        "startColumn": 5,
+        "endLine": 166,
+        "endColumn": 18
+      }
+    },
+    {
+      "analysisTarget": "lib/project/index.ts",
+      "type": 1,
+      "ruleId": "error-generated-by-Eslint-core",
+      "category": "Error",
+      "message": "Parsing error: Unexpected token :",
+      "hint": "Parsing error: Unexpected token :",
+      "hintAdded": false,
+      "nodeText": "",
+      "helpUrl": "",
+      "nodeLocation": {
+        "startLine": 23,
+        "startColumn": 8,
+        "endLine": 23,
+        "endColumn": 2
+      }
+    },
+    {
+      "analysisTarget": "lib/project/multiple-projects.ts",
+      "type": 0,
+      "ruleId": "TS1192",
+      "category": "Error",
+      "message": "Module '\"/Users/akusuma/workspace/opensource/supported/lib/project/index\"' has no default export.",
+      "hint": "Module '\"/Users/akusuma/workspace/opensource/supported/lib/project/index\"' has no default export.",
+      "hintAdded": true,
+      "nodeKind": "ImportClause",
+      "nodeText": "isInSupportWindow",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts1192}",
+      "nodeLocation": {
+        "startLine": 8,
+        "startColumn": 12,
+        "endLine": 8,
+        "endColumn": 29
+      }
+    },
+    {
+      "analysisTarget": "lib/project/multiple-projects.ts",
+      "type": 0,
+      "ruleId": "TS2305",
+      "category": "Error",
+      "message": "Module '\"../util\"' has no exported member 'ProgressLogger'.",
+      "hint": "Module '\"../util\"' has no exported member 'ProgressLogger'.",
+      "hintAdded": true,
+      "nodeKind": "ImportSpecifier",
+      "nodeText": "ProgressLogger",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2305}",
+      "nodeLocation": {
+        "startLine": 11,
+        "startColumn": 14,
+        "endLine": 11,
+        "endColumn": 28
+      }
+    },
+    {
+      "analysisTarget": "lib/project/multiple-projects.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter '_projectPaths' implicitly has an 'any' type.",
+      "hint": "Parameter '_projectPaths' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "_projectPaths",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 18,
+        "startColumn": 39,
+        "endLine": 18,
+        "endColumn": 52
+      }
+    },
+    {
+      "analysisTarget": "lib/project/multiple-projects.ts",
+      "type": 0,
+      "ruleId": "TS2552",
+      "category": "Error",
+      "message": "Cannot find name 'setupProjectFn'. Did you mean 'setupProject'?",
+      "hint": "Cannot find name 'setupProjectFn'. Did you mean 'setupProject'?",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "setupProjectFn",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2552}",
+      "nodeLocation": {
+        "startLine": 21,
+        "startColumn": 24,
+        "endLine": 21,
+        "endColumn": 38
+      }
+    },
+    {
+      "analysisTarget": "lib/project/multiple-projects.ts",
+      "type": 0,
+      "ruleId": "TS2304",
+      "category": "Error",
+      "message": "Cannot find name 'projectPaths'.",
+      "hint": "Cannot find name 'projectPaths'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "projectPaths",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2304}",
+      "nodeLocation": {
+        "startLine": 28,
+        "startColumn": 22,
+        "endLine": 28,
+        "endColumn": 34
+      }
+    },
+    {
+      "analysisTarget": "lib/project/multiple-projects.ts",
+      "type": 0,
+      "ruleId": "TS7022",
+      "category": "Error",
+      "message": "'projectPaths' implicitly has type 'any' because it does not have a type annotation and is referenced directly or indirectly in its own initializer.",
+      "hint": "'projectPaths' implicitly has type 'any' because it does not have a type annotation and is referenced directly or indirectly in its own initializer.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "projectPaths",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7022}",
+      "nodeLocation": {
+        "startLine": 30,
+        "startColumn": 11,
+        "endLine": 30,
+        "endColumn": 23
+      }
+    },
+    {
+      "analysisTarget": "lib/project/multiple-projects.ts",
+      "type": 0,
+      "ruleId": "TS2304",
+      "category": "Error",
+      "message": "Cannot find name 'projectPaths'.",
+      "hint": "Cannot find name 'projectPaths'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "projectPaths",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2304}",
+      "nodeLocation": {
+        "startLine": 37,
+        "startColumn": 27,
+        "endLine": 37,
+        "endColumn": 39
+      }
+    },
+    {
+      "analysisTarget": "lib/project/multiple-projects.ts",
+      "type": 0,
+      "ruleId": "TS2304",
+      "category": "Error",
+      "message": "Cannot find name 'spinner'.",
+      "hint": "Cannot find name 'spinner'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "spinner",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2304}",
+      "nodeLocation": {
+        "startLine": 39,
+        "startColumn": 43,
+        "endLine": 39,
+        "endColumn": 50
+      }
+    },
+    {
+      "analysisTarget": "lib/project/multiple-projects.ts",
+      "type": 0,
+      "ruleId": "TS2552",
+      "category": "Error",
+      "message": "Cannot find name 'projectPaths'. Did you mean 'projectPath'?",
+      "hint": "Cannot find name 'projectPaths'. Did you mean 'projectPath'?",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "projectPaths",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2552}",
+      "nodeLocation": {
+        "startLine": 43,
+        "startColumn": 29,
+        "endLine": 43,
+        "endColumn": 41
+      }
+    },
+    {
+      "analysisTarget": "lib/project/multiple-projects.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'dep' implicitly has an 'any' type.",
+      "hint": "Parameter 'dep' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "dep",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 49,
+        "startColumn": 24,
+        "endLine": 49,
+        "endColumn": 27
+      }
+    },
+    {
+      "analysisTarget": "lib/project/multiple-projects.ts",
+      "type": 0,
+      "ruleId": "TS2304",
+      "category": "Error",
+      "message": "Cannot find name 'today'.",
+      "hint": "Cannot find name 'today'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "today",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2304}",
+      "nodeLocation": {
+        "startLine": 63,
+        "startColumn": 11,
+        "endLine": 63,
+        "endColumn": 16
+      }
+    },
+    {
+      "analysisTarget": "lib/project/multiple-projects.ts",
+      "type": 0,
+      "ruleId": "TS2345",
+      "category": "Error",
+      "message": "Argument of type 'any' is not assignable to parameter of type 'never'.",
+      "hint": "Argument of type 'any' is not assignable to parameter of type 'never'. Consider verifying both types, using type assertion: '(auditResult as string)', or using type guard: 'if (auditResult instanceof string) { ... }'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "auditResult",
+      "helpUrl": "https://stackoverflow.com/questions/42421501/error-ts2345-argument-of-type-t-is-not-assignable-to-parameter-of-type-objec",
+      "nodeLocation": {
+        "startLine": 81,
+        "startColumn": 30,
+        "endLine": 81,
+        "endColumn": 41
+      }
+    },
+    {
+      "analysisTarget": "lib/project/multiple-projects.ts",
+      "type": 1,
+      "ruleId": "error-generated-by-Eslint-core",
+      "category": "Error",
+      "message": "Parsing error: Unexpected token :",
+      "hint": "Parsing error: Unexpected token :",
+      "hintAdded": false,
+      "nodeText": "",
+      "helpUrl": "",
+      "nodeLocation": {
+        "startLine": 18,
+        "startColumn": 87,
+        "endLine": 18,
+        "endColumn": 2
+      }
+    },
+    {
+      "analysisTarget": "lib/project/setup-project.ts",
+      "type": 0,
+      "ruleId": "TS7016",
+      "category": "Error",
+      "message": "Could not find a declaration file for module 'npm-package-arg'. '/Users/akusuma/workspace/opensource/supported/node_modules/npm-package-arg/npa.js' implicitly has an 'any' type..   Try `npm i --save-dev @types/npm-package-arg` if it exists or add a new declaration (.d.ts) file containing `declare module 'npm-package-arg';`",
+      "hint": "Could not find a declaration file for module 'npm-package-arg'. '/Users/akusuma/workspace/opensource/supported/node_modules/npm-package-arg/npa.js' implicitly has an 'any' type..  Try `npm i --save-dev @types/npm-package-arg` if it exists or add a new declaration (.d.ts) file containing `declare module 'npm-package-arg';`",
+      "hintAdded": true,
+      "nodeKind": "StringLiteral",
+      "nodeText": "'npm-package-arg'",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7016}",
+      "nodeLocation": {
+        "startLine": 6,
+        "startColumn": 21,
+        "endLine": 6,
+        "endColumn": 38
+      }
+    },
+    {
+      "analysisTarget": "lib/project/setup-project.ts",
+      "type": 0,
+      "ruleId": "TS1192",
+      "category": "Error",
+      "message": "Module '\"/Users/akusuma/workspace/opensource/supported/lib/npm/config\"' has no default export.",
+      "hint": "Module '\"/Users/akusuma/workspace/opensource/supported/lib/npm/config\"' has no default export.",
+      "hintAdded": true,
+      "nodeKind": "ImportClause",
+      "nodeText": "npmConfig",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts1192}",
+      "nodeLocation": {
+        "startLine": 12,
+        "startColumn": 12,
+        "endLine": 12,
+        "endColumn": 21
+      }
+    },
+    {
+      "analysisTarget": "lib/project/setup-project.ts",
+      "type": 0,
+      "ruleId": "TS2339",
+      "category": "Error",
+      "message": "Property 'lockfile' does not exist on type '{ isClassic: boolean; }'.",
+      "hint": "Property 'lockfile' does not exist on type '{ isClassic: boolean; }'.",
+      "hintAdded": true,
+      "nodeKind": "BindingElement",
+      "nodeText": "lockfile",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2339}",
+      "nodeLocation": {
+        "startLine": 22,
+        "startColumn": 24,
+        "endLine": 22,
+        "endColumn": 32
+      }
+    },
+    {
+      "analysisTarget": "lib/project/setup-project.ts",
+      "type": 0,
+      "ruleId": "TS2322",
+      "category": "Error",
+      "message": "Type 'string' is not assignable to type 'object'.",
+      "hint": "Type 'string' is being returned or assigned, but type 'object' is expected. Please convert type 'string' to type 'object', or return or assign a variable of type 'object'",
+      "hintAdded": true,
+      "nodeKind": "PropertyAccessExpression",
+      "nodeText": "this.lockFileContents",
+      "helpUrl": "https://stackoverflow.com/questions/72139358/ts2322-type-typeof-statusenum-is-not-assignable-to-type-statusenum",
+      "nodeLocation": {
+        "startLine": 33,
+        "startColumn": 20,
+        "endLine": 33,
+        "endColumn": 41
+      }
+    },
+    {
+      "analysisTarget": "lib/project/setup-project.ts",
+      "type": 0,
+      "ruleId": "TS7015",
+      "category": "Error",
+      "message": "Element implicitly has an 'any' type because index expression is not of type 'number'.",
+      "hint": "Element implicitly has an 'any' type because index expression is not of type 'number'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "key",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7015}",
+      "nodeLocation": {
+        "startLine": 38,
+        "startColumn": 36,
+        "endLine": 38,
+        "endColumn": 39
+      }
+    },
+    {
+      "analysisTarget": "lib/project/setup-project.ts",
+      "type": 0,
+      "ruleId": "TS2322",
+      "category": "Error",
+      "message": "Type 'boolean' is not assignable to type 'string'.",
+      "hint": "The function expects to return 'string', but 'boolean' is returned. Please convert 'boolean' value to 'string' or update the function's return type.",
+      "hintAdded": true,
+      "nodeKind": "ReturnStatement",
+      "nodeText": "return key === targetResolution || key.split(', ').includes(targetResolution);",
+      "helpUrl": "https://stackoverflow.com/questions/72139358/ts2322-type-typeof-statusenum-is-not-assignable-to-type-statusenum",
+      "nodeLocation": {
+        "startLine": 43,
+        "startColumn": 9,
+        "endLine": 43,
+        "endColumn": 87
+      }
+    },
+    {
+      "analysisTarget": "lib/project/setup-project.ts",
+      "type": 0,
+      "ruleId": "TS2538",
+      "category": "Error",
+      "message": "Type 'undefined' cannot be used as an index type.",
+      "hint": "Type 'undefined' cannot be used as an index type.",
+      "hintAdded": true,
+      "nodeKind": "ElementAccessExpression",
+      "nodeText": "possibleEntries[0]",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2538}",
+      "nodeLocation": {
+        "startLine": 53,
+        "startColumn": 40,
+        "endLine": 53,
+        "endColumn": 58
+      }
+    },
+    {
+      "analysisTarget": "lib/project/setup-project.ts",
+      "type": 0,
+      "ruleId": "TS2532",
+      "category": "Error",
+      "message": "Object is possibly 'undefined'.",
+      "hint": "Object is possibly 'undefined'.",
+      "hintAdded": true,
+      "nodeKind": "ElementAccessExpression",
+      "nodeText": "possibleEntries[i]",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2532}",
+      "nodeLocation": {
+        "startLine": 61,
+        "startColumn": 15,
+        "endLine": 61,
+        "endColumn": 33
+      }
+    },
+    {
+      "analysisTarget": "lib/project/setup-project.ts",
+      "type": 0,
+      "ruleId": "TS2532",
+      "category": "Error",
+      "message": "Object is possibly 'undefined'.",
+      "hint": "Object is possibly 'undefined'.",
+      "hintAdded": true,
+      "nodeKind": "ElementAccessExpression",
+      "nodeText": "possibleEntries[i]",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2532}",
+      "nodeLocation": {
+        "startLine": 63,
+        "startColumn": 16,
+        "endLine": 63,
+        "endColumn": 34
+      }
+    },
+    {
+      "analysisTarget": "lib/project/setup-project.ts",
+      "type": 0,
+      "ruleId": "TS2532",
+      "category": "Error",
+      "message": "Object is possibly 'undefined'.",
+      "hint": "Object is possibly 'undefined'.",
+      "hintAdded": true,
+      "nodeKind": "ElementAccessExpression",
+      "nodeText": "possibleEntries[i]",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2532}",
+      "nodeLocation": {
+        "startLine": 65,
+        "startColumn": 17,
+        "endLine": 65,
+        "endColumn": 35
+      }
+    },
+    {
+      "analysisTarget": "lib/project/setup-project.ts",
+      "type": 0,
+      "ruleId": "TS2538",
+      "category": "Error",
+      "message": "Type 'undefined' cannot be used as an index type.",
+      "hint": "Type 'undefined' cannot be used as an index type.",
+      "hintAdded": true,
+      "nodeKind": "ElementAccessExpression",
+      "nodeText": "possibleEntries[i]",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2538}",
+      "nodeLocation": {
+        "startLine": 68,
+        "startColumn": 44,
+        "endLine": 68,
+        "endColumn": 62
+      }
+    },
+    {
+      "analysisTarget": "lib/project/setup-project.ts",
+      "type": 0,
+      "ruleId": "TS2538",
+      "category": "Error",
+      "message": "Type 'undefined' cannot be used as an index type.",
+      "hint": "Type 'undefined' cannot be used as an index type.",
+      "hintAdded": true,
+      "nodeKind": "ElementAccessExpression",
+      "nodeText": "resolvedEntries[0]",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2538}",
+      "nodeLocation": {
+        "startLine": 83,
+        "startColumn": 36,
+        "endLine": 83,
+        "endColumn": 54
+      }
+    },
+    {
+      "analysisTarget": "lib/project/setup-project.ts",
+      "type": 0,
+      "ruleId": "TS2304",
+      "category": "Error",
+      "message": "Cannot find name 'lockf'.",
+      "hint": "Cannot find name 'lockf'.",
+      "hintAdded": true,
+      "nodeKind": "ExpressionStatement",
+      "nodeText": "lockf",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2304}",
+      "nodeLocation": {
+        "startLine": 89,
+        "startColumn": 87,
+        "endLine": 89,
+        "endColumn": 92
+      }
+    },
+    {
+      "analysisTarget": "lib/project/setup-project.ts",
+      "type": 0,
+      "ruleId": "TS2552",
+      "category": "Error",
+      "message": "Cannot find name 'lockfilePath'. Did you mean 'lockfile'?",
+      "hint": "Cannot find name 'lockfilePath'. Did you mean 'lockfile'?",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "lockfilePath",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2552}",
+      "nodeLocation": {
+        "startLine": 92,
+        "startColumn": 69,
+        "endLine": 92,
+        "endColumn": 81
+      }
+    },
+    {
+      "analysisTarget": "lib/project/setup-project.ts",
+      "type": 0,
+      "ruleId": "TS2345",
+      "category": "Error",
+      "message": "Argument of type 'unknown' is not assignable to parameter of type 'string | number | SemVer | null | undefined'.",
+      "hint": "Argument of type 'unknown' is not assignable to parameter of type 'string | number | SemVer | null | undefined'. Consider specifying type of argument to be 'string | number | SemVer | null | undefined', using type assertion: '(version as string | number | SemVer | null | undefined)', or using type guard: 'if (version instanceof string | number | SemVer | null | undefined) { ... }'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "version",
+      "helpUrl": "https://stackoverflow.com/questions/42421501/error-ts2345-argument-of-type-t-is-not-assignable-to-parameter-of-type-objec",
+      "nodeLocation": {
+        "startLine": 131,
+        "startColumn": 24,
+        "endLine": 131,
+        "endColumn": 31
+      }
+    },
+    {
+      "analysisTarget": "lib/project/setup-project.ts",
+      "type": 0,
+      "ruleId": "TS2345",
+      "category": "Error",
+      "message": "Argument of type 'unknown' is not assignable to parameter of type 'string | number | SemVer | null | undefined'.",
+      "hint": "Argument of type 'unknown' is not assignable to parameter of type 'string | number | SemVer | null | undefined'. Consider specifying type of argument to be 'string | number | SemVer | null | undefined', using type assertion: '(version as string | number | SemVer | null | undefined)', or using type guard: 'if (version instanceof string | number | SemVer | null | undefined) { ... }'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "version",
+      "helpUrl": "https://stackoverflow.com/questions/42421501/error-ts2345-argument-of-type-t-is-not-assignable-to-parameter-of-type-objec",
+      "nodeLocation": {
+        "startLine": 148,
+        "startColumn": 24,
+        "endLine": 148,
+        "endColumn": 31
+      }
+    },
+    {
+      "analysisTarget": "lib/project/setup-project.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'config' implicitly has an 'any' type.",
+      "hint": "Parameter 'config' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "config",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 172,
+        "startColumn": 31,
+        "endLine": 172,
+        "endColumn": 37
+      }
+    },
+    {
+      "analysisTarget": "lib/project/setup-project.ts",
+      "type": 0,
+      "ruleId": "TS2304",
+      "category": "Error",
+      "message": "Cannot find name 'st'.",
+      "hint": "Cannot find name 'st'.",
+      "hintAdded": true,
+      "nodeKind": "TypeReference",
+      "nodeText": "st",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2304}",
+      "nodeLocation": {
+        "startLine": 198,
+        "startColumn": 112,
+        "endLine": 198,
+        "endColumn": 114
+      }
+    },
+    {
+      "analysisTarget": "lib/project/setup-project.ts",
+      "type": 0,
+      "ruleId": "TS2322",
+      "category": "Error",
+      "message": "Type '{ name: string; version: string; type: string; }' is not assignable to type '{ name: string; version: st; }'..   Object literal may only specify known properties, and 'type' does not exist in type '{ name: string; version: st; }'.",
+      "hint": "Type 'name: string; version: string; type: string' is being returned or assigned, but type 'name: string; version: st' is expected. Please convert type 'name: string; version: string; type: string' to type 'name: string; version: st', or return or assign a variable of type 'name: string; version: st'",
+      "hintAdded": true,
+      "nodeKind": "PropertyAssignment",
+      "nodeText": "type: 'node'",
+      "helpUrl": "https://stackoverflow.com/questions/72139358/ts2322-type-typeof-statusenum-is-not-assignable-to-type-statusenum",
+      "nodeLocation": {
+        "startLine": 209,
+        "startColumn": 5,
+        "endLine": 209,
+        "endColumn": 17
+      }
+    },
+    {
+      "analysisTarget": "lib/project/setup-project.ts",
+      "type": 1,
+      "ruleId": "error-generated-by-Eslint-core",
+      "category": "Error",
+      "message": "Parsing error: Unexpected token :",
+      "hint": "Parsing error: Unexpected token :",
+      "hintAdded": false,
+      "nodeText": "",
+      "helpUrl": "",
+      "nodeLocation": {
+        "startLine": 15,
+        "startColumn": 15,
+        "endLine": 15,
+        "endColumn": 2
+      }
+    },
+    {
+      "analysisTarget": "lib/time/index.ts",
+      "type": 0,
+      "ruleId": "TS2305",
+      "category": "Error",
+      "message": "Module '\"../util\"' has no exported member 'DEFAULT_PRIMARY_POLICY'.",
+      "hint": "Module '\"../util\"' has no exported member 'DEFAULT_PRIMARY_POLICY'.",
+      "hintAdded": true,
+      "nodeKind": "ImportSpecifier",
+      "nodeText": "DEFAULT_PRIMARY_POLICY",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2305}",
+      "nodeLocation": {
+        "startLine": 7,
+        "startColumn": 51,
+        "endLine": 7,
+        "endColumn": 73
+      }
+    },
+    {
+      "analysisTarget": "lib/time/index.ts",
+      "type": 0,
+      "ruleId": "TS2552",
+      "category": "Error",
+      "message": "Cannot find name 'strin'. Did you mean 'string'?",
+      "hint": "Cannot find name 'strin'. Did you mean 'string'?",
+      "hintAdded": true,
+      "nodeKind": "TypeReference",
+      "nodeText": "strin",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2552}",
+      "nodeLocation": {
+        "startLine": 16,
+        "startColumn": 143,
+        "endLine": 16,
+        "endColumn": 148
+      }
+    },
+    {
+      "analysisTarget": "lib/time/index.ts",
+      "type": 0,
+      "ruleId": "TS2739",
+      "category": "Error",
+      "message": "Type '{ type: string; name: string; date: Date; }[]' is missing the following properties from type '{ type: string; name: strin; }': type, name",
+      "hint": "Type '{ type: string; name: string; date: Date; }[]' is missing the following properties from type '{ type: string; name: strin; }': type, name",
+      "hintAdded": true,
+      "nodeKind": "ReturnStatement",
+      "nodeText": "return [\n    {\n      type: 'major',\n      name: `major version must be within ${upgradeBudget.major * MONTHS_IN_QTR} months of latest`,\n      date: major,\n    },\n    {\n      type: 'minor',\n      name: `minor version must be within ${upgradeBudget.minor * MONTHS_IN_QTR} months of latest`,\n      date: minor,\n    },\n    {\n      type: 'patch',\n      name: `patch version must be within ${upgradeBudget.patch * MONTHS_IN_QTR} months of latest`,\n      date: patch,\n    },\n  ];",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2739}",
+      "nodeLocation": {
+        "startLine": 27,
+        "startColumn": 3,
+        "endLine": 43,
+        "endColumn": 5
+      }
+    },
+    {
+      "analysisTarget": "lib/time/index.ts",
+      "type": 0,
+      "ruleId": "TS2304",
+      "category": "Error",
+      "message": "Cannot find name 'Integer'.",
+      "hint": "Cannot find name 'Integer'.",
+      "hintAdded": true,
+      "nodeKind": "TypeReference",
+      "nodeText": "Integer",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2304}",
+      "nodeLocation": {
+        "startLine": 68,
+        "startColumn": 22,
+        "endLine": 68,
+        "endColumn": 29
+      }
+    },
+    {
+      "analysisTarget": "lib/time/index.ts",
+      "type": 0,
+      "ruleId": "TS2322",
+      "category": "Error",
+      "message": "Type '{ major: Date; minor: Date; patch: Date; prerelease: Date; premajor: Date; preminor: Date; prepatch: Date; }' is not assignable to type '{ major: Date; minor: Date; }'..   Object literal may only specify known properties, and 'patch' does not exist in type '{ major: Date; minor: Date; }'.",
+      "hint": "Type 'major: Date; minor: Date; patch: Date; prerelease: Date; premajor: Date; preminor: Date; prepatch: Date' is being returned or assigned, but type 'major: Date; minor: Date' is expected. Please convert type 'major: Date; minor: Date; patch: Date; prerelease: Date; premajor: Date; preminor: Date; prepatch: Date' to type 'major: Date; minor: Date', or return or assign a variable of type 'major: Date; minor: Date'",
+      "hintAdded": true,
+      "nodeKind": "PropertyAssignment",
+      "nodeText": "patch: roundToEndOfQuarter(patch)",
+      "helpUrl": "https://stackoverflow.com/questions/72139358/ts2322-type-typeof-statusenum-is-not-assignable-to-type-statusenum",
+      "nodeLocation": {
+        "startLine": 86,
+        "startColumn": 5,
+        "endLine": 86,
+        "endColumn": 38
+      }
+    },
+    {
+      "analysisTarget": "lib/time/index.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter 'info' implicitly has an 'any' type.",
+      "hint": "Parameter 'info' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "info",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 102,
+        "startColumn": 55,
+        "endLine": 102,
+        "endColumn": 59
+      }
+    },
+    {
+      "analysisTarget": "lib/time/index.ts",
+      "type": 0,
+      "ruleId": "TS2345",
+      "category": "Error",
+      "message": "Argument of type 'string | undefined' is not assignable to parameter of type 'string | SemVer'..   Type 'undefined' is not assignable to type 'string | SemVer'.",
+      "hint": "Argument of type 'string | undefined' is not assignable to parameter of type 'string | SemVer'. Consider verifying both types, using type assertion: '(versionArray[i] as string)', or using type guard: 'if (versionArray[i] instanceof string) { ... }'.",
+      "hintAdded": true,
+      "nodeKind": "ElementAccessExpression",
+      "nodeText": "versionArray[i]",
+      "helpUrl": "https://stackoverflow.com/questions/42421501/error-ts2345-argument-of-type-t-is-not-assignable-to-parameter-of-type-objec",
+      "nodeLocation": {
+        "startLine": 113,
+        "startColumn": 21,
+        "endLine": 113,
+        "endColumn": 36
+      }
+    },
+    {
+      "analysisTarget": "lib/time/index.ts",
+      "type": 0,
+      "ruleId": "TS2322",
+      "category": "Error",
+      "message": "Type 'SemVer | null' is not assignable to type 'string'..   Type 'null' is not assignable to type 'string'.",
+      "hint": "The variable 'nextVersion' has type 'string', but 'SemVer | null' is assigned. Please convert 'SemVer | null' to 'string' or change variable's type.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "nextVersion",
+      "helpUrl": "https://stackoverflow.com/questions/72139358/ts2322-type-typeof-statusenum-is-not-assignable-to-type-statusenum",
+      "nodeLocation": {
+        "startLine": 115,
+        "startColumn": 7,
+        "endLine": 115,
+        "endColumn": 18
+      }
+    },
+    {
+      "analysisTarget": "lib/time/index.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter '_info' implicitly has an 'any' type.",
+      "hint": "Parameter '_info' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "_info",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 125,
+        "startColumn": 3,
+        "endLine": 125,
+        "endColumn": 8
+      }
+    },
+    {
+      "analysisTarget": "lib/time/index.ts",
+      "type": 0,
+      "ruleId": "TS2552",
+      "category": "Error",
+      "message": "Cannot find name 'strin'. Did you mean 'string'?",
+      "hint": "Cannot find name 'strin'. Did you mean 'string'?",
+      "hintAdded": true,
+      "nodeKind": "TypeReference",
+      "nodeText": "strin",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2552}",
+      "nodeLocation": {
+        "startLine": 128,
+        "startColumn": 36,
+        "endLine": 128,
+        "endColumn": 41
+      }
+    },
+    {
+      "analysisTarget": "lib/time/index.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter '_upgradeBudget' implicitly has an 'any' type.",
+      "hint": "Parameter '_upgradeBudget' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "_upgradeBudget",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 132,
+        "startColumn": 3,
+        "endLine": 132,
+        "endColumn": 17
+      }
+    },
+    {
+      "analysisTarget": "lib/time/index.ts",
+      "type": 0,
+      "ruleId": "TS7006",
+      "category": "Error",
+      "message": "Parameter '_ignorePrereleases' implicitly has an 'any' type.",
+      "hint": "Parameter '_ignorePrereleases' implicitly has an 'any' type.",
+      "hintAdded": true,
+      "nodeKind": "Parameter",
+      "nodeText": "_ignorePrereleases",
+      "helpUrl": "https://stackoverflow.com/questions/43064221/typescript-ts7006-parameter-xxx-implicitly-has-an-any-type",
+      "nodeLocation": {
+        "startLine": 134,
+        "startColumn": 3,
+        "endLine": 134,
+        "endColumn": 21
+      }
+    },
+    {
+      "analysisTarget": "lib/time/index.ts",
+      "type": 0,
+      "ruleId": "TS4060",
+      "category": "Error",
+      "message": "Return type of exported function has or is using private name ''.",
+      "hint": "Return type of exported function has or is using private name ''.",
+      "hintAdded": true,
+      "nodeKind": "TypeReference",
+      "nodeText": "",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts4060}",
+      "nodeLocation": {
+        "startLine": 136,
+        "startColumn": 31,
+        "endLine": 136,
+        "endColumn": 31
+      }
+    },
+    {
+      "analysisTarget": "lib/time/index.ts",
+      "type": 0,
+      "ruleId": "TS2304",
+      "category": "Error",
+      "message": "Cannot find name 'packageName'.",
+      "hint": "Cannot find name 'packageName'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "packageName",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2304}",
+      "nodeLocation": {
+        "startLine": 138,
+        "startColumn": 40,
+        "endLine": 138,
+        "endColumn": 51
+      }
+    },
+    {
+      "analysisTarget": "lib/time/index.ts",
+      "type": 0,
+      "ruleId": "TS2304",
+      "category": "Error",
+      "message": "Cannot find name 'ignorePrereleases'.",
+      "hint": "Cannot find name 'ignorePrereleases'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "ignorePrereleases",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2304}",
+      "nodeLocation": {
+        "startLine": 142,
+        "startColumn": 54,
+        "endLine": 142,
+        "endColumn": 71
+      }
+    },
+    {
+      "analysisTarget": "lib/time/index.ts",
+      "type": 0,
+      "ruleId": "TS2552",
+      "category": "Error",
+      "message": "Cannot find name '_today'. Did you mean 'today'?",
+      "hint": "Cannot find name '_today'. Did you mean 'today'?",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "_today",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2552}",
+      "nodeLocation": {
+        "startLine": 147,
+        "startColumn": 15,
+        "endLine": 147,
+        "endColumn": 21
+      }
+    },
+    {
+      "analysisTarget": "lib/time/index.ts",
+      "type": 0,
+      "ruleId": "TS2345",
+      "category": "Error",
+      "message": "Argument of type 'SemVer | null' is not assignable to parameter of type 'string | SemVer'..   Type 'null' is not assignable to type 'string | SemVer'.",
+      "hint": "Argument of type 'SemVer | null' is not assignable to parameter of type 'string | SemVer'. Consider verifying both types, using type assertion: '(parsed as string)', or using type guard: 'if (parsed instanceof string) { ... }'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "parsed",
+      "helpUrl": "https://stackoverflow.com/questions/42421501/error-ts2345-argument-of-type-t-is-not-assignable-to-parameter-of-type-objec",
+      "nodeLocation": {
+        "startLine": 149,
+        "startColumn": 30,
+        "endLine": 149,
+        "endColumn": 36
+      }
+    },
+    {
+      "analysisTarget": "lib/time/index.ts",
+      "type": 0,
+      "ruleId": "TS2345",
+      "category": "Error",
+      "message": "Argument of type 'SemVer | null' is not assignable to parameter of type 'string | SemVer'.",
+      "hint": "Argument of type 'SemVer | null' is not assignable to parameter of type 'string | SemVer'. Consider verifying both types, using type assertion: '(parsed as string)', or using type guard: 'if (parsed instanceof string) { ... }'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "parsed",
+      "helpUrl": "https://stackoverflow.com/questions/42421501/error-ts2345-argument-of-type-t-is-not-assignable-to-parameter-of-type-objec",
+      "nodeLocation": {
+        "startLine": 151,
+        "startColumn": 22,
+        "endLine": 151,
+        "endColumn": 28
+      }
+    },
+    {
+      "analysisTarget": "lib/time/index.ts",
+      "type": 0,
+      "ruleId": "TS2304",
+      "category": "Error",
+      "message": "Cannot find name 'effectiveReleaseDate'.",
+      "hint": "Cannot find name 'effectiveReleaseDate'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "effectiveReleaseDate",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2304}",
+      "nodeLocation": {
+        "startLine": 155,
+        "startColumn": 23,
+        "endLine": 155,
+        "endColumn": 43
+      }
+    },
+    {
+      "analysisTarget": "lib/time/index.ts",
+      "type": 0,
+      "ruleId": "TS2304",
+      "category": "Error",
+      "message": "Cannot find name 'upgradeBudget'.",
+      "hint": "Cannot find name 'upgradeBudget'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "upgradeBudget",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2304}",
+      "nodeLocation": {
+        "startLine": 157,
+        "startColumn": 64,
+        "endLine": 157,
+        "endColumn": 77
+      }
+    },
+    {
+      "analysisTarget": "lib/time/index.ts",
+      "type": 0,
+      "ruleId": "TS7053",
+      "category": "Error",
+      "message": "Element implicitly has an 'any' type because expression of type 'ReleaseType' can't be used to index type '{ major: Date; minor: Date; }'..   Property 'patch' does not exist on type '{ major: Date; minor: Date; }'.",
+      "hint": "Element implicitly has an 'any' type because expression of type 'ReleaseType' can't be used to index type '{ major: Date; minor: Date; }'..  Property 'patch' does not exist on type '{ major: Date; minor: Date; }'.",
+      "hintAdded": true,
+      "nodeKind": "ElementAccessExpression",
+      "nodeText": "deprecationPolicyDates[diffType]",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7053}",
+      "nodeLocation": {
+        "startLine": 159,
+        "startColumn": 29,
+        "endLine": 159,
+        "endColumn": 61
+      }
+    },
+    {
+      "analysisTarget": "lib/time/index.ts",
+      "type": 0,
+      "ruleId": "TS7053",
+      "category": "Error",
+      "message": "Element implicitly has an 'any' type because expression of type 'ReleaseType' can't be used to index type '{ major: Date; minor: Date; }'..   Property 'patch' does not exist on type '{ major: Date; minor: Date; }'.",
+      "hint": "Element implicitly has an 'any' type because expression of type 'ReleaseType' can't be used to index type '{ major: Date; minor: Date; }'..  Property 'patch' does not exist on type '{ major: Date; minor: Date; }'.",
+      "hintAdded": true,
+      "nodeKind": "ElementAccessExpression",
+      "nodeText": "deprecationPolicyDates[diffType]",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts7053}",
+      "nodeLocation": {
+        "startLine": 163,
+        "startColumn": 26,
+        "endLine": 163,
+        "endColumn": 58
+      }
+    },
+    {
+      "analysisTarget": "lib/time/index.ts",
+      "type": 0,
+      "ruleId": "TS2304",
+      "category": "Error",
+      "message": "Cannot find name 'policies'.",
+      "hint": "Cannot find name 'policies'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "policies",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2304}",
+      "nodeLocation": {
+        "startLine": 169,
+        "startColumn": 20,
+        "endLine": 169,
+        "endColumn": 28
+      }
+    },
+    {
+      "analysisTarget": "lib/time/index.ts",
+      "type": 0,
+      "ruleId": "TS2304",
+      "category": "Error",
+      "message": "Cannot find name 'packageName'.",
+      "hint": "Cannot find name 'packageName'.",
+      "hintAdded": true,
+      "nodeKind": "Identifier",
+      "nodeText": "packageName",
+      "helpUrl": "https://stackoverflow.com/search?tab=votes&q=ts2304}",
+      "nodeLocation": {
+        "startLine": 173,
+        "startColumn": 69,
+        "endLine": 173,
+        "endColumn": 80
+      }
+    },
+    {
+      "analysisTarget": "lib/time/index.ts",
+      "type": 1,
+      "ruleId": "error-generated-by-Eslint-core",
+      "category": "Error",
+      "message": "Parsing error: Unexpected token :",
+      "hint": "Parsing error: Unexpected token :",
+      "hintAdded": false,
+      "nodeText": "",
+      "helpUrl": "",
+      "nodeLocation": {
+        "startLine": 16,
+        "startColumn": 40,
+        "endLine": 16,
+        "endColumn": 2
+      }
+    }
+  ]
+}

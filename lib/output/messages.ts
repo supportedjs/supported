@@ -1,10 +1,11 @@
 'use strict';
 
-const chalk = require('chalk');
-const { supportedRanges } = require('../time/index');
+    import chalk from 'chalk';
+    import { supportedRanges } from '../time/index';
 
-const { MS_IN_QTR } = require('../util');
+    import { MS_IN_QTR } from '../util';
 
+/* @ts-expect-error @rehearsal TODO TS7006: Parameter 'isSupported' implicitly has an 'any' type. */
 module.exports.LOG_TITLE = (isSupported, count, inVerboseMode) => {
   const verboseCallToAction = inVerboseMode
     ? ''
@@ -22,7 +23,8 @@ module.exports.LOG_TITLE = (isSupported, count, inVerboseMode) => {
   }
 };
 
-module.exports.LOG_SEMVER_VIOLATION = (type, total, duration, isWarning) => {
+/* @ts-expect-error @rehearsal TODO TS7006: Parameter 'isWarning' implicitly has an 'any' type. */
+module.exports.LOG_SEMVER_VIOLATION = (type: unknown, total: unknown, duration: number, isWarning) => {
   if (!isWarning) {
     return chalk`
       {red ✗ ${type} version [${total} ${getDepLocale(total)} up-to ${Math.ceil(
@@ -37,16 +39,17 @@ module.exports.LOG_SEMVER_VIOLATION = (type, total, duration, isWarning) => {
   }
 };
 
-function getDepLocale(count) {
+function getDepLocale(count: unknown): "dependency" | "dependencies"  {
   return count == 1 ? 'dependency' : 'dependencies';
 }
 
 module.exports.getQtrLocale = getQtrLocale;
-function getQtrLocale(count) {
+export function getQtrLocale(count: unknown): "qtr" | "qtrs"  {
   return count == 1 ? 'qtr' : 'qtrs';
 }
 
-module.exports.LOG_LTS_VIOLATION = (type, isSupported, duration, message, resolvedVersion) => {
+/* @ts-expect-error @rehearsal TODO TS7006: Parameter 'type' implicitly has an 'any' type. */
+module.exports.LOG_LTS_VIOLATION = (type, isSupported, duration: number, message: unknown, resolvedVersion: unknown) => {
   const LTS_POLICY = `${type} LTS Policy`;
   if (!isSupported) {
     return chalk`{red ✗} ${LTS_POLICY}\n      {red ✗ ${message}}`;
@@ -64,7 +67,8 @@ module.exports.LOG_LTS_VIOLATION = (type, isSupported, duration, message, resolv
   return chalk`{green ✓} {dim ${LTS_POLICY}}`;
 };
 
-module.exports.LOG_SEMVER_TITLE = (totalSemVerViolation, totalPackages, isWarning) => {
+/* @ts-expect-error @rehearsal TODO TS7006: Parameter 'isWarning' implicitly has an 'any' type. */
+module.exports.LOG_SEMVER_TITLE = (totalSemVerViolation: unknown, totalPackages: unknown, isWarning) => {
   const SEMVER_POLICY = `SemVer Policy`;
   if (totalSemVerViolation && !isWarning) {
     return chalk`{red ✗} ${SEMVER_POLICY} (${totalSemVerViolation} violations in ${totalPackages} dependencies)`;
@@ -74,20 +78,22 @@ module.exports.LOG_SEMVER_TITLE = (totalSemVerViolation, totalPackages, isWarnin
   return chalk`{green ✓} {dim ${SEMVER_POLICY}}`;
 };
 
-module.exports.LOG_POLICY_TITLE = (violationCount, policyCount) => chalk`
+module.exports.LOG_POLICY_TITLE = (violationCount: unknown, policyCount: unknown) => chalk`
   {bold Policies violated (${violationCount} of ${policyCount})}`;
 
 module.exports.DEFAULT_SUPPORT_MESSAGE = () => {
+/* @ts-expect-error @rehearsal TODO TS2339: Property 'map' does not exist on type '{ type: string; name: strin; }'. */
   return chalk`{dim
   Current Support Policy:
 ${supportedRanges(new Date())
-  .map(support => `    ${support.name}`)
+  .map((support) => `    ${support.name}`)
   .join('\n')}
     node LTS versions
     ember LTS versions}`;
 };
 
-module.exports.LOG_PROJECT_TITLE = (isSupported, projectName, isExpiringSoon) => {
+/* @ts-expect-error @rehearsal TODO TS7006: Parameter 'isSupported' implicitly has an 'any' type. */
+module.exports.LOG_PROJECT_TITLE = (isSupported, projectName: unknown, isExpiringSoon) => {
   if (!isSupported) {
     return chalk`  {red ✗ {bold ${projectName}}}`;
   } else if (isSupported && isExpiringSoon) {
@@ -96,6 +102,7 @@ module.exports.LOG_PROJECT_TITLE = (isSupported, projectName, isExpiringSoon) =>
   return chalk`  {green ✓} {dim ${projectName}}`;
 };
 
+/* @ts-expect-error @rehearsal TODO TS7006: Parameter 'isSupported' implicitly has an 'any' type. */
 module.exports.LOG_TITLE_MULTIPLE = (isSupported, count) => {
   if (!isSupported) {
     return chalk`  {underline {red {bold Support Policy Problem Detected!}}}

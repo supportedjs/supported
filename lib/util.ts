@@ -1,14 +1,14 @@
 'use strict';
 
-const fs = require('fs');
-const chalk = require('chalk');
-const moment = require('moment');
-const { readFileSync } = require('fs');
-const { join } = require('path');
-const semver = require('semver');
+    import fs from 'fs';
+    import chalk from 'chalk';
+    import moment from 'moment';
+    import { readFileSync } from 'fs';
+    import { join } from 'path';
+    import semver from 'semver';
 
 // 91 days in a quarter, 24hrs per day, 60 minutes per hour, 60 seconds per hour, 1000 milliseconds per sec
-const MS_IN_QTR = 91 * 24 * 60 * 60 * 1000;
+export const MS_IN_QTR = 91 * 24 * 60 * 60 * 1000;
 exports.MS_IN_QTR = MS_IN_QTR;
 
 // Default policy for evaluating semVer
@@ -30,12 +30,12 @@ const THRESHOLD_QTRS = 5;
  * @returns {boolean} true/false
  */
 module.exports.isExpiringSoon = isExpiringSoon;
-function isExpiringSoon(timeDiff) {
+export function isExpiringSoon(timeDiff: number): boolean | 0  {
   return timeDiff && Math.ceil(timeDiff / MS_IN_QTR) < THRESHOLD_QTRS;
 }
 
 module.exports.dateDiff = dateDiff;
-function dateDiff(a, b) {
+export function dateDiff(a: moment.MomentInput, b: moment.MomentInput): number  {
   const utc1 = moment.utc(a);
   const utc2 = moment.utc(b);
 
@@ -52,26 +52,72 @@ const LTS_MAP = {
     doc: 'https://emberjs.com/releases/lts/',
   },
 };
+type LTSGroupName = keyof typeof LTS_MAP;
 module.exports.LTS_MAP = LTS_MAP;
 
-module.exports.isLtsPackage = function isLtsPackage(packageName, ltsGroupName) {
-  const groupNames = ltsGroupName ? [ltsGroupName] : Object.keys(LTS_MAP);
+module.exports.isLtsPackage = function isLtsPackage(packageName: string, ltsGroupName: LTSGroupName) {
+  const groupNames: LTSGroupName[] = ltsGroupName ? [ltsGroupName] : (Object.keys(LTS_MAP) as LTSGroupName[]);
   return groupNames.some(groupName => {
     return LTS_MAP[groupName].packages.includes(packageName);
   });
 };
 
-function ltsPackageGroupName(packageName) {
-  return Object.keys(LTS_MAP).find(groupName => {
+function ltsPackageGroupName(packageName: string): LTSGroupName | undefined  {
+  return (Object.keys(LTS_MAP) as LTSGroupName[]).find(groupName => {
     return LTS_MAP[groupName].packages.includes(packageName);
   });
 }
 module.exports.ltsPackageGroupName = ltsPackageGroupName;
 
-function ltsPackageGroupInfo(packageName) {
-  return LTS_MAP[ltsPackageGroupName(packageName)];
+export function ltsPackageGroupInfo(packageName: string) {
+  const groupName = ltsPackageGroupName(packageName);
+  return groupName && LTS_MAP[groupName];
 }
 module.exports.ltsPackageGroupInfo = ltsPackageGroupInfo;
+
+export type NpmPackage = {
+  'dist-tags': {
+    latest: string;
+    [key: string]: string;
+  };
+  versions: {
+    [key: string]: {
+      name: string;
+      description: string;
+      version: string;
+      author: string;
+      repository: {
+        [key: string]: number | string;
+      };
+      volta: {
+        node: string;
+      };
+      dependencies: {
+        [key: string]: string;
+      };
+      devDependencies: {
+        [key: string]: string;
+      };
+      license: string;
+      scripts: {
+        [key: string]: string;
+      };
+      _id: string;
+      dist: {
+        [key: string]: number | string;
+      };
+      'lint-staged': {
+        [key: string]: string[];
+      };
+      'pre-commit': {
+        [key: string]: string[];
+      };
+      ava: {
+        [key: string]: boolean | string[];
+      };
+    };
+  };
+}
 
 /**
  * Return the latest version string, ignoring pre-releases.
@@ -79,14 +125,15 @@ module.exports.ltsPackageGroupInfo = ltsPackageGroupInfo;
  * @param {Boolean} ignorePrereleases if true, ignore prepatch, preminor, and prereleases
  */
 module.exports.getLatest = getLatest;
-function getLatest(info, ignorePrereleases) {
+
+export function getLatest(info: NpmPackage, ignorePrereleases: boolean) {
   const taggedLatest = info['dist-tags'].latest;
-  if (!ignorePrereleases || semver.parse(taggedLatest).prerelease.length === 0) {
+  if (!ignorePrereleases || semver.parse(taggedLatest)?.prerelease.length === 0) {
     return taggedLatest;
   } else {
     const latestNonPrerelease = Object.keys(info.versions)
       .filter(version => {
-        return semver.parse(version).prerelease.length === 0;
+        return semver.parse(version)?.prerelease.length === 0;
       })
       .sort((a, b) => {
         return semver.compare(a, b);
@@ -117,7 +164,7 @@ function getLatest(info, ignorePrereleases) {
  * @param {packageInfo} b
  */
 module.exports.sortLibraries = sortLibraries;
-function sortLibraries(a, b) {
+export function sortLibraries(a: { isSupported: number; duration: number; name: string; type: string; }, b: { isSupported: number; duration: number; name: string; type: string; }): number  {
   if (a.isSupported && b.isSupported) {
     //sort expiring soon to the top
     if (a.duration && b.duration) {
@@ -138,6 +185,12 @@ function sortLibraries(a, b) {
 }
 
 module.exports.ProgressLogger = class ProgressLogger {
+  spinner: { prefixText: string; text: string; };
+    totalPackages: number;
+    processedCount: number;
+    semVerLogged: boolean;
+    isMultipleProduct: boolean;
+    ignoredPackages: number;
   constructor(_spinner = { prefixText: '', text: '' }, _isMultipleProduct = false) {
     this.spinner = _spinner;
     this.totalPackages = 0; // start from `1` as we have node policy tested all the time
@@ -147,7 +200,7 @@ module.exports.ProgressLogger = class ProgressLogger {
     this.ignoredPackages = 0;
   }
 
-  getLoggerPrefixText(name, isSupported, isExpiringSoon) {
+  getLoggerPrefixText(name: string, isSupported: boolean, isExpiringSoon: boolean): string  {
     if (isSupported && isExpiringSoon) {
       return chalk`{yellow ⚠} ${name} Policy\n`;
     }
@@ -157,7 +210,7 @@ module.exports.ProgressLogger = class ProgressLogger {
     return chalk`{red ✗} ${name} Policy\n`;
   }
 
-  logAppAuditProgress(name, isSupported, isExpiringSoon) {
+  logAppAuditProgress(name: string, isSupported: boolean, isExpiringSoon: boolean): string  {
     if (isSupported && isExpiringSoon) {
       return chalk`{yellow ⚠} ${name}\n`;
     }
@@ -167,15 +220,15 @@ module.exports.ProgressLogger = class ProgressLogger {
     return chalk`{red ✗} ${name}\n`;
   }
 
-  updateTotalDepCount(count) {
+  updateTotalDepCount(count: number): void  {
     this.totalPackages += count;
   }
 
-  updateIgnoredDepCount(count) {
+  updateIgnoredDepCount(count: number): void  {
     this.ignoredPackages = count;
   }
 
-  updateSpinner(name, isSupported, isExpiringSoon) {
+  updateSpinner(name: string, isSupported: boolean, isExpiringSoon: boolean): void  {
     if (name && !this.isMultipleProduct) {
       if (!this.spinner.prefixText) {
         this.spinner.prefixText = '';
@@ -202,7 +255,7 @@ module.exports.ProgressLogger = class ProgressLogger {
     }
   }
 
-  updatePrefixTextForMultipleProject(name, isSupported, isExpiringSoon) {
+  updatePrefixTextForMultipleProject(name: string, isSupported: boolean, isExpiringSoon: boolean): void  {
     if (this.isMultipleProduct) {
       if (!this.spinner.prefixText) {
         this.spinner.prefixText = '';
@@ -213,7 +266,7 @@ module.exports.ProgressLogger = class ProgressLogger {
 };
 
 module.exports.checkNodeCompatibility = checkNodeCompatibility;
-function checkNodeCompatibility(_nodeVersion) {
+export function checkNodeCompatibility(_nodeVersion: string): void  {
   const nodeVersion = _nodeVersion || process.versions.node;
   const packageJson = JSON.parse(readFileSync(join(__dirname, '../package.json'), 'utf-8'));
   if (!semver.satisfies(nodeVersion, packageJson.engines.node)) {
@@ -223,7 +276,7 @@ function checkNodeCompatibility(_nodeVersion) {
   }
 }
 
-const parseDuration = require('parse-duration');
+    import parseDuration from 'parse-duration';
 /*
  *
  * convert a string representing a date into an actual date
@@ -232,7 +285,8 @@ const parseDuration = require('parse-duration');
  * supports anything `parse-duration` supports:
  *   -30 days === the date 30 days ago
  */
-module.exports.processDate = function processDate(inputDate) {
+module.exports.processDate = processDate;
+export function processDate(inputDate: string | number | Date): Date | undefined  {
   if (typeof inputDate !== 'string') {
     return;
   }
@@ -240,7 +294,7 @@ module.exports.processDate = function processDate(inputDate) {
     return;
   }
   const date = new Date(inputDate);
-  if (isNaN(date)) {
+  if (isNaN(date.valueOf())) {
     // failed to parse the date normally, let's try parse-duration. As it gives
     // us the ability to allow a micro-syntax for dates such as `-30days` or `-5years`
     const parsed = parseDuration(inputDate, 'ms');
@@ -249,7 +303,7 @@ module.exports.processDate = function processDate(inputDate) {
       throw new Error(`[Supported] could not parse date='${date}'`);
     } else {
       const result = new Date(Date.now() + parsed);
-      if (isNaN(result)) {
+      if (isNaN(result.valueOf())) {
         return undefined;
       } else {
         return result;
@@ -261,6 +315,10 @@ module.exports.processDate = function processDate(inputDate) {
     return date;
   }
 };
+
+function isError(obj: unknown): obj is Error & { code: string } {
+  return !!(obj as Error).name && !!(obj as Error & { code: string }).code;
+}
 
 /*
  *
@@ -276,14 +334,14 @@ module.exports.processDate = function processDate(inputDate) {
 module.exports.handleInput = function (input, cwd) {
   if (input.length === 0) {
     try {
-      JSON.parse(fs.readFileSync(`${cwd}/package.json`, 'UTF-8'));
+      JSON.parse(fs.readFileSync(`${cwd}/package.json`, 'utf8'));
       // if the cwd contains a JSON file named `package.json` so we assume the
       // user wanted to run the command on the current directory
       return ['.'];
     } catch (e) {
       if (
         e !== null &&
-        typeof e === 'object' &&
+        typeof e === 'object' && isError(e) && 
         (e.code === 'ENOENT' || e.name === 'SyntaxError')
       ) {
         // no package.json exists at that location as a readable json file, so we

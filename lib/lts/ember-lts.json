@@ -28,5 +28,11 @@
     "start_date": "2022-07-13T00:00:00.000Z",
     "maintenance_start_date": "2023-03-22T00:00:00.000Z",
     "end_date": "2023-07-26T00:00:00.000Z"
+  },
+  "4.8.*": {
+    "versionRange": "4.8.*",
+    "start_date": "2022-11-28T00:00:00.000Z",
+    "maintenance_start_date": "2023-08-07T00:00:00.000Z",
+    "end_date": "2023-12-11T00:00:00.000Z"
   }
 }

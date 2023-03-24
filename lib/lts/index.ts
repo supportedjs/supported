@@ -1,20 +1,23 @@
 'use strict';
 
-const NODE_LTS = require('./node-lts.json');
-const EMBER_LTS = require('./ember-lts.json');
-const { isExpiringSoon, dateDiff, ltsPackageGroupInfo } = require('../util');
+/* @ts-expect-error @rehearsal TODO TS2732: Cannot find module './node-lts.json'. Consider using '--resolveJsonModule' to import module with '.json' extension. */
+    import NODE_LTS from './node-lts.json';
+/* @ts-expect-error @rehearsal TODO TS2732: Cannot find module './ember-lts.json'. Consider using '--resolveJsonModule' to import module with '.json' extension. */
+    import EMBER_LTS from './ember-lts.json';
+    import { isExpiringSoon, dateDiff } from '../util';
 
-function sortByMinor(a, b) {
+function sortByMinor(a: { minor: number; }, b: { minor: number; }): number  {
   return a.minor - b.minor;
 }
 /* [ ] current latest minor
  * [x] LTS
  * [ ] fix publish at cool
  */
-const semver = require('semver');
-const semverMinVersion = require('semver/ranges/min-version');
+    import semver from 'semver';
+    import semverMinVersion from 'semver/ranges/min-version';
+    import { info } from 'console';
 module.exports.isConsideredVersion = isConsideredVersion;
-function isConsideredVersion(potentialVersion) {
+function isConsideredVersion(potentialVersion: string | semver.SemVer | null | undefined): boolean  {
   const parsed = semver.parse(potentialVersion);
   if (parsed !== null && typeof parsed === 'object') {
     // pre-release and build variants are by default not supported
@@ -25,7 +28,8 @@ function isConsideredVersion(potentialVersion) {
 }
 
 module.exports.ltsVersions = ltsVersions;
-function ltsVersions(_time, currentDate) {
+/* @ts-expect-error @rehearsal TODO TS7006: Parameter '_time' implicitly has an 'any' type. */
+function ltsVersions(_time, currentDate: number) {
   if (arguments.length !== 2) {
     throw new TypeError('ltsVersions(time, currentDate) requires exactly two arguments');
   }
@@ -39,6 +43,7 @@ function ltsVersions(_time, currentDate) {
   }
 
   for (const version of Object.keys(time).sort(semver.compare)) {
+/* @ts-expect-error @rehearsal TODO TS2339: Property 'major' does not exist on type 'SemVer | null'. */
     const { major, minor } = semver.parse(version);
 
     if (!(major in groupedByMajor)) {
@@ -50,7 +55,8 @@ function ltsVersions(_time, currentDate) {
     // grab the first minor for each major, as it it's published date
     // will be part of what is considered when we decide if it's an LTS
     // or not.
-    const entry = current.find(entry => entry.minor === minor);
+/* @ts-expect-error @rehearsal TODO TS7006: Parameter 'entry' implicitly has an 'any' type. */
+    const entry = current.find((entry) => entry.minor === minor);
     if (entry) {
       entry.latestVersion = version;
     } else {
@@ -99,6 +105,7 @@ function ltsVersions(_time, currentDate) {
       endOfSupport.setDate(endOfSupport.getDate() + 54 * 7);
 
       // ensure the current date is within the support window
+/* @ts-expect-error @rehearsal TODO TS2365: Operator '<=' cannot be applied to types 'number' and 'Date'. */
       return ltsBeginsAt <= currentDate && currentDate <= endOfSupport;
     });
 }
@@ -111,7 +118,8 @@ function ltsVersions(_time, currentDate) {
  * Throw is essential if static json file is not updated for long time
  * this error will let consumer of this module report the issue.
  */
-function getCurrentLts(ltsList, groupName, _currentDate) {
+/* @ts-expect-error @rehearsal TODO TS7006: Parameter 'ltsList' implicitly has an 'any' type. */
+function getCurrentLts(ltsList, groupName: string, _currentDate: Date): string  {
   let latestLts = '';
   const today = _currentDate || new Date();
   Object.keys(ltsList).forEach(version => {
@@ -141,18 +149,21 @@ module.exports.isLtsOrLatest = isLtsOrLatest;
  *
  * return support policy check result.
  */
-function isLtsOrLatest(info, resolvedVersion, currentDate = new Date()) {
+/* @ts-expect-error @rehearsal TODO TS2371: A parameter initializer is only allowed in a function or constructor implementation. */
+export function isLtsOrLatest(_info: { type: string; name: string; }, _resolvedVersion: string, _currentDate: Date = new Date()): { isSupported: boolean; res...  {
   let ltsList = NODE_LTS;
   let isSupported = true;
-  let packageName = 'node';
   let message = '';
   let duration = 0;
   let deprecationDate = 0;
 
+/* @ts-expect-error @rehearsal TODO TS2304: Cannot find name 'currentDate'. */
   const today = currentDate || new Date();
+/* @ts-expect-error @rehearsal TODO TS2339: Property 'type' does not exist on type '(message?: any, ...optionalParams: any[]) => void'. */
   if (info.type == 'node') {
     // Check when there is no node version could be found in package.json.
     // In future we can consider execa('node -v') and get the version
+/* @ts-expect-error @rehearsal TODO TS2304: Cannot find name 'resolvedVersion'. */
     if (resolvedVersion === '0.0.0') {
       isSupported = true;
       message = `No node version mentioned in the package.json. Please add engines/volta`;
@@ -160,6 +171,7 @@ function isLtsOrLatest(info, resolvedVersion, currentDate = new Date()) {
       isSupported = Object.keys(ltsList).some(version => {
         const data = ltsList[version];
         const versionRange = data.versionRange;
+/* @ts-expect-error @rehearsal TODO TS2304: Cannot find name 'resolvedVersion'. */
         if (semver.intersects(versionRange, resolvedVersion)) {
           if (new Date(data.start_date) <= today && today <= new Date(data.end_date)) {
             const isMaintenanceLts = new Date(data.maintenance_start_date) <= today;
@@ -175,7 +187,6 @@ function isLtsOrLatest(info, resolvedVersion, currentDate = new Date()) {
     }
   } else {
     ltsList = EMBER_LTS;
-    packageName = info.name;
     isSupported = Object.keys(ltsList).some(version => {
       const data = ltsList[version];
       const versionRange = data.versionRange;
@@ -185,7 +196,9 @@ function isLtsOrLatest(info, resolvedVersion, currentDate = new Date()) {
 
       if (
         new Date(data.end_date) > today &&
+/* @ts-expect-error @rehearsal TODO TS2304: Cannot find name 'resolvedVersion'. */
         (semver.satisfies(resolvedVersion, versionRange) ||
+/* @ts-expect-error @rehearsal TODO TS2304: Cannot find name 'resolvedVersion'. */
           (!isMaintenanceLts && semver.gtr(resolvedVersion, versionRange)))
       ) {
         if (isMaintenanceLts) {
@@ -201,43 +214,46 @@ function isLtsOrLatest(info, resolvedVersion, currentDate = new Date()) {
   if (isSupported) {
     const returnVal = {
       isSupported: true,
+/* @ts-expect-error @rehearsal TODO TS18004: No value exists in scope for the shorthand property 'resolvedVersion'. Either declare one or provide an initializer. */
       resolvedVersion,
+/* @ts-expect-error @rehearsal TODO TS2339: Property 'type' does not exist on type '(message?: any, ...optionalParams: any[]) => void'. */
       latestVersion: getCurrentLts(ltsList, info.type, currentDate),
     };
 
     if (isExpiringSoon(duration)) {
+/* @ts-expect-error @rehearsal TODO TS7053: Element implicitly has an 'any' type because expression of type '"duration"' can't be used to index type '{ isSupported: boolean; resolvedVersion: any; latestVersion: string; }'..  Property 'duration' does not exist on type '{ isSupported: boolean; resolvedVersion: any; latestVersion: string; }'. */
       returnVal['duration'] = duration;
+/* @ts-expect-error @rehearsal TODO TS7053: Element implicitly has an 'any' type because expression of type '"deprecationDate"' can't be used to index type '{ isSupported: boolean; resolvedVersion: any; latestVersion: string; }'..  Property 'deprecationDate' does not exist on type '{ isSupported: boolean; resolvedVersion: any; latestVersion: string; }'. */
       returnVal['deprecationDate'] = deprecationDate;
+/* @ts-expect-error @rehearsal TODO TS7053: Element implicitly has an 'any' type because expression of type '"message"' can't be used to index type '{ isSupported: boolean; resolvedVersion: any; latestVersion: string; }'..  Property 'message' does not exist on type '{ isSupported: boolean; resolvedVersion: any; latestVersion: string; }'. */
       returnVal['message'] = message;
     }
 
     if (!duration && message) {
+/* @ts-expect-error @rehearsal TODO TS7053: Element implicitly has an 'any' type because expression of type '"message"' can't be used to index type '{ isSupported: boolean; resolvedVersion: any; latestVersion: string; }'..  Property 'message' does not exist on type '{ isSupported: boolean; resolvedVersion: any; latestVersion: string; }'. */
       returnVal['message'] = message;
     }
 
     return returnVal;
   } else {
     // Run for the side effect of throwing if LTS config is not up to date
+/* @ts-expect-error @rehearsal TODO TS2339: Property 'type' does not exist on type '(message?: any, ...optionalParams: any[]) => void'. */
     getCurrentLts(ltsList, info.type, currentDate);
 
     const ltsKeys = Object.keys(ltsList);
     // Find the version that should be used
-    const requiredVersion = ltsKeys.find(key => {
-      const data = ltsList[key];
-      if (today <= new Date(data.end_date)) {
-        return true;
-      }
-    });
 
     // Find the LTS range that is currently being used OR the previous LTS version range
     // if the used version is not part of an LTS range.
     const usedOrPreviousLts =
       ltsKeys.find(key => {
+/* @ts-expect-error @rehearsal TODO TS2304: Cannot find name 'resolvedVersion'. */
         if (semver.intersects(key, resolvedVersion)) {
           return true;
         }
       }) ||
       ltsKeys.reverse().find(version => {
+/* @ts-expect-error @rehearsal TODO TS2531: Object is possibly 'null'. */
         if (semver.lt(semverMinVersion(version).raw, semverMinVersion(resolvedVersion).raw)) {
           return true;
         }
@@ -247,13 +263,13 @@ function isLtsOrLatest(info, resolvedVersion, currentDate = new Date()) {
 
     if (ltsList[usedOrPreviousLts]) {
       const deprecationDate = ltsList[usedOrPreviousLts].end_date;
+/* @ts-expect-error @rehearsal TODO TS2339: Property 'duration' does not exist on type '{}'. */
       usedOrPreviousLtsInfo.duration = dateDiff(new Date(deprecationDate), today);
+/* @ts-expect-error @rehearsal TODO TS2339: Property 'deprecationDate' does not exist on type '{}'. */
       usedOrPreviousLtsInfo.deprecationDate = deprecationDate;
     }
 
-    const { duration, deprecationDate } = usedOrPreviousLtsInfo;
 
-    const ltsGroupInfo = ltsPackageGroupInfo(packageName);
 
     return {
       isSupported: false,

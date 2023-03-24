@@ -1,0 +1,49 @@
+{
+  "$schema": "https://raw.githubusercontent.com/rehearsal-js/rehearsal-js/master/packages/cli/rehearsal-config-schema.json",
+  "migrate": {
+    "install": {
+      "dependencies": [],
+      "devDependencies": [
+        "@linkedin/ts-bases",
+        "@linkedin/eslint-plugin-typescript@^1.0.0",
+        "@typescript-eslint/eslint-plugin@>= 5.0.0",
+        "@typescript-eslint/parser@>= 5.0.0",
+        "eslint@>= 7.0.0",
+        "eslint-config-prettier@>= 8.2.0",
+        "eslint-import-resolver-typescript@>= 2.5.0",
+        "eslint-plugin-filenames@>= 1.3.2",
+        "eslint-plugin-import@>= 2.25.2",
+        "eslint-plugin-node@>= 11.1.0",
+        "eslint-plugin-prettier@>= 4.0.0",
+        "eslint-plugin-simple-import-sort@>= 7.0.0",
+        "eslint-plugin-tsdoc@>= 0.2.14",
+        "eslint-plugin-unicorn@>= 39.0.0",
+        "prettier@>= 2.4.0"
+      ]
+    },
+    "postInstall": [],
+    "setup": {
+      "ts": [
+        {
+          "command": "rehearsal-cli-config",
+          "args": [
+            "migrate-config",
+            "ts-setup",
+            "node16",
+            "--build",
+            "none"
+          ]
+        }
+      ],
+      "lint": [
+        {
+          "command": "rehearsal-cli-config",
+          "args": [
+            "migrate-config",
+            "lint-setup"
+          ]
+        }
+      ]
+    }
+  }
+}

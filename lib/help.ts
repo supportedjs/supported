@@ -1,8 +1,9 @@
 'use strict';
 
-const chalk = require('chalk');
-const terminalLink = require('terminal-link');
-const pkg = require('../package.json');
+import chalk from 'chalk';
+import terminalLink from 'terminal-link';
+/* @ts-expect-error @rehearsal TODO TS2732: Cannot find module '../package.json'. Consider using '--resolveJsonModule' to import module with '.json' extension. */
+import pkg from '../package.json';
 
 module.exports = (commandName = 'supported', packageLink = pkg.homepage) => {
   return chalk`
